@@ -1,0 +1,61 @@
+[
+  {
+    "name": "Tag",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 3,
+    "responsibilities": [
+      "Stores a single piece of information"
+    ],
+    "collaborators": [
+      ""
+    ]
+  },
+  {
+    "name": "Ingredient",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 3,
+    "responsibilities": [
+      "Represents a type of ingredient.",
+      "+ Tags(), gets all tags",
+      "+ Has(Tag), has a given tag",
+      "+ name(), the unique name of this ingredient type"
+    ],
+    "collaborators": [
+      "Tag"
+    ]
+  },
+  {
+    "name": "RecipeItem",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 3,
+    "responsibilities": [
+      "Stores an ingredient for a recipe with a quantity to add to the recipe.",
+      "+ ingredient(), gets the type of ingredient that this is",
+      "+ quantity(), gets the amount needed for the relevant recipe",
+      "+ optional(), marks if this is not required for the recipe"
+    ],
+    "collaborators": [
+      "Ingredient",
+      "Tag"
+    ]
+  },
+  {
+    "name": "Recipe",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 3,
+    "responsibilities": [
+      "Stores ingredients and instructions.",
+      "+ items(), the list of recipe Items for this recipe",
+      "+ name()",
+      "+ description()",
+      "+ instructions()"
+    ],
+    "collaborators": [
+      "RecipeItem"
+    ]
+  }
+]

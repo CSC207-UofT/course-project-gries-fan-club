@@ -1,0 +1,55 @@
+[
+  {
+    "name": "AbstractMatcher",
+    "superclasses": "",
+    "subclasses": "TagMatcher, FridgeMatcher",
+    "type": 2,
+    "responsibilities": [
+      "An outline for something to match recipes based on given criteria.",
+      "+ matches(Recipe), checks a recipe against given criteria",
+      "+ matchAll(RecipeStorage), checks all recipes against the criteria"
+    ],
+    "collaborators": [
+      "RecipeStorage",
+      "Recipe"
+    ]
+  },
+  {
+    "name": "TagMatcher",
+    "superclasses": "AbstractMatcher",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Implements recipe matching based on a given set of tags."
+    ],
+    "collaborators": [
+      "Tag",
+      "Recipe"
+    ]
+  },
+  {
+    "name": "FridgeMatcher",
+    "superclasses": "AbstractMatcher",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Matches recipes based on the how many necessary ingredients are currently present in the fridge."
+    ],
+    "collaborators": [
+      "Fridge",
+      "Recipe"
+    ]
+  },
+  {
+    "name": "Scorer",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Combines many matchers outputs to create a final scoring of recipe relevance"
+    ],
+    "collaborators": [
+      "Matchers"
+    ]
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "name": "Loader",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 3,
+    "responsibilities": [
+      "Reads data from a file and presents it in \"rows\" where each row represents a single entity. These are presented as maps from attribute names to values.",
+      "+ readRow(), reads the next row from the source"
+    ],
+    "collaborators": [
+      ""
+    ]
+  }
+]

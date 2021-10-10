@@ -1,0 +1,50 @@
+[
+  {
+    "name": "RecipeStorage",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 3,
+    "responsibilities": [
+      "Stores a database of recipes. Allows for searching, addition, removing, etc.",
+      "+ loadFrom(Loader), loads recipes from a given loader's data",
+      "+ recipes(), gets all recipes in this storage",
+      "+ find(String), find recipes by name / Regex on name",
+      "+ find(Tag[]), finds recipes will all given tags",
+      "+ find(Ingredients[]), finds recipes with given ingredients"
+    ],
+    "collaborators": [
+      "Recipe",
+      "Tag",
+      "Loader",
+      "Ingredient"
+    ]
+  },
+  {
+    "name": "IngredientStorage",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 3,
+    "responsibilities": [
+      "Similar to the recipe storage excepts acts as a database for all ingredient types"
+    ],
+    "collaborators": [
+      "Ingredient",
+      "Tag"
+    ]
+  },
+  {
+    "name": "Fridge",
+    "superclasses": "IngredientStorage",
+    "subclasses": "",
+    "type": 3,
+    "responsibilities": [
+      "An extension of the ingredient storage which solely represents which ingredients you currently have.",
+      "+ add(Ingredient)",
+      "+ remove(Ingredient)",
+      "+ has(Ingredient)"
+    ],
+    "collaborators": [
+      ""
+    ]
+  }
+]

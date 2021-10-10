@@ -1,0 +1,62 @@
+[
+  {
+    "name": "RecipeImpl",
+    "superclasses": "Recipe",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Implementation of the Recipe interface"
+    ],
+    "collaborators": [
+      "RecipeItem"
+    ]
+  },
+  {
+    "name": "IngredientImpl",
+    "superclasses": "Ingredient",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Implementation of the Ingredient Interface"
+    ],
+    "collaborators": [
+      "Tag"
+    ]
+  },
+  {
+    "name": "TagImpl",
+    "superclasses": "Tag",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Implementation of the Tag interface"
+    ],
+    "collaborators": [
+      ""
+    ]
+  },
+  {
+    "name": "VolumetricRecipeItem",
+    "superclasses": "RecipeItem",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "A recipe item which uses volume to measure quantity"
+    ],
+    "collaborators": [
+      ""
+    ]
+  },
+  {
+    "name": "QuantityRecipeItem",
+    "superclasses": "RecipeItem",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "A recipe item measured in discrete quantities (IE one apple, two carrots)"
+    ],
+    "collaborators": [
+      ""
+    ]
+  }
+]
