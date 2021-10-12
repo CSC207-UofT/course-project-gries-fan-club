@@ -1,6 +1,8 @@
 package main.java.Entities;
 
-public class Recipe implements Recipe{
+import java.util.List;
+
+public class Recipe implements main.java.EntityInterfaces.Recipe {
     List<Item> items;
 
     Recipe(List<Item> items) {
