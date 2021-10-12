@@ -5,8 +5,6 @@ package main.java.Matchers;
  */
 public class TagMatcher {
 
-    private RecipeStorage storage;
 
-    TagMatcher(RecipeStorage storage, List<Tag> tags) {}
 
 }
