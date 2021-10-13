@@ -14,8 +14,8 @@ public class Item implements ItemImpl {
     }
 
     @Override
-    public Ingredient ingredientType() {
-        return null;
+    public Ingredient ingredient() {
+        return this.ingredient;
     }
 
     @Override

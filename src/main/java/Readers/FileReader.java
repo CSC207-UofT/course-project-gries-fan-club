@@ -1,9 +1,11 @@
 package main.java.Readers;
+import main.java.ReaderInterface.ReaderImpl;
 
-public class FileReader {
+public class FileReader implements ReaderImpl {
+    String data;
 
-    /**
-     * Read file
-     */
+    public FileReader(String data) {
+        this.data = data;
+    }
 
 }
