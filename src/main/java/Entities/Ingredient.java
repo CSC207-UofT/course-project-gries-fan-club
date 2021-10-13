@@ -1,8 +1,10 @@
 package main.java.Entities;
 
+import main.java.EntityInterfaces.IngredientImpl;
+
 import java.util.List;
 
-public class Ingredient implements main.java.EntityInterfaces.Ingredient {
+public class Ingredient implements IngredientImpl {
     private String name;
     private List<Tag> tags;
 
@@ -18,7 +20,12 @@ public class Ingredient implements main.java.EntityInterfaces.Ingredient {
 
     @Override
     public Boolean has(Tag tag) {
-        return null;
+        for (Tag item : this.tags) {
+            if (tag.equals(item)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
