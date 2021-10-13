@@ -1,6 +1,8 @@
 package main.java.Entities;
 
-public class Item {
+import main.java.EntityInterfaces.ItemImpl;
+
+public class Item implements ItemImpl {
     private Ingredient ingredient;
     private int quantity;
 }

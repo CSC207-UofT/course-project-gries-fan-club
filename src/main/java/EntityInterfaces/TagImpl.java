@@ -1,10 +1,10 @@
 package main.java.EntityInterfaces;
 
 
-public interface Tag {
+public interface TagImpl {
     /**
      * Returns name
      */
     String name();
-    
+
 }

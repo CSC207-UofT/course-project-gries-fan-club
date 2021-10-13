@@ -1,5 +1,5 @@
 package main.java.EntityInterfaces;
 
-public interface Item {
+public interface ItemImpl {
 
 }
