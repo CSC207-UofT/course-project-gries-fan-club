@@ -21,9 +21,10 @@ public class IngredientTest {
 
     @Test
     public void testTagsEmpty() {
-        Ingredient ingredient1 = new Ingredient("", Collections.emptyList());
-        assertEquals(0, ingredient1.tags().size());
+        Ingredient ingredient = new Ingredient("", Collections.emptyList());
+        assertEquals(0, ingredient.tags().size());
     }
+
     @Test
     public void testTagsValues() {
         Tag tag1 = new Tag("Dairy");
@@ -43,14 +44,16 @@ public class IngredientTest {
     public void testHasTag() {
         Tag tag1 = new Tag("Dairy");
         Tag tag2 = new Tag("Gluten");
+        Tag tag3 = new Tag("Sugar");
 
         List<Tag> list = new ArrayList<Tag>();
         list.add(tag1);
         list.add(tag2);
 
-        Ingredient ingredient2 = new Ingredient("name", list); // ingredient containing tags now
+        Ingredient ingredient = new Ingredient("name", list); // ingredient containing tags now
 
-        assertEquals(true, ingredient2.has(tag1));
+        assertEquals(true, ingredient.has(tag1));
+        assertEquals(false, ingredient.has(tag3));
 
 
     }
