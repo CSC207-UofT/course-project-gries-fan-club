@@ -27,6 +27,5 @@ public class Item implements ItemImpl {
     public Boolean optional(Boolean value) {
         this.optional = value;
         return this.optional;
-
     }
 }
