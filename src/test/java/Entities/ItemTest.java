@@ -28,4 +28,13 @@ public class ItemTest {
 
     }
 
+    @Test
+    public void testIngredient() {
+        Ingredient ingredient = new Ingredient("apple", Collections.emptyList());
+        int quantity = 15;
+        Item item = new Item(ingredient, quantity);
+
+        assertEquals(ingredient, item.ingredient());
+    }
+
 }
