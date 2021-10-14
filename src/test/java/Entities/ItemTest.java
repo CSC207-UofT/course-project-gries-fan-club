@@ -22,10 +22,9 @@ public class ItemTest {
     public void testOptional() {
         Ingredient ingredient = new Ingredient("apple", Collections.emptyList());
         int quantity = 15;
-        Item item = new Item(ingredient, quantity);
+        Item item = new Item(ingredient, quantity, true);
 
-        assertEquals(true, item.optional(true));
-
+        assertTrue(item.optional(true));
     }
 
     @Test

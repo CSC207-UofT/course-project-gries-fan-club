@@ -50,10 +50,11 @@ public class IngredientTest {
         list.add(tag1);
         list.add(tag2);
 
-        Ingredient ingredient = new Ingredient("name", list); // ingredient containing tags now
+        // ingredient contains tags added now
+        Ingredient ingredient = new Ingredient("name", list);
 
-        assertEquals(true, ingredient.has(tag1));
-        assertEquals(false, ingredient.has(tag3));
+        assertTrue(ingredient.has(tag1));
+        assertFalse(ingredient.has(tag3));
 
 
     }
