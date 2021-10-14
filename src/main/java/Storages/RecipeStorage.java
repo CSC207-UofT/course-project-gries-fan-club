@@ -1,7 +1,7 @@
 package main.java.Storages;
 import java.util.List;
 import java.util.ArrayList;
-import main.java.Entities.Recipe;
+import main.java.EntityInterfaces.Recipe;
 
 public class RecipeStorage {
     List<Recipe> recipes;

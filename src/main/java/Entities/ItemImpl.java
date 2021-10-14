@@ -1,19 +1,18 @@
 package main.java.Entities;
 
-import main.java.EntityInterfaces.ItemImpl;
-import main.java.Entities.Ingredient;
+import main.java.EntityInterfaces.Ingredient;
 
-public class Item implements ItemImpl {
+public class ItemImpl implements main.java.EntityInterfaces.Item {
     private Ingredient ingredient;
     private int quantity;
     private Boolean optional = false;
 
-    public Item(Ingredient ingredient, int quantity) {
+    public ItemImpl(Ingredient ingredient, int quantity) {
         this.ingredient = ingredient;
         this.quantity = quantity;
     }
 
-    public Item(Ingredient ingredient, int quantity, boolean optional) {
+    public ItemImpl(Ingredient ingredient, int quantity, boolean optional) {
         this.ingredient = ingredient;
         this.quantity = quantity;
         this.optional = optional;

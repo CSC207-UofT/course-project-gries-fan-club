@@ -1,10 +1,10 @@
 package main.java.EntityInterfaces;
-import main.java.Entities.Recipe;
-import main.java.Entities.Item;
+import main.java.Entities.ItemImpl;
+import main.java.EntityInterfaces.Item;
 import java.util.List;
 
-public interface RecipeImpl {
-    List<Item> items();
+public interface Recipe {
+    List<ItemImpl> items();
     String name();
     String description();
     String instructions();

@@ -1,6 +1,6 @@
 package main.java.EntityInterfaces;
 
 
-public interface TagImpl {
+public interface Tag {
     String name();
 }

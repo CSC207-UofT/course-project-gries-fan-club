@@ -1,12 +1,12 @@
 package test.java.Entities;
-import main.java.Entities.Tag;
+import main.java.Entities.TagImpl;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class TagTest {
     @Test
     public void testName() {
-        Tag tag = new Tag("name");
+        TagImpl tag = new TagImpl("name");
         assertEquals("name", tag.name());
     }
 }
