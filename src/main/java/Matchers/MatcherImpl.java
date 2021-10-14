@@ -1,5 +1,5 @@
 package main.java.Matchers;
-import main.java.Entities.Recipe;
+import main.java.EntityInterfaces.Recipe;
 import main.java.Storages.RecipeStorage;
 
 // Matches ingredients with recipes

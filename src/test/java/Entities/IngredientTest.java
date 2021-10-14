@@ -1,8 +1,8 @@
 package test.java.Entities;
 
-import main.java.Entities.Ingredient;
-import main.java.Entities.Tag;
-import main.java.EntityInterfaces.TagImpl;
+import main.java.Entities.IngredientImpl;
+import main.java.Entities.TagImpl;
+import main.java.EntityInterfaces.Tag;
 import org.junit.Test;
 
 import java.util.Collections;
@@ -15,26 +15,26 @@ public class IngredientTest {
 
     @Test
     public void testName() {
-        Ingredient ingredient = new Ingredient("my name", Collections.emptyList());
+        IngredientImpl ingredient = new IngredientImpl("my name", Collections.emptyList());
         assertEquals("my name", ingredient.name());
     }
 
     @Test
     public void testTagsEmpty() {
-        Ingredient ingredient = new Ingredient("", Collections.emptyList());
+        IngredientImpl ingredient = new IngredientImpl("", Collections.emptyList());
         assertEquals(0, ingredient.tags().size());
     }
 
     @Test
     public void testTagsValues() {
-        Tag tag1 = new Tag("Dairy");
-        Tag tag2 = new Tag("Gluten");
+        TagImpl tag1 = new TagImpl("Dairy");
+        TagImpl tag2 = new TagImpl("Gluten");
 
-        List<Tag> list = new ArrayList<Tag>();
+        List<TagImpl> list = new ArrayList<TagImpl>();
         list.add(tag1);
         list.add(tag2);
 
-        Ingredient ingredient = new Ingredient("name", list); // ingredient containing tags now
+        IngredientImpl ingredient = new IngredientImpl("name", list); // ingredient containing tags now
 
         assertEquals(list, ingredient.tags());
 
@@ -42,16 +42,16 @@ public class IngredientTest {
 
     @Test
     public void testHasTag() {
-        Tag tag1 = new Tag("Dairy");
-        Tag tag2 = new Tag("Gluten");
-        Tag tag3 = new Tag("Sugar");
+        TagImpl tag1 = new TagImpl("Dairy");
+        TagImpl tag2 = new TagImpl("Gluten");
+        TagImpl tag3 = new TagImpl("Sugar");
 
-        List<Tag> list = new ArrayList<Tag>();
+        List<TagImpl> list = new ArrayList<TagImpl>();
         list.add(tag1);
         list.add(tag2);
 
         // ingredient contains tags added now
-        Ingredient ingredient = new Ingredient("name", list);
+        IngredientImpl ingredient = new IngredientImpl("name", list);
 
         assertTrue(ingredient.has(tag1));
         assertFalse(ingredient.has(tag3));

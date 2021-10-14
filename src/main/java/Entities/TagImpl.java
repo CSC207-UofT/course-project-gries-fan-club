@@ -1,11 +1,10 @@
 package main.java.Entities;
+import main.java.EntityInterfaces.Tag;
 
-import main.java.EntityInterfaces.TagImpl;
-
-public class Tag implements TagImpl {
+public class TagImpl implements Tag {
     private String name;
 
-    public Tag(String name) {
+    public TagImpl(String name) {
         this.name = name;
     }
 

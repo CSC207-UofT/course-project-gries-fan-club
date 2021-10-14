@@ -1,11 +1,11 @@
 package test.java.Matcher;
 
-//import main.java.Entities.Ingredient;
-import main.java.Entities.Recipe;
+import main.java.Entities.RecipeImpl;
+import main.java.EntityInterfaces.Recipe;
 import main.java.Matchers.TagMatcher;
-import main.java.Entities.Ingredient;
-import main.java.Entities.Item;
-import main.java.Entities.Tag;
+import main.java.Entities.IngredientImpl;
+import main.java.Entities.ItemImpl;
+import main.java.Entities.TagImpl;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -23,49 +23,50 @@ public class TagMatcherTest {
     @Test
     public void testMatchesTrue() {
         // Tag list
-        Tag tag1 = new Tag("Dairy");
-        Tag tag2 = new Tag("Gluten");
+        TagImpl tag1 = new TagImpl("Dairy");
+        TagImpl tag2 = new TagImpl("Gluten");
 
-        List<Tag> tags = new ArrayList<Tag>();
+        List<TagImpl> tags = new ArrayList<TagImpl>();
         tags.add(tag1);
+
+        List<TagImpl> list = new ArrayList<TagImpl>();
+        list.add(tag1);
         tags.add(tag2);
 
-        List<Tag> list = new ArrayList<Tag>();
-        list.add(tag1);
-
         // Recipe
-        Ingredient ingredient1 = new Ingredient("bread", list);
-        Item item = new Item(ingredient1, 15);
-        List<Item> items = new ArrayList<Item>();
+        IngredientImpl ingredient1 = new IngredientImpl("bread", list);
+        ItemImpl item = new ItemImpl(ingredient1, 15);
+        List<ItemImpl> items = new ArrayList<ItemImpl>();
         items.add(item);
-        Recipe recipe = new Recipe("name", "description", "instructions", items);
+        RecipeImpl recipe = new RecipeImpl("name", "description", "instructions", items);
 
         // Matcher
         TagMatcher matcher = new TagMatcher(tags);
-        assertEquals(true, matcher.matches(recipe));
+        assertTrue(matcher.matches(recipe));
     }
 
     @Test
     public void testMatchesFalse() {
         // Tag list
-        Tag tag1 = new Tag("Dairy");
-        Tag tag2 = new Tag("Gluten");
+        TagImpl tag1 = new TagImpl("Dairy");
+        TagImpl tag2 = new TagImpl("Gluten");
 
-        List<Tag> tags = new ArrayList<Tag>();
+        List<TagImpl> tags = new ArrayList<TagImpl>();
         tags.add(tag1);
+        tags.add(tag2);
 
-        List<Tag> list = new ArrayList<Tag>();
-        list.add(tag2);
+        List<TagImpl> list = new ArrayList<TagImpl>();
+        list.add(tag1);
 
         // Recipe
-        Ingredient ingredient1 = new Ingredient("bread", list);
-        Item item = new Item(ingredient1, 15);
-        List<Item> items = new ArrayList<Item>();
+        IngredientImpl ingredient1 = new IngredientImpl("bread", list);
+        ItemImpl item = new ItemImpl(ingredient1, 15);
+        List<ItemImpl> items = new ArrayList<ItemImpl>();
         items.add(item);
-        Recipe recipe = new Recipe("name", "description", "instructions", items);
+        RecipeImpl recipe = new RecipeImpl("name", "description", "instructions", items);
 
         // Matcher
         TagMatcher matcher = new TagMatcher(tags);
-        assertEquals(false, matcher.matches(recipe));
+        assertFalse(matcher.matches(recipe));
     }
 }
