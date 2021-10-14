@@ -13,6 +13,12 @@ public class Item implements ItemImpl {
         this.quantity = quantity;
     }
 
+    public Item(Ingredient ingredient, int quantity, boolean optional) {
+        this.ingredient = ingredient;
+        this.quantity = quantity;
+        this.optional = optional;
+    }
+
     @Override
     public Ingredient ingredient() {
         return this.ingredient;
@@ -25,7 +31,6 @@ public class Item implements ItemImpl {
 
     @Override
     public Boolean optional(Boolean value) {
-        this.optional = value;
         return this.optional;
     }
 }

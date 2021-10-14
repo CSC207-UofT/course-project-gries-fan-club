@@ -7,26 +7,31 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 
 public class RecipeTest {
+     static Recipe recipe;
+
+    @BeforeClass
+    public static void setup() {
+        recipe = new Recipe("name", "description", "instructions", Collections.emptyList());
+    }
+
     @Test
     public void testName() {
-        Recipe recipe = new Recipe("name", "description", "instructions", Collections.emptyList());
         assertEquals("name", recipe.name());
     }
 
     @Test
     public void testDescription() {
-        Recipe recipe = new Recipe("name", "description", "instructions", Collections.emptyList());
         assertEquals("description", recipe.description());
     }
 
     @Test
     public void testInstructions() {
-        Recipe recipe = new Recipe("name", "description", "instructions", Collections.emptyList());
         assertEquals("instructions", recipe.instructions());
     }
 
