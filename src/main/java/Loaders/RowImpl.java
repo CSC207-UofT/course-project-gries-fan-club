@@ -5,6 +5,9 @@ import LoaderInterfaces.Row;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * A basic implementation of a row interface.
+ */
 public class RowImpl implements Row {
 
 	private final String type;
