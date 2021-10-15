@@ -1,12 +1,26 @@
 [
   {
-    "name": "RecipeStorage",
+    "name": "Storage",
     "superclasses": "",
     "subclasses": "",
     "type": 3,
     "responsibilities": [
+      "A base interface for storages",
+      "+ type(), returns a string representing the type of data this interface can load / store",
+      "+ loadEntity(Map<String, ?>), creates and stores a single entity from a row of data",
+      "+ loadFrom(Loader), loads entities from a given loader's data"
+    ],
+    "collaborators": [
+      ""
+    ]
+  },
+  {
+    "name": "RecipeStorage",
+    "superclasses": "Storage",
+    "subclasses": "",
+    "type": 3,
+    "responsibilities": [
       "Stores a database of recipes. Allows for searching, addition, removing, etc.",
-      "+ loadFrom(Loader), loads recipes from a given loader's data",
       "+ recipes(), gets all recipes in this storage",
       "+ find(String), find recipes by name / Regex on name",
       "+ find(Tag[]), finds recipes will all given tags",
@@ -21,7 +35,7 @@
   },
   {
     "name": "IngredientStorage",
-    "superclasses": "",
+    "superclasses": "Storage",
     "subclasses": "",
     "type": 3,
     "responsibilities": [

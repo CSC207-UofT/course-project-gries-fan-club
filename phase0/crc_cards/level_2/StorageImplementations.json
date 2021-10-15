@@ -1,7 +1,20 @@
 [
   {
+    "name": "AbstractStorage",
+    "superclasses": "Storage",
+    "subclasses": "RecipeStorageImpl, IngredientStorageImpl, FridgeImpl",
+    "type": 2,
+    "responsibilities": [
+      "A base storage that defines loading from rows",
+      "Mainly, implements the loadFrom method by checking types and calling the loadEntity on appropriate data"
+    ],
+    "collaborators": [
+      "Loader"
+    ]
+  },
+  {
     "name": "RecipeStorageImpl",
-    "superclasses": "RecipeStorage",
+    "superclasses": "AbstractStorage, RecipeStorage",
     "subclasses": "",
     "type": 1,
     "responsibilities": [
@@ -13,7 +26,7 @@
   },
   {
     "name": "IngredientStorageImpl",
-    "superclasses": "IngredientStorageImpl",
+    "superclasses": "AbstractStorage, IngredientStorageImpl",
     "subclasses": "",
     "type": 1,
     "responsibilities": [
@@ -25,7 +38,7 @@
   },
   {
     "name": "FridgeImpl",
-    "superclasses": "Fridge",
+    "superclasses": "AbstractStorage, Fridge",
     "subclasses": "",
     "type": 1,
     "responsibilities": [
