@@ -9,12 +9,12 @@
       "+ StringLoader(String), the constructor which sets the source string"
     ],
     "collaborators": [
-      ""
+      "Row"
     ]
   },
   {
     "name": "FileLoader",
-    "superclasses": "StringLoader, Loader",
+    "superclasses": "Loader",
     "subclasses": "",
     "type": 1,
     "responsibilities": [
@@ -22,22 +22,49 @@
       "+ FileLoader(File), a constructor which sets the input file."
     ],
     "collaborators": [
-      "StringLoader"
+      "StringLoader",
+      "Row"
     ]
   },
   {
     "name": "JSONLoader",
-    "superclasses": "FileLoader",
+    "superclasses": "Loader",
     "subclasses": "",
     "type": 1,
     "responsibilities": [
       "Implements a loader via JSON. Utilizes the File and String loaders when appropriate.",
-      "+ JSONLoader(FIle), a constructor that sets the source data via a file",
+      "+ JSONLoader(File), a constructor that sets the source data via a file",
       "+ JSONLoader(String), a constructor that sets the source data via a string"
     ],
     "collaborators": [
       "FileLoader",
-      "StringLoader"
+      "StringLoader",
+      "Row"
+    ]
+  },
+  {
+    "name": "RowImpl",
+    "superclasses": "Row",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Implements a row object. That's about it.",
+      "+ set(String, T), sets an attribute of type T"
+    ],
+    "collaborators": [
+      "EmptyRow"
+    ]
+  },
+  {
+    "name": "EmptyRow",
+    "superclasses": "Row",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Implements an empty row object."
+    ],
+    "collaborators": [
+      ""
     ]
   }
 ]

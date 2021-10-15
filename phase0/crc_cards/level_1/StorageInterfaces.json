@@ -6,7 +6,6 @@
     "type": 3,
     "responsibilities": [
       "Stores a database of recipes. Allows for searching, addition, removing, etc.",
-      "+ loadFrom(Loader), loads recipes from a given loader's data",
       "+ recipes(), gets all recipes in this storage",
       "+ find(String), find recipes by name / Regex on name",
       "+ find(Tag[]), finds recipes will all given tags",
@@ -15,7 +14,6 @@
     "collaborators": [
       "Recipe",
       "Tag",
-      "Loader",
       "Ingredient"
     ]
   },
