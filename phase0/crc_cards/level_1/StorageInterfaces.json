@@ -7,7 +7,7 @@
     "responsibilities": [
       "A base interface for storages",
       "+ type(), returns a string representing the type of data this interface can load / store",
-      "+ loadEntity(Map<String, ?>), creates and stores a single entity from a row of data",
+      "+ loadEntity(Row), creates and stores a single entity from a row of data (if valid)",
       "+ loadFrom(Loader), loads entities from a given loader's data"
     ],
     "collaborators": [

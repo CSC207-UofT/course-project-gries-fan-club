@@ -9,7 +9,7 @@
       "+ StringLoader(String), the constructor which sets the source string"
     ],
     "collaborators": [
-      ""
+      "Row"
     ]
   },
   {
@@ -22,7 +22,8 @@
       "+ FileLoader(File), a constructor which sets the input file."
     ],
     "collaborators": [
-      "StringLoader"
+      "StringLoader",
+      "Row"
     ]
   },
   {
@@ -37,7 +38,20 @@
     ],
     "collaborators": [
       "FileLoader",
-      "StringLoader"
+      "StringLoader",
+      "Row"
+    ]
+  },
+  {
+    "name": "RowImpl",
+    "superclasses": "Row",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Implements a row object. That's about it."
+    ],
+    "collaborators": [
+      "FileLoader"
     ]
   }
 ]
