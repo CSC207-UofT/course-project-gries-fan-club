@@ -1,18 +1,5 @@
 [
   {
-    "name": "Storage",
-    "superclasses": "",
-    "subclasses": "",
-    "type": 3,
-    "responsibilities": [
-      "A base interface for storages",
-      "+ type(), returns a string representing the type of data this interface can load / store"
-    ],
-    "collaborators": [
-      ""
-    ]
-  },
-  {
     "name": "RecipeStorage",
     "superclasses": "",
     "subclasses": "",
