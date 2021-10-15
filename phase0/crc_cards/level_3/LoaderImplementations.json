@@ -48,7 +48,8 @@
     "subclasses": "",
     "type": 1,
     "responsibilities": [
-      "Implements a row object. That's about it."
+      "Implements a row object. That's about it.",
+      "+ set(String, T), sets an attribute of type T"
     ],
     "collaborators": [
       "EmptyRow"
