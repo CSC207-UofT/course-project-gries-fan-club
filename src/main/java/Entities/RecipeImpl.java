@@ -1,33 +1,34 @@
 package Entities;
 
-import EntityInterfaces.Item;
+import EntityInterfaces.RecipeItem;
 import EntityInterfaces.Recipe;
 
 import java.util.List;
 
 public class RecipeImpl implements Recipe {
-    private List<Item> items;
+    private List<RecipeItem> recipeItems;
     private String name;
     private String description;
     private String instructions;
 
-    /** Implement a RecipeImpl, giving the name of the recipe, the description
+    /**
+     * Construct a RecipeImpl, giving the name of the recipe, the description
      * of the recipe, the instructions to make the recipe, and the items needed.
      * @param name          The name of the recipe
      * @param description   The description of the recipe
      * @param instructions  The instructions to make this recipe
-     * @param items         The items required to make this recipe
+     * @param recipeItems   The items required to make this recipe
      */
-    public RecipeImpl(String name, String description, String instructions, List<Item> items) {
+    public RecipeImpl(String name, String description, String instructions, List<RecipeItem> recipeItems) {
         this.name = name;
         this.description = description;
         this.instructions = instructions;
-        this.items = items;
+        this.recipeItems = recipeItems;
     }
 
     @Override
-    public List<Item> items() {
-        return this.items;
+    public List<RecipeItem> items() {
+        return this.recipeItems;
     }
 
     @Override

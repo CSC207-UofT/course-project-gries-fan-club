@@ -1,6 +1,6 @@
 package Matchers;
 
-import EntityInterfaces.Item;
+import EntityInterfaces.RecipeItem;
 import EntityInterfaces.Recipe;
 import EntityInterfaces.Tag;
 import Storages.RecipeStorage;
@@ -20,8 +20,8 @@ public class TagMatcher implements Matcher {
     public boolean matches(Recipe recipe) {
         for (Tag tag: this.tags) {
             boolean matchedTag = false;
-            for (Item item : recipe.items()) {
-                if (item.ingredient().has(tag)) {
+            for (RecipeItem recipeItem : recipe.items()) {
+                if (recipeItem.ingredient().has(tag)) {
                     matchedTag = true;
                     break;
                 }

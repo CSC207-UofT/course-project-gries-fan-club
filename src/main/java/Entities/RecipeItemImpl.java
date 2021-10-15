@@ -1,9 +1,9 @@
 package Entities;
 
 import EntityInterfaces.Ingredient;
-import EntityInterfaces.Item;
+import EntityInterfaces.RecipeItem;
 
-public class ItemImpl implements Item {
+public class RecipeItemImpl implements RecipeItem {
     private Ingredient ingredient;
     private int quantity;
     private boolean optional = false;
@@ -13,7 +13,7 @@ public class ItemImpl implements Item {
      * @param ingredient  The ingredient
      * @param quantity     The quantity of this ingredient
      */
-    public ItemImpl(Ingredient ingredient, int quantity) {
+    public RecipeItemImpl(Ingredient ingredient, int quantity) {
         this.ingredient = ingredient;
         this.quantity = quantity;
     }
@@ -24,7 +24,7 @@ public class ItemImpl implements Item {
      * @param quantity     The quantity of this ingredient
      * @param optional  Is the ingredient optional?
      */
-    public ItemImpl(Ingredient ingredient, int quantity, boolean optional) {
+    public RecipeItemImpl(Ingredient ingredient, int quantity, boolean optional) {
         this.ingredient = ingredient;
         this.quantity = quantity;
         this.optional = optional;

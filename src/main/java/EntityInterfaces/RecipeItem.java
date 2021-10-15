@@ -1,6 +1,6 @@
 package EntityInterfaces;
 
-public interface Item {
+public interface RecipeItem {
     Ingredient ingredient();
     int quantity();
     boolean optional();
