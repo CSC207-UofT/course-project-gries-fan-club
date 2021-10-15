@@ -1,33 +1,29 @@
-package main.java.Matchers;
+package Matchers;
 
-import main.java.Entities.ItemImpl;
-import main.java.Entities.TagImpl;
-import main.java.EntityInterfaces.Recipe;
-import main.java.EntityInterfaces.Tag;
-import main.java.EntityInterfaces.Item;
-import main.java.Storages.RecipeStorage;
+import EntityInterfaces.Item;
+import EntityInterfaces.Recipe;
+import EntityInterfaces.Tag;
+import Storages.RecipeStorage;
+
 import java.util.List;
 
 /**
  * Match recipes based on tags
  */
 public class TagMatcher implements MatcherImpl {
-    List<TagImpl> tags;
+    List<Tag> tags;
 
-    public TagMatcher(List<TagImpl> tags) {
-        this.tags = tags;
-    }
-
-    @Override
     /**
      * Checks if item/ingredient contains any of the tags in the matcher
      */
+    @Override
     public Boolean matches(Recipe recipe) {
         for (Tag tag: this.tags) {
             boolean matchedTag = false;
             for (Item item : recipe.items()) {
                 if (item.ingredient().has(tag)) {
                     matchedTag = true;
+                    break;
                 }
             }
             if (!matchedTag) {
@@ -35,6 +31,10 @@ public class TagMatcher implements MatcherImpl {
             }
         }
         return true;
+    }
+
+    public TagMatcher(List<Tag> tags) {
+        this.tags = tags;
     }
 
     @Override

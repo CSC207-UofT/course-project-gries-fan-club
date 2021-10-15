@@ -1,10 +1,9 @@
-package main.java.EntityInterfaces;
+package EntityInterfaces;
 
-import main.java.Entities.TagImpl;
 import java.util.List;
 
 public interface Ingredient {
-    List<TagImpl> tags();
+    List<Tag> tags();
     Boolean has(Tag tag);
     String name();
 }

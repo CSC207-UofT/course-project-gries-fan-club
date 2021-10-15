@@ -1,38 +1,36 @@
-package test.java.Entities;
-import main.java.Entities.RecipeImpl;
-import main.java.Entities.ItemImpl;
-import main.java.Entities.IngredientImpl;
+package Entities;
 
-import java.util.List;
+import EntityInterfaces.Item;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.Collections;
-
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import java.util.List;
 
 
 public class RecipeTest {
-     static RecipeImpl recipe;
+    RecipeImpl recipe;
 
-    @BeforeClass
-    public static void setup() {
-        recipe = new RecipeImpl("name", "description", "instructions", Collections.emptyList());
+    @BeforeEach
+    public  void setup() {
+        this.recipe = new RecipeImpl("name", "description", "instructions", Collections.emptyList());
     }
 
     @Test
     public void testName() {
-        assertEquals("name", recipe.name());
+        Assertions.assertEquals("name", recipe.name());
     }
 
     @Test
     public void testDescription() {
-        assertEquals("description", recipe.description());
+        Assertions.assertEquals("description", recipe.description());
     }
 
     @Test
     public void testInstructions() {
-        assertEquals("instructions", recipe.instructions());
+        Assertions.assertEquals("instructions", recipe.instructions());
     }
 
     @Test
@@ -44,14 +42,14 @@ public class RecipeTest {
         ItemImpl item2 = new ItemImpl(ingredient2, 1);
 
 
-        List<ItemImpl> items = new ArrayList<ItemImpl>();
+        List<Item> items = new ArrayList<>();
         items.add(item1);
         items.add(item2);
 
         RecipeImpl recipe = new RecipeImpl("name", "description", "instructions", items);
 
-        assertEquals(items, recipe.items());
-        assertEquals(items.size(), recipe.items().size());
+        Assertions.assertEquals(items, recipe.items());
+        Assertions.assertEquals(items.size(), recipe.items().size());
     }
 
 

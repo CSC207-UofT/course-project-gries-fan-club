@@ -1,6 +1,6 @@
-package main.java.Matchers;
-import main.java.EntityInterfaces.Recipe;
-import main.java.Storages.RecipeStorage;
+package Matchers;
+import EntityInterfaces.Recipe;
+import Storages.RecipeStorage;
 
 // Matches ingredients with recipes
 public interface MatcherImpl {

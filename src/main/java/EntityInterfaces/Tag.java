@@ -1,5 +1,4 @@
-package main.java.EntityInterfaces;
-
+package EntityInterfaces;
 
 public interface Tag {
     String name();

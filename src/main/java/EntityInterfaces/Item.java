@@ -1,7 +1,7 @@
-package main.java.EntityInterfaces;
+package EntityInterfaces;
 
 public interface Item {
     Ingredient ingredient();
     int quantity();
-    Boolean optional(Boolean value);
+    Boolean optional();
 }

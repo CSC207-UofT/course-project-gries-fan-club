@@ -1,5 +1,5 @@
-package main.java.Entities;
-import main.java.EntityInterfaces.Tag;
+package Entities;
+import EntityInterfaces.Tag;
 
 public class TagImpl implements Tag {
     private String name;

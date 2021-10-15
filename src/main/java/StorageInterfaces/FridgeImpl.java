@@ -1,4 +1,4 @@
-package main.java.StorageInterfaces;
+package StorageInterfaces;
 
 public interface FridgeImpl {
 

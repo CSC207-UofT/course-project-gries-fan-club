@@ -1,6 +1,4 @@
-package main.java.StorageInterfaces;
-import java.util.List;
-import java.util.ArrayList;
+package StorageInterfaces;
 
 public interface StorageImpl {
 

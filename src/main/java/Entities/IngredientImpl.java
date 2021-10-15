@@ -1,20 +1,21 @@
-package main.java.Entities;
-import main.java.Entities.TagImpl;
+package Entities;
+
+import EntityInterfaces.Ingredient;
+import EntityInterfaces.Tag;
+
 import java.util.List;
-import main.java.EntityInterfaces.Tag;
-import main.java.EntityInterfaces.Ingredient;
 
 public class IngredientImpl implements Ingredient {
     private String name;
-    private List<TagImpl> tags;
+    private List<Tag> tags;
 
-    public IngredientImpl(String name, List<TagImpl> tags) {
+    public IngredientImpl(String name, List<Tag> tags) {
         this.name = name;
         this.tags = tags;
     }
 
     @Override
-    public List<TagImpl> tags() {
+    public List<Tag> tags() {
         return this.tags;
     }
 

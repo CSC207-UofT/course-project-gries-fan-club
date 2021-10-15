@@ -1,15 +1,17 @@
-package main.java.Entities;
+package Entities;
 
-import main.java.Entities.ItemImpl;
+import EntityInterfaces.Item;
+import EntityInterfaces.Recipe;
+
 import java.util.List;
 
-public class RecipeImpl implements main.java.EntityInterfaces.Recipe {
-    private List<ItemImpl> items;
+public class RecipeImpl implements Recipe {
+    private List<Item> items;
     private String name;
     private String description;
     private String instructions;
 
-    public RecipeImpl(String name, String description, String instructions, List<ItemImpl> items) {
+    public RecipeImpl(String name, String description, String instructions, List<Item> items) {
         this.name = name;
         this.description = description;
         this.instructions = instructions;
@@ -17,7 +19,7 @@ public class RecipeImpl implements main.java.EntityInterfaces.Recipe {
     }
 
     @Override
-    public List<ItemImpl> items() {
+    public List<Item> items() {
         return this.items;
     }
 

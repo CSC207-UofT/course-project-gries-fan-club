@@ -1,8 +1,9 @@
-package main.java.Entities;
+package Entities;
 
-import main.java.EntityInterfaces.Ingredient;
+import EntityInterfaces.Ingredient;
+import EntityInterfaces.Item;
 
-public class ItemImpl implements main.java.EntityInterfaces.Item {
+public class ItemImpl implements Item {
     private Ingredient ingredient;
     private int quantity;
     private Boolean optional = false;
@@ -29,7 +30,7 @@ public class ItemImpl implements main.java.EntityInterfaces.Item {
     }
 
     @Override
-    public Boolean optional(Boolean value) {
+    public Boolean optional() {
         return this.optional;
     }
 }

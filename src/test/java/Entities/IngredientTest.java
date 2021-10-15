@@ -1,28 +1,25 @@
-package test.java.Entities;
+package Entities;
 
-import main.java.Entities.IngredientImpl;
-import main.java.Entities.TagImpl;
-import main.java.EntityInterfaces.Tag;
-import org.junit.Test;
+import EntityInterfaces.Tag;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.ArrayList;
-
-import static org.junit.Assert.*;
 
 public class IngredientTest {
 
     @Test
     public void testName() {
         IngredientImpl ingredient = new IngredientImpl("my name", Collections.emptyList());
-        assertEquals("my name", ingredient.name());
+        Assertions.assertEquals("my name", ingredient.name());
     }
 
     @Test
     public void testTagsEmpty() {
         IngredientImpl ingredient = new IngredientImpl("", Collections.emptyList());
-        assertEquals(0, ingredient.tags().size());
+        Assertions.assertEquals(0, ingredient.tags().size());
     }
 
     @Test
@@ -30,13 +27,13 @@ public class IngredientTest {
         TagImpl tag1 = new TagImpl("Dairy");
         TagImpl tag2 = new TagImpl("Gluten");
 
-        List<TagImpl> list = new ArrayList<TagImpl>();
+        List<Tag> list = new ArrayList<>();
         list.add(tag1);
         list.add(tag2);
 
         IngredientImpl ingredient = new IngredientImpl("name", list); // ingredient containing tags now
 
-        assertEquals(list, ingredient.tags());
+        Assertions.assertEquals(list, ingredient.tags());
 
     }
 
@@ -46,15 +43,15 @@ public class IngredientTest {
         TagImpl tag2 = new TagImpl("Gluten");
         TagImpl tag3 = new TagImpl("Sugar");
 
-        List<TagImpl> list = new ArrayList<TagImpl>();
+        List<Tag> list = new ArrayList<>();
         list.add(tag1);
         list.add(tag2);
 
         // ingredient contains tags added now
         IngredientImpl ingredient = new IngredientImpl("name", list);
 
-        assertTrue(ingredient.has(tag1));
-        assertFalse(ingredient.has(tag3));
+        Assertions.assertTrue(ingredient.has(tag1));
+        Assertions.assertFalse(ingredient.has(tag3));
 
 
     }

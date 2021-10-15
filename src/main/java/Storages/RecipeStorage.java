@@ -1,7 +1,8 @@
-package main.java.Storages;
+package Storages;
+
+import EntityInterfaces.Recipe;
+
 import java.util.List;
-import java.util.ArrayList;
-import main.java.EntityInterfaces.Recipe;
 
 public class RecipeStorage {
     List<Recipe> recipes;

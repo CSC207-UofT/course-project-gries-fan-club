@@ -1,12 +1,12 @@
-package test.java.Entities;
-import main.java.Entities.TagImpl;
-import org.junit.Test;
-import static org.junit.Assert.*;
+package Entities;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class TagTest {
     @Test
     public void testName() {
         TagImpl tag = new TagImpl("name");
-        assertEquals("name", tag.name());
+        Assertions.assertEquals("name", tag.name());
     }
 }

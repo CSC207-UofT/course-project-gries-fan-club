@@ -1,4 +1,4 @@
-package main.java.Storages;
+package Storages;
 
 public class IngredientStorage {
 }

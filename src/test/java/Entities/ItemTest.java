@@ -1,8 +1,7 @@
-package test.java.Entities;
-import org.junit.Test;
-import static org.junit.Assert.*;
-import main.java.Entities.IngredientImpl;
-import main.java.Entities.ItemImpl;
+package Entities;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
 
@@ -14,7 +13,7 @@ public class ItemTest {
         int quantity = 15;
         ItemImpl item = new ItemImpl(ingredient, quantity);
 
-        assertEquals(15, item.quantity());
+        Assertions.assertEquals(15, item.quantity());
 
     }
 
@@ -24,7 +23,7 @@ public class ItemTest {
         int quantity = 15;
         ItemImpl item = new ItemImpl(ingredient, quantity, true);
 
-        assertTrue(item.optional(true));
+        Assertions.assertTrue(item.optional());
     }
 
     @Test
@@ -33,7 +32,7 @@ public class ItemTest {
         int quantity = 15;
         ItemImpl item = new ItemImpl(ingredient, quantity);
 
-        assertEquals(ingredient, item.ingredient());
+        Assertions.assertEquals(ingredient, item.ingredient());
     }
 
 }

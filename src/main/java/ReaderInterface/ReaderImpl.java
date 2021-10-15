@@ -1,5 +1,4 @@
-package main.java.ReaderInterface;
-import main.java.Storages.RecipeStorage;
+package ReaderInterface;
 
 public interface ReaderImpl {
 
