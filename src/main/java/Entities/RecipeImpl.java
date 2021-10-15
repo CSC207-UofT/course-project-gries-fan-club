@@ -1,7 +1,7 @@
 package Entities;
 
-import EntityInterfaces.RecipeItem;
 import EntityInterfaces.Recipe;
+import EntityInterfaces.RecipeItem;
 
 import java.util.List;
 

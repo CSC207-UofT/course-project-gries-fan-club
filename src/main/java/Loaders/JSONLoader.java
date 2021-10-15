@@ -5,8 +5,6 @@ import LoaderInterfaces.Row;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.Set;
-
 /**
  * Loads data from JSON format.
  */

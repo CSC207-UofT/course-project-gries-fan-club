@@ -1,8 +1,8 @@
 package Matcher;
 
 import Entities.IngredientImpl;
-import Entities.RecipeItemImpl;
 import Entities.RecipeImpl;
+import Entities.RecipeItemImpl;
 import Entities.TagImpl;
 import EntityInterfaces.RecipeItem;
 import EntityInterfaces.Tag;
