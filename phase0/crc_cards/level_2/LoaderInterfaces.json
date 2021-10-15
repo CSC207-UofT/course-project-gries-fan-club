@@ -2,7 +2,7 @@
   {
     "name": "Loader",
     "superclasses": "",
-    "subclasses": "",
+    "subclasses": "StringLoader, FileLoader, JSONLoader",
     "type": 3,
     "responsibilities": [
       "Reads data from a file and presents it in \"rows\" where each row represents a single entity. These are presented as maps from attribute names to values.",
@@ -15,7 +15,7 @@
   {
     "name": "Row",
     "superclasses": "",
-    "subclasses": "",
+    "subclasses": "RowImpl",
     "type": 3,
     "responsibilities": [
       "Represents a single entity in raw data form.",

@@ -18,7 +18,7 @@
   },
   {
     "name": "RecipeBuilder",
-    "superclasses": "",
+    "superclasses": "AbstractBuilder",
     "subclasses": "",
     "type": 2,
     "responsibilities": [
@@ -26,12 +26,13 @@
       "+ loadEntity(Row) returns a built recipe"
     ],
     "collaborators": [
-      "Row"
+      "Row",
+      "Recipe"
     ]
   },
   {
     "name": "IngredientBuilder",
-    "superclasses": "",
+    "superclasses": "AbstractBuilder",
     "subclasses": "",
     "type": 2,
     "responsibilities": [
@@ -39,7 +40,8 @@
       "+ loadEntity(Row) returns a built ingredient"
     ],
     "collaborators": [
-      "Row"
+      "Row",
+      "Recipe"
     ]
   }
 ]

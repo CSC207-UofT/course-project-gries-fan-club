@@ -1,15 +1,15 @@
 [
   {
     "name": "AbstractStorage",
-    "superclasses": "Storage",
+    "superclasses": "",
     "subclasses": "RecipeStorageImpl, IngredientStorageImpl, FridgeImpl",
     "type": 2,
     "responsibilities": [
-      "A base storage that defines common storing, sorting, and searching methods."
+      "A base storage that defines common storing, sorting, and searching methods.",
+      "+ type(), returns a string representing the type of data this interface can load / store"
     ],
     "collaborators": [
-      "Loader",
-      "AbstractBuilder"
+      ""
     ]
   },
   {
@@ -26,7 +26,7 @@
   },
   {
     "name": "IngredientStorageImpl",
-    "superclasses": "AbstractStorage, IngredientStorageImpl",
+    "superclasses": "AbstractStorage, IngredientStorage",
     "subclasses": "",
     "type": 1,
     "responsibilities": [
@@ -45,8 +45,7 @@
       "An implementation of a fridge"
     ],
     "collaborators": [
-      "Ingredient",
-      "IngredientStorage"
+      "Ingredient"
     ]
   }
 ]

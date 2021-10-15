@@ -14,7 +14,7 @@
   },
   {
     "name": "RecipeStorage",
-    "superclasses": "Storage",
+    "superclasses": "",
     "subclasses": "",
     "type": 3,
     "responsibilities": [
@@ -32,7 +32,7 @@
   },
   {
     "name": "IngredientStorage",
-    "superclasses": "Storage",
+    "superclasses": "",
     "subclasses": "",
     "type": 3,
     "responsibilities": [

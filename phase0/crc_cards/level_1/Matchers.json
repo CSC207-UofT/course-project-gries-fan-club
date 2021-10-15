@@ -49,7 +49,7 @@
       "Combines many matchers outputs to create a final scoring of recipe relevance"
     ],
     "collaborators": [
-      "Matchers"
+      "AbstractMatcher"
     ]
   }
 ]

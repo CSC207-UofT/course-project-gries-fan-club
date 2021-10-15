@@ -14,7 +14,7 @@
   },
   {
     "name": "FileLoader",
-    "superclasses": "StringLoader, Loader",
+    "superclasses": "Loader",
     "subclasses": "",
     "type": 1,
     "responsibilities": [
@@ -28,12 +28,12 @@
   },
   {
     "name": "JSONLoader",
-    "superclasses": "FileLoader",
+    "superclasses": "Loader",
     "subclasses": "",
     "type": 1,
     "responsibilities": [
       "Implements a loader via JSON. Utilizes the File and String loaders when appropriate.",
-      "+ JSONLoader(FIle), a constructor that sets the source data via a file",
+      "+ JSONLoader(File), a constructor that sets the source data via a file",
       "+ JSONLoader(String), a constructor that sets the source data via a string"
     ],
     "collaborators": [
