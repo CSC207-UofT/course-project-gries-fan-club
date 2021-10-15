@@ -5,11 +5,11 @@
     "subclasses": "RecipeStorageImpl, IngredientStorageImpl, FridgeImpl",
     "type": 2,
     "responsibilities": [
-      "A base storage that defines loading from rows",
-      "Mainly, implements the loadFrom method by checking types and calling the loadEntity on appropriate data"
+      "A base storage that defines common storing, sorting, and searching methods."
     ],
     "collaborators": [
-      "Loader"
+      "Loader",
+      "AbstractBuilder"
     ]
   },
   {

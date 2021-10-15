@@ -1,0 +1,45 @@
+[
+  {
+    "name": "AbstractBuilder",
+    "superclasses": "",
+    "subclasses": "RecipeBuilder, IngredientBuilder",
+    "type": 2,
+    "responsibilities": [
+      "Supports the building of entities from raw data.",
+      "+ loadEntity(Row), creates and stores a single entity from a row of data (if valid) (abstract)",
+      "+ loadFrom(Loader), loads entities from a given loader's data",
+      "+ addTo(Storage), adds entities to the given storage (if types match)"
+    ],
+    "collaborators": [
+      "Row",
+      "Loader",
+      "Storage"
+    ]
+  },
+  {
+    "name": "RecipeBuilder",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 2,
+    "responsibilities": [
+      "Builds recipes from rows",
+      "+ loadEntity(Row) returns a built recipe"
+    ],
+    "collaborators": [
+      "Row"
+    ]
+  },
+  {
+    "name": "IngredientBuilder",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 2,
+    "responsibilities": [
+      "Builds ingredients from rows",
+      "+ loadEntity(Row) returns a built ingredient"
+    ],
+    "collaborators": [
+      "Row"
+    ]
+  }
+]
