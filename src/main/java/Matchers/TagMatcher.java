@@ -10,14 +10,14 @@ import java.util.List;
 /**
  * Match recipes based on tags
  */
-public class TagMatcher implements MatcherImpl {
+public class TagMatcher implements Matcher {
     List<Tag> tags;
 
     /**
      * Checks if item/ingredient contains any of the tags in the matcher
      */
     @Override
-    public Boolean matches(Recipe recipe) {
+    public boolean matches(Recipe recipe) {
         for (Tag tag: this.tags) {
             boolean matchedTag = false;
             for (Item item : recipe.items()) {
@@ -38,8 +38,8 @@ public class TagMatcher implements MatcherImpl {
     }
 
     @Override
-    public Boolean allMatches(RecipeStorage storage) {
-        return null;
+    public boolean allMatches(RecipeStorage storage) {
+        return true;
     }
 
 }

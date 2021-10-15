@@ -6,7 +6,7 @@ import EntityInterfaces.Item;
 public class ItemImpl implements Item {
     private Ingredient ingredient;
     private int quantity;
-    private Boolean optional = false;
+    private boolean optional = false;
 
     /** Implement a ItemImpl, giving the ingredient, and
      * quantity of this ingredient.
@@ -41,7 +41,7 @@ public class ItemImpl implements Item {
     }
 
     @Override
-    public Boolean optional() {
+    public boolean optional() {
         return this.optional;
     }
 }
