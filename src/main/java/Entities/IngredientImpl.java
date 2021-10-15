@@ -1,3 +1,5 @@
+/* Public class IngredientImpl that implements the Ingredient interface.
+ */
 package Entities;
 
 import EntityInterfaces.Ingredient;
@@ -10,6 +12,10 @@ public class IngredientImpl implements Ingredient {
     private List<Tag> tags;
 
     public IngredientImpl(String name, List<Tag> tags) {
+        /*
+         * @param name  The name of the ingredient
+         * @param tags     The tags associated with the ingredient
+         */
         this.name = name;
         this.tags = tags;
     }

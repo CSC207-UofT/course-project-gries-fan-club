@@ -1,3 +1,5 @@
+/* Public class RecipeImpl that implements the Recipe interface.
+ */
 package Entities;
 
 import EntityInterfaces.Item;
@@ -12,6 +14,13 @@ public class RecipeImpl implements Recipe {
     private String instructions;
 
     public RecipeImpl(String name, String description, String instructions, List<Item> items) {
+        /* Implement a RecipeImpl, giving the name of the recipe, the description
+         * of the recipe, the instructions to make the recipe, and the items needed.
+         * @param name          The name of the recipe
+         * @param description   The description of the recipe
+         * @param instructions  The instructions to make this recipe
+         * @param items         The items required to make this recipe
+         */
         this.name = name;
         this.description = description;
         this.instructions = instructions;

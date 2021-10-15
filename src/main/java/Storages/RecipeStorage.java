@@ -10,4 +10,8 @@ public class RecipeStorage {
     public RecipeStorage(List<Recipe> recipes) {
         this.recipes = recipes;
     }
+    /**
+     * Constructs a RecipeStorage with given list of recipes
+     * @param recipes       List of recipes
+     **/
 }
