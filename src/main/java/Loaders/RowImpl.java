@@ -15,6 +15,11 @@ public class RowImpl implements Row {
 		this.attributes = new HashMap<>();
 	}
 
+	RowImpl(String type, Map<String, Object> attributes) {
+		this(type);
+		this.attributes = attributes;
+	}
+
 	/**
 	 * Sets a given attribute to the given value.
 	 *
