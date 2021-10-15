@@ -51,7 +51,19 @@
       "Implements a row object. That's about it."
     ],
     "collaborators": [
-      "FileLoader"
+      "EmptyRow"
+    ]
+  },
+  {
+    "name": "EmptyRow",
+    "superclasses": "Row",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Implements an empty row object."
+    ],
+    "collaborators": [
+      ""
     ]
   }
 ]

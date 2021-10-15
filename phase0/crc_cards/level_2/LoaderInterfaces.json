@@ -6,7 +6,8 @@
     "type": 3,
     "responsibilities": [
       "Reads data from a file and presents it in \"rows\" where each row represents a single entity. These are presented as maps from attribute names to values.",
-      "+ readRow(), reads the next row from the source"
+      "+ readRow(), reads the next row from the source",
+      "+ resetReader(), makes this loader read from the beginning of source data again."
     ],
     "collaborators": [
       "Row"
@@ -15,12 +16,13 @@
   {
     "name": "Row",
     "superclasses": "",
-    "subclasses": "RowImpl",
+    "subclasses": "RowImpl, EmptyRow",
     "type": 3,
     "responsibilities": [
       "Represents a single entity in raw data form.",
       "+ type(), returns a string representing the type of entity this row holds",
-      "+ get(String attribute), returns the value associated with the given attribute, null if the attribute does not exist"
+      "+ empty(), returns whether this row contains data",
+      "+ get(String), returns the value associated with the given attribute, null if the attribute does not exist"
     ],
     "collaborators": [
       ""
