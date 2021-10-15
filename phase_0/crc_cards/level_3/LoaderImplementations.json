@@ -1,0 +1,43 @@
+[
+  {
+    "name": "StringLoader",
+    "superclasses": "Loader",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Implements the Loader interface using strings as a source",
+      "+ StringLoader(String), the constructor which sets the source string"
+    ],
+    "collaborators": [
+      ""
+    ]
+  },
+  {
+    "name": "FileLoader",
+    "superclasses": "StringLoader, Loader",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Implements a loader via files. These are read and processed through the existing string loader (since both use the same format for data).",
+      "+ FileLoader(File), a constructor which sets the input file."
+    ],
+    "collaborators": [
+      "StringLoader"
+    ]
+  },
+  {
+    "name": "JSONLoader",
+    "superclasses": "FileLoader",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Implements a loader via JSON. Utilizes the File and String loaders when appropriate.",
+      "+ JSONLoader(FIle), a constructor that sets the source data via a file",
+      "+ JSONLoader(String), a constructor that sets the source data via a string"
+    ],
+    "collaborators": [
+      "FileLoader",
+      "StringLoader"
+    ]
+  }
+]
