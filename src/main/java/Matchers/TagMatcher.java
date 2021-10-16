@@ -1,27 +1,27 @@
 package Matchers;
 
-import EntityInterfaces.Item;
 import EntityInterfaces.Recipe;
+import EntityInterfaces.RecipeItem;
 import EntityInterfaces.Tag;
-import Storages.RecipeStorage;
+import Storages.RecipeStorageImpl;
 
 import java.util.List;
 
 /**
  * Match recipes based on tags
  */
-public class TagMatcher implements MatcherImpl {
+public class TagMatcher implements Matcher {
     List<Tag> tags;
 
     /**
      * Checks if item/ingredient contains any of the tags in the matcher
      */
     @Override
-    public Boolean matches(Recipe recipe) {
+    public boolean matches(Recipe recipe) {
         for (Tag tag: this.tags) {
             boolean matchedTag = false;
-            for (Item item : recipe.items()) {
-                if (item.ingredient().has(tag)) {
+            for (RecipeItem recipeItem : recipe.items()) {
+                if (recipeItem.ingredient().has(tag)) {
                     matchedTag = true;
                     break;
                 }
@@ -38,8 +38,8 @@ public class TagMatcher implements MatcherImpl {
     }
 
     @Override
-    public Boolean allMatches(RecipeStorage storage) {
-        return null;
+    public boolean allMatches(RecipeStorageImpl storage) {
+        return true;
     }
 
 }

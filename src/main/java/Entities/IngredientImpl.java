@@ -24,7 +24,7 @@ public class IngredientImpl implements Ingredient {
     }
 
     @Override
-    public Boolean has(Tag tag) {
+    public boolean has(Tag tag) {
         for (Tag item : this.tags) {
             if (tag.equals(item)) {
                 return true;
@@ -38,4 +38,11 @@ public class IngredientImpl implements Ingredient {
         return this.name;
     }
 
+    @Override
+    public String toString() {
+        return "IngredientImpl{\n" +
+                "\tname='" + name + "',\n" +
+                "\ttags=" + tags +
+                "\n}";
+    }
 }

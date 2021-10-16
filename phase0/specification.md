@@ -12,8 +12,8 @@ On start-up the user is prompted with a menu containing:
     - List recipes
     - Choose recipe to cook
 - Go to grocery list
-    - List of items to buy
-    - Import items
+    - List of recipeItems to buy
+    - Import recipeItems
 - Go back a menu page
 - Exit
 
@@ -22,7 +22,7 @@ The fridge is a list of ingredients that you currently have access to.
 
 - **List fridge contents** displays a list of all the ingredients currently in your fridge.
 - **Add / remove ingredient** followed by an ingredient(s), will add or remove that ingredient from your fridge.
-  Subsequently, running the list fridge contents would then display the new item.
+  Subsequently, running the list fridge contents would then display the new recipeItem.
 
 The **Go to cookbook** command brings up a page containing a gallery of recipes.
 You can see all the recipes that can be made with all or some of the ingredients in your fridge.
@@ -37,9 +37,9 @@ Each command is as follows:
 
 **Go to grocery list** will give you the following commands:
 
-- **List items** gives you a list of all ingredients you currently need to buy. 
+- **List recipeItems** gives you a list of all ingredients you currently need to buy. 
   This is aggregated from the recipes you have marked as wanting to make.
-- **Import items** imports the items in the grocery list into the fridge and empties the grocery list.
+- **Import recipeItems** imports the recipeItems in the grocery list into the fridge and empties the grocery list.
 
 Finally, the **Go back** command will simply bring you out of the current submenu, or do nothing if you are already at the main menu.
 The **Exit** command will be used to stop the program and save any persistent data.

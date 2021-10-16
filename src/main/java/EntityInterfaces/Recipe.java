@@ -8,7 +8,7 @@ public interface Recipe {
      * Return the list of items needed to make this recipe
      * @return the list of Items needed to make this recipe
      **/
-    List<Item> items();
+    List<RecipeItem> items();
 
     /**
      * Return the name of this recipe

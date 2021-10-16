@@ -5,13 +5,13 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
 
-public class ItemTest {
+public class RecipeItemTest {
 
     @Test
     public void testQuantity() {
         IngredientImpl ingredient = new IngredientImpl("apple", Collections.emptyList());
         int quantity = 15;
-        ItemImpl item = new ItemImpl(ingredient, quantity);
+        RecipeItemImpl item = new RecipeItemImpl(ingredient, quantity);
 
         Assertions.assertEquals(15, item.quantity());
 
@@ -21,7 +21,7 @@ public class ItemTest {
     public void testOptional() {
         IngredientImpl ingredient = new IngredientImpl("apple", Collections.emptyList());
         int quantity = 15;
-        ItemImpl item = new ItemImpl(ingredient, quantity, true);
+        RecipeItemImpl item = new RecipeItemImpl(ingredient, quantity, true);
 
         Assertions.assertTrue(item.optional());
     }
@@ -30,7 +30,7 @@ public class ItemTest {
     public void testIngredient() {
         IngredientImpl ingredient = new IngredientImpl("apple", Collections.emptyList());
         int quantity = 15;
-        ItemImpl item = new ItemImpl(ingredient, quantity);
+        RecipeItemImpl item = new RecipeItemImpl(ingredient, quantity);
 
         Assertions.assertEquals(ingredient, item.ingredient());
     }
