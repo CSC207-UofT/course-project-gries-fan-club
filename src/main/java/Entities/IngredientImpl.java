@@ -38,4 +38,11 @@ public class IngredientImpl implements Ingredient {
         return this.name;
     }
 
+    @Override
+    public String toString() {
+        return "IngredientImpl{\n" +
+                "\tname='" + name + "',\n" +
+                "\ttags=" + tags +
+                "\n}";
+    }
 }

@@ -3,7 +3,7 @@ package Matchers;
 import EntityInterfaces.Recipe;
 import EntityInterfaces.RecipeItem;
 import EntityInterfaces.Tag;
-import Storages.RecipeStorage;
+import Storages.RecipeStorageImpl;
 
 import java.util.List;
 
@@ -38,7 +38,7 @@ public class TagMatcher implements Matcher {
     }
 
     @Override
-    public boolean allMatches(RecipeStorage storage) {
+    public boolean allMatches(RecipeStorageImpl storage) {
         return true;
     }
 

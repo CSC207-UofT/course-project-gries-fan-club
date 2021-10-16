@@ -1,43 +1,45 @@
 import Builders.IngredientBuilder;
+import Entities.TagImpl;
+import EntityInterfaces.Ingredient;
+import EntityInterfaces.Tag;
 import LoaderInterfaces.Loader;
 import Loaders.JSONLoader;
-import Storages.IngredientStorage;
-import Storages.RecipeStorage;
+import Storages.IngredientStorageImpl;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class JChef {
 
     // This is temporary.
     static String ingredientJSONSource = """
-[
-    {
-        \"type\": \"ingredient\",
-            \"name\": \"carrot\",
-            \"tags\": [
-        \"veggie\",
-                \"orange\"
-    ]
-    },
-    {
-        \"type\": \"ingredient\",
-            \"name\": \"apple\",
-            \"tags\": [
-        \"fruit\",
-                \"red\"
-    ]
-    }
-]
-""";
+            [
+                {
+                    "type": "ingredient",
+                        "name": "carrot",
+                        "tags": [
+                    "veggie",
+                            "orange"
+                ]
+                },
+                {
+                    "type": "ingredient",
+                        "name": "apple",
+                        "tags": [
+                    "fruit",
+                            "red"
+                ]
+                }
+            ]
+            """;
 
     public static void main(String[] args) throws IOException {
         System.out.println("Hello JChef");
 
         // Please be advised, the code below is TEMPORARY and is written specifically for phase 0.
-        // It does not reflect the final structure of our project, or even our current CRC cards.
+        // It does not reflect the final structure of our project.
         // It is just to showcase the features we have implemented as of phase 0.
         //
         // The flow of our programs goes something like this:
@@ -45,14 +47,20 @@ public class JChef {
         Loader ingredientLoader = new JSONLoader(ingredientJSONSource);
 
         // Then we send them to the builders to fill storages.
-        IngredientStorage ingredientStorage = new IngredientStorage();
+        IngredientStorageImpl ingredientStorage = new IngredientStorageImpl();
 
         IngredientBuilder ingredientBuilder = new IngredientBuilder();
         ingredientBuilder.addTo(ingredientStorage, ingredientLoader);
 
-        RecipeStorage recipeStorage = new RecipeStorage();
+        for(Ingredient i : ingredientStorage.ingredients()) {
+            System.out.println(i);
+        }
 
-        return;
+        System.out.println();
+
+        for(Ingredient i : ingredientStorage.find(Collections.singletonList(new TagImpl("veggie")))) {
+            System.out.println(i);
+        }
     }
 
 }

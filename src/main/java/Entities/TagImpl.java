@@ -24,4 +24,8 @@ public class TagImpl implements Tag {
         return this.name.equals(other.name());
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
 }

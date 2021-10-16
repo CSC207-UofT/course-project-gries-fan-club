@@ -2,14 +2,14 @@ package Builders;
 
 import EntityInterfaces.Recipe;
 import LoaderInterfaces.Row;
-import Storages.IngredientStorage;
+import Storages.IngredientStorageImpl;
 
 public class RecipeBuilder extends AbstractBuilder<Recipe> {
 
-	private IngredientStorage ingredientStorage;
+	private IngredientStorageImpl ingredientStorageImpl;
 
-	RecipeBuilder(IngredientStorage ingredientStorage) {
-		this.ingredientStorage = ingredientStorage;
+	RecipeBuilder(IngredientStorageImpl ingredientStorageImpl) {
+		this.ingredientStorageImpl = ingredientStorageImpl;
 	}
 
 	@Override
