@@ -21,4 +21,4 @@ Within, each file represents a component, or group of related classes that will 
 Lastly, we developed these cards with an [online CRC service](https://echeung.me/crcmaker/).
 Sadly, the service is not too feature rich and this meant we had to manually split our cards into different files to help the overall component structure of our program be recognised.
 Uploading the files to this website will help you visualize the cards, but they remain fairly legible in JSON form.
-There is also a compiled PDF in this directory which shows connections between our cards.
+There is also a [compiled PDF](CRC%20Cards%20JChef.pdf) in this directory which shows connections between our cards.

@@ -26,6 +26,8 @@ Have no fear, JChef is here.
 
 ### Example Usage
 
+For now, just run the main function within [`JChef.java`](src/main/java/JChef.java) or run the tests!
+
 ## Installation
 
 ### Requirements
@@ -38,8 +40,14 @@ This section refers to setting up a development environment to work on JChef.
 
 ### Local Setup
 
+Our project requires the `org.json` library.
+A jar file is included in the [`libs`](libs) folder for this library, ensure it is [added to your project](https://stackoverflow.com/questions/1051640/correct-way-to-add-external-jars-lib-jar-to-an-intellij-idea-project).
+
 ## Maintainers
 
 Current Maintainers:
 
 * Derek Cresswell - [DerekCresswell](https://github.com/DerekCresswell)
+* Gerd Bizi
+* Prithee Roy
+* Ayush Sahi
