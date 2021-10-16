@@ -56,7 +56,7 @@ They adhered to Clean Architecture’s core principles and the SOLID principles 
 Ezra’s CRC dependency model made it easy for Gerd with Prithee and Ayush to make a thorough walkthrough scenario.
 Additionally, Gerd made dependency charts in IntelliJ that made it very easy to see class interactions, along with preventing contract violation.
 
-# #Group Members’ Contributions
+## Group Members’ Contributions
 - Derek 
   - Was working on coding the Loader along with a temporary CLI. Helped create the CRC cards, and organized them into higher and lower levels. Plans on coding the Readers and Loaders.
 - Ezra 
