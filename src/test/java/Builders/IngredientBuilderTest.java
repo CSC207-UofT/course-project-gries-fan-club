@@ -5,10 +5,12 @@ import EntityInterfaces.Ingredient;
 import LoaderInterfaces.Row;
 import Loaders.RowImpl;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class IngredientBuilderTest {
 
@@ -20,7 +22,7 @@ public class IngredientBuilderTest {
 		List<String> tags = new ArrayList<String>();
 		tags.add("veggie");
 		tags.add("orange");
-		values.put("tags", (Object) tags);
+		values.put("tags", tags);
 
 		Row row = new RowImpl("ingredient", values);
 		Ingredient ingredient = new IngredientBuilder().loadEntity(row);

@@ -1,7 +1,6 @@
 package Storages;
 
 import EntityInterfaces.Ingredient;
-import EntityInterfaces.RecipeItem;
 import EntityInterfaces.Tag;
 import StorageInterfaces.IngredientStorage;
 
