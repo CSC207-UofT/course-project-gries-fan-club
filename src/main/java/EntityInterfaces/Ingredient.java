@@ -13,7 +13,7 @@ public interface Ingredient {
      * Return whether the ingredient has the given tag
      * @return Does the ingredient have the given tag?
      **/
-    Boolean has(Tag tag);
+    boolean has(Tag tag);
 
     /**
      * Return the ingredients name
