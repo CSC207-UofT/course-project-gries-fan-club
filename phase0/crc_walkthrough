@@ -1,8 +1,0 @@
-#CRC Scenario Walkthrough
-The user will enter the console, and be greeted by the homescreen. They can search through recipes that were imported
-by the Loader and then the RecipeStorage creates the Recipe objects.
-Now in the recipe search section, the user can type in a tag for the food, such as ‘gluten-free’. This will then use
-the find method in the Recipe storage. For each tag that was specified by the user, the method calls the TagMatcher
-class’ method, matches, where the method will return boolean values for whether or not certain recipes have the given
-tag. Every RecipeImpl in the RecipeStorage will be iterated through, and then a list of the RecipeImpl where each
-object contains all the tags will then be returned and can be viewed by the user.
