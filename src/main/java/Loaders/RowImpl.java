@@ -18,7 +18,7 @@ public class RowImpl implements Row {
 		this.attributes = new HashMap<>();
 	}
 
-	RowImpl(String type, Map<String, Object> attributes) {
+	public RowImpl(String type, Map<String, Object> attributes) {
 		this(type);
 		this.attributes = attributes;
 	}

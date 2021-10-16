@@ -17,4 +17,11 @@ public class TagImpl implements Tag {
     public String name() {
         return this.name;
     }
+
+    @Override
+    public boolean equals(Object object) {
+        Tag other = (Tag) object;
+        return this.name.equals(other.name());
+    }
+
 }

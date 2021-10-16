@@ -1,0 +1,18 @@
+[
+  {
+    "type": "ingredient",
+    "name": "carrot",
+    "tags": [
+      "veggie",
+      "orange"
+    ]
+  },
+  {
+    "type": "ingredient",
+    "name": "apple",
+    "tags": [
+      "fruit",
+      "red"
+    ]
+  }
+]

@@ -6,7 +6,7 @@ public class IngredientStorage extends AbstractStorage<Ingredient> {
 
 	@Override
 	public String type() {
-		return "Ingredient";
+		return "ingredient";
 	}
 
 }

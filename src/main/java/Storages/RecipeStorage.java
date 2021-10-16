@@ -2,9 +2,6 @@ package Storages;
 
 import EntityInterfaces.Recipe;
 
-import java.util.Iterator;
-import java.util.List;
-
 public class RecipeStorage extends AbstractStorage<Recipe> {
 
     /**
@@ -13,7 +10,7 @@ public class RecipeStorage extends AbstractStorage<Recipe> {
      **/
 	@Override
 	public String type() {
-		return "Recipe";
+		return "recipe";
 	}
 
 }
