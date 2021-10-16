@@ -1,5 +1,5 @@
 package StorageInterfaces;
 
-public interface FridgeImpl {
+public interface Fridge {
 
 }

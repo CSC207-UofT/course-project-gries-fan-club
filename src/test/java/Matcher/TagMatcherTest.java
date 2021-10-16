@@ -1,10 +1,10 @@
 package Matcher;
 
 import Entities.IngredientImpl;
-import Entities.ItemImpl;
 import Entities.RecipeImpl;
+import Entities.RecipeItemImpl;
 import Entities.TagImpl;
-import EntityInterfaces.Item;
+import EntityInterfaces.RecipeItem;
 import EntityInterfaces.Tag;
 import Matchers.TagMatcher;
 import org.junit.jupiter.api.Assertions;
@@ -34,10 +34,10 @@ public class TagMatcherTest {
 
         // Recipe
         IngredientImpl ingredient1 = new IngredientImpl("bread", list);
-        ItemImpl item = new ItemImpl(ingredient1, 15);
-        List<Item> items = new ArrayList<>();
-        items.add(item);
-        RecipeImpl recipe = new RecipeImpl("name", "description", "instructions", items);
+        RecipeItemImpl item = new RecipeItemImpl(ingredient1, 15);
+        List<RecipeItem> recipeItems = new ArrayList<>();
+        recipeItems.add(item);
+        RecipeImpl recipe = new RecipeImpl("name", "description", "instructions", recipeItems);
 
         // Matcher
         TagMatcher matcher = new TagMatcher(tags);
@@ -59,10 +59,10 @@ public class TagMatcherTest {
 
         // Recipe
         IngredientImpl ingredient1 = new IngredientImpl("bread", list);
-        ItemImpl item = new ItemImpl(ingredient1, 15);
-        List<Item> items = new ArrayList<>();
-        items.add(item);
-        RecipeImpl recipe = new RecipeImpl("name", "description", "instructions", items);
+        RecipeItemImpl item = new RecipeItemImpl(ingredient1, 15);
+        List<RecipeItem> recipeItems = new ArrayList<>();
+        recipeItems.add(item);
+        RecipeImpl recipe = new RecipeImpl("name", "description", "instructions", recipeItems);
 
         // Matcher
         TagMatcher matcher = new TagMatcher(tags);

@@ -1,6 +1,6 @@
 package Entities;
 
-import EntityInterfaces.Item;
+import EntityInterfaces.RecipeItem;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -36,20 +36,20 @@ public class RecipeTest {
     @Test
     public void testItems() {
         IngredientImpl ingredient1 = new IngredientImpl("apple", Collections.emptyList());
-        ItemImpl item1 = new ItemImpl(ingredient1, 15);
+        RecipeItemImpl item1 = new RecipeItemImpl(ingredient1, 15);
 
         IngredientImpl ingredient2 = new IngredientImpl("cucumber", Collections.emptyList());
-        ItemImpl item2 = new ItemImpl(ingredient2, 1);
+        RecipeItemImpl item2 = new RecipeItemImpl(ingredient2, 1);
 
 
-        List<Item> items = new ArrayList<>();
-        items.add(item1);
-        items.add(item2);
+        List<RecipeItem> recipeItems = new ArrayList<>();
+        recipeItems.add(item1);
+        recipeItems.add(item2);
 
-        RecipeImpl recipe = new RecipeImpl("name", "description", "instructions", items);
+        RecipeImpl recipe = new RecipeImpl("name", "description", "instructions", recipeItems);
 
-        Assertions.assertEquals(items, recipe.items());
-        Assertions.assertEquals(items.size(), recipe.items().size());
+        Assertions.assertEquals(recipeItems, recipe.items());
+        Assertions.assertEquals(recipeItems.size(), recipe.items().size());
     }
 
 
