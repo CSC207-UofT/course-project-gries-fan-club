@@ -1,29 +1,62 @@
-#Progress Report
+# JChef - Progress Report
 
-##Specification Review
-Our project, JChef, is a sophisticated cook book program that allows users to maintain a record of the ingredients in their fridge and pantry to see what they can cook. Users are able to sort through recipes through filters such as recipes that they can make with food on hand, dietary restrictions, and food by reviews.
+## Specification Review
 
-##CRC Model Review
-We have the following entity classes:
-The Item, Recipe, Ingredient, the Tag and their related classes are the entity classes. Then the Use Case Classes are the FridgeMatcher and the TagMatcher which both extend the AbstractMatcher abstract class. Then, a few controllers that we have include the FridgeStorage, the IngredientStorage, The ItemStorage, and so on. The Reader Classes are the Controllers. The JChef.java file is the BCI in this example. As per your conversation with Derek on October 14, this is tentative, and we have not fully implemented our CRC model into code yet.
+Our project, JChef, is a sophisticated cook book program that allows users to maintain a record of the ingredients in their fridge and pantry to see what they can cook.
+Users are able to sort through recipes through filters such as recipes that they can make with food on hand, dietary restrictions, and food by reviews.
 
-##Scenario Walkthrough
-The scenario walkthrough that we’ve created covers a scenario where the program automatically loads all its recipes into its storage, and then we try an example of the user searching for recipes by a certain dietary restriction tag. This demonstrates our program’s power to show recipes with respect to such tags.
-For a lack of time, we have hardcoded examples of recipes into the driver class and the walkthrough behaves more along the lines of a proof of concept.
+## CRC Model Review
 
-##Skeleton Program
-The skeleton program is complete enough such that the user can interact with it and have mostly complete functionality. Due to issues that we had with implementing the Loader, we will demonstrate the functionality of the Walkthrough through hard coded examples and through test cases.
+We have the following entity classes: `RecipeItem`, `Recipe`, `Ingredient`, and `Tag`.
+These store information on our food and recipes.
 
-##Current Struggles
-Our group was having a few issues with the organization of the CRC model. With such a complex project, and the need to adhere to SOLID principles and Uncle Bob’s Clean Architecture, we found ourselves making much more frequent use of Interfaces than in our previous experience. Derek and Ariel had a relatively easy time implementing the cards into classes after. However, Derek had some difficulty in implementing the Loader class so close to the deadline, and that functionality was pushed back to Phase 1. The coders also had some difficulties adhering to the DIP, as the dependency on objects from different levels was high and contracts could have been broken. Ariel remarked that it was at times confusing when referring to Entities’ interfaces or their implementations.
-We found that it was slightly difficult at times to communicate within our group. Being in a group where so many of the members are incredibly busy makes it difficult for everyone to be on the same page all the time. We will strive to have meetings more frequently and delegate more precise tasks such that our group members can work more autonomously and without confusion.
-Gerd, Derek and Ezra had some difficulties with the CRC cards as new models and cards kept being updated, which forced Ezra to keep updating his CRC dependency model, Derek to make new cards, and Gerd to adequately create a good walkthrough.
+Then the Use Case Classes are the `FridgeMatcher` and the `TagMatcher` which both extend the `AbstractMatcher` class.
+These provide the main behaviour of our program.
 
-##What’s Working Well?
-The code base, especially the high-level code is thorough, and will make it easy for us to build lower level classes, especially if we need to pivot while we progress into phase 2. We have through unit testing as well, as Ariel and Derek programmed with Test Driven Development in mind. They adhered to Clean Architecture’s core principles and the SOLID principles throughout their programming as well.
-Ezra’s CRC dependency model made it easy for Gerd with Prithee and Ayush to make a thorough scenario. Additionally, Gerd made dependency charts in IntelliJ that made it very easy to see class interactions, along with preventing contract violation.
+For controllers, we have the `IngredientStorage`, `IngredientStorage`, and so on.
+The `Loader` classes and `Builder` classes also act as controllers responsible for filling these storages.
 
-##Group Members’ Contributions
+## Scenario Walkthrough
+
+The scenario walk through that we’ve created covers a scenario where the program automatically loads all its recipes and ingredients into storages, and then searches for recipes by a certain dietary restriction tag.
+This demonstrates our program’s power to find relevant recipes for the user.
+
+## Skeleton Program
+
+The skeleton code present showcases many of the CRC cards implemented while respecting clean architecture principles.
+This includes Loaders, Builders, and Storages, capable of turning raw data strings into ingredients and other entities.
+These entities themselves are represented as data objects enabling us to query for tags and necessary information.
+Finally, we also have a few Matchers that use (currently simple) strategies of searching for requested recipes.
+
+To keep things simple for the purpose of this code staying skeletized, we have included a temporary main function to demonstrate searching of tags on recipes.
+For phase 0 we decided to not focus on the implementation details of the user interface and instead create a stronger CRC, plan, and internal functionality.
+This is also because we are not currently sure how whether we would like to do a GUI or CLI interface in the end and as such didn't think our time would be well spent working on one.
+
+## Current Struggles
+
+Our group was having a few issues with the organization of the CRC model.
+With such a complex project, and the need to adhere to SOLID principles and Uncle Bob’s Clean Architecture, we found ourselves making much more frequent use of Interfaces than in our previous experience.
+Gerd, Derek and Ezra had some difficulties with the CRC cards as new models and cards kept being updated, which forced Ezra to keep updating his CRC dependency model, Derek to make new cards, and Gerd to adequately create a good walk through.
+
+Derek and Ariel had a relatively easy time implementing the cards into classes after the plan was finalised.
+However, Derek had some difficulty in implementing the Loader class and that functionality was pushed back to Phase 1.
+The coders also had some difficulties adhering to the DIP, as the dependency on objects from different levels was high and contracts could have been broken.
+Ariel remarked that it was at times confusing when referring to Entities’ interfaces or their implementations.
+
+We found that it was slightly difficult at times to communicate within our group.
+Being in a group where so many of the members are incredibly busy makes it difficult for everyone to be on the same page all the time.
+We will strive to have meetings more frequently and delegate more precise tasks such that our group members can work more autonomously and without confusion.
+
+## What’s Working Well?
+
+The code base, especially the high-level code is thorough, and will make it easy for us to build lower level classes, especially if we need to pivot while we progress into phase 2.
+We have decent unit test coverage as well, as Ariel and Derek programmed with Test Driven Development in mind when possible.
+They adhered to Clean Architecture’s core principles and the SOLID principles throughout their programming as well.
+
+Ezra’s CRC dependency model made it easy for Gerd with Prithee and Ayush to make a thorough walkthrough scenario.
+Additionally, Gerd made dependency charts in IntelliJ that made it very easy to see class interactions, along with preventing contract violation.
+
+# #Group Members’ Contributions
 - Derek 
   - Was working on coding the Loader along with a temporary CLI. Helped create the CRC cards, and organized them into higher and lower levels. Plans on coding the Readers and Loaders.
 - Ezra 
