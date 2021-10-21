@@ -16,10 +16,20 @@ public class JSONLoader implements Loader {
 	private final JSONArray source;
 	private int index = 0;
 
+	/**
+	 * Constructs a loader from predefined JSON objects.
+	 *
+	 * @param source The JSON source, must be an array.
+	 */
 	public JSONLoader(JSONArray source) {
 		this.source = source;
 	}
 
+	/**
+	 * Constructs a loader from a string.
+	 *
+	 * @param source A string representing a JSON array.
+	 */
 	public JSONLoader(String source) {
 		this.source = new JSONArray(source);
 	}
@@ -35,6 +45,7 @@ public class JSONLoader implements Loader {
 
 		RowImpl row = new RowImpl(rowType);
 
+		// Gather each key of the object as a value for this row.
 		for(String key : currentObject.keySet()) {
 			if (key.equals("type")) {
 				// Do not add the type key as an attribute.
@@ -45,7 +56,7 @@ public class JSONLoader implements Loader {
 
 			if(isArray(value)) {
 				// We do not want to return JSONArrays outside this class.
-				value = flattenArray((JSONArray) value);
+				value = convertToNativeArray((JSONArray) value);
 			}
 
 			row.set(key, value);
@@ -54,6 +65,9 @@ public class JSONLoader implements Loader {
 		return row;
 	}
 
+	/**
+	 * Point back to the beginning of our array.
+	 */
 	@Override
 	public void resetReader() {
 		this.index = 0;
@@ -62,13 +76,10 @@ public class JSONLoader implements Loader {
 	/**
 	 * Determines if the current index is valid for our source.
 	 *
-	 * Note, this assumes that the index is greater than or equal to zero.
-	 * This should always be the case within this class.
-	 *
 	 * @return Whether the index is valid
 	 */
 	private boolean validIndex() {
-		return this.index < this.source.length();
+		return 0 <= this.index && this.index < this.source.length();
 	}
 
 	/**
@@ -82,12 +93,27 @@ public class JSONLoader implements Loader {
 		return object instanceof JSONArray;
 	}
 
-	private static List<Object> flattenArray(JSONArray array) {
+	/**
+	 * Converts a JSON array into a basic arrays containing only primitives.
+	 *
+	 * We need to keep the JSON objects, which are implementations, away from an outside user.
+	 * If any element in our array is another JSON array it will be recursively passed to this function.
+	 * Anything that is simply primitives will be kept as is.
+	 *
+	 * This does not change the shape of the array, just the types.
+	 *
+	 * @param array A JSON array to be de-JSONed
+	 *
+	 * @return A list of non-JSON objects that are only arrays and primitives.
+	 */
+	private static List<Object> convertToNativeArray(JSONArray array) {
 		List<Object> objects = new ArrayList<>();
 
 		for(Object object : array) {
+
+			// Any array objects must be further simplified.
 			if (isArray(object)) {
-				objects.add(flattenArray((JSONArray) object));
+				objects.add(convertToNativeArray((JSONArray) object));
 				continue;
 			}
 
