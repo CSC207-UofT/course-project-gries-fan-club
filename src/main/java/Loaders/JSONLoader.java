@@ -5,11 +5,17 @@ import LoaderInterfaces.Row;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Loads data from JSON format.
+ *
+ * This loader requires source data to be an array of JSON objects.
+ * Each of these objects must have a key 'type' associated with a string value.
  */
 public class JSONLoader implements Loader {
 
@@ -32,6 +38,17 @@ public class JSONLoader implements Loader {
 	 */
 	public JSONLoader(String source) {
 		this.source = new JSONArray(source);
+	}
+
+	/**
+	 * Constructs a loader from a JSON file.
+	 *
+	 * @param sourceFilePath The path of the file to read.
+	 *
+	 * @throws IOException When the given path is invalid / unreadable.
+	 */
+	public JSONLoader(Path sourceFilePath) throws IOException {
+		this(Files.readString(sourceFilePath));
 	}
 
 	@Override
