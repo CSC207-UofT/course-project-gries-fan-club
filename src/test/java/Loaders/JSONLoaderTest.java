@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 public class JSONLoaderTest {
 
 	JSONLoader loader;
@@ -22,6 +24,17 @@ public class JSONLoaderTest {
 	static final JSONArray SOURCE = new JSONArray()
 					.put(ROW_1)
 					.put(ROW_2);
+
+	static final JSONArray VALUES = new JSONArray()
+					.put(4)
+					.put(5);
+
+	static final JSONObject NESTED_OBJECT = new JSONObject()
+					.put("type", "test")
+					.put("values", VALUES);
+
+	static final JSONArray NESTED_SOURCE = new JSONArray()
+					.put(NESTED_OBJECT);
 
 	@BeforeEach
 	public void setup() {
@@ -40,6 +53,13 @@ public class JSONLoaderTest {
 
 		Row row3 = this.loader.readRow();
 		Assertions.assertTrue(row3.empty());
+
+		JSONLoader nestedLoader = new JSONLoader(NESTED_SOURCE);
+		Row row4 = nestedLoader.readRow();
+		List extractedList = row4.get("values", List.class);
+		Assertions.assertEquals(2, extractedList.size());
+		Assertions.assertEquals(4, extractedList.get(0));
+		Assertions.assertEquals(5, extractedList.get(1));
 	}
 
 	@Test
