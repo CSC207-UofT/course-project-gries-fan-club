@@ -11,26 +11,7 @@ import java.util.Collections;
 public class JChef {
 
     // This is temporary.
-    static String ingredientJSONSource = """
-            [
-                {
-                    "type": "ingredient",
-                        "name": "carrot",
-                        "tags": [
-                    "veggie",
-                            "orange"
-                ]
-                },
-                {
-                    "type": "ingredient",
-                        "name": "apple",
-                        "tags": [
-                    "fruit",
-                            "red"
-                ]
-                }
-            ]
-            """;
+    static String ingredientJSONSource = "[]";
 
     public static void main(String[] args) throws IOException {
         System.out.println("Hello JChef");
