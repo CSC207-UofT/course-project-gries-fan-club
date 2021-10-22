@@ -6,12 +6,10 @@ import Loaders.JSONLoader;
 import Storages.IngredientStorageImpl;
 
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.Collections;
 
 public class JChef {
-
-    // This is temporary.
-    static String ingredientJSONSource = "[]";
 
     public static void main(String[] args) throws IOException {
         System.out.println("Hello JChef");
@@ -22,7 +20,7 @@ public class JChef {
         //
         // The flow of our programs goes something like this:
         // First, load up our recipes and ingredients.
-        Loader ingredientLoader = new JSONLoader(ingredientJSONSource);
+        Loader ingredientLoader = new JSONLoader(Paths.get("resources/Ingredients.json"));
 
         // Then we send them to the builders to fill storages.
         IngredientStorageImpl ingredientStorage = new IngredientStorageImpl();
