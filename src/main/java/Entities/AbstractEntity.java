@@ -1,10 +1,9 @@
-package main.java.Entities;
+package Entities;
 import java.util.UUID;
-
 import main.java.EntityInterfaces.Entity;
 
 public abstract class AbstractEntity implements Entity {
-    private final String id;
+    private final UUID id;
 
     /**
      * Constructor that takes in string id, converts to UUID and assigns to the entity
@@ -12,7 +11,7 @@ public abstract class AbstractEntity implements Entity {
      */
     public AbstractEntity(String id) {
         // Convert string representation of the id to UUID and set the entity's id to it
-        this.id = UUID.fromString(id);
+         this.id = UUID.fromString(id);
     }
 
     /**
@@ -20,10 +19,8 @@ public abstract class AbstractEntity implements Entity {
      * assigns it to the entity
      */
     public AbstractEntity() {
-        // Create a random UUID
-        UUID uuid = UUID.randomUUID();
-        // Assign generated uuid to entity's id
-        this.id = uuid.toString();
+        // Generate uuid and assign to entity's id
+        this.id = UUID.randomUUID();
     }
 
     /**
@@ -31,7 +28,7 @@ public abstract class AbstractEntity implements Entity {
      * @return String representation of the Entity's id
      */
     @Override
-    public String id() {
+    public UUID id() {
         return this.id;
     }
 
