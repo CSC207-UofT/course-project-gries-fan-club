@@ -5,13 +5,13 @@ import org.junit.jupiter.api.Test;
 
 import java.util.UUID;
 
-public class baseEntityTest {
+public class AbstractEntityTest {
 
     /**
      * Class that helps us test the abstract class AbstractEntity
      */
     class EntityTester extends AbstractEntity {
-        public EntityTester(String id) {
+        public EntityTester(UUID id) {
             super(id);
         }
 
@@ -32,7 +32,7 @@ public class baseEntityTest {
     @Test
     public void EntityTesterConstructorTest() {
         UUID randomID = UUID.randomUUID();
-        EntityTester obj = new EntityTester(randomID.toString());
+        EntityTester obj = new EntityTester(randomID);
         Assertions.assertEquals(randomID, obj.id());
     }
 }

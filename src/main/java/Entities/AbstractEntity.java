@@ -1,17 +1,17 @@
 package Entities;
+import EntityInterfaces.Entity;
 import java.util.UUID;
-import main.java.EntityInterfaces.Entity;
 
 public abstract class AbstractEntity implements Entity {
     private final UUID id;
 
     /**
      * Constructor that takes in string id, converts to UUID and assigns to the entity
-     * @param id String that represents the UUID of the entity
+     * @param id  the UUID of the entity
      */
-    public AbstractEntity(String id) {
-        // Convert string representation of the id to UUID and set the entity's id to it
-         this.id = UUID.fromString(id);
+    public AbstractEntity(UUID id) {
+        // set Entity's id
+         this.id = id;
     }
 
     /**

@@ -4,10 +4,22 @@ import EntityInterfaces.Ingredient;
 import EntityInterfaces.Tag;
 
 import java.util.List;
+import java.util.UUID;
 
-public class IngredientImpl implements Ingredient {
+public class IngredientImpl extends AbstractEntity implements Ingredient {
     private String name;
     private List<Tag> tags;
+
+    /** Implements an IngredientImpl with the given name and list of tags
+     * @param id        The UUID of the Ingredient
+     * @param name      The name of the ingredient
+     * @param tags      The tags associated with the ingredient
+     */
+    public IngredientImpl(UUID id, String name, List<Tag> tags) {
+        super(id);
+        this.name = name;
+        this.tags = tags;
+    }
 
     /** Implements an IngredientImpl with the given name and list of tags
      * @param name      The name of the ingredient
