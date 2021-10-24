@@ -56,16 +56,4 @@ public class IngredientTest {
 
 
     }
-
-    /**
-     * Tests the inheritance of ingredient from the abstract entity class
-     * Specifically, testing whether or not ingredient is able to take a random id and successfully
-     * return it
-     */
-    @Test
-    public void testInheritance() {
-        UUID randomID = UUID.randomUUID();
-        IngredientImpl ingredient = new IngredientImpl(randomID, "name", Collections.emptyList());
-        Assertions.assertEquals(randomID, ingredient.id());
-    }
 }
