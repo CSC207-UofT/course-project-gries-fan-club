@@ -1,8 +1,20 @@
 package Entities;
 import EntityInterfaces.Tag;
 
-public class TagImpl implements Tag {
+import java.util.UUID;
+
+public class TagImpl extends AbstractEntity  implements Tag {
     private final String name;
+
+    /** Implement a TagImpl, giving the name of the tag.
+     * This construtor includes an id
+     * @param id    UUID of the tag
+     * @param name  The name of the tag
+     */
+    public TagImpl(UUID id, String name) {
+        super(id);
+        this.name = name;
+    }
 
     /** Implement a TagImpl, giving the name of the tag.
      * @param name  The name of the tag

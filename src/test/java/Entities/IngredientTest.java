@@ -1,5 +1,4 @@
 package Entities;
-
 import EntityInterfaces.Tag;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -7,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
 
 public class IngredientTest {
 
@@ -37,6 +37,7 @@ public class IngredientTest {
 
     }
 
+
     @Test
     public void testHasTag() {
         TagImpl tag1 = new TagImpl("Dairy");
@@ -55,5 +56,4 @@ public class IngredientTest {
 
 
     }
-
 }
