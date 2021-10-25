@@ -8,12 +8,12 @@ JChef is a program to help you organize and decide on dinner!
 ## Contents
 
 * [Introduction](#introduction)
-    * [Example Usage](#example-usage)
+  * [Example Usage](#example-usage)
 * [Installation](#installation)
-    * [Requirements](#requirements)
-    * [Configuration](#configuration)
+  * [Requirements](#requirements)
+  * [Configuration](#configuration)
 * [Development](#development)
-    * [Local Setup](#local-setup)
+  * [Local Setup](#local-setup)
 * [Maintainers](#maintainers)
 
 ## Introduction
@@ -48,6 +48,8 @@ A jar file is included in the [`libs`](libs) folder for this library, ensure it 
 Current Maintainers:
 
 * Derek Cresswell - [DerekCresswell](https://github.com/DerekCresswell)
-* Gerd Bizi
-* Prithee Roy
-* Ayush Sahi
+* Ariel Chouminov - [arieldeveloper](https://github.com/arieldeveloper)
+* Gerd Bizi - [gerd-bizi](https://github.com/gerd-bizi)
+* Ezra Robens-Paradise - [ezrarp](https://github.com/ezrarp)
+* Prithee Roy - [pritheeroy](https://github.com/pritheeroy)
+* Ayush Sahi - [ayushsahi](https://github.com/ayushsahi)

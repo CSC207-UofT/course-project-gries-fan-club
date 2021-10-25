@@ -44,21 +44,33 @@ public class RecipeImpl extends AbstractEntity implements Recipe {
         this.recipeItems = recipeItems;
     }
 
+    /**
+     * Returns the list of recipeItems
+     */
     @Override
     public List<RecipeItem> items() {
         return this.recipeItems;
     }
 
+    /**
+     * Returns the name of the RecipeImpl
+     */
     @Override
     public String name() {
         return this.name;
     }
 
+    /**
+     * Returns the description of the RecipeImpl
+     */
     @Override
     public String description() {
         return this.description;
     }
 
+    /**
+     * Returns the instructions of the RecipeImpl
+     */
     @Override
     public String instructions() {
         return this.instructions;
