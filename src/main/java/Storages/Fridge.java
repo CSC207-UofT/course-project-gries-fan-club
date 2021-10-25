@@ -1,4 +1,4 @@
-package StorageInterfaces;
+package Storages;
 
 public interface Fridge {
 

@@ -1,4 +1,4 @@
-package Storages;
+package Storages.Implementations;
 
 import java.util.ArrayList;
 import java.util.Collection;

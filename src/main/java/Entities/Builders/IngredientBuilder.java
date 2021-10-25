@@ -4,7 +4,7 @@ import Entities.Implementations.IngredientImpl;
 import Entities.Implementations.TagImpl;
 import Entities.Ingredient;
 import Entities.Tag;
-import LoaderInterfaces.Row;
+import Loaders.Row;
 
 import java.util.ArrayList;
 import java.util.List;

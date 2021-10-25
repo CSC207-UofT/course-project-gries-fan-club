@@ -1,9 +1,9 @@
-package Storages;
+package Storages.Implementations;
 
 import Entities.Ingredient;
 import Entities.Recipe;
 import Entities.Tag;
-import StorageInterfaces.RecipeStorage;
+import Storages.RecipeStorage;
 
 import java.util.Collection;
 import java.util.List;

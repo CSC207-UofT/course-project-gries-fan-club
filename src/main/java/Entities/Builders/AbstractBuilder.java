@@ -1,8 +1,8 @@
 package Entities.Builders;
 
-import LoaderInterfaces.Loader;
-import LoaderInterfaces.Row;
-import Storages.AbstractStorage;
+import Loaders.Loader;
+import Loaders.Row;
+import Storages.Implementations.AbstractStorage;
 
 import java.util.ArrayList;
 import java.util.Collection;

@@ -6,7 +6,7 @@ import Entities.Implementations.RecipeItemImpl;
 import Entities.Implementations.TagImpl;
 import Entities.RecipeItem;
 import Entities.Tag;
-import Matchers.TagMatcher;
+import Matchers.Implementations.TagMatcher;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

@@ -1,6 +1,6 @@
 package Loaders;
 
-import LoaderInterfaces.Row;
+import Loaders.Implementations.JSONLoader;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Assertions;

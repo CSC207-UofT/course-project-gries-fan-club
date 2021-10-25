@@ -1,8 +1,8 @@
-package Storages;
+package Storages.Implementations;
 
 import Entities.Ingredient;
 import Entities.Tag;
-import StorageInterfaces.IngredientStorage;
+import Storages.IngredientStorage;
 
 import java.util.ArrayList;
 import java.util.Collection;

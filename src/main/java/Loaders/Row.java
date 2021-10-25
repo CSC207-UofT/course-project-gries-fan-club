@@ -1,4 +1,4 @@
-package LoaderInterfaces;
+package Loaders;
 
 public interface Row {
 

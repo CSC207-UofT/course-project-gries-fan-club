@@ -1,9 +1,9 @@
 import Entities.Builders.IngredientBuilder;
 import Entities.Implementations.TagImpl;
 import Entities.Ingredient;
-import LoaderInterfaces.Loader;
-import Loaders.JSONLoader;
-import Storages.IngredientStorageImpl;
+import Loaders.Loader;
+import Loaders.Implementations.JSONLoader;
+import Storages.Implementations.IngredientStorageImpl;
 
 import java.io.IOException;
 import java.nio.file.Paths;

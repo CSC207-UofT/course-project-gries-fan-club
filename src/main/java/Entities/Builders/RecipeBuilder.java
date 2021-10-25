@@ -1,8 +1,8 @@
 package Entities.Builders;
 
 import Entities.Recipe;
-import LoaderInterfaces.Row;
-import Storages.IngredientStorageImpl;
+import Loaders.Row;
+import Storages.Implementations.IngredientStorageImpl;
 
 public class RecipeBuilder extends AbstractBuilder<Recipe> {
 

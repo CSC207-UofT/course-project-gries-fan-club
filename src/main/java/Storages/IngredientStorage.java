@@ -1,4 +1,4 @@
-package StorageInterfaces;
+package Storages;
 
 import Entities.Ingredient;
 import Entities.Tag;

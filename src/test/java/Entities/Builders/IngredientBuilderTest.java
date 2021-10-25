@@ -2,8 +2,8 @@ package Entities.Builders;
 
 import Entities.Implementations.TagImpl;
 import Entities.Ingredient;
-import LoaderInterfaces.Row;
-import Loaders.RowImpl;
+import Loaders.Row;
+import Loaders.Implementations.RowImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

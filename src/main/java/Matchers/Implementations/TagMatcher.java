@@ -1,9 +1,10 @@
-package Matchers;
+package Matchers.Implementations;
 
 import Entities.Recipe;
 import Entities.RecipeItem;
 import Entities.Tag;
-import Storages.RecipeStorageImpl;
+import Matchers.Matcher;
+import Storages.Implementations.RecipeStorageImpl;
 
 import java.util.List;
 

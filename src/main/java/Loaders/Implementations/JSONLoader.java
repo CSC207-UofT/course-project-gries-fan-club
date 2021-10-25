@@ -1,7 +1,7 @@
-package Loaders;
+package Loaders.Implementations;
 
-import LoaderInterfaces.Loader;
-import LoaderInterfaces.Row;
+import Loaders.Loader;
+import Loaders.Row;
 import org.json.JSONArray;
 import org.json.JSONObject;
 

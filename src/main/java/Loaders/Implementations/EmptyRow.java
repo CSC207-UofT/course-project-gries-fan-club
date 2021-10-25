@@ -1,6 +1,6 @@
-package Loaders;
+package Loaders.Implementations;
 
-import LoaderInterfaces.Row;
+import Loaders.Row;
 
 /**
  * Defines an empty row, that is a row with no type or data.

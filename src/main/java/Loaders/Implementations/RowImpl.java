@@ -1,6 +1,6 @@
-package Loaders;
+package Loaders.Implementations;
 
-import LoaderInterfaces.Row;
+import Loaders.Row;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,7 +13,7 @@ public class RowImpl implements Row {
 	private final String type;
 	private Map<String, Object> attributes;
 
-	RowImpl(String type) {
+	public RowImpl(String type) {
 		this.type = type;
 		this.attributes = new HashMap<>();
 	}

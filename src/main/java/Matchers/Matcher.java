@@ -1,6 +1,6 @@
 package Matchers;
 import Entities.Recipe;
-import Storages.RecipeStorageImpl;
+import Storages.Implementations.RecipeStorageImpl;
 
 // Matches ingredients with recipes
 public interface Matcher {
