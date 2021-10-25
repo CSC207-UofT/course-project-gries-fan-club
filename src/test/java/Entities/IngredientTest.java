@@ -1,12 +1,12 @@
 package Entities;
-import EntityInterfaces.Tag;
+import Entities.Implementations.IngredientImpl;
+import Entities.Implementations.TagImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.UUID;
 
 public class IngredientTest {
 

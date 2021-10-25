@@ -1,5 +1,7 @@
 package Entities;
 
+import Entities.Implementations.IngredientImpl;
+import Entities.Implementations.RecipeItemImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

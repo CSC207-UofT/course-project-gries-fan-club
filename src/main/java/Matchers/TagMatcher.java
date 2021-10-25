@@ -1,8 +1,8 @@
 package Matchers;
 
-import EntityInterfaces.Recipe;
-import EntityInterfaces.RecipeItem;
-import EntityInterfaces.Tag;
+import Entities.Recipe;
+import Entities.RecipeItem;
+import Entities.Tag;
 import Storages.RecipeStorageImpl;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package Builders;
+package Entities.Builders;
 
 import LoaderInterfaces.Loader;
 import LoaderInterfaces.Row;

@@ -1,4 +1,4 @@
-package EntityInterfaces;
+package Entities;
 
 public interface Tag {
     /**

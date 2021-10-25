@@ -1,11 +1,11 @@
 package Matcher;
 
-import Entities.IngredientImpl;
-import Entities.RecipeImpl;
-import Entities.RecipeItemImpl;
-import Entities.TagImpl;
-import EntityInterfaces.RecipeItem;
-import EntityInterfaces.Tag;
+import Entities.Implementations.IngredientImpl;
+import Entities.Implementations.RecipeImpl;
+import Entities.Implementations.RecipeItemImpl;
+import Entities.Implementations.TagImpl;
+import Entities.RecipeItem;
+import Entities.Tag;
 import Matchers.TagMatcher;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

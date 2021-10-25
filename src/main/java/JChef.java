@@ -1,6 +1,6 @@
-import Builders.IngredientBuilder;
-import Entities.TagImpl;
-import EntityInterfaces.Ingredient;
+import Entities.Builders.IngredientBuilder;
+import Entities.Implementations.TagImpl;
+import Entities.Ingredient;
 import LoaderInterfaces.Loader;
 import Loaders.JSONLoader;
 import Storages.IngredientStorageImpl;

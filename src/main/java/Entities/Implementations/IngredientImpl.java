@@ -1,7 +1,7 @@
-package Entities;
+package Entities.Implementations;
 
-import EntityInterfaces.Ingredient;
-import EntityInterfaces.Tag;
+import Entities.Ingredient;
+import Entities.Tag;
 
 import java.util.List;
 import java.util.UUID;

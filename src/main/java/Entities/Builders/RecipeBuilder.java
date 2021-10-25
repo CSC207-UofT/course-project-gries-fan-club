@@ -1,6 +1,6 @@
-package Builders;
+package Entities.Builders;
 
-import EntityInterfaces.Recipe;
+import Entities.Recipe;
 import LoaderInterfaces.Row;
 import Storages.IngredientStorageImpl;
 

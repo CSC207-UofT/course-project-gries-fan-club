@@ -1,5 +1,5 @@
 package Matchers;
-import EntityInterfaces.Recipe;
+import Entities.Recipe;
 import Storages.RecipeStorageImpl;
 
 // Matches ingredients with recipes

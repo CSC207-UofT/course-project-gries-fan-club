@@ -1,9 +1,9 @@
-package Builders;
+package Entities.Builders;
 
-import Entities.IngredientImpl;
-import Entities.TagImpl;
-import EntityInterfaces.Ingredient;
-import EntityInterfaces.Tag;
+import Entities.Implementations.IngredientImpl;
+import Entities.Implementations.TagImpl;
+import Entities.Ingredient;
+import Entities.Tag;
 import LoaderInterfaces.Row;
 
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ public class IngredientBuilder extends AbstractBuilder<Ingredient> {
 		String name = row.get("name", String.class);
 		List rawTags = row.get("tags", List.class);
 
-		List<Tag> tags = new ArrayList<Tag>();
+		List<Tag> tags = new ArrayList<>();
 		for(Object tagName : rawTags) {
 			tags.add(new TagImpl((String) tagName));
 		}

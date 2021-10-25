@@ -24,7 +24,7 @@ This demonstrates our program’s power to find relevant recipes for the user.
 ## Skeleton Program
 
 The skeleton code present showcases many of the CRC cards implemented while respecting clean architecture principles.
-This includes Loaders, Builders, and Storages, capable of turning raw data strings into ingredients and other entities.
+This includes Loaders, Entities.Builders, and Storages, capable of turning raw data strings into ingredients and other entities.
 These entities themselves are represented as data objects enabling us to query for tags and necessary information.
 Finally, we also have a few Matchers that use (currently simple) strategies of searching for requested recipes.
 

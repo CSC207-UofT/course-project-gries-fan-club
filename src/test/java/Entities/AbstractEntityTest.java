@@ -1,5 +1,6 @@
 package Entities;
 
+import Entities.Implementations.AbstractEntity;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

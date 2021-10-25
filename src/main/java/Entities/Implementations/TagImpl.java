@@ -1,5 +1,5 @@
-package Entities;
-import EntityInterfaces.Tag;
+package Entities.Implementations;
+import Entities.Tag;
 
 import java.util.UUID;
 

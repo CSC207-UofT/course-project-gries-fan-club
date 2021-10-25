@@ -1,7 +1,7 @@
 package StorageInterfaces;
 
-import EntityInterfaces.Ingredient;
-import EntityInterfaces.Tag;
+import Entities.Ingredient;
+import Entities.Tag;
 
 import java.util.Collection;
 

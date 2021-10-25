@@ -1,7 +1,7 @@
-package Builders;
+package Entities.Builders;
 
-import Entities.TagImpl;
-import EntityInterfaces.Ingredient;
+import Entities.Implementations.TagImpl;
+import Entities.Ingredient;
 import LoaderInterfaces.Row;
 import Loaders.RowImpl;
 import org.junit.jupiter.api.Assertions;
@@ -15,11 +15,16 @@ import java.util.Map;
 public class IngredientBuilderTest {
 
 	@Test
+	public void testType() {
+		Assertions.assertEquals("ingredient", new IngredientBuilder().type());
+	}
+
+	@Test
 	public void testLoadEntity() {
 		Map<String, Object> values = new HashMap<>();
 		values.put("name", "carrot");
 
-		List<String> tags = new ArrayList<String>();
+		List<String> tags = new ArrayList<>();
 		tags.add("veggie");
 		tags.add("orange");
 		values.put("tags", tags);

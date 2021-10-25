@@ -1,4 +1,4 @@
-package EntityInterfaces;
+package Entities;
 import java.util.UUID;
 
 public interface Entity {

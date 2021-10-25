@@ -1,7 +1,7 @@
-package Entities;
+package Entities.Implementations;
 
-import EntityInterfaces.Ingredient;
-import EntityInterfaces.RecipeItem;
+import Entities.Ingredient;
+import Entities.RecipeItem;
 
 import java.util.UUID;
 

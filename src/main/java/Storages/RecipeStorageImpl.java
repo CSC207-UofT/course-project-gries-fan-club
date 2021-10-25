@@ -1,8 +1,8 @@
 package Storages;
 
-import EntityInterfaces.Ingredient;
-import EntityInterfaces.Recipe;
-import EntityInterfaces.Tag;
+import Entities.Ingredient;
+import Entities.Recipe;
+import Entities.Tag;
 import StorageInterfaces.RecipeStorage;
 
 import java.util.Collection;
