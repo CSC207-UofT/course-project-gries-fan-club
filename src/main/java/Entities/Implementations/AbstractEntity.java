@@ -1,5 +1,7 @@
 package Entities.Implementations;
+
 import Entities.Entity;
+
 import java.util.UUID;
 
 public abstract class AbstractEntity implements Entity {

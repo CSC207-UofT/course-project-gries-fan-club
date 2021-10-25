@@ -1,8 +1,5 @@
 package Entities;
 
-import EntityInterfaces.Ingredient;
-import EntityInterfaces.RecipeItem;
-
 public class RecipeItemImpl implements RecipeItem {
     private Ingredient ingredient;
     private int quantity;
@@ -56,7 +53,7 @@ public class RecipeItemImpl implements RecipeItem {
     }
 
     /**
-     * Returns whether or not the ingredient is optional
+     * Returns whether the ingredient is optional
      *
      * @return boolean representing if optional
      */

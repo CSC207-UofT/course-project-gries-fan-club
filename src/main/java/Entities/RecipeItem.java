@@ -16,7 +16,7 @@ public interface RecipeItem {
     int quantity();
 
     /**
-     * Return whether or not RecipeItem is optional in recipe
+     * Whether this item is optional in its recipe
      *
      * @return boolean representing if RecipeItem is optional
      **/

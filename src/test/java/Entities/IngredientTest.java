@@ -19,7 +19,7 @@ public class IngredientTest {
     }
 
     /**
-     * Test whether or not the ingredient correctly takes in the list containing tags
+     * Test whether the ingredient correctly takes in the list containing tags
      * Specifically, if the size of the list is the same as the one given in the constructor
      */
     @Test
@@ -29,7 +29,7 @@ public class IngredientTest {
     }
 
     /**
-     * Test whether or not the ingredient correctly takes in the list containing tags
+     * Test whether the ingredient correctly takes in the list containing tags
      * Specifically, if the list is exactly as was given into the constructor
      */
     @Test

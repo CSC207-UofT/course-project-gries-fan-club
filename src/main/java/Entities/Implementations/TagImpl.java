@@ -33,7 +33,7 @@ public class TagImpl extends AbstractEntity  implements Tag {
         return this.name;
     }
 
-    /** Return whether or not a given tag is equal to this tag
+    /** Return whether a given tag is equal to this tag
      *
      * @param object Object that represents a tag
      *
