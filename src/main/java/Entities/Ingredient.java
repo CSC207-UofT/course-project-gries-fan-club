@@ -2,7 +2,7 @@ package Entities;
 
 import java.util.List;
 
-public interface Ingredient {
+public interface Ingredient extends Entity {
     /**
      * Return the List of Tags for this ingredient
      *

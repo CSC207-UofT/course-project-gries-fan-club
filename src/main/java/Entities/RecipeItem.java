@@ -1,6 +1,6 @@
 package Entities;
 
-public interface RecipeItem {
+public interface RecipeItem extends Entity {
     /**
      * Return the ingredient of the RecipeItem
      *

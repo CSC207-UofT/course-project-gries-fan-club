@@ -2,7 +2,7 @@ package Entities;
 
 import java.util.List;
 
-public interface Recipe {
+public interface Recipe extends Entity {
 
     /**
      * Return the list of items needed to make this recipe
