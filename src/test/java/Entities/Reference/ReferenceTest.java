@@ -2,7 +2,7 @@ package Entities.Reference;
 
 import Entities.Implementations.TagImpl;
 import Entities.Tag;
-import Storages.Exceptions.NoEntityFound;
+import Storages.Exceptions.NoSuchEntity;
 import Storages.Storage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -16,13 +16,13 @@ public class ReferenceTest {
 	 */
 	record SingleStorage(Tag tag) implements Storage<Tag> {
 		@Override
-		public Tag find(UUID id) throws NoEntityFound {
+		public Tag find(UUID id) throws NoSuchEntity {
 			// If our tag is requested return it.
 			if (id.equals(this.tag.id())) {
 				return this.tag;
 			}
 
-			throw new NoEntityFound();
+			throw new NoSuchEntity(id);
 		}
 	}
 
@@ -30,7 +30,7 @@ public class ReferenceTest {
 	 * Ensures the get function returns the referenced entity.
 	 */
 	@Test
-	public void testGet() throws NoEntityFound {
+	public void testGet() throws NoSuchEntity {
 		// We will use a tag as our test entity.
 		Tag tag1 = new TagImpl("test");
 
@@ -47,7 +47,7 @@ public class ReferenceTest {
 		// This reference does not exist. An error should be thrown.
 		UUID badID = UUID.randomUUID();
 		Reference<Tag> reference3 = new Reference<>(badID, storage);
-		Assertions.assertThrows(NoEntityFound.class, reference3::get);
+		Assertions.assertThrows(NoSuchEntity.class, reference3::get);
 	}
 
 }

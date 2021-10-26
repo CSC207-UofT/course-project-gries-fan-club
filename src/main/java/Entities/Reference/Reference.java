@@ -1,7 +1,7 @@
 package Entities.Reference;
 
 import Entities.Entity;
-import Storages.Exceptions.NoEntityFound;
+import Storages.Exceptions.NoSuchEntity;
 import Storages.Storage;
 
 import java.util.UUID;
@@ -33,6 +33,11 @@ public class Reference<T extends Entity> {
 		this.storage = storage;
 	}
 
+	/**
+	 * Creates a reference directly to an object avoiding any look-ups.
+	 *
+	 * @param entity The entity this references.
+	 */
 	public Reference(T entity) {
 		this.id = entity.id();
 		this.entity = entity;
@@ -44,7 +49,7 @@ public class Reference<T extends Entity> {
 	 *
 	 * @return The referenced entity.
 	 */
-	public T get() throws NoEntityFound {
+	public T get() throws NoSuchEntity {
 		if(!this.loaded) {
 			this.entity = this.storage.find(this.id);
 
