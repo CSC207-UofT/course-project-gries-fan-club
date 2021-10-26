@@ -1,5 +1,6 @@
 package Entities.Builders;
 
+import Entities.Entity;
 import Loaders.Loader;
 import Loaders.Row;
 import Storages.Implementations.AbstractStorage;
@@ -7,7 +8,14 @@ import Storages.Implementations.AbstractStorage;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public abstract class AbstractBuilder<T> {
+/**
+ * Defines the common process of validating a loaders data and creating an
+ * entity with it.
+ * Child builders can control how each specific entity is built.
+ *
+ * @param <T> The type of entity that this builder creates.
+ */
+public abstract class AbstractBuilder<T extends Entity> {
 
 	/**
 	 * Creates an entity from a given row.

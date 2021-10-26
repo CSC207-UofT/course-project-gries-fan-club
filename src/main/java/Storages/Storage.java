@@ -3,6 +3,7 @@ package Storages;
 import Entities.Entity;
 import Storages.Exceptions.NoSuchEntity;
 
+import java.util.Collection;
 import java.util.UUID;
 
 /**
@@ -10,7 +11,7 @@ import java.util.UUID;
  *
  * @param <T> The class of entity to store.
  */
-public interface Storage<T extends Entity> {
+public interface Storage<T extends Entity> extends Collection<T> {
 
 	/**
 	 * Finds the entity by ID.
@@ -22,5 +23,12 @@ public interface Storage<T extends Entity> {
 	 * @throws NoSuchEntity When the provided ID is not in this storage.
 	 */
 	T find(UUID id) throws NoSuchEntity;
+
+	/**
+	 * The type of entity this storage stores.
+	 *
+	 * @return A string representing the type.
+	 */
+	String type();
 
 }

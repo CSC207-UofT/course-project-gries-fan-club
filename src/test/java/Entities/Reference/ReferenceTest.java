@@ -3,7 +3,7 @@ package Entities.Reference;
 import Entities.Implementations.TagImpl;
 import Entities.Tag;
 import Storages.Exceptions.NoSuchEntity;
-import Storages.Storage;
+import Storages.Implementations.AbstractStorage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -14,15 +14,10 @@ public class ReferenceTest {
 	/**
 	 * A mock storage for testing references.
 	 */
-	record SingleStorage(Tag tag) implements Storage<Tag> {
+	static class MockStorage extends AbstractStorage<Tag> {
 		@Override
-		public Tag find(UUID id) throws NoSuchEntity {
-			// If our tag is requested return it.
-			if (id.equals(this.tag.id())) {
-				return this.tag;
-			}
-
-			throw new NoSuchEntity(id);
+		public String type() {
+			return "test";
 		}
 	}
 
@@ -38,7 +33,8 @@ public class ReferenceTest {
 		Reference<Tag> reference1 = new Reference<>(tag1);
 		Assertions.assertEquals(tag1, reference1.get());
 
-		SingleStorage storage = new SingleStorage(tag1);
+		MockStorage storage = new MockStorage();
+		storage.add(tag1);
 
 		// This reference does need to lazy-load. The tag should be returned.
 		Reference<Tag> reference2 = new Reference<>(tag1.id(), storage);
