@@ -3,7 +3,7 @@ package Entities.Builders;
 import Entities.Entity;
 import Loaders.Loader;
 import Loaders.Row;
-import Storages.Implementations.AbstractStorage;
+import Storages.Storage;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -46,17 +46,16 @@ public abstract class AbstractBuilder<T extends Entity> {
 
 		Collection<T> entities = new ArrayList<>();
 
-		Row currentRow = loader.readRow();
-		while (!currentRow.empty()) {
+		Row currentRow;
+		do {
+			currentRow = loader.readRow();
 			if(!this.validType(currentRow)) {
 				// Only construct the valid type of entity.
 				continue;
 			}
 
 			entities.add(this.loadEntity(currentRow));
-
-			currentRow = loader.readRow();
-		}
+		} while (!currentRow.empty());
 
 		return entities;
 	}
@@ -67,7 +66,7 @@ public abstract class AbstractBuilder<T extends Entity> {
 	 * @param storage The storage to fill
 	 * @param loader The loader to pull from
 	 */
-	public void addTo(AbstractStorage<T> storage, Loader loader) {
+	public void addTo(Storage<T> storage, Loader loader) {
 		if (!storage.type().equals(this.type())) {
 			// We can only add entities that this storage allows.
 			return;
