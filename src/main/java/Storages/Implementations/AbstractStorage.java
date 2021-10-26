@@ -16,6 +16,9 @@ import java.util.UUID;
  */
 public abstract class AbstractStorage<T extends Entity> extends AbstractCollection<T> implements Storage<T> {
 
+	/**
+	 * This maps to entities via their ID's.
+	 */
 	protected final HashMap<String, T> entities = new HashMap<>();
 
 	/**
@@ -24,6 +27,7 @@ public abstract class AbstractStorage<T extends Entity> extends AbstractCollecti
 	 * @param id The ID of the entity.
 	 *
 	 * @return The found entity.
+	 *
 	 * @throws NoSuchEntity Throws this exception when no entity is found.
 	 */
 	@Override

@@ -8,6 +8,13 @@ import Storages.Implementations.AbstractStorage;
 import java.util.ArrayList;
 import java.util.Collection;
 
+/**
+ * Defines the common process of validating a loaders data and creating an
+ * entity with it.
+ * Child builders can control how each specific entity is built.
+ *
+ * @param <T> The type of entity that this builder creates.
+ */
 public abstract class AbstractBuilder<T extends Entity> {
 
 	/**
