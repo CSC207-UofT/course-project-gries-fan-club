@@ -16,7 +16,7 @@ public class IngredientStorageImpl extends AbstractStorage<Ingredient> implement
 
 	@Override
 	public Collection<Ingredient> ingredients() {
-		return this.entities;
+		return this.entities.values();
 	}
 
 	@Override

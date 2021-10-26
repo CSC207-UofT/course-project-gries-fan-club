@@ -1,5 +1,6 @@
 package Entities.Builders;
 
+import Entities.Entity;
 import Loaders.Loader;
 import Loaders.Row;
 import Storages.Implementations.AbstractStorage;
@@ -7,7 +8,7 @@ import Storages.Implementations.AbstractStorage;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public abstract class AbstractBuilder<T> {
+public abstract class AbstractBuilder<T extends Entity> {
 
 	/**
 	 * Creates an entity from a given row.

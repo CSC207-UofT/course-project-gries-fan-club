@@ -5,9 +5,11 @@ import java.util.UUID;
 /**
  * A required entity was requested but not found.
  *
- * Note: this is not meant to indicate empty search results.
+ * Note, this is not meant to indicate empty search results.
  * Instead, it is used when attempting to load a specific entity which could
  * not be completed.
+ * If this is thrown but the entity requested was not required, simply drop
+ * this exception.
  */
 public class NoSuchEntity extends Exception {
 
