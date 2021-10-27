@@ -1,5 +1,6 @@
 package Loaders;
 
+import Loaders.Exceptions.NoSuchAttribute;
 import Loaders.Implementations.EmptyRow;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,7 +27,10 @@ public class EmptyRowTest {
 
 	@Test
 	public void testGet() {
-		Assertions.assertNull(this.row.get("attr", String.class));
+		Assertions.assertThrows(
+						NoSuchAttribute.class,
+						() -> this.row.get("test", String.class)
+		);
 	}
 
 }

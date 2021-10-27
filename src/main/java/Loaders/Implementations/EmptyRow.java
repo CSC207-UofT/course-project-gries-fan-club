@@ -1,5 +1,6 @@
 package Loaders.Implementations;
 
+import Loaders.Exceptions.NoSuchAttribute;
 import Loaders.Row;
 
 /**
@@ -20,7 +21,7 @@ public class EmptyRow implements Row {
 	}
 
 	@Override
-	public <T> T get(String attribute, Class<? extends T> type) {
-		return null;
+	public <T> T get(String attribute, Class<? extends T> type) throws NoSuchAttribute {
+		throw new NoSuchAttribute(attribute, type.toString());
 	}
 }

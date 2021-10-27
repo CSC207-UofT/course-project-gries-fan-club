@@ -1,5 +1,7 @@
 package Loaders;
 
+import Loaders.Exceptions.NoSuchAttribute;
+
 public interface Row {
 
 	/**
@@ -23,7 +25,9 @@ public interface Row {
 	 * @param type The class type for the attribute
 	 *
 	 * @return The attribute cast as type
+	 *
+	 * @throws NoSuchAttribute When the requested attribute could not be found.
 	 */
-	<T> T get(String attribute, Class<? extends T> type);
+	<T> T get(String attribute, Class<? extends T> type) throws NoSuchAttribute;
 
 }

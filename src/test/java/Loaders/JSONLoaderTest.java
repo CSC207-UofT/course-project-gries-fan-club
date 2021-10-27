@@ -1,5 +1,6 @@
 package Loaders;
 
+import Loaders.Exceptions.NoSuchAttribute;
 import Loaders.Implementations.JSONLoader;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -42,7 +43,7 @@ public class JSONLoaderTest {
 	}
 
 	@Test
-	public void testReadRow() {
+	public void testReadRow() throws NoSuchAttribute {
 		Row row1 = this.loader.readRow();
 		Assertions.assertEquals("test", row1.type());
 		Assertions.assertEquals(3, row1.get("value", Integer.class));
@@ -56,14 +57,14 @@ public class JSONLoaderTest {
 
 		JSONLoader nestedLoader = new JSONLoader(NESTED_SOURCE);
 		Row row4 = nestedLoader.readRow();
-		List extractedList = row4.get("values", List.class);
+		List<?> extractedList = row4.get("values", List.class);
 		Assertions.assertEquals(2, extractedList.size());
 		Assertions.assertEquals(4, extractedList.get(0));
 		Assertions.assertEquals(5, extractedList.get(1));
 	}
 
 	@Test
-	public void testResetRow() {
+	public void testResetRow() throws NoSuchAttribute {
 		Row row1 = this.loader.readRow();
 
 		this.loader.resetReader();
