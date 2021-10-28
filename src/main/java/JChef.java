@@ -1,4 +1,3 @@
-import Entities.Builders.IngredientBuilder;
 import Entities.Implementations.TagImpl;
 import Entities.Ingredient;
 import Loaders.Implementations.JSONLoader;
@@ -25,8 +24,9 @@ public class JChef {
         // Then we send them to the builders to fill storages.
         IngredientStorageImpl ingredientStorage = new IngredientStorageImpl();
 
-        IngredientBuilder ingredientBuilder = new IngredientBuilder();
-        ingredientBuilder.addTo(ingredientStorage, ingredientLoader);
+        // We are out growing out example.
+        // IngredientBuilder ingredientBuilder = new IngredientBuilder();
+        // ingredientBuilder.addTo(ingredientStorage, ingredientLoader);
 
         for(Ingredient i : ingredientStorage.ingredients()) {
             System.out.println(i);

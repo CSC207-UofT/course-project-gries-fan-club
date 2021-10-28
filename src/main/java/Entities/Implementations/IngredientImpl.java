@@ -10,7 +10,9 @@ public class IngredientImpl extends AbstractEntity implements Ingredient {
     private String name;
     private List<Tag> tags;
 
-    /** Implements an IngredientImpl with the given name and list of tags
+    /**
+     * Constructs an ingredient with a given ID.
+     *
      * @param id        The UUID of the Ingredient
      * @param name      The name of the ingredient
      * @param tags      The tags associated with the ingredient
@@ -21,11 +23,14 @@ public class IngredientImpl extends AbstractEntity implements Ingredient {
         this.tags = tags;
     }
 
-    /** Implements an IngredientImpl with the given name and list of tags
+    /**
+     * Constructs an ingredient and assigns it an ID.
+     *
      * @param name      The name of the ingredient
      * @param tags      The tags associated with the ingredient
      */
     public IngredientImpl(String name, List<Tag> tags) {
+        super();
         this.name = name;
         this.tags = tags;
     }
