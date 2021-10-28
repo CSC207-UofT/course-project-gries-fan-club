@@ -41,7 +41,7 @@ public class AbstractBuilderTest {
 	static class MockLoader implements Loader {
 		private int count = 0;
 
-		static Map<String, Object> attributes;
+		static final Map<String, Object> attributes;
 
 		static {
 			attributes = new HashMap<>();
