@@ -1,8 +1,6 @@
-package Entities;
+package Entities.Implementations;
 
-import Entities.Implementations.IngredientImpl;
-import Entities.Implementations.RecipeImpl;
-import Entities.Implementations.RecipeItemImpl;
+import Entities.RecipeItem;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -14,8 +14,6 @@ public class RecipeBuilder extends AbstractBuilder<Recipe> {
 
 	@Override
 	protected Recipe loadEntity(Row row) {
-		String name = row.get("name", String.class);
-		String description = row.get("description", String.class);
 		return null;
 	}
 
