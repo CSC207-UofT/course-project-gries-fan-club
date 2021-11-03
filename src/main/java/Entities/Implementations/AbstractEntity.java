@@ -34,4 +34,25 @@ public abstract class AbstractEntity implements Entity {
         return this.id;
     }
 
+    /**
+     * Compares equality of entities via their ID.
+     *
+     * This method does not care about whether entities refer to the same
+     * object, instead it is focused on the data it symbolizes.
+     * As such, entities only need to share an ID to be considered the same.
+     *
+     * @param other The object to compare to.
+     *
+     * @return Whether these objects refer to the same entity.
+     */
+    @Override
+    public boolean equals(Object other) {
+        if (other == null || getClass() != other.getClass()) {
+            return false;
+        }
+
+        AbstractEntity otherEntity = (AbstractEntity) other;
+        return this.id.equals(otherEntity.id());
+    }
+
 }
