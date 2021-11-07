@@ -10,8 +10,8 @@ package Entities.Exceptions;
  */
 public class InvalidRowShape extends Exception {
 
-	public InvalidRowShape(String message, Throwable cause) {
-		super(message, cause);
+	public InvalidRowShape(String desiredEntity, Throwable cause) {
+		super("The given row was not a valid " + desiredEntity, cause);
 	}
 
 }

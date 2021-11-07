@@ -24,6 +24,9 @@ public abstract class AbstractBuilder<T extends Entity> {
 	 * @param row The row representing the entity
 	 *
 	 * @return A constructed entity
+	 *
+	 * @throws InvalidRowShape If the provided row is invalid for the entity to
+	 * be constructed.
 	 */
 	protected abstract T loadEntity(Row row) throws InvalidRowShape;
 

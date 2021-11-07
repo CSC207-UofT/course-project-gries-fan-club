@@ -18,7 +18,7 @@ import java.util.UUID;
  * Defines the creation of ingredient entities.
  *
  * Rows for this builder require the shape (key: type [description]):
- *   - id: String
+ *   - id: String (must be a valid UUID)
  *   - name: String
  *   - tags: List<String> (represents the tags UUID)
  */
@@ -39,7 +39,7 @@ public class IngredientBuilder extends AbstractBuilder<Ingredient> {
 	 *
 	 * @param row The row representing the entity
 	 *
-	 * @return The build ingredient
+	 * @return The built ingredient
 	 */
 	@Override
 	protected Ingredient loadEntity(Row row) throws InvalidRowShape {
@@ -57,7 +57,7 @@ public class IngredientBuilder extends AbstractBuilder<Ingredient> {
 		} catch (NoSuchAttribute noSuchAttribute) {
 
 			// Rethrow the error as an invalid row error.
-			throw new InvalidRowShape("The given row is not a valid ingredient.", noSuchAttribute);
+			throw new InvalidRowShape("Ingredient", noSuchAttribute);
 
 		}
 
