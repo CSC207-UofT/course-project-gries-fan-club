@@ -1,4 +1,4 @@
-package Loaders;
+package Loaders.Implementaions;
 
 import Loaders.Exceptions.NoSuchAttribute;
 import Loaders.Implementations.EmptyRow;
@@ -30,6 +30,22 @@ public class EmptyRowTest {
 		Assertions.assertThrows(
 						NoSuchAttribute.class,
 						() -> this.row.get("test", String.class)
+		);
+	}
+
+	@Test
+	public void testGetAsList() {
+		Assertions.assertThrows(
+						NoSuchAttribute.class,
+						() -> this.row.getAsList("test", String.class)
+		);
+	}
+
+	@Test
+	public void testGetAsMap() {
+		Assertions.assertThrows(
+						NoSuchAttribute.class,
+						() -> this.row.getAsMap("test", String.class)
 		);
 	}
 
