@@ -1,7 +1,8 @@
-package Loaders;
+package Loaders.Implementaions;
 
 import Loaders.Exceptions.NoSuchAttribute;
 import Loaders.Implementations.JSONLoader;
+import Loaders.Row;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Assertions;
@@ -9,41 +10,58 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Map;
 
 public class JSONLoaderTest {
 
 	JSONLoader loader;
+	JSONLoader nestedLoader;
 
-	static final JSONObject ROW_1 = new JSONObject()
-					.put("type", "test")
-					.put("value", 3);
+	/**
+	 * Below are the JSON sources used in the class loaders.
+	 */
+	static final String SOURCE = """
+		[
+			{
+				"type": "test",
+				"value": 3
+			},
+			{
+				"type": "test",
+				"value": 4,
+			}
+		]
+	""";
 
-	static final JSONObject ROW_2 = new JSONObject()
-					.put("type", "test")
-					.put("value", 4);
+	static final String NESTED_SOURCE = """
+		[
+			{
+				"type": "test",
+				"values": [
+					4,
+					5
+				]
+			},
+			{
+				"type": "test",
+				"obj": {
+					"inner_value": 6
+				}
+			}
+		]
+	""";
 
-	static final JSONArray SOURCE = new JSONArray()
-					.put(ROW_1)
-					.put(ROW_2);
-
-	static final JSONArray VALUES = new JSONArray()
-					.put(4)
-					.put(5);
-
-	static final JSONObject NESTED_OBJECT = new JSONObject()
-					.put("type", "test")
-					.put("values", VALUES);
-
-	static final JSONArray NESTED_SOURCE = new JSONArray()
-					.put(NESTED_OBJECT);
 
 	@BeforeEach
 	public void setup() {
 		this.loader = new JSONLoader(SOURCE);
+		this.nestedLoader = new JSONLoader(NESTED_SOURCE);
 	}
 
 	@Test
 	public void testReadRow() throws NoSuchAttribute {
+
+		// Ensure the loader can construct rows from flat JSON objects.
 		Row row1 = this.loader.readRow();
 		Assertions.assertEquals("test", row1.type());
 		Assertions.assertEquals(3, row1.get("value", Integer.class));
@@ -55,12 +73,16 @@ public class JSONLoaderTest {
 		Row row3 = this.loader.readRow();
 		Assertions.assertTrue(row3.empty());
 
-		JSONLoader nestedLoader = new JSONLoader(NESTED_SOURCE);
-		Row row4 = nestedLoader.readRow();
-		List<?> extractedList = row4.get("values", List.class);
+		// Ensure that nested arrays and JSON objects are correctly loaded.
+		Row row4 = this.nestedLoader.readRow();
+		List<Integer> extractedList = row4.getAsList("values", Integer.class);
 		Assertions.assertEquals(2, extractedList.size());
 		Assertions.assertEquals(4, extractedList.get(0));
 		Assertions.assertEquals(5, extractedList.get(1));
+
+		Row row5 = this.nestedLoader.readRow();
+		Map<String, Integer> extractedMap = row5.getAsMap("obj", Integer.class);
+		Assertions.assertEquals(6, extractedMap.get("inner_value"));
 	}
 
 	@Test
