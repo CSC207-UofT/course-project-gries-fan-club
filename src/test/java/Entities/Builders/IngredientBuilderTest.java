@@ -13,10 +13,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class IngredientBuilderTest {
 
@@ -62,7 +59,9 @@ public class IngredientBuilderTest {
 		tagIDs.add(tag1.id().toString());
 		tagIDs.add(tag2.id().toString());
 
+		UUID ingredientID = UUID.randomUUID();
 		Map<String, Object> values1 = new HashMap<>();
+		values1.put("id", ingredientID.toString());
 		values1.put("name", "carrot");
 		values1.put("tags", tagIDs);
 
@@ -71,6 +70,8 @@ public class IngredientBuilderTest {
 		// Now use an Ingredient builder to create an ingredient.
 		Ingredient ingredient = this.builder.loadEntity(row);
 
+		// Ensure properties were correctly built.
+		Assertions.assertEquals(ingredientID, ingredient.id());
 		Assertions.assertEquals("carrot", ingredient.name());
 
 		// Ensure that tags were referenced properly from their IDs.

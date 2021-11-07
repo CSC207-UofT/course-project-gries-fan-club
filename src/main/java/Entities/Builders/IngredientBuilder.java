@@ -17,7 +17,8 @@ import java.util.UUID;
 /**
  * Defines the creation of ingredient entities.
  *
- * Rows for this builder require the shape (key: value type [description]):
+ * Rows for this builder require the shape (key: type [description]):
+ *   - id: String
  *   - name: String
  *   - tags: List<String> (represents the tags UUID)
  */
@@ -42,12 +43,14 @@ public class IngredientBuilder extends AbstractBuilder<Ingredient> {
 	 */
 	@Override
 	protected Ingredient loadEntity(Row row) throws InvalidRowShape {
+		String rawID;
 		String name;
 		List<?> tagIDs;
 
 		try {
 
 			// Attempt retrieval of required data.
+			rawID = row.get("id", String.class);
 			name = row.get("name", String.class);
 			tagIDs = row.get("tags", List.class);
 
@@ -61,16 +64,17 @@ public class IngredientBuilder extends AbstractBuilder<Ingredient> {
 		// Construct references from the tag ID's.
 		List<Tag> tags = new ArrayList<>();
 		for(Object idObject : tagIDs) {
-			String id = (String) idObject;
+			String tagID = (String) idObject;
 
 			Reference<Tag> reference = new Reference<>(
-							UUID.fromString(id),
+							UUID.fromString(tagID),
 							this.tagStorage
 			);
 			tags.add(new ReferencedTag(reference));
 		}
 
-		return new IngredientImpl(name, tags);
+		UUID id = UUID.fromString(rawID);
+		return new IngredientImpl(id, name, tags);
 	}
 
 	@Override
