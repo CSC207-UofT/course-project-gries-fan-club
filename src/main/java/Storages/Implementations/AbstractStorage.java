@@ -68,7 +68,7 @@ public abstract class AbstractStorage<T extends Entity> extends AbstractCollecti
 	 *
 	 * @param id The id of the entity to be checked.
 	 *
-	 * @return Whether or not the entity is in the storage.
+	 * @return Whether the entity is in the storage.
 	 */
 	public boolean contains(UUID id) { return this.entities.get(id.toString()) != null; }
 
@@ -77,7 +77,7 @@ public abstract class AbstractStorage<T extends Entity> extends AbstractCollecti
 	 *
 	 * @param id The id of the entity to be checked.
 	 *
-	 * @return Whether or not the entity was removed.
+	 * @return Whether the entity was removed.
 	 */
 	public boolean remove(UUID id) { return this.entities.remove(id.toString()) != null; }
 
