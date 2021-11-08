@@ -1,6 +1,5 @@
-package Entities;
+package Entities.Implementations;
 
-import Entities.Implementations.TagImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

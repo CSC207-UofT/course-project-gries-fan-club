@@ -45,6 +45,15 @@ public class Reference<T extends Entity> {
 	}
 
 	/**
+	 * Returns the pointed at ID.
+	 *
+	 * @return The ID.
+	 */
+	public UUID id() {
+		return this.id;
+	}
+
+	/**
 	 * Loads and / or returns the referenced entity.
 	 *
 	 * @return The referenced entity.

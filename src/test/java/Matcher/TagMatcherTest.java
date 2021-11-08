@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class TagMatcherTest {
@@ -37,7 +38,7 @@ public class TagMatcherTest {
         RecipeItemImpl item = new RecipeItemImpl(ingredient1, 15);
         List<RecipeItem> recipeItems = new ArrayList<>();
         recipeItems.add(item);
-        RecipeImpl recipe = new RecipeImpl("name", "description", "instructions", recipeItems);
+        RecipeImpl recipe = new RecipeImpl("name", "description", Collections.singletonList("instructions"), recipeItems);
 
         // Matcher
         TagMatcher matcher = new TagMatcher(tags);
@@ -62,7 +63,7 @@ public class TagMatcherTest {
         RecipeItemImpl item = new RecipeItemImpl(ingredient1, 15);
         List<RecipeItem> recipeItems = new ArrayList<>();
         recipeItems.add(item);
-        RecipeImpl recipe = new RecipeImpl("name", "description", "instructions", recipeItems);
+        RecipeImpl recipe = new RecipeImpl("name", "description", Collections.singletonList("instructions"), recipeItems);
 
         // Matcher
         TagMatcher matcher = new TagMatcher(tags);

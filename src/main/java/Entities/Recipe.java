@@ -30,5 +30,5 @@ public interface Recipe extends Entity {
      *
      * @return the instructions to make this recipe
      **/
-    String instructions();
+    List<String> instructions();
 }

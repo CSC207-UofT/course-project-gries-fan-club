@@ -1,9 +1,10 @@
 package Entities.Builders;
 
 import Entities.Entity;
+import Entities.Exceptions.InvalidRowShape;
 import Loaders.Loader;
 import Loaders.Row;
-import Storages.Implementations.AbstractStorage;
+import Storages.Storage;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -23,8 +24,11 @@ public abstract class AbstractBuilder<T extends Entity> {
 	 * @param row The row representing the entity
 	 *
 	 * @return A constructed entity
+	 *
+	 * @throws InvalidRowShape If the provided row is invalid for the entity to
+	 * be constructed.
 	 */
-	protected abstract T loadEntity(Row row);
+	protected abstract T loadEntity(Row row) throws InvalidRowShape;
 
 	/**
 	 * The type of entity this builder creates.
@@ -34,26 +38,37 @@ public abstract class AbstractBuilder<T extends Entity> {
 	public abstract String type();
 
 	/**
-	 * Loads all entities from a loader.
+	 * Attempts to load all entities from a loader.
+	 *
+	 * If a row is invalid no entity will be created and the row will be ignored.
 	 *
 	 * @param loader The loader to load from
 	 *
 	 * @return All loaded entities
 	 */
 	public Collection<T> loadFrom(Loader loader) {
-		// Ensure all data is loaded.
+		// Ensure all data will be loaded.
 		loader.resetReader();
 
 		Collection<T> entities = new ArrayList<>();
 
 		Row currentRow = loader.readRow();
 		while (!currentRow.empty()) {
+
 			if(!this.validType(currentRow)) {
 				// Only construct the valid type of entity.
+				currentRow = loader.readRow();
 				continue;
 			}
 
-			entities.add(this.loadEntity(currentRow));
+			// Try to construct the row into an entity.
+			try {
+
+				entities.add(this.loadEntity(currentRow));
+
+			} catch (InvalidRowShape invalidRowShape) {
+				invalidRowShape.printStackTrace();
+			}
 
 			currentRow = loader.readRow();
 		}
@@ -67,7 +82,7 @@ public abstract class AbstractBuilder<T extends Entity> {
 	 * @param storage The storage to fill
 	 * @param loader The loader to pull from
 	 */
-	public void addTo(AbstractStorage<T> storage, Loader loader) {
+	public void addTo(Storage<T> storage, Loader loader) {
 		if (!storage.type().equals(this.type())) {
 			// We can only add entities that this storage allows.
 			return;

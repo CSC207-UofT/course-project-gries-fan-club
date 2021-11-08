@@ -22,6 +22,17 @@ public class ReferenceTest {
 	}
 
 	/**
+	 * Ensure the ID is returned.
+	 */
+	@Test
+	public void testID() {
+		Tag tag = new TagImpl("test");
+		Reference<Tag> reference = new Reference<>(tag);
+
+		Assertions.assertEquals(tag.id(), reference.id());
+	}
+
+	/**
 	 * Ensures the get function returns the referenced entity.
 	 */
 	@Test
