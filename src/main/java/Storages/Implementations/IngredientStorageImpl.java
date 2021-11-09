@@ -21,7 +21,9 @@ public class IngredientStorageImpl extends AbstractStorage<Ingredient> implement
 
 	/**
 	 * Find the ingredients that contain the string given
+	 *
 	 * @param name The name or regex to match
+	 *
 	 * @return Collection of ingredients that match that name
 	 */
 	@Override
@@ -29,10 +31,11 @@ public class IngredientStorageImpl extends AbstractStorage<Ingredient> implement
 		Collection<Ingredient> found = new ArrayList<>();
 
 		for (Ingredient ingredient : this.ingredients()) {
-			if (ingredient.name().contains(name)) {
+			if (ingredient.name().matches(name)) {
 				found.add(ingredient);
 			}
 		}
+
 		// will return empty if there is nothing found
 		return found;
 	}
