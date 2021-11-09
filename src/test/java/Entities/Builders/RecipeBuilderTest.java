@@ -69,10 +69,10 @@ public class RecipeBuilderTest {
 						"Bake"
 		));
 		values.put("items", Map.of(
-						this.flour.id().toString(),
-						1.5,
-						this.water.id().toString(),
-						2.0
+						this.flour.id().toString(), 3.1
+		));
+		values.put("optionalItems", Map.of(
+						this.water.id().toString(), 4.2
 		));
 
 		Row row = new RowImpl("ingredient", values);
@@ -89,8 +89,9 @@ public class RecipeBuilderTest {
 		Assertions.assertEquals("Knead", instructions.get(1));
 		Assertions.assertEquals("Bake", instructions.get(2));
 
-		List<RecipeItem> items = recipe.items();
-		Assertions.assertEquals(2, items.size());
+		List<RecipeItem> recipeItems = recipe.items();
+		Collections.sort(recipeItems);
+		Assertions.assertEquals(2, recipeItems.size());
 		// @Todo, once the Recipe item int issue is fixed, finish this test.
 	}
 
