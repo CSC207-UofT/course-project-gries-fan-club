@@ -1,8 +1,9 @@
-package Entities;
+package Entities.Implementations;
 
-import EntityInterfaces.Ingredient;
+import Entities.Implementations.AbstractRecipeItem;
+import Entities.Ingredient;
 
-public class VolumetricRecipeItem extends AbstractRecipeItem{
+public class VolumetricRecipeItem extends AbstractRecipeItem {
 
     /**
      * Implement a ItemImpl, giving the ingredient,

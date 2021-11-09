@@ -1,6 +1,7 @@
 package Entities.Implementations;
 
 import Entities.RecipeItem;
+import Entities.Ingredient;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -35,16 +36,16 @@ public class RecipeTest {
 
     @Test
     public void testItems() {
-        IngredientImpl ingredient1 = new IngredientImpl("apple", Collections.emptyList());
-        RecipeItemImpl item1 = new RecipeItemImpl(ingredient1, 15);
+        Ingredient ingredient1 = new IngredientImpl("apple", Collections.emptyList());
+        QuantityRecipeItem item1 = new QuantityRecipeItem(ingredient1, 15f, false);
 
-        IngredientImpl ingredient2 = new IngredientImpl("cucumber", Collections.emptyList());
-        RecipeItemImpl item2 = new RecipeItemImpl(ingredient2, 1);
+        Ingredient ingredient2 = new IngredientImpl("cucumber", Collections.emptyList());
+        QuantityRecipeItem item2 = new QuantityRecipeItem(ingredient2, 1f, false);
 
 
         List<RecipeItem> recipeItems = new ArrayList<>();
-        recipeItems.add(item1);
-        recipeItems.add(item2);
+        recipeItems.add((RecipeItem) item1);
+        recipeItems.add((RecipeItem) item2);
 
         RecipeImpl recipe = new RecipeImpl("name", "description", Collections.singletonList("instructions"), recipeItems);
 
