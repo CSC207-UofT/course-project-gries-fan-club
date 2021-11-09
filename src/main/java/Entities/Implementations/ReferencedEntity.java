@@ -27,4 +27,16 @@ public abstract class ReferencedEntity<T extends Entity> implements Entity {
 		return this.entityReference.id();
 	}
 
+	/**
+	 * Here is a natural ordering for entities which is via their ID.
+	 *
+	 * @param other The other entity to compare to.
+	 *
+	 * @return The comparison of the entities IDs.
+	 */
+	@Override
+	public int compareTo(Entity other) {
+		return this.id().compareTo(other.id());
+	}
+
 }
