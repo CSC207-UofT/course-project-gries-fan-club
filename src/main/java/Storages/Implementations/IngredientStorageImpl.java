@@ -20,12 +20,20 @@ public class IngredientStorageImpl extends AbstractStorage<Ingredient> implement
 	}
 
 	@Override
-	public Collection<Ingredient> find(String name) {
-		return null;
+	public Collection<Ingredient> findByName(String name) {
+		//REGEXES to be added later
+		Collection<Ingredient> found = new ArrayList<>();
+
+		for (Ingredient ingredient : this.ingredients()) {
+			if (ingredient.name().contains(name))
+				found.add(ingredient);
+		}
+	return found;
 	}
 
 	@Override
-	public Collection<Ingredient> find(Collection<Tag> tags) {
+	public Collection<Ingredient> findByTags(Collection<Tag> tags) {
+
 		Collection<Ingredient> found = new ArrayList<>();
 
 		for (Tag tag: tags) {
