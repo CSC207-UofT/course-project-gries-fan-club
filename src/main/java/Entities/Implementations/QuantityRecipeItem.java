@@ -1,6 +1,7 @@
-package Entities;
+package Entities.Implementations;
 
-import EntityInterfaces.Ingredient;
+import Entities.Implementations.AbstractRecipeItem;
+import Entities.Ingredient;
 
 public class QuantityRecipeItem extends AbstractRecipeItem {
     /**
@@ -33,4 +34,5 @@ public class QuantityRecipeItem extends AbstractRecipeItem {
         }
         return stringquantity + this.ingredient.name();
     }
+
 }

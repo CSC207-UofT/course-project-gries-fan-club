@@ -1,8 +1,7 @@
 package Entities;
 
 import Entities.Implementations.IngredientImpl;
-import Entities.Implementations.RecipeItemImpl;
-import Entities.QuantityRecipeItem;
+import Entities.Implementations.VolumetricRecipeItem;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import java.util.Collections;

@@ -1,6 +1,6 @@
-package Entities;
+package Entities.Implementations;
 
-import EntityInterfaces.Ingredient;
+import Entities.Ingredient;
 import EntityInterfaces.RecipeItem;
 
 public abstract class AbstractRecipeItem implements RecipeItem {
@@ -14,8 +14,8 @@ public abstract class AbstractRecipeItem implements RecipeItem {
      * @param amount     The quantity of this ingredient
      */
     //public AbstractRecipeItem(Ingredient ingredient, float amount) {
-     //   this.ingredient = ingredient;
-       // this.amount = amount;
+    //   this.ingredient = ingredient;
+    // this.amount = amount;
     //}
     /** Implement a ItemImpl, giving the ingredient,
      * quantity of this ingredient, and if the ingredient is optional.
