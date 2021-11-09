@@ -29,6 +29,7 @@ import java.util.UUID;
  *   - instructions: List<String>
  *   - items: Map<String, Double> (Where the key is the UUID representation of
  *   		an Ingredient's ID, and the value is the quantity for the item)
+ *   - optionalItems: Map<String, Double> (This is the same as above)
  */
 public class RecipeBuilder extends AbstractBuilder<Recipe> {
 
@@ -45,7 +46,8 @@ public class RecipeBuilder extends AbstractBuilder<Recipe> {
 		String description;
 
 		List<String> instructions;
-		Map<String, Double> rawItems;
+		Map<String, Double> rawRequiredItems;
+		Map<String, Double> rawOptionalItems;
 
 		try {
 
@@ -54,7 +56,8 @@ public class RecipeBuilder extends AbstractBuilder<Recipe> {
 			description = row.get("description", String.class);
 
 			instructions = row.getAsList("instructions", String.class);
-			rawItems = row.getAsMap("items", Double.class);
+			rawRequiredItems = row.getAsMap("items", Double.class);
+			rawOptionalItems = row.getAsMap("optionalItems", Double.class);
 
 		} catch (NoSuchAttribute exception) {
 			throw new InvalidRowShape("Recipe", exception);
@@ -64,17 +67,23 @@ public class RecipeBuilder extends AbstractBuilder<Recipe> {
 		UUID id = UUID.fromString(rawID);
 
 		List<RecipeItem> items = new ArrayList<>();
-		for (String key : rawItems.keySet()) {
 
-			// Create a reference to the needed ingredients.
-			Reference<Ingredient> reference = new Reference<>(
+		// First add the required items.
+		for (String key : rawRequiredItems.keySet()) {
+			items.add(this.createItemWithReference(
 							UUID.fromString(key),
-							this.ingredientStorage
-			);
-			Ingredient ingredient = new ReferencedIngredient(reference);
+							rawRequiredItems.get(key).floatValue(),
+							false
+			));
+		}
 
-			// @Todo, why does this not take floats!?
-			items.add(new RecipeItemImpl(ingredient, rawItems.get(key).intValue()));
+		// Then add optional items.
+		for (String key : rawOptionalItems.keySet()) {
+			items.add(this.createItemWithReference(
+							UUID.fromString(key),
+							rawOptionalItems.get(key).floatValue(),
+							true
+			));
 		}
 
 		return new RecipeImpl(id, name, description, instructions, items);
@@ -83,6 +92,32 @@ public class RecipeBuilder extends AbstractBuilder<Recipe> {
 	@Override
 	public String type() {
 		return "recipe";
+	}
+
+	/**
+	 * Constructs a recipe item and ingredient reference.
+	 *
+	 * @param ingredientID The UUID of the ingredient the item references
+	 * @param quantity The quantity of the item
+	 * @param optional Whether this ingredient is optional
+	 *
+	 * @return The constructed recipe item
+	 */
+	private RecipeItem createItemWithReference(UUID ingredientID, float quantity, boolean optional) {
+
+		// Create a reference to the needed ingredients.
+		Reference<Ingredient> reference = new Reference<>(
+						ingredientID,
+						this.ingredientStorage
+		);
+		Ingredient ingredient = new ReferencedIngredient(reference);
+
+		// @Todo, why does this not take floats!?
+		return new RecipeItemImpl(
+						ingredient,
+						(int) quantity,
+						optional
+		);
 	}
 
 }
