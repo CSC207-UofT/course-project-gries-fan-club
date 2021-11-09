@@ -39,4 +39,19 @@ public class AbstractEntityTest {
         Assertions.assertEquals(obj2, obj);
         Assertions.assertNotEquals(obj3, obj);
     }
+
+    @Test
+    public void testCompareTo() {
+        UUID firstID = new UUID(0, 1);
+        UUID secondID = new UUID(-1, 0);
+        UUID thirdID = new UUID(3, 4);
+        EntityTester obj = new EntityTester(firstID);
+        EntityTester obj1 = new EntityTester(firstID);
+        EntityTester obj2 = new EntityTester(secondID);
+        EntityTester obj3 = new EntityTester(thirdID);
+
+        Assertions.assertEquals(0, obj.compareTo(obj1));
+        Assertions.assertEquals(1, obj.compareTo(obj2));
+        Assertions.assertEquals(-1, obj.compareTo(obj3));
+    }
 }
