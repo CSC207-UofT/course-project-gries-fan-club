@@ -25,4 +25,18 @@ public class AbstractEntityTest {
         EntityTester obj = new EntityTester(randomID);
         Assertions.assertEquals(randomID, obj.id());
     }
+
+    @Test
+    public void testEquals() {
+        UUID randomID = UUID.randomUUID();
+        UUID secondID = UUID.randomUUID();
+        EntityTester obj = new EntityTester(randomID);
+        EntityTester obj2 = new EntityTester(randomID);
+        EntityTester obj3 = new EntityTester(secondID);
+
+        Assertions.assertNotEquals(null, obj);
+        Assertions.assertEquals(obj, obj);
+        Assertions.assertEquals(obj2, obj);
+        Assertions.assertNotEquals(obj3, obj);
+    }
 }
