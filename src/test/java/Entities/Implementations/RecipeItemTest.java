@@ -10,8 +10,8 @@ public class RecipeItemTest {
     @Test
     public void testQuantity() {
         IngredientImpl ingredient = new IngredientImpl("apple", Collections.emptyList());
-        int quantity = 15;
-        RecipeItemImpl item = new RecipeItemImpl(ingredient, quantity);
+        float quantity = 15f;
+        QuantityRecipeItem item = new QuantityRecipeItem(ingredient, quantity, false);
 
         Assertions.assertEquals(15, item.quantity());
 
@@ -20,8 +20,8 @@ public class RecipeItemTest {
     @Test
     public void testOptional() {
         IngredientImpl ingredient = new IngredientImpl("apple", Collections.emptyList());
-        int quantity = 15;
-        RecipeItemImpl item = new RecipeItemImpl(ingredient, quantity, true);
+        float quantity = 15f;
+        QuantityRecipeItem item = new QuantityRecipeItem(ingredient, quantity, true);
 
         Assertions.assertTrue(item.optional());
     }
@@ -29,8 +29,8 @@ public class RecipeItemTest {
     @Test
     public void testIngredient() {
         IngredientImpl ingredient = new IngredientImpl("apple", Collections.emptyList());
-        int quantity = 15;
-        RecipeItemImpl item = new RecipeItemImpl(ingredient, quantity);
+        float quantity = 15f;
+        QuantityRecipeItem item = new QuantityRecipeItem(ingredient, quantity, true);
 
         Assertions.assertEquals(ingredient, item.ingredient());
     }

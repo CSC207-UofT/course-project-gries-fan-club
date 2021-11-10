@@ -9,28 +9,31 @@ import java.util.Collections;
 public class QuantityRecipeItemTest {
 
     @Test
-    public void testDisplayOneQuantity() {
-        IngredientImpl ingredient = new IngredientImpl("lemon", Collections.emptyList());
-        VolumetricRecipeItem quantiyitem = new VolumetricRecipeItem(ingredient, 1, false);
+    public void testDisplay() {
+       // tests quantity as 1 and no vowel
+        IngredientImpl ingredient1 = new IngredientImpl("lemon", Collections.emptyList());
+        VolumetricRecipeItem quantiyitem1 = new VolumetricRecipeItem(ingredient1, 1, false);
 
-        Assertions.assertEquals("1 lemon", quantiyitem.display());
+        Assertions.assertEquals("1 lemon", quantiyitem1.display());
 
-    }
 
-    @Test
-    public void testDisplaySmallQuantity() {
-        IngredientImpl ingredient = new IngredientImpl("lemon", Collections.emptyList());
-        VolumetricRecipeItem quantiyitem = new VolumetricRecipeItem(ingredient, 0.5f, false);
+        // tests quantity less than 1 and no vowel
+        IngredientImpl ingredient2 = new IngredientImpl("lemon", Collections.emptyList());
+        VolumetricRecipeItem quantiyitem2 = new VolumetricRecipeItem(ingredient2, 0.5f, false);
 
-        Assertions.assertEquals("0.5 of a lemon", quantiyitem.display());
+        Assertions.assertEquals("0.5 of a lemon", quantiyitem2.display());
 
-    }
+        // test quantity greater than 1 and no vowel
+        IngredientImpl ingredient3= new IngredientImpl("lemon", Collections.emptyList());
+        VolumetricRecipeItem quantiyitem3 = new VolumetricRecipeItem(ingredient3, 20, false);
 
-    @Test
-    public void testDisplayLargeQuantity() {
-        IngredientImpl ingredient = new IngredientImpl("lemon", Collections.emptyList());
-        VolumetricRecipeItem quantiyitem = new VolumetricRecipeItem(ingredient, 20, false);
+        Assertions.assertEquals("20 lemons", quantiyitem3.display());
 
-        Assertions.assertEquals("20 lemons", quantiyitem.display());
+        //test less than 1 with a vowel
+        IngredientImpl ingredient4= new IngredientImpl("apple", Collections.emptyList());
+        VolumetricRecipeItem quantiyitem4 = new VolumetricRecipeItem(ingredient4, 0.5f, false);
+
+        Assertions.assertEquals("0.5 of an apple", quantiyitem4.display());
+
     }
 }
