@@ -6,7 +6,7 @@ import java.util.UUID;
  *
  * Entities are defined by a unique ID and a type.
  */
-public interface Entity {
+public interface Entity extends Comparable<Entity> {
 
     /**
      * The ID of this entity.
