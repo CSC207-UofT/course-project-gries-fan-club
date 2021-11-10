@@ -4,6 +4,7 @@ import Entities.Recipe;
 import Entities.RecipeItem;
 import Entities.Tag;
 import Matchers.Matcher;
+import Matchers.QuantifiableMatch;
 import Storages.Implementations.RecipeStorageImpl;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import java.util.List;
 /**
  * Match recipes based on tags
  */
-public class TagMatcher implements Matcher<Recipe> {
+public class TagMatcher extends Matcher implements QuantifiableMatch {
     List<Tag> tags;
 
     public TagMatcher (List<Tag> tags) { this.tags = tags; }
@@ -37,18 +38,10 @@ public class TagMatcher implements Matcher<Recipe> {
     public double floatMatch(Recipe recipe) {
         List<Tag> recipeTags = recipe.tags();
         int counter = 0;
-        for (Tag tag: this.tags)
+        for (Tag tag : this.tags)
             if (recipeTags.contains(tag))
                 counter++;
-        return (double) counter/this.tags.size();
+        return (double) counter / this.tags.size();
     }
 
-    @Override
-    public List<Recipe> allMatches(List<Recipe> recipes) {
-        List<Recipe> matchedRecipes = new ArrayList<>();
-        for (Recipe recipe : recipes)
-            if (matches(recipe))
-                matchedRecipes.add(recipe);
-        return matchedRecipes;
-    }
 }

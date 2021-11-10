@@ -5,11 +5,12 @@ import Entities.Recipe;
 import Entities.RecipeItem;
 import Entities.Tag;
 import Matchers.Matcher;
+import Matchers.QuantifiableMatch;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class IngredientMatcher implements Matcher<Recipe> {
+public class IngredientMatcher extends Matcher implements QuantifiableMatch {
 
     List<Ingredient> ingredients;
 
@@ -42,19 +43,5 @@ public class IngredientMatcher implements Matcher<Recipe> {
             if (this.ingredients.contains(recipeItem.ingredient()))
                 counter++;
         return (double) counter/recipeItems.size();
-    }
-
-    /**
-     * Returns list of recipes for which you have ingredients
-     * @param recipes is a list of recipes
-     * @return list of recipes for which ingredients are had
-     */
-    @Override
-    public List<Recipe> allMatches(List<Recipe> recipes) {
-        List<Recipe> matchedRecipes = new ArrayList<>();
-        for (Recipe recipe : recipes)
-            if (matches(recipe))
-                matchedRecipes.add(recipe);
-        return matchedRecipes;
     }
 }
