@@ -61,7 +61,7 @@ public class TagMatcherTest {
         Entities.AbstractRecipeItem item = new Entities.AbstractRecipeItem(ingredient1, 15);
         List<RecipeItem> recipeItems = new ArrayList<>();
         recipeItems.add(item);
-        RecipeImpl recipe = new RecipeImpl("name", "description", "instructions", recipeItems);
+        RecipeImpl recipe = new RecipeImpl("name", "description", Collections.singletonList("instructions"), recipeItems);
 
         // Matcher
         TagMatcher matcher = new TagMatcher(tags);
