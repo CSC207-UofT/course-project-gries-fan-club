@@ -33,6 +33,7 @@ public class TagMatcher implements Matcher<Recipe> {
     /**
      * Returns the percentage of specified tags that a recipe has.
      */
+    @Override
     public double floatMatch(Recipe recipe) {
         List<Tag> recipeTags = recipe.tags();
         int counter = 0;
@@ -42,6 +43,7 @@ public class TagMatcher implements Matcher<Recipe> {
         return (double) counter/this.tags.size();
     }
 
+    @Override
     public List<Recipe> allMatches(List<Recipe> recipes) {
         List<Recipe> matchedRecipes = new ArrayList<>();
         for (Recipe recipe : recipes)
