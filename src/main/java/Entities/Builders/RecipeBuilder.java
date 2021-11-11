@@ -40,7 +40,7 @@ public class RecipeBuilder extends AbstractBuilder<Recipe> {
 	}
 
 	@Override
-	protected Recipe loadEntity(Row row) throws InvalidRowShape {
+	public Recipe loadEntity(Row row) throws InvalidRowShape {
 		String rawID;
 		String name;
 		String description;
