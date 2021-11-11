@@ -27,7 +27,7 @@ public class TagBuilder extends AbstractBuilder<Tag> {
 	 * @throws InvalidRowShape If either the name or ID is missing.
 	 */
 	@Override
-	protected Tag loadEntity(Row row) throws InvalidRowShape {
+	public Tag loadEntity(Row row) throws InvalidRowShape {
 
 		String rawID;
 		String name;
