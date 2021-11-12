@@ -1,6 +1,5 @@
 package Entities.Implementations;
 
-import Entities.Implementations.AbstractRecipeItem;
 import Entities.Ingredient;
 
 public class VolumetricRecipeItem extends AbstractRecipeItem {
@@ -18,9 +17,18 @@ public class VolumetricRecipeItem extends AbstractRecipeItem {
     }
 
     public String display(){
+        float tempQuantity = this.quantity();
+        String stringQuantity;
 
-        String stringquantity = Float.toString(this.quantity());
-        return stringquantity + "ml of" + this.ingredient();
+        // checks if the quantity ends in .0 or .00 (whole number)
+        if (this.quantity() % 1 == 0) {
+            // make it an int to remove the decimal
+            stringQuantity = Integer.toString((int) tempQuantity);
+        } else {
+            // Convert to a string for returning
+            stringQuantity = Float.toString(tempQuantity);
+        }
+        return stringQuantity + "ml of " + this.ingredient().name();
     }
 
 }

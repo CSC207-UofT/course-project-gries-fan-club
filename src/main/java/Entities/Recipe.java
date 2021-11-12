@@ -1,7 +1,5 @@
 package Entities;
 
-import Entities.Implementations.AbstractRecipeItem;
-
 import java.util.List;
 
 public interface Recipe extends Entity {
