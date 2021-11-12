@@ -1,10 +1,8 @@
 package Entities.Builders;
 
 import Entities.Exceptions.InvalidRowShape;
-import Entities.Implementations.QuantityRecipeItem;
 import Entities.Implementations.RecipeImpl;
-import Entities.Implementations.ReferencedIngredient;
-import Entities.Ingredient;
+import Entities.Implementations.ReferencedRecipeItem;
 import Entities.Recipe;
 import Entities.RecipeItem;
 import Entities.Reference.Reference;
@@ -14,7 +12,6 @@ import Storages.Storage;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -25,16 +22,14 @@ import java.util.UUID;
  *   - name: String
  *   - description: String
  *   - instructions: List<String>
- *   - items: Map<String, Double> (Where the key is the UUID representation of
- *   		an Ingredient's ID, and the value is the quantity for the item)
- *   - optionalItems: Map<String, Double> (This is the same as above)
+ *   - items: List<String> (Must represent the UUID of recipeItems)
  */
 public class RecipeBuilder extends AbstractBuilder<Recipe> {
 
-	private final Storage<Ingredient> ingredientStorage;
+	private final Storage<RecipeItem> itemStorage;
 
-	RecipeBuilder(Storage<Ingredient> ingredientStorage) {
-		this.ingredientStorage = ingredientStorage;
+	RecipeBuilder(Storage<RecipeItem> itemStorage) {
+		this.itemStorage = itemStorage;
 	}
 
 	@Override
@@ -44,8 +39,7 @@ public class RecipeBuilder extends AbstractBuilder<Recipe> {
 		String description;
 
 		List<String> instructions;
-		Map<String, Double> rawRequiredItems;
-		Map<String, Double> rawOptionalItems;
+		List<String> rawItems;
 
 		try {
 
@@ -54,8 +48,7 @@ public class RecipeBuilder extends AbstractBuilder<Recipe> {
 			description = row.get("description", String.class);
 
 			instructions = row.getAsList("instructions", String.class);
-			rawRequiredItems = row.getAsMap("items", Double.class);
-			rawOptionalItems = row.getAsMap("optionalItems", Double.class);
+			rawItems = row.getAsList("items", String.class);
 
 		} catch (NoSuchAttribute exception) {
 			throw new InvalidRowShape("Recipe", exception);
@@ -64,24 +57,11 @@ public class RecipeBuilder extends AbstractBuilder<Recipe> {
 		// Create needed objects' tp build our recipe.
 		UUID id = UUID.fromString(rawID);
 
+		// Create Recipe Item references.
 		List<RecipeItem> items = new ArrayList<>();
-
-		// First add the required items.
-		for (String key : rawRequiredItems.keySet()) {
-			items.add(this.createItemWithReference(
-							UUID.fromString(key),
-							rawRequiredItems.get(key).floatValue(),
-							false
-			));
-		}
-
-		// Then add optional items.
-		for (String key : rawOptionalItems.keySet()) {
-			items.add(this.createItemWithReference(
-							UUID.fromString(key),
-							rawOptionalItems.get(key).floatValue(),
-							true
-			));
+		for (String itemID : rawItems) {
+			Reference<RecipeItem> reference = new Reference<>(UUID.fromString(itemID), this.itemStorage);
+			items.add(new ReferencedRecipeItem(reference));
 		}
 
 		return new RecipeImpl(id, name, description, instructions, items);
@@ -90,28 +70,5 @@ public class RecipeBuilder extends AbstractBuilder<Recipe> {
 	@Override
 	public String type() {
 		return "recipe";
-	}
-
-	/**
-	 * Constructs a recipe item and ingredient reference.
-	 *
-	 * @param ingredientID The UUID of the ingredient the item references
-	 * @param quantity The quantity of the item
-	 * @param optional Whether this ingredient is optional
-	 *
-	 * @return The constructed recipe item
-	 */
-	private RecipeItem createItemWithReference(UUID ingredientID, float quantity, boolean optional) {
-
-		// Create a reference to the needed ingredients.
-		Reference<Ingredient> reference = new Reference<>(
-						ingredientID,
-						this.ingredientStorage
-		);
-
-		Ingredient ingredient = new ReferencedIngredient(reference);
-
-		// @TODO: Make this account for the item type.
-		return new QuantityRecipeItem(ingredient, quantity, optional);
 	}
 }
