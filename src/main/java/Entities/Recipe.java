@@ -1,8 +1,14 @@
 package Entities;
 
+import java.util.HashSet;
 import java.util.List;
 
 public interface Recipe extends Entity {
+
+    /**
+     * @return A set of all the tags that are contained in all the ingredients in a  single Recipe.
+     */
+    HashSet<Tag> recipetags();
 
     /**
      * Return the list of items needed to make this recipe
