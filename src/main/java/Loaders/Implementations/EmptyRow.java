@@ -3,6 +3,8 @@ package Loaders.Implementations;
 import Loaders.Exceptions.NoSuchAttribute;
 import Loaders.Row;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +23,11 @@ public class EmptyRow implements Row {
 	@Override
 	public boolean empty() {
 		return true;
+	}
+
+	@Override
+	public Collection<String> keySet() {
+		return Collections.emptyList();
 	}
 
 	@Override
