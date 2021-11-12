@@ -56,7 +56,7 @@ public class RecipeImpl extends AbstractEntity implements Recipe {
       HashSet<Tag> taglist = new HashSet<Tag>();
 
       for (RecipeItem item: this.items()) {
-          taglist.add((Tag) item.ingredient().tags());
+          taglist.addAll(item.ingredient().tags());
          }
       return taglist;
     }
