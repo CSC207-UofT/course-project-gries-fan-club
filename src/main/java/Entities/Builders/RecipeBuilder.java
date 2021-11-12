@@ -1,15 +1,13 @@
 package Entities.Builders;
 
 import Entities.Exceptions.InvalidRowShape;
+import Entities.Implementations.QuantityRecipeItem;
 import Entities.Implementations.RecipeImpl;
-import Entities.Implementations.RecipeItemImpl;
 import Entities.Implementations.ReferencedIngredient;
-import Entities.Implementations.ReferencedTag;
 import Entities.Ingredient;
 import Entities.Recipe;
 import Entities.RecipeItem;
 import Entities.Reference.Reference;
-import Entities.Tag;
 import Loaders.Exceptions.NoSuchAttribute;
 import Loaders.Row;
 import Storages.Storage;
@@ -110,14 +108,10 @@ public class RecipeBuilder extends AbstractBuilder<Recipe> {
 						ingredientID,
 						this.ingredientStorage
 		);
+
 		Ingredient ingredient = new ReferencedIngredient(reference);
 
-		// @Todo, why does this not take floats!?
-		return new RecipeItemImpl(
-						ingredient,
-						(int) quantity,
-						optional
-		);
+		// @TODO: Make this account for the item type.
+		return new QuantityRecipeItem(ingredient, quantity, optional);
 	}
-
 }

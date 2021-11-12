@@ -1,8 +1,8 @@
 package Matcher;
 
 import Entities.Implementations.IngredientImpl;
+import Entities.Implementations.QuantityRecipeItem;
 import Entities.Implementations.RecipeImpl;
-import Entities.Implementations.RecipeItemImpl;
 import Entities.Implementations.TagImpl;
 import Entities.RecipeItem;
 import Entities.Tag;
@@ -35,10 +35,10 @@ public class TagMatcherTest {
 
         // Recipe
         IngredientImpl ingredient1 = new IngredientImpl("bread", list);
-        RecipeItemImpl item = new RecipeItemImpl(ingredient1, 15);
+        RecipeItem item = new QuantityRecipeItem(ingredient1, 15, false);
         List<RecipeItem> recipeItems = new ArrayList<>();
         recipeItems.add(item);
-        RecipeImpl recipe = new RecipeImpl("name", "description", Collections.singletonList("instructions"), recipeItems);
+        RecipeImpl recipe = new RecipeImpl("name", "description", List.of("instructions"), recipeItems);
 
         // Matcher
         TagMatcher matcher = new TagMatcher(tags);
@@ -60,7 +60,7 @@ public class TagMatcherTest {
 
         // Recipe
         IngredientImpl ingredient1 = new IngredientImpl("bread", list);
-        RecipeItemImpl item = new RecipeItemImpl(ingredient1, 15);
+        RecipeItem item = new QuantityRecipeItem(ingredient1, 15, false);
         List<RecipeItem> recipeItems = new ArrayList<>();
         recipeItems.add(item);
         RecipeImpl recipe = new RecipeImpl("name", "description", Collections.singletonList("instructions"), recipeItems);

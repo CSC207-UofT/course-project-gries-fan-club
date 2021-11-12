@@ -1,13 +1,11 @@
 package Entities.Implementations;
 
 import Entities.Ingredient;
-import Entities.RecipeItem;
 import Entities.Reference.Reference;
 import Entities.Tag;
 import Storages.Exceptions.NoSuchEntity;
 
 import java.util.List;
-import java.util.UUID;
 
 public class ReferencedIngredient extends ReferencedEntity<Ingredient> implements Ingredient {
 
