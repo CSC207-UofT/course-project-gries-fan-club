@@ -1,27 +1,12 @@
 package UseCases;
 
-import Entities.Exceptions.InvalidRowShape;
+import Entities.*;
+import Entities.Implementations.*;
 import Entities.Implementations.IngredientImpl;
-import Entities.Implementations.RecipeImpl;
-import Entities.Ingredient;
-import Entities.Recipe;
-import Entities.RecipeItem;
-import Loaders.Implementations.RowImpl;
-import Loaders.Row;
-import Storages.Fridge;
-import Storages.Implementations.AbstractStorage;
-import Storages.IngredientStorage;
-import Storages.Storage;
-import org.junit.jupiter.api.Assertions;
-import Entities.Implementations.IngredientImpl;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import Entities.Ingredient;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class UseCaseTest {
@@ -30,14 +15,28 @@ public class UseCaseTest {
      */
     @Test
     public void testUseCase() {
-        //@Todo create Ingredient Storage
+        //@Todo create tags
+        TagImpl tag1 = new TagImpl("Gluten");
+        TagImpl tag2 = new TagImpl("Dairy");
+        TagImpl tag3 = new TagImpl("Non-Vegan");
+
+        List<Tag> list1 = new ArrayList<>();
+        list1.add(tag1);
+
+        List<Tag> list2 = new ArrayList<>();
+        list2.add(tag3);
+
+        List<Tag> list3 = new ArrayList<>();
+        list3.add(tag3);
+        list3.add(tag2);
+
         //@Todo creates ingredients
-        IngredientImpl ingredient1 = new IngredientImpl("flour", Collections.emptyList())
-        IngredientImpl ingredient2 = new IngredientImpl("egg", Collections.emptyList())
-        IngredientImpl ingredient3 = new IngredientImpl("oil", Collections.emptyList())
-        IngredientImpl ingredient4 = new IngredientImpl("chocolate chips", Collections.emptyList())
-        IngredientImpl ingredient5 = new IngredientImpl("water", Collections.emptyList())
-        IngredientImpl ingredient6 = new IngredientImpl("baking soda", Collections.emptyList())
+        IngredientImpl ingredient1 = new IngredientImpl("flour",list1);
+        IngredientImpl ingredient2 = new IngredientImpl("egg", list2);
+        IngredientImpl ingredient3 = new IngredientImpl("oil", Collections.emptyList());
+        IngredientImpl ingredient4 = new IngredientImpl("chocolate chips", list3);
+        IngredientImpl ingredient5 = new IngredientImpl("water", Collections.emptyList());
+        IngredientImpl ingredient6 = new IngredientImpl("baking soda", Collections.emptyList());
 
         //@Todo create Recipe Items for the recipe
         VolumetricRecipeItem item1 = new VolumetricRecipeItem(ingredient1, 250f, false);
@@ -64,17 +63,14 @@ public class UseCaseTest {
         RecipeImpl recipe2 = new RecipeImpl("Bread", "Yummy chocolate chip cookies, best in the world.", Collections.singletonList("instructions"), recipeItems2);
 
         //@Todo create fridge
-        Fridge fridge = new Fridge() {
-            @Override
-            public int hashCode() {
-                return super.hashCode();
-            }
-        };
+        ArrayList<Ingredient> fridge = new ArrayList<Ingredient>();
+
         // add the ingredients that the user has to the fridge
         fridge.add(ingredient1);
         fridge.add(ingredient2);
         fridge.add(ingredient3);
         fridge.add(ingredient4);
+        // The fridge now has 4 ingredients; flour, egg, oil, chocolate chips.
         //@Todo create the matcher and execute it.
 
     }
