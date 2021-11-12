@@ -2,6 +2,8 @@ package Entities.Implementations;
 
 import Entities.Ingredient;
 
+import java.util.UUID;
+
 public class QuantityRecipeItem extends AbstractRecipeItem {
     /**
      * Implements RecipeItem that is measured by whole units, giving the ingredient,
@@ -13,7 +15,10 @@ public class QuantityRecipeItem extends AbstractRecipeItem {
      */
     public QuantityRecipeItem(Ingredient ingredient, float amount, boolean optional) {
         super(ingredient, amount, optional);
+    }
 
+    public QuantityRecipeItem(UUID id, Ingredient ingredient, float amount, boolean optional) {
+        super(id, ingredient, amount, optional);
     }
 
     public String display() {
