@@ -1,11 +1,11 @@
 package Entities.Implementations;
 
 import Entities.Ingredient;
-import EntityInterfaces.RecipeItem;
+import Entities.RecipeItem;
 
-public abstract class AbstractRecipeItem implements RecipeItem {
-    private  Ingredient ingredient;
-    private float amount;
+public abstract class AbstractRecipeItem extends AbstractEntity implements RecipeItem {
+    private final Ingredient ingredient;
+    private final float amount;
     private boolean optional = false;
 
     /**
@@ -15,7 +15,7 @@ public abstract class AbstractRecipeItem implements RecipeItem {
      */
     public AbstractRecipeItem(Ingredient ingredient, float amount) {
        this.ingredient = ingredient;
-        this.amount = amount;
+       this.amount = amount;
     }
     /**
      * quantity of this ingredient, and if the ingredient is optional.

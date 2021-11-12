@@ -108,18 +108,10 @@ public class RecipeBuilder extends AbstractBuilder<Recipe> {
 						ingredientID,
 						this.ingredientStorage
 		);
+
 		Ingredient ingredient = new ReferencedIngredient(reference);
 
-			// @Todo, why does this not take floats!?
-			items.add((RecipeItem) new QuantityRecipeItem(ingredient, rawItems.get(key).floatValue(), false));
-		}
-
-		return new RecipeImpl(id, name, description, instructions, items);
+		// @TODO: Make this account for the item type.
+		return new QuantityRecipeItem(ingredient, quantity, optional);
 	}
-
-	@Override
-	public String type() {
-		return "recipe";
-	}
-
 }

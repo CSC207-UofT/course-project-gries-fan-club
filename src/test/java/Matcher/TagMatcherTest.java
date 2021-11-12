@@ -1,15 +1,17 @@
 package Matcher;
 
-import Entities.IngredientImpl;
-import Entities.RecipeImpl;
-import Entities.TagImpl;
-import EntityInterfaces.RecipeItem;
-import EntityInterfaces.Tag;
-import Matchers.TagMatcher;
+import Entities.Implementations.IngredientImpl;
+import Entities.Implementations.QuantityRecipeItem;
+import Entities.Implementations.RecipeImpl;
+import Entities.Implementations.TagImpl;
+import Entities.RecipeItem;
+import Entities.Tag;
+import Matchers.Implementations.TagMatcher;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class TagMatcherTest {
@@ -33,10 +35,10 @@ public class TagMatcherTest {
 
         // Recipe
         IngredientImpl ingredient1 = new IngredientImpl("bread", list);
-        Entities.AbstractRecipeItem item = new Entities.AbstractRecipeItem(ingredient1, 15);
+        RecipeItem item = new QuantityRecipeItem(ingredient1, 15, false);
         List<RecipeItem> recipeItems = new ArrayList<>();
         recipeItems.add(item);
-        RecipeImpl recipe = new RecipeImpl("name", "description", "instructions", recipeItems);
+        RecipeImpl recipe = new RecipeImpl("name", "description", List.of("instructions"), recipeItems);
 
         // Matcher
         TagMatcher matcher = new TagMatcher(tags);
@@ -58,7 +60,7 @@ public class TagMatcherTest {
 
         // Recipe
         IngredientImpl ingredient1 = new IngredientImpl("bread", list);
-        Entities.AbstractRecipeItem item = new Entities.AbstractRecipeItem(ingredient1, 15);
+        RecipeItem item = new QuantityRecipeItem(ingredient1, 15, false);
         List<RecipeItem> recipeItems = new ArrayList<>();
         recipeItems.add(item);
         RecipeImpl recipe = new RecipeImpl("name", "description", Collections.singletonList("instructions"), recipeItems);
