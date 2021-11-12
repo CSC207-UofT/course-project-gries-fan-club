@@ -77,7 +77,8 @@ public class AbstractStorageTest {
         Assertions.assertTrue(this.storage.contains(idTest));
     }
 
-    /** Test the remove method of AbstractStorage
+    /**
+     * Test the remove method of AbstractStorage
      */
     @Test
     public void testRemove() {
