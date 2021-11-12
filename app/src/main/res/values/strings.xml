@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">JChef</string>
+    <string name="edit_message">Welcome!</string>
+    <string name="button_send">Instructions</string>
+    <string name="fridge_send">View Fridge</string>
+    <string name="recipe_send">View Recipes</string>
+</resources>
