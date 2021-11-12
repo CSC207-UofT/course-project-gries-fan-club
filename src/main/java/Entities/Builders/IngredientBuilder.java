@@ -42,7 +42,7 @@ public class IngredientBuilder extends AbstractBuilder<Ingredient> {
 	 * @return The built ingredient
 	 */
 	@Override
-	protected Ingredient loadEntity(Row row) throws InvalidRowShape {
+	public Ingredient loadEntity(Row row) throws InvalidRowShape {
 		String rawID;
 		String name;
 		List<?> tagIDs;
