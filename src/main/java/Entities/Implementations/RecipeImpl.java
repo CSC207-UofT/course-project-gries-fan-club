@@ -2,8 +2,12 @@ package Entities.Implementations;
 
 import Entities.Recipe;
 import Entities.RecipeItem;
+import Entities.Tag;
+import java.util.HashSet;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 public class RecipeImpl extends AbstractEntity implements Recipe {
@@ -42,6 +46,19 @@ public class RecipeImpl extends AbstractEntity implements Recipe {
         this.description = description;
         this.instructions = instructions;
         this.recipeItems = recipeItems;
+    }
+
+    /**
+     * @return A set of all the tags that are contained in all the ingredients in a  single Recipe.
+     */
+
+    public HashSet<Tag> recipetags(){
+      HashSet<Tag> taglist = new HashSet<Tag>();
+
+      for (RecipeItem item: this.items()) {
+          taglist.addAll(item.ingredient().tags());
+         }
+      return taglist;
     }
 
     /**
