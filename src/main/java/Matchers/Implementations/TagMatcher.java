@@ -4,6 +4,7 @@ import Entities.Recipe;
 import Entities.Tag;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Match recipes based on tags
@@ -11,7 +12,9 @@ import java.util.List;
 public class TagMatcher extends AbstractMatcher {
     List<Tag> tags;
 
-    public TagMatcher (List<Tag> tags) { this.tags = tags; }
+    public TagMatcher (List<Tag> tags) {
+        this.tags = tags;
+    }
 
     /**
      * Checks if item/ingredient contains any of the tags in the matcher/
@@ -19,11 +22,15 @@ public class TagMatcher extends AbstractMatcher {
      */
     @Override
     public boolean matches(Recipe recipe) {
-        List<Tag> recipeTags = recipe.tags();
-        for (Tag tag: this.tags)
-            if (recipeTags.contains(tag))
-                    return true;
-        return false;
+        Set<Tag> recipeTags = recipe.tags();
+
+        for (Tag tag : this.tags) {
+            if (!recipeTags.contains(tag)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /**
@@ -31,11 +38,15 @@ public class TagMatcher extends AbstractMatcher {
      */
     @Override
     public double floatMatch(Recipe recipe) {
-        List<Tag> recipeTags = recipe.tags();
+        Set<Tag> recipeTags = recipe.tags();
         int counter = 0;
-        for (Tag tag : this.tags)
-            if (recipeTags.contains(tag))
+
+        for (Tag tag : this.tags) {
+            if (recipeTags.contains(tag)) {
                 counter++;
+            }
+        }
+
         return (double) counter / this.tags.size();
     }
 
