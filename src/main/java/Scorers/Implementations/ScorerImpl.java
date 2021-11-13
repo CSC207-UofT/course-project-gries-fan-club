@@ -1,7 +1,8 @@
 package Scorers.Implementations;
+
 import Entities.Ingredient;
-import Entities.Tag;
 import Entities.Recipe;
+import Entities.Tag;
 import Matchers.Implementations.IngredientMatcher;
 import Matchers.Implementations.TagMatcher;
 import Scorers.Scorer;
