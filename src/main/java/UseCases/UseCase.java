@@ -8,6 +8,6 @@ import java.util.List;
  *
  */
 public interface UseCase {
-    Response run(Command command);
+    ResponseImpl run(Command command);
 }
 

@@ -39,8 +39,8 @@ public class TagMatcher implements Matcher {
     }
 
     @Override
-    public boolean allMatches(RecipeStorageImpl storage) {
-        return true;
+    public List<Recipe> allMatches(RecipeStorageImpl storage) {
+        return null;
     }
 
 }
