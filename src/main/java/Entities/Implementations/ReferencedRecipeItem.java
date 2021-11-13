@@ -49,4 +49,13 @@ public class ReferencedRecipeItem extends ReferencedEntity<RecipeItem> implement
 			return this.entityReference.id().toString();
 		}
 	}
+
+	@Override
+	public String serializeTypeCode() {
+		try {
+			return this.entityReference.get().serializeTypeCode();
+		} catch (NoSuchEntity noSuchEntity) {
+			return "";
+		}
+	}
 }

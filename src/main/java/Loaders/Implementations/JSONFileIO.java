@@ -23,6 +23,10 @@ public class JSONFileIO implements Loader, RowWriter {
 	private final JSONArray source;
 	private int index = 0;
 
+	public JSONFileIO() {
+		this("");
+	}
+
 	/**
 	 * Constructs a loader from predefined JSON objects.
 	 *

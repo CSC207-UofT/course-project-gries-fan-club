@@ -54,4 +54,8 @@ public class QuantityRecipeItem extends AbstractRecipeItem {
         return stringQuantity + " " + this.ingredient().name();
     }
 
+    @Override
+    public String serializeTypeCode() {
+        return "q";
+    }
 }
