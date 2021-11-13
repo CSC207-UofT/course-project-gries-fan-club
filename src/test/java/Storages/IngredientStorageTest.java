@@ -41,10 +41,8 @@ public class IngredientStorageTest {
      */
     @Test
     public void testFindByName() {
-        Collection<IngredientImpl> correctIngredients = new ArrayList<>();
-        correctIngredients.add(this.ingredient1);
-        correctIngredients.add(this.ingredient2);
-        Assertions.assertEquals(this.ingredientStorage.findByName("ingredient1"), correctIngredients);
+        Assertions.assertTrue(this.ingredientStorage.findByName("ingredient1").contains(this.ingredient1));
+        Assertions.assertTrue(this.ingredientStorage.findByName("ingredient1").contains(this.ingredient2));
     }
 
     /**
@@ -65,11 +63,6 @@ public class IngredientStorageTest {
      */
     @Test
     public void testIngredients() {
-        Collection<IngredientImpl> correctIngredients = new ArrayList<>();
-        correctIngredients.add(this.ingredient1);
-        correctIngredients.add(this.ingredient2);
-        correctIngredients.add(this.ingredient3);
-
         // Check if all three ingredients are in the colleciton and that the collection only has a size of 3
         Assertions.assertTrue(this.ingredientStorage.ingredients().contains(this.ingredient1));
         Assertions.assertTrue(this.ingredientStorage.ingredients().contains(this.ingredient2));
