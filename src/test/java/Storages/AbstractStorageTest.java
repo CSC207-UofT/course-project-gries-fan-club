@@ -8,6 +8,7 @@ import Entities.Ingredient;
 import Entities.Tag;
 import Storages.Exceptions.NoSuchEntity;
 import Storages.Implementations.AbstractStorage;
+import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -35,7 +36,6 @@ public class AbstractStorageTest {
             super(id);
         }
     }
-
 
     /**
      * Populate the storage so we can test it
@@ -77,6 +77,8 @@ public class AbstractStorageTest {
         Assertions.assertTrue(this.storage.contains(idTest));
     }
 
+    /** Test the remove method of AbstractStorage
+     */
     @Test
     public void testRemove() {
         UUID idTest = UUID.randomUUID();

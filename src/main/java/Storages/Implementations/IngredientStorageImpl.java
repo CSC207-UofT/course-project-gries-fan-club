@@ -19,16 +19,22 @@ public class IngredientStorageImpl extends AbstractStorage<Ingredient> implement
 		return this.entities.values();
 	}
 
+	/**
+	 * Find the ingredients that contain the string given
+	 * @param name The name or regex to match
+	 * @return Collection of ingredients that match that name
+	 */
 	@Override
 	public Collection<Ingredient> findByName(String name) {
-		//REGEXES to be added later
 		Collection<Ingredient> found = new ArrayList<>();
 
 		for (Ingredient ingredient : this.ingredients()) {
-			if (ingredient.name().contains(name))
+			if (ingredient.name().contains(name)) {
 				found.add(ingredient);
+			}
 		}
-	return found;
+		// will return empty if there is nothing found
+		return found;
 	}
 
 	@Override
