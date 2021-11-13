@@ -17,7 +17,7 @@ public class RecipeTest {
     RecipeImpl recipe;
 
     @BeforeEach
-    public void setup() {
+    public  void setup() {
         this.recipe = new RecipeImpl("name", "description", Collections.singletonList("instructions"), Collections.emptyList());
     }
 
@@ -45,15 +45,17 @@ public class RecipeTest {
         QuantityRecipeItem item2 = new QuantityRecipeItem(ingredient2, 1f, false);
 
 
-        List<RecipeItem> recipeItems = new ArrayList<>();
-        recipeItems.add((RecipeItem) item1);
-        recipeItems.add((RecipeItem) item2);
+        List<RecipeItem> recipeItems = List.of(
+                item1,
+                item2
+        );
 
         RecipeImpl recipe = new RecipeImpl("name", "description", Collections.singletonList("instructions"), recipeItems);
 
         Assertions.assertEquals(recipeItems, recipe.items());
         Assertions.assertEquals(recipeItems.size(), recipe.items().size());
     }
+
     @Test
     public void testTags() {
 

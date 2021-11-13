@@ -2,16 +2,15 @@ package Loaders.Implementations;
 
 import Loaders.Loader;
 import Loaders.Row;
+import Loaders.RowWriter;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Loads data from JSON format.
@@ -19,7 +18,7 @@ import java.util.Map;
  * This loader requires source data to be an array of JSON objects.
  * Each of these objects must have a key 'type' associated with a string value.
  */
-public class JSONLoader implements Loader {
+public class JSONFileIO implements Loader, RowWriter {
 
 	private final JSONArray source;
 	private int index = 0;
@@ -29,7 +28,7 @@ public class JSONLoader implements Loader {
 	 *
 	 * @param source The JSON source, must be an array.
 	 */
-	public JSONLoader(JSONArray source) {
+	public JSONFileIO(JSONArray source) {
 		this.source = source;
 	}
 
@@ -38,7 +37,7 @@ public class JSONLoader implements Loader {
 	 *
 	 * @param source A string representing a JSON array.
 	 */
-	public JSONLoader(String source) {
+	public JSONFileIO(String source) {
 		this.source = new JSONArray(source);
 	}
 
@@ -47,9 +46,8 @@ public class JSONLoader implements Loader {
 	 *
 	 * @param sourceFilePath The path of the file to read.
 	 *
-	 * @throws IOException When the given path is invalid / unreadable.
 	 */
-	public JSONLoader(Path sourceFilePath) throws IOException {
+	public JSONFileIO(Path sourceFilePath) throws IOException {
 		this(Files.readString(sourceFilePath));
 	}
 
@@ -92,6 +90,25 @@ public class JSONLoader implements Loader {
 	@Override
 	public void resetReader() {
 		this.index = 0;
+	}
+
+	@Override
+	public void save(Collection<Row> rows, Writer toWrite) throws Exception {
+		JSONArray sourceToSave = new JSONArray();
+
+		// Transform the rows into JSON objects.
+		for (Row row : rows) {
+			JSONObject object = new JSONObject();
+			object.put("type", row.type());
+
+			for (String key : row.keySet()) {
+				object.put(key, row.get(key, Object.class));
+			}
+
+			sourceToSave.put(object);
+		}
+
+		sourceToSave.write(toWrite, 2, 0);
 	}
 
 	/**
@@ -165,7 +182,7 @@ public class JSONLoader implements Loader {
 	/**
 	 * Converts a JSON object into a Map of Strings to Objects.
 	 *
-	 * @see JSONLoader#convertToNativeArray(JSONArray), for details on de-JSONing data objects.
+	 * @see JSONFileIO#convertToNativeArray(JSONArray), for details on de-JSONing data objects.
 	 *
 	 * This will keep the same key structure as the JSONObject coming in but will
 	 * place it into a Map instead.
