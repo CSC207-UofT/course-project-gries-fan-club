@@ -17,7 +17,7 @@ public class RecipeTest {
     RecipeImpl recipe;
 
     @BeforeEach
-    public  void setup() {
+    public void setup() {
         this.recipe = new RecipeImpl("name", "description", Collections.singletonList("instructions"), Collections.emptyList());
     }
 
