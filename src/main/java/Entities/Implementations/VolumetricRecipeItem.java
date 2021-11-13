@@ -2,6 +2,8 @@ package Entities.Implementations;
 
 import Entities.Ingredient;
 
+import java.util.UUID;
+
 public class VolumetricRecipeItem extends AbstractRecipeItem {
 
     /**
@@ -14,6 +16,10 @@ public class VolumetricRecipeItem extends AbstractRecipeItem {
      */
     public VolumetricRecipeItem(Ingredient ingredient, float amount, boolean optional) {
         super(ingredient, amount, optional);
+    }
+
+    public VolumetricRecipeItem(UUID id, Ingredient ingredient, float amount, boolean optional) {
+        super(id, ingredient, amount, optional);
     }
 
     public String display(){
