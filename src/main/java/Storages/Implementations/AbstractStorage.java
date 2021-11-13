@@ -62,4 +62,27 @@ public abstract class AbstractStorage<T extends Entity> extends AbstractCollecti
 	public boolean add(T entity) {
 		return this.entities.put(entity.id().toString(), entity) != null;
 	}
+
+	/**
+	 * Checks to see if the given entity is in the storage.
+	 *
+	 * @param id The id of the entity to be checked.
+	 *
+	 * @return Whether the entity is in the storage.
+	 */
+	public boolean contains(UUID id) {
+		return this.entities.get(id.toString()) != null;
+	}
+
+	/**
+	 * Removes given entity from the storage.
+	 *
+	 * @param id The id of the entity to be checked.
+	 *
+	 * @return Whether the entity was removed.
+	 */
+	public boolean remove(UUID id) {
+		return this.entities.remove(id.toString()) != null;
+	}
+
 }
