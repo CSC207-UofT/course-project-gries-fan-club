@@ -1,11 +1,8 @@
 package Commands;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public interface Command {
-    /**
-     * Returns a list of arguments based on the arguments in the command
-     * @return List of arguments
-     */
-    List<String> arguments();
-}
+public interface Command extends Map<String, String> { }
+

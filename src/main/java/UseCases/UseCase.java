@@ -1,4 +1,6 @@
 package UseCases;
+import Commands.Command;
+
 import java.util.List;
 
 /**
@@ -6,11 +8,6 @@ import java.util.List;
  *
  */
 public interface UseCase {
-    /**
-     *
-     * @return List containing the matched recipes
-     */
-     List<String> result();
-
+    Response run(Command command);
 }
 
