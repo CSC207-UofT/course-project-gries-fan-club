@@ -31,7 +31,7 @@ public class IngredientStorageImpl extends AbstractStorage<Ingredient> implement
 		Collection<Ingredient> found = new ArrayList<>();
 
 		for (Ingredient ingredient : this.ingredients()) {
-			if (ingredient.name().matches(name)) {
+			if (ingredient.name().contains(name)) {
 				found.add(ingredient);
 			}
 		}
@@ -46,11 +46,13 @@ public class IngredientStorageImpl extends AbstractStorage<Ingredient> implement
 		Collection<Ingredient> found = new ArrayList<>();
 
 		for (Tag tag: tags) {
+
 			for (Ingredient ingredient : this.ingredients()) {
 				if (ingredient.has(tag)) {
 					found.add(ingredient);
 				}
 			}
+
 		}
 
 		return found;

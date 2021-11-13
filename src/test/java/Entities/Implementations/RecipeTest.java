@@ -1,7 +1,7 @@
 package Entities.Implementations;
 
-import Entities.RecipeItem;
 import Entities.Ingredient;
+import Entities.RecipeItem;
 import Entities.Tag;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -55,7 +55,7 @@ public class RecipeTest {
         Assertions.assertEquals(recipeItems.size(), recipe.items().size());
     }
     @Test
-    public void testRecipetags() {
+    public void testTags() {
 
         TagImpl tag1 = new TagImpl("Gluten");
         TagImpl tag2 = new TagImpl("Dairy");
@@ -100,7 +100,7 @@ public class RecipeTest {
         tags.add(tag3);
         tags.add(tag2);
 
-        Assertions.assertEquals(recipe.recipetags(), tags);
+        Assertions.assertEquals(recipe.tags(), tags);
     }
 
 
