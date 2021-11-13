@@ -15,9 +15,9 @@ public class CommandImpl implements Command {
     }
 
     public void add_tags(String tagsString) {
-        String newString = tagsString;
+        String newString = tagsString.replace("Tags ", "");
         // remove the tags keyword and then put the rest inside the data
-        newString.replace("Tags", "");
+        newString = newString.replace("Tags ", "");
         data.put("Tags", newString);
     }
 
