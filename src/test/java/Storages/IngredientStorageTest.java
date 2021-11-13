@@ -63,7 +63,7 @@ public class IngredientStorageTest {
      */
     @Test
     public void testIngredients() {
-        // Check if all three ingredients are in the colleciton and that the collection only has a size of 3
+        // Check if all three ingredients are in the collection and that the collection only has a size of 3
         Assertions.assertTrue(this.ingredientStorage.ingredients().contains(this.ingredient1));
         Assertions.assertTrue(this.ingredientStorage.ingredients().contains(this.ingredient2));
         Assertions.assertTrue(this.ingredientStorage.ingredients().contains(this.ingredient3));
