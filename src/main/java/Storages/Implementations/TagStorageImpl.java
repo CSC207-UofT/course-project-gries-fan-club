@@ -24,11 +24,11 @@ public class TagStorageImpl extends AbstractStorage<Tag> implements TagStorage {
 
     @Override
     public Collection<Tag> findByName(String name) {
-        //Regexes to be added later
         Collection<Tag> found = new ArrayList<>();
         for (Tag tag : this.tags()) {
-            if (tag.name().contains(name))
+            if (tag.name().contains(name)) {
                 found.add(tag);
+            }
         }
         return found;
     }
