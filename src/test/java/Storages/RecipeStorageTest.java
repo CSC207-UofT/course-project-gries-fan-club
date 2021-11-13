@@ -1,6 +1,9 @@
 package Storages;
 
-import Entities.Implementations.*;
+import Entities.Implementations.IngredientImpl;
+import Entities.Implementations.RecipeImpl;
+import Entities.Implementations.TagImpl;
+import Entities.Implementations.VolumetricRecipeItem;
 import Entities.RecipeItem;
 import Entities.Tag;
 import Storages.Implementations.RecipeStorageImpl;

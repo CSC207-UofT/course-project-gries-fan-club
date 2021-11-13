@@ -1,16 +1,10 @@
 package Storages.Implementations;
 
-import Entities.Ingredient;
-import Entities.Recipe;
-import Entities.RecipeItem;
 import Entities.Tag;
-import Matchers.Implementations.TagMatcher;
-import Storages.RecipeStorage;
 import Storages.TagStorage;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 public class TagStorageImpl extends AbstractStorage<Tag> implements TagStorage {
 

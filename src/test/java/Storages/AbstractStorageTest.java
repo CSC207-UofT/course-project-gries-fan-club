@@ -1,39 +1,37 @@
 package Storages;
-import Entities.Builders.IngredientBuilder;
-import Entities.Builders.IngredientBuilderTest;
-import Entities.Entity;
+
 import Entities.Implementations.AbstractEntity;
-import Entities.Implementations.IngredientImpl;
-import Entities.Ingredient;
-import Entities.Tag;
 import Storages.Exceptions.NoSuchEntity;
 import Storages.Implementations.AbstractStorage;
-import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Collections;
 import java.util.UUID;
 
 public class AbstractStorageTest {
-    AbstractStorage storage;
+    MockStorage storage;
     UUID testID = UUID.randomUUID();
     UUID testID2 = UUID.randomUUID();
-    AbstractEntity entity1;
+    MockEntity entity1;
+    MockEntity entity2;
+
+    /**
+     * A mock entity class.
+     */
+    static class MockEntity extends AbstractEntity {
+        public MockEntity(UUID id) {
+            super(id);
+        }
+    }
 
     /**
      * A mock storage for testing.
      */
-    static class MockStorage extends AbstractStorage<Ingredient> {
+    static class MockStorage extends AbstractStorage<MockEntity> {
         @Override
         public String type() {
             return "Storage";
-        }
-    }
-    static class MockEntity extends AbstractEntity {
-        public MockEntity(UUID id) {
-            super(id);
         }
     }
 
@@ -44,7 +42,7 @@ public class AbstractStorageTest {
     public void setUp() {
         this.storage = new MockStorage();
         this.entity1 = new MockEntity(testID);
-        AbstractEntity entity2 = new MockEntity(UUID.randomUUID());
+        this.entity2 = new MockEntity(UUID.randomUUID());
         this.storage.add(entity1);
         this.storage.add(entity2);
     }
@@ -71,9 +69,8 @@ public class AbstractStorageTest {
     @Test
     public void testAdd() {
         UUID idTest = UUID.randomUUID();
-        AbstractStorage testStorage = this.storage;
-        AbstractEntity entity3 = new MockEntity(idTest);
-        testStorage.add(entity3);
+        MockEntity entity3 = new MockEntity(idTest);
+        this.storage.add(entity3);
         Assertions.assertTrue(this.storage.contains(idTest));
     }
 
@@ -83,12 +80,14 @@ public class AbstractStorageTest {
     @Test
     public void testRemove() {
         UUID idTest = UUID.randomUUID();
-        AbstractStorage testStorage = this.storage;
-        AbstractEntity entity4 = new MockEntity(idTest);
-        testStorage.add(entity4);
+
+        MockEntity entity4 = new MockEntity(idTest);
+
+        this.storage.add(entity4);
         Assertions.assertTrue(this.storage.contains(idTest));
+
         // now testing the removal of entity 4
-        testStorage.remove(entity4);
+        this.storage.remove(entity4);
         Assertions.assertFalse(this.storage.contains(idTest));
     }
 }

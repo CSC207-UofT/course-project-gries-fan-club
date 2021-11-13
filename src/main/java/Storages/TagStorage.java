@@ -1,12 +1,8 @@
 package Storages;
 
-import Entities.Entity;
-import Entities.Ingredient;
-import Entities.Recipe;
 import Entities.Tag;
 
 import java.util.Collection;
-import java.util.List;
 
 public interface TagStorage extends Storage<Tag> {
 

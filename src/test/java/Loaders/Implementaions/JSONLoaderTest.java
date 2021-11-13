@@ -3,8 +3,6 @@ package Loaders.Implementaions;
 import Loaders.Exceptions.NoSuchAttribute;
 import Loaders.Implementations.JSONLoader;
 import Loaders.Row;
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
