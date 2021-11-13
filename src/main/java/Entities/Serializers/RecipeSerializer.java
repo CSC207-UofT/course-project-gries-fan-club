@@ -14,7 +14,7 @@ public class RecipeSerializer extends AbstractSerializer<Recipe> {
 	@Override
 	public Row serializeEntity(Recipe entity) {
 		return new RowImpl("recipe", Map.of(
-						"id", entity.id(),
+						"id", entity.id().toString(),
 						"name", entity.name(),
 						"description", entity.description(),
 						"instructions", entity.instructions(),
