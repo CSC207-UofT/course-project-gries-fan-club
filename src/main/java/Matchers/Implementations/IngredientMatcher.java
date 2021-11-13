@@ -3,14 +3,10 @@ package Matchers.Implementations;
 import Entities.Ingredient;
 import Entities.Recipe;
 import Entities.RecipeItem;
-import Entities.Tag;
-import Matchers.Matcher;
-import Matchers.QuantifiableMatch;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class IngredientMatcher extends Matcher implements QuantifiableMatch {
+public class IngredientMatcher extends AbstractMatcher {
 
     List<Ingredient> ingredients;
 

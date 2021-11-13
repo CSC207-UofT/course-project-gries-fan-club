@@ -1,19 +1,14 @@
 package Matchers.Implementations;
 
 import Entities.Recipe;
-import Entities.RecipeItem;
 import Entities.Tag;
-import Matchers.Matcher;
-import Matchers.QuantifiableMatch;
-import Storages.Implementations.RecipeStorageImpl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Match recipes based on tags
  */
-public class TagMatcher extends Matcher implements QuantifiableMatch {
+public class TagMatcher extends AbstractMatcher {
     List<Tag> tags;
 
     public TagMatcher (List<Tag> tags) { this.tags = tags; }

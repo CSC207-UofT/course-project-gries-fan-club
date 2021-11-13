@@ -40,7 +40,7 @@ public class TagMatcherTest {
         recipeItems.add(item);
         RecipeImpl recipe = new RecipeImpl("name", "description", List.of("instructions"), recipeItems);
 
-        // Matcher
+        // AbstractMatcher
         TagMatcher matcher = new TagMatcher(tags);
         Assertions.assertTrue(matcher.matches(recipe));
     }
@@ -65,7 +65,7 @@ public class TagMatcherTest {
         recipeItems.add(item);
         RecipeImpl recipe = new RecipeImpl("name", "description", Collections.singletonList("instructions"), recipeItems);
 
-        // Matcher
+        // AbstractMatcher
         TagMatcher matcher = new TagMatcher(tags);
         Assertions.assertFalse(matcher.matches(recipe));
     }
