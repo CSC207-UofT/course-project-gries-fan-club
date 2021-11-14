@@ -16,36 +16,9 @@ import java.util.Collection;
  *
  * @param <T> The type of entity that this builder creates.
  */
-public abstract class AbstractBuilder<T extends Entity> {
+public abstract class AbstractBuilder<T extends Entity> implements EntityBuilder<T> {
 
-	/**
-	 * Creates an entity from a given row.
-	 *
-	 * @param row The row representing the entity
-	 *
-	 * @return A constructed entity
-	 *
-	 * @throws InvalidRowShape If the provided row is invalid for the entity to
-	 * be constructed.
-	 */
-	protected abstract T loadEntity(Row row) throws InvalidRowShape;
-
-	/**
-	 * The type of entity this builder creates.
-	 *
-	 * @return The name as a string
-	 */
-	public abstract String type();
-
-	/**
-	 * Attempts to load all entities from a loader.
-	 *
-	 * If a row is invalid no entity will be created and the row will be ignored.
-	 *
-	 * @param loader The loader to load from
-	 *
-	 * @return All loaded entities
-	 */
+	@Override
 	public Collection<T> loadFrom(Loader loader) {
 		// Ensure all data will be loaded.
 		loader.resetReader();
@@ -76,12 +49,7 @@ public abstract class AbstractBuilder<T extends Entity> {
 		return entities;
 	}
 
-	/**
-	 * Adds all entities from a loader into a given storage.
-	 *
-	 * @param storage The storage to fill
-	 * @param loader The loader to pull from
-	 */
+	@Override
 	public void addTo(Storage<T> storage, Loader loader) {
 		if (!storage.type().equals(this.type())) {
 			// We can only add entities that this storage allows.

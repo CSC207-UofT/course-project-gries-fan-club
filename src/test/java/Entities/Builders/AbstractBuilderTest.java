@@ -25,7 +25,7 @@ public class AbstractBuilderTest {
 	 */
 	static class MockBuilder extends AbstractBuilder<Tag> {
 		@Override
-		protected Tag loadEntity(Row row) {
+		public Tag loadEntity(Row row) {
 			return new TagImpl("207");
 		}
 

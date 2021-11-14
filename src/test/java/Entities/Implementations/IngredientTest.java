@@ -67,4 +67,25 @@ public class IngredientTest {
         Assertions.assertTrue(ingredient.has(tag1));
         Assertions.assertFalse(ingredient.has(tag3));
     }
+
+    @Test
+    public void testToString() {
+        TagImpl tag1 = new TagImpl("Dairy");
+        TagImpl tag2 = new TagImpl("Gluten");
+        TagImpl tag3 = new TagImpl("Sugar");
+
+        List<Tag> list = new ArrayList<>();
+        list.add(tag1);
+        list.add(tag2);
+        list.add(tag3);
+
+        // ingredient contains tags added now
+        IngredientImpl ingredient = new IngredientImpl("cake", list);
+
+        Assertions.assertEquals(ingredient.toString(), """
+                Ingredient {
+                \tname='cake',
+                \ttags=[Dairy, Gluten, Sugar]
+                }""");
+    }
 }

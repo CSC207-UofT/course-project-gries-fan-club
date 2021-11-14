@@ -1,9 +1,11 @@
 package Matcher;
 
 import Entities.Implementations.IngredientImpl;
+import Entities.Implementations.QuantityRecipeItem;
 import Entities.Implementations.RecipeImpl;
-import Entities.Implementations.RecipeItemImpl;
 import Entities.Implementations.TagImpl;
+import Entities.Ingredient;
+import Entities.Recipe;
 import Entities.RecipeItem;
 import Entities.Tag;
 import Matchers.Implementations.TagMatcher;
@@ -35,12 +37,12 @@ public class TagMatcherTest {
 
         // Recipe
         IngredientImpl ingredient1 = new IngredientImpl("bread", list);
-        RecipeItemImpl item = new RecipeItemImpl(ingredient1, 15);
+        RecipeItem item = new QuantityRecipeItem(ingredient1, 15, false);
         List<RecipeItem> recipeItems = new ArrayList<>();
         recipeItems.add(item);
-        RecipeImpl recipe = new RecipeImpl("name", "description", Collections.singletonList("instructions"), recipeItems);
+        RecipeImpl recipe = new RecipeImpl("name", "description", List.of("instructions"), recipeItems);
 
-        // Matcher
+        // AbstractMatcher
         TagMatcher matcher = new TagMatcher(tags);
         Assertions.assertTrue(matcher.matches(recipe));
     }
@@ -48,8 +50,8 @@ public class TagMatcherTest {
     @Test
     public void testMatchesFalse() {
         // Tag list
-        TagImpl tag1 = new TagImpl("Dairy");
-        TagImpl tag2 = new TagImpl("Gluten");
+        Tag tag1 = new TagImpl("Dairy");
+        Tag tag2 = new TagImpl("Gluten");
 
         List<Tag> tags = new ArrayList<>();
         tags.add(tag1);
@@ -59,14 +61,31 @@ public class TagMatcherTest {
         list.add(tag1);
 
         // Recipe
-        IngredientImpl ingredient1 = new IngredientImpl("bread", list);
-        RecipeItemImpl item = new RecipeItemImpl(ingredient1, 15);
+        Ingredient ingredient1 = new IngredientImpl("bread", list);
+        RecipeItem item = new QuantityRecipeItem(ingredient1, 15, false);
         List<RecipeItem> recipeItems = new ArrayList<>();
         recipeItems.add(item);
-        RecipeImpl recipe = new RecipeImpl("name", "description", Collections.singletonList("instructions"), recipeItems);
+        Recipe recipe = new RecipeImpl("name", "description", Collections.singletonList("instructions"), recipeItems);
 
-        // Matcher
         TagMatcher matcher = new TagMatcher(tags);
         Assertions.assertFalse(matcher.matches(recipe));
+
+        Ingredient ingredient2 = new IngredientImpl(
+                "cake",
+                List.of(
+                    tag1,
+                    tag2
+                )
+        );
+        Recipe recipe2 = new RecipeImpl(
+                "cake",
+                "",
+                List.of(),
+                List.of(
+                        new QuantityRecipeItem(ingredient2, 0, false)
+                )
+        );
+
+        Assertions.assertTrue(matcher.matches(recipe2));
     }
 }

@@ -57,7 +57,7 @@ public class IngredientImpl extends AbstractEntity implements Ingredient {
 
     @Override
     public String toString() {
-        return "IngredientImpl{\n" +
+        return "Ingredient {\n" +
                 "\tname='" + name + "',\n" +
                 "\ttags=" + tags +
                 "\n}";

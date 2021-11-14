@@ -6,10 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class RowImplTest {
 
@@ -51,6 +48,18 @@ public class RowImplTest {
 	public void testEmpty() {
 		Assertions.assertFalse(this.row.empty());
 		Assertions.assertTrue(this.emptyRow.empty());
+	}
+
+	@Test
+	public void testKeySet() {
+		Collection<String> keySet = this.row.keySet();
+		Assertions.assertTrue(keySet.contains("a"));
+		Assertions.assertTrue(keySet.contains("b"));
+		Assertions.assertTrue(keySet.contains("l"));
+		Assertions.assertTrue(keySet.contains("m"));
+		Assertions.assertFalse(keySet.contains("x"));
+
+		Assertions.assertEquals(0, this.emptyRow.keySet().size());
 	}
 
 	@Test

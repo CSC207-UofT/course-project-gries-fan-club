@@ -5,8 +5,7 @@ import Entities.Tag;
 
 import java.util.Collection;
 
-public interface IngredientStorage {
-
+public interface IngredientStorage extends Storage<Ingredient> {
 	/**
 	 * All the recipes stored within.
 	 *
@@ -18,11 +17,11 @@ public interface IngredientStorage {
 	 * Finds all ingredients that match the given name.
 	 * Regular expressions can also be provided.
 	 *
-	 * @param name The name or regular expression to match
+	 * @param name The name or regex to match
 	 *
 	 * @return All matched ingredients
 	 */
-	Collection<Ingredient> find(String name);
+	Collection<Ingredient> findByName(String name);
 
 	/**
 	 * Finds all ingredients that include all the given tags.
@@ -31,6 +30,6 @@ public interface IngredientStorage {
 	 *
 	 * @return All matched ingredients
 	 */
-	Collection<Ingredient> find(Collection<Tag> tags);
+	Collection<Ingredient> findByTags(Collection<Tag> tags);
 
 }
