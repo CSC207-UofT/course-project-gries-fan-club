@@ -24,7 +24,7 @@ public class UseCaseTest {
 
     @BeforeEach
     public void setup() {
-        //@Todo create tags
+        // create tags
         TagImpl tag1 = new TagImpl("Gluten");
         TagImpl tag2 = new TagImpl("Dairy");
         TagImpl tag3 = new TagImpl("Non-Vegan");
@@ -39,7 +39,7 @@ public class UseCaseTest {
         list3.add(tag3);
         list3.add(tag2);
 
-        //@Todo creates ingredients
+        // creates ingredients
         IngredientImpl ingredient1 = new IngredientImpl("flour",list1);
         IngredientImpl ingredient2 = new IngredientImpl("egg", list2);
         IngredientImpl ingredient3 = new IngredientImpl("oil", Collections.emptyList());
@@ -47,14 +47,14 @@ public class UseCaseTest {
         IngredientImpl ingredient5 = new IngredientImpl("water", Collections.emptyList());
         IngredientImpl ingredient6 = new IngredientImpl("baking soda", Collections.emptyList());
 
-        //@Todo create Recipe Items for the recipe
+        //create Recipe Items for the recipe
         VolumetricRecipeItem item1 = new VolumetricRecipeItem(ingredient1, 250f, false);
         QuantityRecipeItem item2 = new QuantityRecipeItem(ingredient2, 2f, false);
         VolumetricRecipeItem item3 = new VolumetricRecipeItem(ingredient3, 100f, false);
         QuantityRecipeItem item4 = new QuantityRecipeItem(ingredient4, 55f, false);
         VolumetricRecipeItem item5 = new VolumetricRecipeItem(ingredient5, 125f, false);
         VolumetricRecipeItem item6 = new VolumetricRecipeItem(ingredient6, 5f, false);
-        //@Todo create recipes
+        //create recipes
         List<RecipeItem> recipeItems1 = new ArrayList<>();
         recipeItems1.add((VolumetricRecipeItem) item1);
         recipeItems1.add((QuantityRecipeItem) item2);
@@ -71,7 +71,7 @@ public class UseCaseTest {
         RecipeImpl recipe1 = new RecipeImpl("Cookies", "Yummy chocolate chip cookies, best in the world.", Collections.singletonList("instructions"), recipeItems1);
         RecipeImpl recipe2 = new RecipeImpl("Bread", "Yummy chocolate chip cookies, best in the world.", Collections.singletonList("instructions"), recipeItems2);
 
-        //@Todo create fridge
+        //@create fridge
         this.ingredientStorage = new IngredientStorageImpl();
         this.fridge = new IngredientStorageImpl();
         this.recipeStorage = new RecipeStorageImpl();
