@@ -1,20 +1,29 @@
 package UseCases;
 
+import Commands.Command;
+import Commands.Implementations.CommandImpl;
 import Entities.*;
 import Entities.Implementations.*;
 import Entities.Implementations.IngredientImpl;
+import Storages.Implementations.IngredientStorageImpl;
+import Storages.Implementations.RecipeStorageImpl;
+import Storages.IngredientStorage;
+import Storages.RecipeStorage;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import Entities.Ingredient;
-import java.util.Collections;
-import java.util.ArrayList;
-import java.util.List;
+
+import java.util.*;
 
 public class UseCaseTest {
-    /**
-     * A test that tests whether a use case has correctly executed
-     */
-    @Test
-    public void testUseCase() {
+
+    IngredientStorageImpl ingredientStorage;
+    RecipeStorageImpl recipeStorage;
+    IngredientStorage fridge;
+    private UseCaseTest this.f;
+
+    @BeforeEach
+    public void setup() {
         //@Todo create tags
         TagImpl tag1 = new TagImpl("Gluten");
         TagImpl tag2 = new TagImpl("Dairy");
@@ -63,15 +72,33 @@ public class UseCaseTest {
         RecipeImpl recipe2 = new RecipeImpl("Bread", "Yummy chocolate chip cookies, best in the world.", Collections.singletonList("instructions"), recipeItems2);
 
         //@Todo create fridge
-        ArrayList<Ingredient> fridge = new ArrayList<Ingredient>();
+        this.ingredientStorage = new IngredientStorageImpl();
+        this.fridge = new IngredientStorageImpl();
+        this.recipeStorage = new RecipeStorageImpl();
 
         // add the ingredients that the user has to the fridge
         fridge.add(ingredient1);
         fridge.add(ingredient2);
-        fridge.add(ingredient3);
-        fridge.add(ingredient4);
-        // The fridge now has 4 ingredients; flour, egg, oil, chocolate chips.
-        //@Todo create the matcher and execute it.
 
+        // add to the main ingredients
+        this.ingredientStorage.add(ingredient1);
+        this.ingredientStorage.add(ingredient2);
+        this.ingredientStorage.add(ingredient3);
+        this.ingredientStorage.add(ingredient4);
+        this.ingredientStorage.add(ingredient5);
+        this.ingredientStorage.add(ingredient6);
+
+        // add to the storage
+        this.recipeStorage.add(recipe1);
+        this.recipeStorage.add(recipe2);
     }
+
+    @Test
+    public void testGetCommandFridge() {
+        CommandImpl command = new CommandImpl();
+        command.put("Fridge", "Apple, Orange");
+        MatcherUseCase usecase = new MatcherUseCase(this.ingredientStorage, this.recipeStorage);
+        }
+    }
+
 }
