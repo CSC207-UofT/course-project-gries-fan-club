@@ -24,8 +24,12 @@ public class MatcherUseCase implements UseCase {
     }
 
     public ResponseImpl run(Command command) {
-        TagMatcher matcher = new TagMatcher(command.data.get("Tags"));
-        List<Recipe> recipesMatched = matcher.allMatches(this.recipeStorage);
+        List<Recipe> recipesMatched;
+
+        if command.get("Tags") {
+            TagMatcher matcher = new TagMatcher(command.get("Tags"));
+            recipesMatched = matcher.allMatches(this.recipeStorage);
+        }
         return new ResponseImpl(recipesMatched);
         }
 
