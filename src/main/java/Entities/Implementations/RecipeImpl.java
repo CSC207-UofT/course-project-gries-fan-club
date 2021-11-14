@@ -2,9 +2,13 @@ package Entities.Implementations;
 
 import Entities.Recipe;
 import Entities.RecipeItem;
+import Entities.Tag;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class RecipeImpl extends AbstractEntity implements Recipe {
     private String name;
@@ -52,6 +56,13 @@ public class RecipeImpl extends AbstractEntity implements Recipe {
         return this.recipeItems;
     }
 
+    @Override
+    public List<RecipeItem> items(boolean optional) {
+        return this.recipeItems.stream()
+                .filter(item -> item.optional() == optional)
+                .collect(Collectors.toList());
+    }
+
     /**
      * Returns the name of the RecipeImpl
      */
@@ -74,5 +85,15 @@ public class RecipeImpl extends AbstractEntity implements Recipe {
     @Override
     public List<String> instructions() {
         return this.instructions;
+    }
+
+    @Override
+    public Set<Tag> tags(){
+        HashSet<Tag> tags = new HashSet<>();
+
+        for (RecipeItem item: this.items()) {
+            tags.addAll(item.ingredient().tags());
+        }
+        return tags;
     }
 }

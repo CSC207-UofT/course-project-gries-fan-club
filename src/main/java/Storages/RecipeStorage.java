@@ -6,8 +6,7 @@ import Entities.Tag;
 
 import java.util.Collection;
 import java.util.List;
-
-public interface RecipeStorage {
+	public interface RecipeStorage extends Storage<Recipe> {
 
 	/**
 	 * All the recipes stored within.
@@ -17,14 +16,14 @@ public interface RecipeStorage {
 	Collection<Recipe> recipes();
 
 	/**
-	 * Finds a recipes that match a given name.
+	 * Finds recipe(s) that match a given name.
 	 * Regular expressions can also be provided.
 	 *
-	 * @param name The name or regular expression to match
+	 * @param name The name or regex to match
 	 *
 	 * @return All matched recipes
 	 */
-	Collection<Recipe> find(String name);
+	Collection<Recipe> findByName(String name);
 
 	/**
 	 * Finds all recipes that include all the given tags.
@@ -33,7 +32,7 @@ public interface RecipeStorage {
 	 *
 	 * @return All matched recipes
 	 */
-	Collection<Recipe> find(Collection<Tag> tags);
+	Collection<Recipe> findByTags(Collection<Tag> tags);
 
 	/**
 	 * Finds all recipes that contain use a subset of the given ingredients.
@@ -45,6 +44,6 @@ public interface RecipeStorage {
 	 *
 	 * @return All matched recipes
 	 */
-	Collection<Recipe> find(List<Ingredient> ingredients);
+	Collection<Recipe> findByIngredients(List<Ingredient> ingredients);
 
 }
