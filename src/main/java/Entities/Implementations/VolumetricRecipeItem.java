@@ -37,4 +37,8 @@ public class VolumetricRecipeItem extends AbstractRecipeItem {
         return stringQuantity + "ml of " + this.ingredient().name();
     }
 
+    @Override
+    public String serializeTypeCode() {
+        return "v";
+    }
 }

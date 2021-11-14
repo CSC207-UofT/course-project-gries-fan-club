@@ -3,10 +3,7 @@ package Loaders.Implementations;
 import Loaders.Exceptions.NoSuchAttribute;
 import Loaders.Row;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * A basic implementation of a row interface.
@@ -45,6 +42,11 @@ public class RowImpl implements Row {
 	@Override
 	public boolean empty() {
 		return this.attributes.size() == 0;
+	}
+
+	@Override
+	public Collection<String> keySet() {
+		return this.attributes.keySet();
 	}
 
 	/**

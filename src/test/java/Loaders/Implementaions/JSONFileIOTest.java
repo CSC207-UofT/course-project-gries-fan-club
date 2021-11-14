@@ -1,19 +1,21 @@
 package Loaders.Implementaions;
 
 import Loaders.Exceptions.NoSuchAttribute;
-import Loaders.Implementations.JSONLoader;
+import Loaders.Implementations.JSONFileIO;
 import Loaders.Row;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.StringWriter;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-public class JSONLoaderTest {
+public class JSONFileIOTest {
 
-	JSONLoader loader;
-	JSONLoader nestedLoader;
+	JSONFileIO loader;
+	JSONFileIO nestedLoader;
 
 	/**
 	 * Below are the JSON sources used in the class loaders.
@@ -26,7 +28,7 @@ public class JSONLoaderTest {
 			},
 			{
 				"type": "test",
-				"value": 4,
+				"value": 4
 			}
 		]
 	""";
@@ -52,8 +54,8 @@ public class JSONLoaderTest {
 
 	@BeforeEach
 	public void setup() {
-		this.loader = new JSONLoader(SOURCE);
-		this.nestedLoader = new JSONLoader(NESTED_SOURCE);
+		this.loader = new JSONFileIO(SOURCE);
+		this.nestedLoader = new JSONFileIO(NESTED_SOURCE);
 	}
 
 	@Test
@@ -95,6 +97,22 @@ public class JSONLoaderTest {
 						row1.get("value", Integer.class),
 						row3.get("value", Integer.class)
 		);
+	}
+
+	@Test
+	public void testSave() throws Exception {
+
+		StringWriter writer = new StringWriter();
+		Collection<Row> rows = List.of(
+						this.loader.readRow(),
+						this.loader.readRow()
+		);
+
+		this.loader.save(rows, writer);
+		String jsonNoSpace = writer.toString().replaceAll("\\s+","");
+		String sourceNoSpace = SOURCE.replaceAll("\\s+", "");
+
+		Assertions.assertEquals(sourceNoSpace, jsonNoSpace);
 	}
 
 }
