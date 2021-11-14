@@ -1,8 +1,6 @@
 package Entities.Builders;
 
 import Entities.Exceptions.InvalidRowShape;
-import Entities.Implementations.IngredientImpl;
-import Entities.Ingredient;
 import Entities.Recipe;
 import Entities.RecipeItem;
 import Loaders.Implementations.RowImpl;
@@ -18,15 +16,12 @@ import java.util.*;
 public class RecipeBuilderTest {
 
 	RecipeBuilder builder;
-	Storage<Ingredient> ingredientStorage;
-
-	Ingredient flour;
-	Ingredient water;
+	Storage<RecipeItem> itemStorage;
 
 	/**
 	 * A mock storage for testing.
 	 */
-	static class MockStorage extends AbstractStorage<Ingredient> {
+	static class MockStorage extends AbstractStorage<RecipeItem> {
 		@Override
 		public String type() {
 			return "test";
@@ -35,15 +30,8 @@ public class RecipeBuilderTest {
 
 	@BeforeEach
 	public void setUp() {
-		this.ingredientStorage = new RecipeBuilderTest.MockStorage();
-		this.builder = new RecipeBuilder(this.ingredientStorage);
-
-		// Create test ingredients.
-		this.flour = new IngredientImpl("flour", Collections.emptyList());
-		this.ingredientStorage.add(this.flour);
-
-		this.water = new IngredientImpl("Water", Collections.emptyList());
-		this.ingredientStorage.add(this.water);
+		this.itemStorage = new RecipeBuilderTest.MockStorage();
+		this.builder = new RecipeBuilder(this.itemStorage);
 	}
 
 	/**
@@ -68,11 +56,12 @@ public class RecipeBuilderTest {
 						"Knead",
 						"Bake"
 		));
-		values.put("items", Map.of(
-						this.flour.id().toString(), 3.1
-		));
-		values.put("optionalItems", Map.of(
-						this.water.id().toString(), 4.2
+
+		UUID itemID1 = new UUID(0, 1);
+		UUID itemID2 = new UUID(1, 2);
+		values.put("items", List.of(
+						itemID1.toString(),
+						itemID2.toString()
 		));
 
 		Row row = new RowImpl("ingredient", values);
@@ -91,8 +80,8 @@ public class RecipeBuilderTest {
 
 		List<RecipeItem> recipeItems = recipe.items();
 		Collections.sort(recipeItems);
-		Assertions.assertEquals(2, recipeItems.size());
-		// @Todo, once the Recipe item int issue is fixed, finish this test.
+		Assertions.assertEquals(itemID1, recipeItems.get(0).id());
+		Assertions.assertEquals(itemID2, recipeItems.get(1).id());
 	}
 
 }

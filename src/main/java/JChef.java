@@ -34,7 +34,8 @@ public class JChef {
 
         System.out.println();
 
-        for(Ingredient i : ingredientStorage.find(Collections.singletonList(new TagImpl("veggie")))) {
+        TagImpl tag = new TagImpl("veggie");
+        for(Ingredient i : ingredientStorage.findByTags(Collections.singletonList(tag))) {
             System.out.println(i);
         }
     }
