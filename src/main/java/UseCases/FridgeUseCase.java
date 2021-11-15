@@ -34,8 +34,8 @@ public class FridgeUseCase implements UseCase {
             }
         }
         // checks if the user is using removeFromFridge command (non-empty)
-        if (!Objects.equals(command.get("removeFromFridge"), "") && command.containsKey("removeFromFridge")) {
-            String newString = command.get("removeFromFridge");
+        if (!Objects.equals(command.get("removefromfridge"), "") && command.containsKey("removefromfridge")) {
+            String newString = command.get("removefromfridge");
 
             List<String> stringsOfIngredients = new ArrayList<>(Arrays.asList(newString.split(",")));
             for (String ingredientString : stringsOfIngredients) {

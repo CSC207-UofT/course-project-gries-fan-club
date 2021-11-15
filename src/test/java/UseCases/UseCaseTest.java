@@ -140,6 +140,19 @@ public class UseCaseTest {
         Assertions.assertTrue(usecase.run(command).ingredients().contains(test2));
 
     }
+    @Test
+    public void testRemoveFromFridge(){
+        CommandImpl command = new CommandImpl();
+        command.put("removefromfridge", "flour");
+        FridgeUseCase usecase = new FridgeUseCase(fridge, ingredientStorage);
+
+        Ingredient test1 =  ingredientStorage.findByNameExact("flour").iterator().next();
+        Ingredient test2 =  ingredientStorage.findByNameExact("egg").iterator().next();
+
+        Assertions.assertFalse(usecase.run(command).ingredients().contains(test1));
+        Assertions.assertTrue(usecase.run(command).ingredients().contains(test2));
+
+    }
 
 
 }
