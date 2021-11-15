@@ -4,13 +4,13 @@
 
 * [Introduction](#introduction)
 * [Updated Specification](#updated-specification)
-* [Class Diagram](#class diagram)
-* [Major Design Decisions](#major design decisions)
-* [SOLID Design Principles](#SOLID Design Principles)
-* [Clean Architecture](#Clean Architecture)
-* [Packaging Strategies](#Packaging Strategies)
-* [Design Patterns](#Design Patterns)
-* [Progress report](#Progress report)
+* [Class Diagram](#class-diagram)
+* [Major Design Decisions](#major-design-decisions)
+* [SOLID Design Principles](#SOLID-design-principles)
+* [Clean Architecture](#clean-architecture)
+* [Packaging Strategies](#packaging-strategies)
+* [Design Patterns](#design-patterns)
+* [Progress report](#progress-report)
 
 ## Introduction
 
