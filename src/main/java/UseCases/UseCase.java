@@ -1,5 +1,6 @@
 package UseCases;
 import Commands.Command;
+import Commands.Implementations.CommandImpl;
 
 import java.util.List;
 
@@ -8,6 +9,6 @@ import java.util.List;
  *
  */
 public interface UseCase {
-    ResponseImpl run(Command command);
+    ResponseImpl run(CommandImpl command);
 }
 

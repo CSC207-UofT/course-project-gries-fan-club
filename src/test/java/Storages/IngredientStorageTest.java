@@ -43,6 +43,12 @@ public class IngredientStorageTest {
         Assertions.assertTrue(this.ingredientStorage.findByName("ingredient1").contains(this.ingredient2));
     }
 
+    @Test
+    public void testFindByNameExact() {
+        Assertions.assertTrue(this.ingredientStorage.findByName("ingredient1").contains(this.ingredient1));
+        Assertions.assertFalse(this.ingredientStorage.findByNameExact("ingredient1").contains(this.ingredient2));
+    }
+
     /**
      * Tests the testFindByName method in IngredientStorage
      */

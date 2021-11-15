@@ -9,6 +9,7 @@ import Storages.Implementations.IngredientStorageImpl;
 import Storages.Implementations.RecipeStorageImpl;
 import Storages.IngredientStorage;
 import Storages.RecipeStorage;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import Entities.Ingredient;
@@ -20,7 +21,9 @@ public class UseCaseTest {
     IngredientStorageImpl ingredientStorage;
     RecipeStorageImpl recipeStorage;
     IngredientStorage fridge;
-    private UseCaseTest this.f;
+
+    IngredientImpl ingredient1;
+    IngredientImpl ingredient2;
 
     @BeforeEach
     public void setup() {
@@ -40,16 +43,16 @@ public class UseCaseTest {
         list3.add(tag2);
 
         // creates ingredients
-        IngredientImpl ingredient1 = new IngredientImpl("flour",list1);
-        IngredientImpl ingredient2 = new IngredientImpl("egg", list2);
+        this.ingredient1 = new IngredientImpl("flour",list1);
+        this.ingredient2 = new IngredientImpl("egg", list2);
         IngredientImpl ingredient3 = new IngredientImpl("oil", Collections.emptyList());
         IngredientImpl ingredient4 = new IngredientImpl("chocolate chips", list3);
         IngredientImpl ingredient5 = new IngredientImpl("water", Collections.emptyList());
         IngredientImpl ingredient6 = new IngredientImpl("baking soda", Collections.emptyList());
 
         //create Recipe Items for the recipe
-        VolumetricRecipeItem item1 = new VolumetricRecipeItem(ingredient1, 250f, false);
-        QuantityRecipeItem item2 = new QuantityRecipeItem(ingredient2, 2f, false);
+        VolumetricRecipeItem item1 = new VolumetricRecipeItem(this.ingredient1, 250f, false);
+        QuantityRecipeItem item2 = new QuantityRecipeItem(this.ingredient2, 2f, false);
         VolumetricRecipeItem item3 = new VolumetricRecipeItem(ingredient3, 100f, false);
         QuantityRecipeItem item4 = new QuantityRecipeItem(ingredient4, 55f, false);
         VolumetricRecipeItem item5 = new VolumetricRecipeItem(ingredient5, 125f, false);
@@ -76,29 +79,56 @@ public class UseCaseTest {
         this.fridge = new IngredientStorageImpl();
         this.recipeStorage = new RecipeStorageImpl();
 
-        // add the ingredients that the user has to the fridge
-        fridge.add(ingredient1);
-        fridge.add(ingredient2);
+        // add the ingredients that the user has to the fridge (holds whats in the users fridge)
+        fridge.add(this.ingredient1);
+        fridge.add(this.ingredient2);
 
-        // add to the main ingredients
-        this.ingredientStorage.add(ingredient1);
-        this.ingredientStorage.add(ingredient2);
+        // add to the main ingredients (holds all the ingredients in our database0
+        this.ingredientStorage.add(this.ingredient1);
+        this.ingredientStorage.add(this.ingredient2);
         this.ingredientStorage.add(ingredient3);
         this.ingredientStorage.add(ingredient4);
         this.ingredientStorage.add(ingredient5);
         this.ingredientStorage.add(ingredient6);
 
-        // add to the storage
+        // add to the recipe storage (all in the recipes in our app)
         this.recipeStorage.add(recipe1);
         this.recipeStorage.add(recipe2);
     }
 
+    /**
+     * Test the matcher use case
+     */
     @Test
-    public void testGetCommandFridge() {
+    public void testMatcherRun() {
+        // Make a command, populate it with the correct things.
         CommandImpl command = new CommandImpl();
-        command.put("Fridge", "Apple, Orange");
+        command.put("Fridge", "flour,egg");
+
+        List<Recipe> recipes = new ArrayList<>(this.recipeStorage.recipes());
+        ResponseImpl response = new ResponseImpl(recipes);
+
         MatcherUseCase usecase = new MatcherUseCase(this.ingredientStorage, this.recipeStorage);
-        }
+
+        Assertions.assertEquals(usecase.run(command).recipes(), response.recipes());
+
     }
 
+
+    @Test
+    public void testGetFridgeStorage() {
+        IngredientStorageImpl mockStorage = new IngredientStorageImpl();
+
+        mockStorage.add(this.ingredient1);
+        mockStorage.add(this.ingredient2);
+
+        // Create command
+        CommandImpl command = new CommandImpl();
+        command.put("Fridge", "flour,egg");
+
+        MatcherUseCase usecase = new MatcherUseCase(this.ingredientStorage, this.recipeStorage);
+//        Assertions.assertEquals(usecase.getFridgeStorage(command), mockStorage);
+        Assertions.assertTrue(usecase.getFridgeStorage(command).ingredients().containsAll(mockStorage.ingredients()));
+        }
 }
+
