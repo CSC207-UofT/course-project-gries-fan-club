@@ -3,7 +3,7 @@
 ## Contents
 
 * [Introduction](#introduction)
-* [Updated Specification](#updated specification)
+* [Updated Specification](#updated-specification)
 * [Class Diagram](#class diagram)
 * [Major Design Decisions](#major design decisions)
 * [SOLID Design Principles](#SOLID Design Principles)
