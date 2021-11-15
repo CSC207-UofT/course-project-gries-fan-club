@@ -20,7 +20,7 @@ public class UseCaseTest {
     IngredientStorageImpl ingredientStorage;
     RecipeStorageImpl recipeStorage;
     IngredientStorage fridge;
-    private UseCaseTest this.f;
+
 
     @BeforeEach
     public void setup() {
@@ -99,6 +99,8 @@ public class UseCaseTest {
         command.put("Fridge", "Apple, Orange");
         MatcherUseCase usecase = new MatcherUseCase(this.ingredientStorage, this.recipeStorage);
         }
+        // just in the mean time
+
     }
 
-}
+
