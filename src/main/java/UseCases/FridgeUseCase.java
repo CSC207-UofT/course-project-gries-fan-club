@@ -22,7 +22,7 @@ public class FridgeUseCase implements UseCase {
     }
 
     @Override
-    public IngredientResponseImpl run(Command command) {
+    public IngredientStorageResponseImpl run(Command command) {
         // checks if the user is using addToFridge command (non-empty)
         if (!Objects.equals(command.get("addtofridge"), "")) {
             String newString = command.get("addtofridge");
@@ -43,7 +43,7 @@ public class FridgeUseCase implements UseCase {
             }
 
         }
-        return new IngredientResponseImpl(this.fridge);
+        return new IngredientStorageResponseImpl(this.fridge);
 
     }
 }
