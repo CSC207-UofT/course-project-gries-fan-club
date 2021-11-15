@@ -19,7 +19,7 @@ During the production of JChef, our group was able to effectively apply our know
 ## Updated Specification
 
 Main ideas:
-## Prithee will finish this
+*PRITHEE WILL FINISH THIS*
 - Serialization of entities (Specifically into JSON text)
 - Implemented Use-Cases, commands, and response objects to drive code
 - Began developing the Android front-end 
@@ -28,7 +28,7 @@ Main ideas:
 ## Class Diagram
 
 Main ideas:
-## Prithee will finish this
+*PRITHEE WILL FINISH THIS*
 - Part of the clean architecture is that our high level, matchers, scorers, and middle level entities, storages, do not care about details such as data storage. 
 - They do not depend on low-level modules (dependency inversion). Our interfaces are relatively small and single focused meaning that classes have single responsibilities and don't implement unnecessary behaviour. 
 - On this, we also utilise interfaces from the Java standard library when possible (like writers and collections). 
@@ -37,7 +37,7 @@ None of our subclasses are incompatible with their super classes (Liskov).
 
 ## Major Design Decisions
 
-Prithee's work
+*PRITHEE WILL FINISH THIS*
 
 ## SOLID Design Principles
 - Part of the clean architecture is that our high level, matchers, scorers, and middle level entities, storages, do not care about details such as data storage. 
@@ -49,18 +49,18 @@ Prithee's work
 ## Clean Architecture
 
 Main ideas:
-## Prithee will finish this
+*PRITHEE WILL FINISH THIS*
 Clean Architecture, we can talk about how these command/response classes keep use cases ignorant of the UI behind it. Entities are built through generic Row objects and loaders / writers to keep storage details away from our data. Matchers, scorers, only depend on interfaces for working on our data (such as the entity and storage interfaces). Make sure to look over class slides and use real terminology, don't just say something cause it sounds right.
 
 ## Packaging Strategies
 
 Main ideas:
-## Prithee will finish this
+*PRITHEE WILL FINISH THIS*
 we started with a strategy which was just everything grouped into related interfaces / functionality. This meant parts of the system that worked together may be far apart (IE entity builders and interfaces are separate). We have since changed to a more nested strategy to keep Components of the system grouped together. IE entities and builders, storages, loaders and writers. Look at slides and find the specific name of this strat
 
 ## Design Patterns
 
-Prithee's work
+*PRITHEE WILL FINISH THIS*
 
 ## Progress Report
 
