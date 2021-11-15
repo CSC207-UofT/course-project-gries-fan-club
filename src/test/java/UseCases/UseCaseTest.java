@@ -9,6 +9,7 @@ import Storages.Implementations.IngredientStorageImpl;
 import Storages.Implementations.RecipeStorageImpl;
 import Storages.IngredientStorage;
 import Storages.RecipeStorage;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import Entities.Ingredient;
@@ -19,7 +20,7 @@ public class UseCaseTest {
 
     IngredientStorageImpl ingredientStorage;
     RecipeStorageImpl recipeStorage;
-    IngredientStorage fridge;
+    IngredientStorageImpl fridge;
 
 
     @BeforeEach
@@ -98,9 +99,19 @@ public class UseCaseTest {
         CommandImpl command = new CommandImpl();
         command.put("Fridge", "Apple, Orange");
         MatcherUseCase usecase = new MatcherUseCase(this.ingredientStorage, this.recipeStorage);
-        }
-        // just in the mean time
+        //@todo Add an assertion here
+    }
+    @Test
+    public void testAddToFridge() {
+        CommandImpl command = new CommandImpl();
+        command.put("addtofridge", "oil, chocolate chips");
+        FridgeUseCase usecase = new FridgeUseCase(fridge, ingredientStorage);
+
+        Assertions.assertTrue(usecase.run(command),
 
     }
+
+
+}
 
 

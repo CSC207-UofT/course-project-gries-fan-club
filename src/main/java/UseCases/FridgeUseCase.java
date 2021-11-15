@@ -1,6 +1,7 @@
 package UseCases;
 
 import Commands.Command;
+import Commands.Implementations.CommandImpl;
 import Storages.Implementations.IngredientStorageImpl;
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class FridgeUseCase implements UseCase {
     }
 
     @Override
-    public IngredientStorageResponseImpl run(Command command) {
+    public IngredientStorageResponseImpl run(CommandImpl command) {
         // checks if the user is using addToFridge command (non-empty)
         if (!Objects.equals(command.get("addtofridge"), "")) {
             String newString = command.get("addtofridge");
