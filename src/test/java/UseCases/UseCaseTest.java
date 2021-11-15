@@ -106,11 +106,9 @@ public class UseCaseTest {
         command.put("Fridge", "flour,egg");
 
         List<Recipe> recipes = new ArrayList<>(this.recipeStorage.recipes());
-        ResponseImpl response = new ResponseImpl(recipes);
-
         MatcherUseCase usecase = new MatcherUseCase(this.ingredientStorage, this.recipeStorage);
 
-        Assertions.assertEquals(usecase.run(command).recipes(), response.recipes());
+        Assertions.assertEquals(usecase.run(command).recipes(), recipes);
     }
 
 
@@ -166,7 +164,6 @@ public class UseCaseTest {
         command.put("Fridge", "flour,egg");
 
         MatcherUseCase usecase = new MatcherUseCase(this.ingredientStorage, this.recipeStorage);
-//        Assertions.assertEquals(usecase.getFridgeStorage(command), mockStorage);
         Assertions.assertTrue(usecase.getFridgeStorage(command).ingredients().containsAll(mockStorage.ingredients()));
         }
 

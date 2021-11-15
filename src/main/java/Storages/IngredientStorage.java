@@ -30,7 +30,6 @@ public interface IngredientStorage extends Storage<Ingredient> {
 
 	Collection<Ingredient> findByNameExact(String name);
 
-
 	/**
 	 * Finds all ingredients that include all the given tags.
 	 *
@@ -39,12 +38,5 @@ public interface IngredientStorage extends Storage<Ingredient> {
 	 * @return All matched ingredients
 	 */
 	Collection<Ingredient> findByTags(Collection<Tag> tags);
-
-	/**
-	 * Finds an ingredient if it exactly matches one name.
-	 * Similar to the findByName but only returns one value.
-	 */
-
-	Collection<Ingredient> findByNameExact(String name);
 
 }
