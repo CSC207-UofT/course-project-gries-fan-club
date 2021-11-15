@@ -1,10 +1,7 @@
 package UseCases;
 
 import Commands.Command;
-import Entities.Implementations.IngredientImpl;
-import Entities.Ingredient;
 import Storages.Implementations.IngredientStorageImpl;
-import Storages.Implementations.RecipeStorageImpl;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,39 +9,41 @@ import java.util.List;
 import java.util.Objects;
 
 public class FridgeUseCase implements UseCase {
-    IngredientImpl ingredient;
     IngredientStorageImpl ingredientStorage;
+    IngredientStorageImpl fridge;
 
     /**
-     *Constructor
+     * Constructor
      */
-    public FridgeUseCase(IngredientImpl ingredient, IngredientStorageImpl fridge ){
-        this.ingredientStorage = fridge;
+    public FridgeUseCase(IngredientStorageImpl fridge, IngredientStorageImpl ingredientStorage) {
+        this.ingredientStorage = ingredientStorage;
+        this.fridge = fridge;
 
     }
 
     @Override
-    public ResponseImpl run(Command command) {
+    public IngredientResponseImpl run(Command command) {
         // checks if the user is using addToFridge command (non-empty)
-        if (!Objects.equals(command.get("addtofridge"), "")){
-        String newString  = command.get("addtofridge");
+        if (!Objects.equals(command.get("addtofridge"), "")) {
+            String newString = command.get("addtofridge");
 
-        List<String> stringsOfIngredients = new ArrayList<>(Arrays.asList(newString.split(",")));
-        for (String ingredientString : stringsOfIngredients){
-            this.fridge.add(this.ingredientStorage.findByName(ingredientString));
+            List<String> stringsOfIngredients = new ArrayList<>(Arrays.asList(newString.split(",")));
+            for (String ingredientString : stringsOfIngredients) {
+                this.fridge.add(this.ingredientStorage.findByNameExact(ingredientString).iterator().next());
+            }
         }
+        // checks if the user is using removeFromFridge command (non-empty)
+        if (!Objects.equals(command.get("removeFromFridge"), "")) {
+            String newString = command.get("addtofridge");
+
+            List<String> stringsOfIngredients = new ArrayList<>(Arrays.asList(newString.split(",")));
+            for (String ingredientString : stringsOfIngredients) {
+                this.fridge.remove(this.ingredientStorage.findByNameExact(ingredientString).iterator().next());
+
+            }
+
+        }
+        return new IngredientResponseImpl(this.fridge);
+
     }
-}
-
-    public IngredientStorageImpl addToFridge(Command command){
-        fridge.add(ingredient);
-        return fridge;
-    }
-
-    public IngredientStorageImpl removeFromFridge(Command command) {
-        fridge.remove(ingredient);
-        return fridge;
-    }
-
-
 }

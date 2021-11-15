@@ -5,13 +5,8 @@ import Entities.Implementations.IngredientImpl;
 import Entities.Ingredient;
 import Entities.Recipe;
 import Matchers.Implementations.IngredientMatcher;
-import Matchers.Implementations.TagMatcher;
-import Matchers.Matcher;
 import Storages.Implementations.IngredientStorageImpl;
 import Storages.Implementations.RecipeStorageImpl;
-import Storages.IngredientStorage;
-import Storages.RecipeStorage;
-import Storages.Storage;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,7 +24,7 @@ public class MatcherUseCase implements UseCase {
         this.ingredientStorage = ingredients;
     }
 
-    public ResponseImpl run(Command command) {
+    public RecipeResponseImpl run(Command command) {
         List<Recipe> recipesMatched = new ArrayList<>();
 
         // Check if fridge matches the recipe storage
@@ -43,7 +38,7 @@ public class MatcherUseCase implements UseCase {
 
             recipesMatched = matcher.return10RecipesMatched(this.recipeStorage);
         }
-        return new ResponseImpl(recipesMatched);
+        return new RecipeResponseImpl(recipesMatched);
         }
 
     /**
