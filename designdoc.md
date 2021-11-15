@@ -3,9 +3,9 @@
 ## Contents
 
 * [Introduction](#introduction)
-* [Updated Specification](#Updated Specification)
-* [Class Diagram](#Class Diagram)
-* [Major Design Decisions](#Major Design Decisions)
+* [Updated Specification](#updated specification)
+* [Class Diagram](#class diagram)
+* [Major Design Decisions](#major design decisions)
 * [SOLID Design Principles](#SOLID Design Principles)
 * [Clean Architecture](#Clean Architecture)
 * [Packaging Strategies](#Packaging Strategies)
@@ -56,6 +56,7 @@ Throughout the development of JChef we encountered many obstacles, most of which
     - Connect the backend to the Android GUI to make the application wholistically functional
     - Create a more robust testing system to ensure the application works as intended
     - Allow us to address all IntelliJ warnings and style concerns
+    
 In spite of the aforementioned concerns, we believe JChef’s current design to be effective for a multitude of reasons. Because we followed clean architecture and the SOLID principles our codebase is easy to understand and led to good stratification in terms of levels. Our compartmentalized code base is conducive to scalability and the implementation of new features as well as general maintenance due to its design which can be seen by looking at the quantified recipe item discussed in Phase 0. This item was turned into two different implementations in Phase 1 but it didn’t affect the rest of the code base as the implementation was done using the same interface, highlighting the effectiveness of our design. These principles will allow us to address the shortcomings in Phase 1, resulting in easy testing and future expansion in Phase 2. 
 
 Regarding Phase 1 Contributions:
