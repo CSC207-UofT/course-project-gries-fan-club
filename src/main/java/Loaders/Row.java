@@ -2,6 +2,7 @@ package Loaders;
 
 import Loaders.Exceptions.NoSuchAttribute;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -20,6 +21,13 @@ public interface Row {
 	 * @return whether the row is empty.
 	 */
 	boolean empty();
+
+	/**
+	 * Returns the keys of all attributes in this row.
+	 *
+	 * @return a list of keys.
+	 */
+	 Collection<String> keySet();
 
 	/**
 	 * Retrieves the given attribute as a given type.

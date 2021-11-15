@@ -20,7 +20,7 @@ public class UseCaseTest {
 
     IngredientStorageImpl ingredientStorage;
     RecipeStorageImpl recipeStorage;
-    IngredientStorage fridge;
+    IngredientStorageImpl fridge;
 
     IngredientImpl ingredient1;
     IngredientImpl ingredient2;
@@ -111,9 +111,48 @@ public class UseCaseTest {
         MatcherUseCase usecase = new MatcherUseCase(this.ingredientStorage, this.recipeStorage);
 
         Assertions.assertEquals(usecase.run(command).recipes(), response.recipes());
-
     }
 
+
+    @Test
+    public void testAddToFridge() {
+
+        CommandImpl command = new CommandImpl();
+        command.put("addtofridge", "oil,chocolate chips");
+        FridgeUseCase usecase = new FridgeUseCase(fridge, ingredientStorage);
+
+        TagImpl tag1 = new TagImpl("Gluten");
+        TagImpl tag2 = new TagImpl("Dairy");
+        TagImpl tag3 = new TagImpl("Non-Vegan");
+
+        List<Tag> list1 = new ArrayList<>();
+        list1.add(tag1);
+
+        List<Tag> list2 = new ArrayList<>();
+        list2.add(tag3);
+
+        List<Tag> list3 = new ArrayList<>();
+        list3.add(tag3);
+        list3.add(tag2);
+
+        IngredientImpl ingredient1 = new IngredientImpl("flour",list1);
+        IngredientImpl ingredient2 = new IngredientImpl("egg", list2);
+        IngredientImpl ingredient3 = new IngredientImpl("oil", Collections.emptyList());
+        IngredientImpl ingredient4 = new IngredientImpl("chocolate chips", list3);
+
+        IngredientStorageImpl expected1 = new IngredientStorageImpl();
+
+        expected1.add(ingredient2);
+        expected1.add(ingredient4);
+        expected1.add(ingredient1);
+        expected1.add(ingredient3);
+        Ingredient test1 =  ingredientStorage.findByNameExact("oil").iterator().next();
+        Ingredient test2 =  ingredientStorage.findByNameExact("chocolate chips").iterator().next();
+
+        Assertions.assertTrue(usecase.run(command).ingredients().contains(test1));
+        Assertions.assertTrue(usecase.run(command).ingredients().contains(test2));
+
+    }
 
     @Test
     public void testGetFridgeStorage() {
@@ -130,5 +169,19 @@ public class UseCaseTest {
 //        Assertions.assertEquals(usecase.getFridgeStorage(command), mockStorage);
         Assertions.assertTrue(usecase.getFridgeStorage(command).ingredients().containsAll(mockStorage.ingredients()));
         }
-}
 
+    @Test
+    public void testRemoveFromFridge(){
+        CommandImpl command = new CommandImpl();
+        command.put("removefromfridge", "flour");
+        FridgeUseCase usecase = new FridgeUseCase(fridge, ingredientStorage);
+
+        Ingredient test1 =  ingredientStorage.findByNameExact("flour").iterator().next();
+        Ingredient test2 =  ingredientStorage.findByNameExact("egg").iterator().next();
+
+        Assertions.assertFalse(usecase.run(command).ingredients().contains(test1));
+        Assertions.assertTrue(usecase.run(command).ingredients().contains(test2));
+
+    }
+
+}

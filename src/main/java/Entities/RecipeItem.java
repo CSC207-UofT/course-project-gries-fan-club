@@ -28,4 +28,12 @@ public interface RecipeItem extends Entity {
      * @return A string containing information on this item.
      */
     String display();
+
+    /**
+     * Returns a string that is used within serialization to denote the subtype
+     * of this recipe item.
+     *
+     * @return The code for serialization.
+     */
+    String serializeTypeCode();
 }
