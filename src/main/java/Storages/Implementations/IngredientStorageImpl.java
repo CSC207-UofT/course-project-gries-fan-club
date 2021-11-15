@@ -1,5 +1,6 @@
 package Storages.Implementations;
 
+import Entities.Implementations.IngredientImpl;
 import Entities.Ingredient;
 import Entities.Tag;
 import Storages.IngredientStorage;
@@ -42,6 +43,20 @@ public class IngredientStorageImpl extends AbstractStorage<Ingredient> implement
 	}
 
 	@Override
+	public Collection<Ingredient> findByNameExact(String name) {
+		Collection<Ingredient> found = new ArrayList<>();
+
+		for (Ingredient ingredient : this.ingredients()) {
+			if (Objects.equals(ingredient.name(), name)) {
+				found.add(ingredient);
+				return found;
+			}
+		}
+		// will return empty if there is nothing found
+		return found;
+	}
+
+	@Override
 	public Collection<Ingredient> findByTags(Collection<Tag> tags) {
 
 		Collection<Ingredient> found = new ArrayList<>();
@@ -58,17 +73,5 @@ public class IngredientStorageImpl extends AbstractStorage<Ingredient> implement
 
 		return found;
 	}
-	@Override
-	public Collection<Ingredient> findByNameExact(String name) {
-		Collection<Ingredient> found = new ArrayList<>();
 
-		for (Ingredient ingredient : this.ingredients()) {
-			if (Objects.equals(ingredient.name(), name)) {
-				found.add(ingredient);
-				return found;
-			}
-		}
-		// will return empty if there is nothing found
-		return found;
-	}
 }
