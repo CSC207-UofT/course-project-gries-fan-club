@@ -67,4 +67,12 @@ public class IngredientStorageTest {
         Assertions.assertTrue(this.ingredientStorage.ingredients().contains(this.ingredient3));
         Assertions.assertEquals(this.ingredientStorage.ingredients().size(), 3);
     }
+    @Test
+    public void testFindByNameExact() {
+        IngredientImpl ingredient4 = new IngredientImpl(UUID.randomUUID(),"butter", Collections.singletonList(new TagImpl("Dairy")));
+        IngredientImpl ingredient5 = new IngredientImpl(UUID.randomUUID(),"Cocobutter", Collections.singletonList(new TagImpl("Dairy")));
+        this.ingredientStorage.add(ingredient4);
+        this.ingredientStorage.add(ingredient5);
+        Assertions.assertSame(this.ingredientStorage.findByNameExact("butter").iterator().next(), ingredient4);
+    }
 }

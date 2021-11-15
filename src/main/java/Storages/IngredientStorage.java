@@ -32,4 +32,11 @@ public interface IngredientStorage extends Storage<Ingredient> {
 	 */
 	Collection<Ingredient> findByTags(Collection<Tag> tags);
 
+	/**
+	 * Finds an ingredient if it exactly matches one name.
+	 * Similar to the findByName but only returns one value.
+	 */
+
+	Collection<Ingredient> findByNameExact(String name);
+
 }
