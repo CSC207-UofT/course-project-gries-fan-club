@@ -8,7 +8,7 @@ import java.util.List;
 
 
 public class RecipeResponseImpl extends AbstractResponse {
-    List<Recipe> recipes;
+    final List<Recipe> recipes;
     public RecipeResponseImpl(List<Recipe> recipes) {
         this.recipes = recipes;
     }

@@ -11,7 +11,7 @@ import java.util.UUID;
 
 public class ReferencedTagTest {
 
-	Storage<Tag> mockStorage = new MockStorage();
+	final Storage<Tag> mockStorage = new MockStorage();
 
 	/**
 	 * A mock storage for testing.

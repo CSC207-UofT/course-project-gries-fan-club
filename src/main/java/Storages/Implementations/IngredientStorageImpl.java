@@ -1,6 +1,5 @@
 package Storages.Implementations;
 
-import Entities.Implementations.IngredientImpl;
 import Entities.Ingredient;
 import Entities.Tag;
 import Storages.IngredientStorage;

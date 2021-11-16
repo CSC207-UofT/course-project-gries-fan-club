@@ -11,10 +11,10 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class RecipeImpl extends AbstractEntity implements Recipe {
-    private String name;
-    private String description;
-    private List<String> instructions;
-    private List<RecipeItem> recipeItems;
+    private final String name;
+    private final String description;
+    private final List<String> instructions;
+    private final List<RecipeItem> recipeItems;
 
     /**
      * Construct a RecipeImpl, giving the name of the recipe, the description

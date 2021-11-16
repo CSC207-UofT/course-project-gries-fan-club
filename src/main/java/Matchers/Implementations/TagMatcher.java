@@ -10,7 +10,7 @@ import java.util.Set;
  * Match recipes based on tags
  */
 public class TagMatcher extends AbstractMatcher {
-    List<Tag> tags;
+    final List<Tag> tags;
 
     public TagMatcher (List<Tag> tags) {
         this.tags = tags;

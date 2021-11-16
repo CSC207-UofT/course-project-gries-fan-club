@@ -4,16 +4,16 @@ import Entities.Recipe;
 import java.util.List;
 
 public interface Matcher {
-    /** Returns whether or not the specified entity contains all of the tags.
+    /** Returns whether the specified entity contains all the tags.
      *
-     * @param recipe
-     * @return whether or not the entity has all the tags..
+     * @param recipe the recipe we are checking
+     * @return whether the entity has all the tags.
      */
     boolean matches(Recipe recipe);
 
     /**
      * Return the match percentage between a criterion and the recipe in [0, 1]
-     * @param recipe
+     * @param recipe the recipe we are checking
      * @return Match percentage as double
      */
     double floatMatch (Recipe recipe);

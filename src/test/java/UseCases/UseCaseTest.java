@@ -1,18 +1,13 @@
 package UseCases;
 
-import Commands.Command;
 import Commands.Implementations.CommandImpl;
 import Entities.*;
 import Entities.Implementations.*;
-import Entities.Implementations.IngredientImpl;
 import Storages.Implementations.IngredientStorageImpl;
 import Storages.Implementations.RecipeStorageImpl;
-import Storages.IngredientStorage;
-import Storages.RecipeStorage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import Entities.Ingredient;
 
 import java.util.*;
 
@@ -79,7 +74,7 @@ public class UseCaseTest {
         this.fridge = new IngredientStorageImpl();
         this.recipeStorage = new RecipeStorageImpl();
 
-        // add the ingredients that the user has to the fridge (holds whats in the users fridge)
+        // add the ingredients that the user has to the fridge (holds what's in the users' fridge)
         fridge.add(this.ingredient1);
         fridge.add(this.ingredient2);
 

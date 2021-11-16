@@ -42,7 +42,7 @@ Current Class Diagram:
 - **Serialization**
   - In order to save the state of our program we have utilised the generic “rows” that represented our entities raw data and a new set of serializers to transform our entities back into rows.
   - These rows can then be saved to persistent storage by a writer.
-  - Since the rows are not tied to a single type of entity so we only need one writer to save every entity!
+  - Since the rows are not tied to a single type of entity, so we only need one writer to save every entity!
 - **Android UI**
   - We had decided to get our app running on an Android GUI to allow for more complex menus and user interactions.
   - There was a lot of difficulty in getting the Android SDK, Intellij, and our code base to work together.
@@ -90,7 +90,7 @@ Current Class Diagram:
 ## Packaging Strategies
 - Initially, we started with a strategy which was just everything grouped into related interfaces / functionality. So adhering to Clean Architecture, we packaged things by Feature.
 - As a result, this meant parts of the system that worked together may be far apart (IE entity builders and interfaces are separate).
-- To combat this, we have since changed to a more nested strategy to keep Components of the system grouped together. IE entities and builders, storages, loaders and writers. Thus we are still following Clean Architecture by implementing packaging by Components.
+- To combat this, we have since changed to a more nested strategy to keep Components of the system grouped together. IE entities and builders, storages, loaders and writers. Thus, we are still following Clean Architecture by implementing packaging by Components.
 - ![Screen Shot 2021-11-15 at 9 57 06 PM](https://user-images.githubusercontent.com/63621073/141887664-7430a5b3-4f86-425f-bf46-7e0ff49fd832.png)
 
 ## Design Patterns
@@ -111,7 +111,7 @@ Some major refactors include:
 
 ## Progress Report
 
-Throughout the development of JChef we encountered many obstacles, of which we’ve worked hard to overcome. However as mentioned earlier, there are many questions our group needs to address in Phase 2. This includes addressing:
+Throughout the development of JChef we encountered many obstacles, of which we’ve worked hard to overcome. However, as mentioned earlier, there are many questions our group needs to address in Phase 2. This includes addressing:
 - Managing the file structure to correct the build errors. This will help us:
     - Connect the backend to the Android GUI to make the application holistically functional
     - Create a more robust testing system to ensure the application works as intended
@@ -121,12 +121,12 @@ In spite of the aforementioned concerns, we believe JChef’s current design to 
 
 Because we followed clean architecture and the SOLID principles our codebase is easy to understand and led to good stratification in terms of levels. Our compartmentalized code base is conducive to scalability and the implementation of new features. As well, general maintenance was easy.
 
-For instance, consider our Recipe Items: This class was turned into two different subclasses in Phase 1 but it didn’t affect the rest of the code base as the implementation was done using the same interface.
+For instance, consider our Recipe Items: This class was turned into two different subclasses in Phase 1, but it didn't affect the rest of the code base as the implementation was done using the same interface.
 
 These principles will allow us to address the shortcomings in Phase 1, resulting in easy testing and future expansion in Phase 2.
 
 Regarding Phase 1 Contributions:
-- Ariel worked on creating entities, some of the storages and matchers, as well as the use cases. Also was responsible for testing all of those things.
+- Ariel worked on creating entities, some storages and matchers, as well as the use cases. Also was responsible for testing all of those things.
 - Ayush worked on the Android GUI as well as the design document and progress report
 - Derek worked on implementing the loading and serialization of entities as well as the entity referencing system. 
 - Ezra worked on the RecipeItem implementation and subclasses. Added recipe tag methods.Created use case tests file. Also added Fridge Use Case and tests Created Abstract Response class.
