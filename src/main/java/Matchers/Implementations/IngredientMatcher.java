@@ -9,14 +9,14 @@ import java.util.*;
 
 public class IngredientMatcher extends AbstractMatcher {
 
-    List<Ingredient> ingredients;
+    final List<Ingredient> ingredients;
 
     public IngredientMatcher (List<Ingredient> ingredients) { this.ingredients = ingredients; }
 
     /**
-     * Checks if a list of ingredients contains all of the ingredients that a recipe needs
+     * Checks if a list of ingredients contains all the ingredients that a recipe needs
      * @param recipe is the recipe to check
-     * @return whether or not the recipe has all of the required ingredients
+     * @return whether the recipe has all the required ingredients
      */
     @Override
     public boolean matches(Recipe recipe) {
@@ -44,13 +44,13 @@ public class IngredientMatcher extends AbstractMatcher {
 
     /**
      * Take in a recipe storage and return a list of the top 10 (less if there isn't 10) most similar recipes
-     * @param recipes
+     * @param recipes list of recipes
      */
     public List<Recipe> return10RecipesMatched(RecipeStorage recipes) {
         List<Recipe> allRecipes = new ArrayList<>();
 
         for (Recipe recipe : recipes.recipes()) {
-            // if its less than 10, just add it
+            // if it's less than 10, just add it
             if (allRecipes.size() < 10) {
                 allRecipes.add(recipe);
             } else {

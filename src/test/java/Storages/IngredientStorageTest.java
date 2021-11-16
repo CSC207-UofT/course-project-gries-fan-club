@@ -63,7 +63,7 @@ public class IngredientStorageTest {
     }
 
     /**
-     * Test the ingredients method to ensure the correct ingredients are being returned
+     * Test the ingredients' method to ensure the correct ingredients are being returned
      */
     @Test
     public void testIngredients() {

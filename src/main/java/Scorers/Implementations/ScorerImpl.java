@@ -11,13 +11,13 @@ import java.util.List;
 
 public class ScorerImpl implements Scorer {
 
-    List<Ingredient> ingredients;
-    List<Tag> tags;
-    String name;
+    final List<Ingredient> ingredients;
+    final List<Tag> tags;
+    final String name;
     Recipe recipe;
 
-    IngredientMatcher ingredientMatcher;
-    TagMatcher tagMatcher;
+    final IngredientMatcher ingredientMatcher;
+    final TagMatcher tagMatcher;
 
     public ScorerImpl(List<Ingredient> ingredients, List<Tag> tags, String name) {
         this.ingredients = ingredients;

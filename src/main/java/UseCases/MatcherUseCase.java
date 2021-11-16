@@ -1,24 +1,17 @@
 package UseCases;
 
-import Commands.Command;
 import Commands.Implementations.CommandImpl;
-import Entities.Implementations.IngredientImpl;
 import Entities.Ingredient;
 import Entities.Recipe;
 import Matchers.Implementations.IngredientMatcher;
-import Matchers.Implementations.TagMatcher;
-import Matchers.Matcher;
 import Storages.Implementations.IngredientStorageImpl;
 import Storages.Implementations.RecipeStorageImpl;
-import Storages.IngredientStorage;
-import Storages.RecipeStorage;
-import Storages.Storage;
 
 import java.util.*;
 
 public class MatcherUseCase implements UseCase {
-    IngredientStorageImpl ingredientStorage;
-    RecipeStorageImpl recipeStorage;
+    final IngredientStorageImpl ingredientStorage;
+    final RecipeStorageImpl recipeStorage;
 
     /** Constructor
      */
@@ -31,7 +24,7 @@ public class MatcherUseCase implements UseCase {
         List<Recipe> recipesMatched = new ArrayList<>();
 
         // Check if fridge matches the recipe storage
-        // First check if fridge is non empty
+        // First check if fridge is non-empty
         if (!Objects.equals(command.get("Fridge"), "")) {
 
             // get fridge as ingredient storage
@@ -46,7 +39,7 @@ public class MatcherUseCase implements UseCase {
         return new RecipeResponseImpl(recipesMatched);
         }
 
-    /** Takes in command, returns a ingredient storage of the fridge
+    /** Takes in command, returns an ingredient storage of the fridge
       * @param command Command
      * @return IngredientStorageImpl that corresponds to the fridge
      */

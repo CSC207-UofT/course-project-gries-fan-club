@@ -18,7 +18,7 @@ public class ReferencedIngredientTest {
 	ReferencedIngredient readyIngredient;
 	ReferencedIngredient unloadedIngredient;
 
-	Storage<Ingredient> mockStorage = new ReferencedIngredientTest.MockStorage();
+	final Storage<Ingredient> mockStorage = new ReferencedIngredientTest.MockStorage();
 
 	/**
 	 * A mock storage for testing.

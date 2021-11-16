@@ -8,7 +8,7 @@ import java.util.List;
 
 public class IngredientStorageResponseImpl extends AbstractResponse {
 
-    Collection<Ingredient> ingredients;
+    final Collection<Ingredient> ingredients;
     public IngredientStorageResponseImpl(Collection<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }

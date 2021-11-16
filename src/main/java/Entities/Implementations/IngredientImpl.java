@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.UUID;
 
 public class IngredientImpl extends AbstractEntity implements Ingredient {
-    private String name;
-    private List<Tag> tags;
+    private final String name;
+    private final List<Tag> tags;
 
     /**
      * Constructs an ingredient with a given ID.

@@ -1,6 +1,5 @@
 package UseCases;
 
-import Commands.Command;
 import Commands.Implementations.CommandImpl;
 import Storages.Implementations.IngredientStorageImpl;
 
@@ -10,8 +9,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class FridgeUseCase implements UseCase {
-    IngredientStorageImpl ingredientStorage;
-    IngredientStorageImpl fridge;
+    final IngredientStorageImpl ingredientStorage;
+    final IngredientStorageImpl fridge;
 
     /**
      * Constructor

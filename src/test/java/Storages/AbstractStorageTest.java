@@ -11,8 +11,8 @@ import java.util.UUID;
 
 public class AbstractStorageTest {
     MockStorage storage;
-    UUID testID = UUID.randomUUID();
-    UUID testID2 = UUID.randomUUID();
+    final UUID testID = UUID.randomUUID();
+    final UUID testID2 = UUID.randomUUID();
     MockEntity entity1;
     MockEntity entity2;
 
