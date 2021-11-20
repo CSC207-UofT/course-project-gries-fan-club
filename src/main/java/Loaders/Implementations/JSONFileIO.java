@@ -24,7 +24,7 @@ public class JSONFileIO implements Loader, RowWriter {
 	private int index = 0;
 
 	public JSONFileIO() {
-		this("");
+		this("[]");
 	}
 
 	/**
