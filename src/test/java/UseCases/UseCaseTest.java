@@ -111,7 +111,8 @@ public class UseCaseTest {
     public void testAddToFridge() {
 
         CommandImpl command = new CommandImpl();
-        command.put("addtofridge", "oil,chocolate chips");
+        command.put("addToFridge", "oil,chocolate chips");
+        command.put("removeFromFridge", "");
         FridgeUseCase usecase = new FridgeUseCase(fridge, ingredientStorage);
 
         TagImpl tag1 = new TagImpl("Gluten");
@@ -139,6 +140,7 @@ public class UseCaseTest {
         expected1.add(ingredient4);
         expected1.add(ingredient1);
         expected1.add(ingredient3);
+
         Ingredient test1 =  ingredientStorage.findByNameExact("oil").iterator().next();
         Ingredient test2 =  ingredientStorage.findByNameExact("chocolate chips").iterator().next();
 
@@ -165,7 +167,9 @@ public class UseCaseTest {
     @Test
     public void testRemoveFromFridge(){
         CommandImpl command = new CommandImpl();
-        command.put("removefromfridge", "flour");
+        command.put("removeFromFridge", "flour");
+        command.put("addToFridge", "");
+
         FridgeUseCase usecase = new FridgeUseCase(fridge, ingredientStorage);
 
         Ingredient test1 =  ingredientStorage.findByNameExact("flour").iterator().next();

@@ -18,23 +18,24 @@ public class FridgeUseCase implements UseCase {
     public FridgeUseCase(IngredientStorageImpl fridge, IngredientStorageImpl ingredientStorage) {
         this.ingredientStorage = ingredientStorage;
         this.fridge = fridge;
-
     }
 
     @Override
     public IngredientStorageResponseImpl run(CommandImpl command) {
+
         // checks if the user is using addToFridge command (non-empty)
-        if (!Objects.equals(command.get("addtofridge"), "") && command.containsKey("addtofridge")) {
-            String newString = command.get("addtofridge");
+        if (!Objects.equals(command.get("addToFridge"), "")) {
+            String newString = command.get("addToFridge");
 
             List<String> stringsOfIngredients = new ArrayList<>(Arrays.asList(newString.split(",")));
             for (String ingredientString : stringsOfIngredients) {
                 this.fridge.add(this.ingredientStorage.findByNameExact(ingredientString).iterator().next());
             }
         }
+
         // checks if the user is using removeFromFridge command (non-empty)
-        if (!Objects.equals(command.get("removefromfridge"), "") && command.containsKey("removefromfridge")) {
-            String newString = command.get("removefromfridge");
+        if (!Objects.equals(command.get("removeFromFridge"), "")) {
+            String newString = command.get("removeFromFridge");
 
             List<String> stringsOfIngredients = new ArrayList<>(Arrays.asList(newString.split(",")));
             for (String ingredientString : stringsOfIngredients) {

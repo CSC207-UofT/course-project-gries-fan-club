@@ -6,5 +6,5 @@ public interface Scorer {
      * Currently, only score for TagMatcher and NameMatcher
      * @return match score
      */
-    double score ();
+    double score();
 }
