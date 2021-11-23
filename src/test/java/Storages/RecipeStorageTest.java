@@ -17,13 +17,15 @@ public class RecipeStorageTest {
     RecipeStorageImpl recipeStorage;
     RecipeImpl recipe1;
     RecipeImpl recipe2;
+    TagImpl glutenTag;
 
     @BeforeEach
     public void setup() {
         this.recipeStorage = new RecipeStorageImpl();
+        this.glutenTag = new TagImpl("Gluten");
         // Make ingredients
         IngredientImpl ingredient1 = new IngredientImpl(UUID.randomUUID(), "egg",
-                Collections.singletonList(new TagImpl("Gluten")));
+                Collections.singletonList(this.glutenTag));
 
         IngredientImpl ingredient2 = new IngredientImpl(UUID.randomUUID(), "flour",
                 Collections.singletonList(new TagImpl("Vegan")));
@@ -67,6 +69,17 @@ public class RecipeStorageTest {
         Assertions.assertTrue(this.recipeStorage.findByTags(tags).contains(this.recipe2));
         Assertions.assertEquals(this.recipeStorage.findByTags(tags).size(), 1);
     }
+
+    @Test
+    public void testFindByOppositeTags() {
+        Collection<Tag> tags = new ArrayList<>();
+        tags.add(this.glutenTag);
+
+        Assertions.assertTrue(this.recipeStorage.findByOppositeTags(tags).contains(this.recipe2));
+        // makes sure recipe1 is not in the list because it contains gluten
+        Assertions.assertFalse(this.recipeStorage.findByOppositeTags(tags).contains(this.recipe1));
+    }
+
 
     @Test
     public void testRecipes() {

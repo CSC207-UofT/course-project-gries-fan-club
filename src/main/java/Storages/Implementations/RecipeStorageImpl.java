@@ -49,6 +49,33 @@ public class RecipeStorageImpl extends AbstractStorage<Recipe> implements Recipe
 		return found;
 	}
 
+	/**
+	 * Find all the recipes that do not contain the tags given
+	 * This is used because the tags are positive so we want to find recipes
+	 * that do not contain those tags
+	 * @param tags
+	 * @return Collection of recipes containing all the recipes that do not contain the tags
+	 */
+	@Override
+	public Collection<Recipe> findByOppositeTags(Collection<Tag> tags) {
+		Collection<Recipe> found = new ArrayList<>();
+
+		for (Recipe recipe : this.recipes()) {
+			boolean addRecipe = true;
+			for (Tag tag : tags) {
+				// if any of the recipe's tags are one of the tags given, make it false
+				if (recipe.tags().contains(tag)) {
+					addRecipe = false;
+				}
+			}
+			if (addRecipe) {
+				found.add(recipe);
+			}
+		}
+		return found;
+	}
+
+
 	@Override
 	public Collection<Recipe> findByIngredients(List<Ingredient> ingredients) {
 		Collection<Recipe> found = new ArrayList<>();

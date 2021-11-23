@@ -35,6 +35,15 @@ import java.util.List;
 	Collection<Recipe> findByTags(Collection<Tag> tags);
 
 	/**
+	 * Finds all recipes that do not include any of the given tags
+	 *
+	 * @param tags The tags to match
+	 *
+	 * @return All matched recipes
+	 */
+	Collection<Recipe> findByOppositeTags(Collection<Tag> tags);
+
+	/**
 	 * Finds all recipes that contain use a subset of the given ingredients.
 	 * If a recipe has an ingredient marked as optional it will not matter if that ingredient is in the matching list.
 	 *
