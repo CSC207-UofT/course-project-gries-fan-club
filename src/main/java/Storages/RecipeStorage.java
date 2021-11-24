@@ -41,7 +41,7 @@ import java.util.List;
 	 *
 	 * @return All matched recipes
 	 */
-	Collection<Recipe> findByOppositeTags(Collection<Tag> tags);
+	Collection<Recipe> containsNoneOf(Collection<Tag> tags);
 
 	/**
 	 * Finds all recipes that contain use a subset of the given ingredients.

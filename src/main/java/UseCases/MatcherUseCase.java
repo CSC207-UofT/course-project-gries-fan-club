@@ -24,9 +24,8 @@ public class MatcherUseCase implements UseCase {
         List<Recipe> recipesMatched = new ArrayList<>();
 
         // Check if fridge matches the recipe storage
-        // First check if fridge is non-empty
-        if (!Objects.equals(command.get("Fridge"), "")) {
-
+        // First check if fridge is provided
+        if (command.containsKey("Fridge")) {
             // get fridge as ingredient storage
             IngredientStorageImpl fridge = getFridgeStorage(command);
 
@@ -45,8 +44,8 @@ public class MatcherUseCase implements UseCase {
      */
     public IngredientStorageImpl getFridgeStorage(CommandImpl command) {
         IngredientStorageImpl fridge = new IngredientStorageImpl();
-        String newString = command.get("Fridge");
-        List<String> stringsOfIngredients = new ArrayList<>(Arrays.asList(newString.split(",")));
+        String keyValues = command.get("Fridge");
+        List<String> stringsOfIngredients = new ArrayList<>(Arrays.asList(keyValues.split(",")));
 
         for (String ingredientString : stringsOfIngredients) {
             Collection<Ingredient> ingredientList = this.ingredientStorage.findByNameExact(ingredientString);

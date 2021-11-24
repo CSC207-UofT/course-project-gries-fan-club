@@ -71,13 +71,13 @@ public class RecipeStorageTest {
     }
 
     @Test
-    public void testFindByOppositeTags() {
+    public void testContainsNoneOf() {
         Collection<Tag> tags = new ArrayList<>();
         tags.add(this.glutenTag);
 
-        Assertions.assertTrue(this.recipeStorage.findByOppositeTags(tags).contains(this.recipe2));
+        Assertions.assertTrue(this.recipeStorage.containsNoneOf(tags).contains(this.recipe2));
         // makes sure recipe1 is not in the list because it contains gluten
-        Assertions.assertFalse(this.recipeStorage.findByOppositeTags(tags).contains(this.recipe1));
+        Assertions.assertFalse(this.recipeStorage.containsNoneOf(tags).contains(this.recipe1));
     }
 
 

@@ -1,7 +1,7 @@
 package UseCases;
 
 import Commands.Implementations.CommandImpl;
-import Storages.Implementations.IngredientStorageImpl;
+import Storages.IngredientStorage;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,40 +9,46 @@ import java.util.List;
 import java.util.Objects;
 
 public class FridgeUseCase implements UseCase {
-    final IngredientStorageImpl ingredientStorage;
-    final IngredientStorageImpl fridge;
+    final IngredientStorage ingredientStorage;
+    final IngredientStorage fridge;
 
     /**
      * Constructor
      */
-    public FridgeUseCase(IngredientStorageImpl fridge, IngredientStorageImpl ingredientStorage) {
+    public FridgeUseCase(IngredientStorage fridge, IngredientStorage ingredientStorage) {
         this.ingredientStorage = ingredientStorage;
         this.fridge = fridge;
     }
 
+    /**
+     * Will either add to fridge or remove from fridge based on what is provided.
+     * NOTE: Command must contain both keys, although neither of them HAVE to contain
+     * values pertaining to that key. That way we can remove and add in the same command object.
+     * @param command
+     * @return
+     */
     @Override
     public IngredientStorageResponseImpl run(CommandImpl command) {
 
         // checks if the user is using addToFridge command (non-empty)
-        if (!Objects.equals(command.get("addToFridge"), "")) {
-            String newString = command.get("addToFridge");
+        if (command.containsKey("addToFridge")) {
+            String keyValues = command.get("addToFridge");
 
-            List<String> stringsOfIngredients = new ArrayList<>(Arrays.asList(newString.split(",")));
+            List<String> stringsOfIngredients = new ArrayList<>(Arrays.asList(keyValues.split(",")));
+
             for (String ingredientString : stringsOfIngredients) {
                 this.fridge.add(this.ingredientStorage.findByNameExact(ingredientString).iterator().next());
             }
         }
 
         // checks if the user is using removeFromFridge command (non-empty)
-        if (!Objects.equals(command.get("removeFromFridge"), "")) {
-            String newString = command.get("removeFromFridge");
+        if (command.containsKey("removeFromFridge")) {
+            String keyValues = command.get("removeFromFridge");
 
-            List<String> stringsOfIngredients = new ArrayList<>(Arrays.asList(newString.split(",")));
+            List<String> stringsOfIngredients = new ArrayList<>(Arrays.asList(keyValues.split(",")));
             for (String ingredientString : stringsOfIngredients) {
                 this.fridge.remove(this.ingredientStorage.findByNameExact(ingredientString).iterator().next());
-
             }
-
         }
         return new IngredientStorageResponseImpl(this.fridge);
 
