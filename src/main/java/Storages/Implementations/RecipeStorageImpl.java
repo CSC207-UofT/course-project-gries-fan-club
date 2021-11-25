@@ -8,6 +8,7 @@ import Storages.RecipeStorage;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -48,6 +49,26 @@ public class RecipeStorageImpl extends AbstractStorage<Recipe> implements Recipe
 
 		return found;
 	}
+
+	/**
+	 * Find all the recipes that do not contain the tags given
+	 * This is used because the tags are positive so we want to find recipes
+	 * that do not contain those tags
+	 * @param tags
+	 * @return Collection of recipes containing all the recipes that do not contain the tags
+	 */
+	@Override
+	public Collection<Recipe> containsNoneOf(Collection<Tag> tags) {
+		Collection<Recipe> found = new ArrayList<>();
+
+		for (Recipe recipe : this.recipes()) {
+			if (Collections.disjoint(recipe.tags(), tags)) {
+				found.add(recipe);
+			}
+		}
+		return found;
+	}
+
 
 	@Override
 	public Collection<Recipe> findByIngredients(List<Ingredient> ingredients) {
