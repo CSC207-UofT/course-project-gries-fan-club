@@ -7,11 +7,7 @@ import Storages.RecipeStorage;
 import Storages.TagStorage;
 
 // Imports for Java.util
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Arrays;
-import java.util.Collection;
+import java.util.*;
 
 public class CookbookUseCase {
     /**
@@ -58,8 +54,7 @@ public class CookbookUseCase {
         }
 
         // If none of the commands were provided, then return empty list of recipes.
-        List<Recipe> emptyRecipeList = new ArrayList<>();
-        return new RecipeResponseImpl(emptyRecipeList);
+        return new RecipeResponseImpl(Collections.emptyList());
     }
 }
 

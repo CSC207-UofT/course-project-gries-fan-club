@@ -2,6 +2,7 @@ package UseCases;
 
 import Commands.Implementations.CommandImpl;
 import Entities.Implementations.*;
+import Entities.Recipe;
 import Entities.RecipeItem;
 import Entities.Tag;
 import Storages.Implementations.IngredientStorageImpl;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class CookbookTest {
+public class MatcherUseCaseTest {
     IngredientStorageImpl ingredientStorage;
     RecipeStorageImpl recipeStorage;
     IngredientStorageImpl fridge;
@@ -52,7 +53,7 @@ public class CookbookTest {
         list3.add(tag2);
 
         // creates ingredients
-        this.ingredient1 = new IngredientImpl("flour",list1);
+        this.ingredient1 = new IngredientImpl("flour", list1);
         this.ingredient2 = new IngredientImpl("egg", list2);
         IngredientImpl ingredient3 = new IngredientImpl("oil", Collections.emptyList());
         IngredientImpl ingredient4 = new IngredientImpl("chocolate chips", list3);
@@ -107,34 +108,33 @@ public class CookbookTest {
         this.recipeStorage.add(recipe1);
         this.recipeStorage.add(recipe2);
     }
-
     /**
-     * Tests the run command of the Cookbook use case
-     * Specifically, sees if all the recipes are being returned when FindAllRecipes command is run
+     * Test the matcher use case
      */
     @Test
-    public void testFindAllRecipes() {
+    public void testMatcherRun() {
+        // Make a command, populate it with the correct things.
         CommandImpl command = new CommandImpl();
-        command.put("FindAllRecipes", "");
+        command.put("Fridge", "flour,egg");
 
-        CookbookUseCase useCase = new CookbookUseCase(this.recipeStorage, this.tagStorage);
+        List<Recipe> recipes = new ArrayList<>(this.recipeStorage.recipes());
+        MatcherUseCase usecase = new MatcherUseCase(this.ingredientStorage, this.recipeStorage);
 
-        Assertions.assertTrue(useCase.run(command).recipes.contains(this.recipe1));
-        Assertions.assertTrue(useCase.run(command).recipes.contains(this.recipe2));
+        Assertions.assertEquals(usecase.run(command).recipes(), recipes);
     }
 
-    /**
-     * Test the cookbook use case but now seeing it it returns all he recipes based on given tags
-     * Specifically, the recipes that do NOT contain those tags since each tag is positive
-     * Ex. {FindRecipesByTags : "Dairy"}, will return all recipes that do not contain Dairy.
-     */
     @Test
-    public void testFindRecipesWithTags() {
+    public void testGetFridgeStorage() {
+        IngredientStorageImpl mockStorage = new IngredientStorageImpl();
+
+        mockStorage.add(this.ingredient1);
+        mockStorage.add(this.ingredient2);
+
+        // Create command
         CommandImpl command = new CommandImpl();
-        command.put("FindRecipesByTags", "Dairy, Non-Vegan");
+        command.put("Fridge", "flour,egg");
 
-        CookbookUseCase useCase = new CookbookUseCase(this.recipeStorage, this.tagStorage);
-
-        Assertions.assertTrue(useCase.run(command).recipes.contains(this.recipe2));
+        MatcherUseCase usecase = new MatcherUseCase(this.ingredientStorage, this.recipeStorage);
+        Assertions.assertTrue(usecase.getFridgeStorage(command).ingredients().containsAll(mockStorage.ingredients()));
     }
 }

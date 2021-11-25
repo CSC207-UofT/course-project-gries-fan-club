@@ -7,7 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.Collections;
 
-public class FridgeTest {
+public class FridgeUseCaseTest {
     @Test
     public void testAddToFridge() {
         IngredientStorageImpl fridge = new IngredientStorageImpl();

@@ -22,10 +22,8 @@ public class FridgeUseCase implements UseCase {
 
     /**
      * Will either add to fridge or remove from fridge based on what is provided.
-     * NOTE: Command must contain both keys, although neither of them HAVE to contain
-     * values pertaining to that key. That way we can remove and add in the same command object.
      * @param command
-     * @return
+     * @return IngredientStorageResponseImpl containing the ingredients of the fridge
      */
     @Override
     public IngredientStorageResponseImpl run(CommandImpl command) {
