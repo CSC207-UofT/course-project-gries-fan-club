@@ -6,14 +6,14 @@ import Entities.Recipe;
 import java.util.List;
 
 public class ResponseImpl<T> {
-    final List<T> data;
+    List<T> data;
 
     /**
      * Constructor that takes in recipes, and
      * @param data containining data needed to be stored (in a list)
      */
     public ResponseImpl(List<T> data) {
-        this.data = data;
+        this.add(data);
     }
 
     /**
@@ -23,4 +23,12 @@ public class ResponseImpl<T> {
     public List<T> data() {
         return this.data;
     }
+
+    /**
+     * Adds data into the response
+     */
+    public void add(List<T> data) {
+        this.data = data;
+    }
+
 }
