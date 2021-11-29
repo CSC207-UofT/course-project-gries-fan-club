@@ -1,9 +1,7 @@
 package UseCases;
-import Commands.Implementations.CommandImpl;
 import Entities.Implementations.IngredientImpl;
 import Storages.Implementations.IngredientStorageImpl;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.Collections;
 
@@ -23,8 +21,8 @@ public class FridgeUseCaseTest {
 
         FridgeUseCase useCase = new FridgeUseCase(fridge, ingredients);
 
-        Assertions.assertTrue(useCase.run(command).ingredients().contains(ingredient1));
-        Assertions.assertTrue(useCase.run(command).ingredients().contains(ingredient2));
+        Assertions.assertTrue(useCase.run(command).data().contains(ingredient1));
+        Assertions.assertTrue(useCase.run(command).data().contains(ingredient2));
     }
 
     @Test
@@ -45,7 +43,7 @@ public class FridgeUseCaseTest {
 
         FridgeUseCase useCase = new FridgeUseCase(fridge, ingredients);
 
-        Assertions.assertFalse(useCase.run(command).ingredients().contains(ingredient1));
-        Assertions.assertTrue(useCase.run(command).ingredients().contains(ingredient2));
+        Assertions.assertFalse(useCase.run(command).data().contains(ingredient1));
+        Assertions.assertTrue(useCase.run(command).data().contains(ingredient2));
     }
 }

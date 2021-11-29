@@ -1,6 +1,5 @@
 package UseCases;
 
-import Commands.Implementations.CommandImpl;
 import Entities.Ingredient;
 import Entities.Recipe;
 import Matchers.Implementations.IngredientMatcher;
@@ -13,14 +12,12 @@ public class MatcherUseCase implements UseCase {
     final IngredientStorageImpl ingredientStorage;
     final RecipeStorageImpl recipeStorage;
 
-    /** Constructor
-     */
     public MatcherUseCase(IngredientStorageImpl ingredients, RecipeStorageImpl recipes) {
         this.recipeStorage = recipes;
         this.ingredientStorage = ingredients;
     }
 
-    public RecipeResponseImpl run(CommandImpl command) {
+    public ResponseImpl<Recipe> run(CommandImpl command) {
         List<Recipe> recipesMatched = new ArrayList<>();
 
         // Check if fridge matches the recipe storage
@@ -35,7 +32,7 @@ public class MatcherUseCase implements UseCase {
 
             recipesMatched = matcher.return10RecipesMatched(this.recipeStorage);
         }
-        return new RecipeResponseImpl(recipesMatched);
+        return new ResponseImpl<Recipe>(recipesMatched);
         }
 
     /** Takes in command, returns an ingredient storage of the fridge

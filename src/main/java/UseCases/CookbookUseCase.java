@@ -1,6 +1,5 @@
 package UseCases;
 
-import Commands.Implementations.CommandImpl;
 import Entities.Recipe;
 import Entities.Tag;
 import Storages.RecipeStorage;
@@ -27,11 +26,11 @@ public class CookbookUseCase {
      * @param command
      * @return RecipeResponseImpl containing a list of recipes found
      */
-    public RecipeResponseImpl run(CommandImpl command) {
+    public ResponseImpl run(CommandImpl command) {
 
         if (command.containsKey("FindAllRecipes")) {
             List<Recipe> recipesMatched = new ArrayList<>(this.recipeStorage.recipes());
-            return new RecipeResponseImpl(recipesMatched);
+            return new ResponseImpl(recipesMatched);
         }
 
         if (command.containsKey("FindRecipesByTags")) {
@@ -50,11 +49,11 @@ public class CookbookUseCase {
                 }
             }
             List<Recipe> recipesMatched = new ArrayList<>(this.recipeStorage.containsNoneOf(tagList));
-            return new RecipeResponseImpl(recipesMatched);
+            return new ResponseImpl(recipesMatched);
         }
 
         // If none of the commands were provided, then return empty list of recipes.
-        return new RecipeResponseImpl(Collections.emptyList());
+        return new ResponseImpl(Collections.emptyList());
     }
 }
 

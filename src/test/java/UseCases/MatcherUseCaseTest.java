@@ -1,6 +1,5 @@
 package UseCases;
 
-import Commands.Implementations.CommandImpl;
 import Entities.Implementations.*;
 import Entities.Recipe;
 import Entities.RecipeItem;
@@ -120,7 +119,7 @@ public class MatcherUseCaseTest {
         List<Recipe> recipes = new ArrayList<>(this.recipeStorage.recipes());
         MatcherUseCase usecase = new MatcherUseCase(this.ingredientStorage, this.recipeStorage);
 
-        Assertions.assertEquals(usecase.run(command).recipes(), recipes);
+        Assertions.assertEquals(usecase.run(command).data(), recipes);
     }
 
     @Test

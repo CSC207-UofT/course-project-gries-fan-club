@@ -1,12 +1,11 @@
 package UseCases;
 
-import Commands.Implementations.CommandImpl;
+import Entities.Ingredient;
 import Storages.IngredientStorage;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 public class FridgeUseCase implements UseCase {
     final IngredientStorage ingredientStorage;
@@ -26,7 +25,7 @@ public class FridgeUseCase implements UseCase {
      * @return IngredientStorageResponseImpl containing the ingredients of the fridge
      */
     @Override
-    public IngredientStorageResponseImpl run(CommandImpl command) {
+    public ResponseImpl run(CommandImpl command) {
 
         // checks if the user is using addToFridge command (non-empty)
         if (command.containsKey("addToFridge")) {
@@ -48,7 +47,7 @@ public class FridgeUseCase implements UseCase {
                 this.fridge.remove(this.ingredientStorage.findByNameExact(ingredientString).iterator().next());
             }
         }
-        return new IngredientStorageResponseImpl(this.fridge);
-
+        List<Ingredient> fridgeIngredientList = new ArrayList<>(this.fridge.ingredients());
+        return new ResponseImpl(fridgeIngredientList);
     }
 }

@@ -1,6 +1,5 @@
 package UseCases;
 
-import Commands.Implementations.CommandImpl;
 import Entities.Implementations.*;
 import Entities.RecipeItem;
 import Entities.Tag;
@@ -119,8 +118,8 @@ public class CookbookUseCaseTest {
 
         CookbookUseCase useCase = new CookbookUseCase(this.recipeStorage, this.tagStorage);
 
-        Assertions.assertTrue(useCase.run(command).recipes.contains(this.recipe1));
-        Assertions.assertTrue(useCase.run(command).recipes.contains(this.recipe2));
+        Assertions.assertTrue(useCase.run(command).data.contains(this.recipe1));
+        Assertions.assertTrue(useCase.run(command).data.contains(this.recipe2));
     }
 
     /**
@@ -135,6 +134,6 @@ public class CookbookUseCaseTest {
 
         CookbookUseCase useCase = new CookbookUseCase(this.recipeStorage, this.tagStorage);
 
-        Assertions.assertTrue(useCase.run(command).recipes.contains(this.recipe2));
+        Assertions.assertTrue(useCase.run(command).data.contains(this.recipe2));
     }
 }

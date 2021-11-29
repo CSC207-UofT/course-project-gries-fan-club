@@ -1,4 +1,4 @@
-package Commands.Implementations;
+package UseCases;
 
 import java.util.HashMap;
 
