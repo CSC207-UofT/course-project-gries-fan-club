@@ -26,7 +26,7 @@ public class CookbookUseCase implements UseCase {
      * @param command
      * @return RecipeResponseImpl containing a list of recipes found
      */
-    public Response run(CommandImpl command) {
+    public Response run(Command command) {
 
         if (command.containsKey("FindAllRecipes")) {
             // Convert the recipeStorage.recipes from a collection to a list

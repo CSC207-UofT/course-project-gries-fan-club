@@ -25,7 +25,7 @@ public class FridgeUseCase implements UseCase {
      * @return IngredientStorageResponseImpl containing the ingredients of the fridge
      */
     @Override
-    public Response run(CommandImpl command) {
+    public Response run(Command command) {
 
         // checks if the user is using addToFridge command (non-empty)
         if (command.containsKey("addToFridge")) {
