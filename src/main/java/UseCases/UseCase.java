@@ -5,6 +5,6 @@ package UseCases;
  *
  */
 public interface UseCase {
-    ResponseImpl run(CommandImpl command);
+    Response run(CommandImpl command);
 }
 

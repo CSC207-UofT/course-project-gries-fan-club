@@ -8,7 +8,7 @@ import Storages.TagStorage;
 // Imports for Java.util
 import java.util.*;
 
-public class CookbookUseCase {
+public class CookbookUseCase implements UseCase {
     /**
      * The cookbook displays recipes and shows recipes based on tags inputed into command
      */
@@ -26,9 +26,10 @@ public class CookbookUseCase {
      * @param command
      * @return RecipeResponseImpl containing a list of recipes found
      */
-    public ResponseImpl run(CommandImpl command) {
+    public Response run(CommandImpl command) {
 
         if (command.containsKey("FindAllRecipes")) {
+            // Convert the recipeStorage.recipes from a collection to a list
             List<Recipe> recipesMatched = new ArrayList<>(this.recipeStorage.recipes());
             return new ResponseImpl(recipesMatched);
         }

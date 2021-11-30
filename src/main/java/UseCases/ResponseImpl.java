@@ -1,11 +1,8 @@
 package UseCases;
 
-import Entities.Ingredient;
-import Entities.Recipe;
-
 import java.util.List;
 
-public class ResponseImpl<T> {
+public class ResponseImpl<T> implements Response {
     List<T> data;
 
     /**
@@ -26,9 +23,9 @@ public class ResponseImpl<T> {
 
     /**
      * Adds data into the response
+     * @param data
      */
-    public void add(List<T> data) {
+    public void add(List data) {
         this.data = data;
     }
-
 }

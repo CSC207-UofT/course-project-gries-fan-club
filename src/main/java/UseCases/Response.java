@@ -9,7 +9,7 @@ public interface Response<T> {
     /**
      * Returns the data in the response
      */
-    List<Recipe> data();
+    List<T> data();
 
     /**
      * Add data to the response
