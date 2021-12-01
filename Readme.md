@@ -40,12 +40,19 @@ This section refers to setting up a development environment to work on JChef.
 
 ### Local Setup
 
-Make sure you create a `local.properties` file in the root of the project and add the following line:
+Make sure you create a `local.properties` file in the root of the project. 
+
+For Windows add the following line:
 ```
 sdk.dir=C\:\\users\\username\\Appdata\\Local\\Android\\Sdk
 ```
+
+For Mac add the following line: 
+```
+sdk.dir=/Users/username/Library/Android/sdk
+```
+
 Replacing `username` as appropriate.
-This is only for Windows.
 
 ## Maintainers
 
