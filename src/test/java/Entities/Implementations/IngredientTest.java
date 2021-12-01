@@ -82,10 +82,6 @@ public class IngredientTest {
         // ingredient contains tags added now
         IngredientImpl ingredient = new IngredientImpl("cake", list);
 
-        Assertions.assertEquals(ingredient.toString(), """
-                Ingredient {
-                \tname='cake',
-                \ttags=[Dairy, Gluten, Sugar]
-                }""");
+        Assertions.assertEquals(ingredient.toString(), "Ingredient {\n\tname='cake',\n\ttags=[Dairy, Gluten, Sugar]\n}");
     }
 }
