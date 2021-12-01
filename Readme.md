@@ -40,8 +40,12 @@ This section refers to setting up a development environment to work on JChef.
 
 ### Local Setup
 
-Our project requires the `org.json` library.
-A jar file is included in the [`libs`](libs) folder for this library, ensure it is [added to your project](https://stackoverflow.com/questions/1051640/correct-way-to-add-external-jars-lib-jar-to-an-intellij-idea-project).
+Make sure you create a `local.properties` file in the root of the project and add the following line:
+```
+sdk.dir=C\:\\users\\username\\Appdata\\Local\\Android\\Sdk
+```
+Replacing `username` as appropriate.
+This is only for Windows.
 
 ## Maintainers
 
