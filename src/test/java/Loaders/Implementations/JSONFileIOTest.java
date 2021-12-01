@@ -1,14 +1,14 @@
-package Loaders.Implementaions;
+package Loaders.Implementations;
 
 import Loaders.Exceptions.NoSuchAttribute;
-import Loaders.Implementations.JSONFileIO;
 import Loaders.Row;
+import org.json.JSONException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.StringWriter;
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -20,40 +20,29 @@ public class JSONFileIOTest {
 	/**
 	 * Below are the JSON sources used in the class loaders.
 	 */
-	static final String SOURCE = """
-		[
-			{
-				"type": "test",
-				"value": 3
-			},
-			{
-				"type": "test",
-				"value": 4
-			}
-		]
-	""";
+	static final String SOURCE = "[{" +
+					"\"type\": \"test\"," +
+					"\"value\": 3" +
+					"},{" +
+					"\"type\": \"test\"," +
+					"\"value\": 4" +
+					"}]";
 
-	static final String NESTED_SOURCE = """
-		[
-			{
-				"type": "test",
-				"values": [
-					4,
-					5
-				]
-			},
-			{
-				"type": "test",
-				"obj": {
-					"inner_value": 6
-				}
-			}
-		]
-	""";
+	static final String NESTED_SOURCE = "[{" +
+					"\"type\": \"test\"," +
+					"\"values\": [" +
+					"4," +
+					"5" +
+					"]" +
+					"},{" +
+					"\"type\": \"test\"," +
+					"\"obj\": {" +
+					"\"inner_value\": 6" +
+					"}}]";
 
 
 	@BeforeEach
-	public void setup() {
+	public void setup() throws JSONException {
 		this.loader = new JSONFileIO(SOURCE);
 		this.nestedLoader = new JSONFileIO(NESTED_SOURCE);
 	}
@@ -103,10 +92,9 @@ public class JSONFileIOTest {
 	public void testSave() throws Exception {
 
 		StringWriter writer = new StringWriter();
-		Collection<Row> rows = List.of(
-						this.loader.readRow(),
-						this.loader.readRow()
-		);
+		List<Row> rows = new ArrayList<>();
+		rows.add(this.loader.readRow());
+		rows.add(this.loader.readRow());
 
 		this.loader.save(rows, writer);
 		String jsonNoSpace = writer.toString().replaceAll("\\s+","");

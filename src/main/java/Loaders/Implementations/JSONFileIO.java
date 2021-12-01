@@ -4,11 +4,11 @@ import Loaders.Loader;
 import Loaders.Row;
 import Loaders.RowWriter;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.Writer;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 
@@ -23,7 +23,7 @@ public class JSONFileIO implements Loader, RowWriter {
 	private final JSONArray source;
 	private int index = 0;
 
-	public JSONFileIO() {
+	public JSONFileIO() throws JSONException {
 		this("[]");
 	}
 
@@ -41,7 +41,7 @@ public class JSONFileIO implements Loader, RowWriter {
 	 *
 	 * @param source A string representing a JSON array.
 	 */
-	public JSONFileIO(String source) {
+	public JSONFileIO(String source) throws JSONException {
 		this.source = new JSONArray(source);
 	}
 
@@ -51,8 +51,9 @@ public class JSONFileIO implements Loader, RowWriter {
 	 * @param sourceFilePath The path of the file to read.
 	 *
 	 */
-	public JSONFileIO(Path sourceFilePath) throws IOException {
-		this(Files.readString(sourceFilePath));
+	public JSONFileIO(Path sourceFilePath) throws IOException, JSONException {
+		// @TODO FIX
+		this("");
 	}
 
 	@Override
@@ -61,28 +62,40 @@ public class JSONFileIO implements Loader, RowWriter {
 			return new EmptyRow();
 		}
 
-		JSONObject currentObject = this.source.getJSONObject(this.index++);
-		String rowType = currentObject.getString("type");
+		JSONObject currentObject;
+		String rowType;
 
+		try {
+			currentObject = this.source.getJSONObject(this.index++);
+			rowType = currentObject.getString("type");
+		} catch (JSONException exception) {
+			return new EmptyRow();
+		}
 		RowImpl row = new RowImpl(rowType);
 
 		// Gather each key of the object as a value for this row.
-		for(String key : currentObject.keySet()) {
+		for (Iterator<String> it = currentObject.keys(); it.hasNext(); ) {
+			String key = it.next();
 			if (key.equals("type")) {
 				// Do not add the type key as an attribute.
 				continue;
 			}
 
-			Object value = currentObject.get(key);
+			try {
+				Object value = currentObject.get(key);
 
-			// We do not want to return JSONArrays outside this class.
-			if(isJSONArray(value)) {
-				value = convertToNativeArray((JSONArray) value);
-			} else if(isJSONObject(value)) {
-				value = convertToNativeObject((JSONObject) value);
+				// We do not want to return JSONArrays outside this class.
+				if(isJSONArray(value)) {
+					value = convertToNativeArray((JSONArray) value);
+				} else if(isJSONObject(value)) {
+					value = convertToNativeObject((JSONObject) value);
+				}
+
+				row.set(key, value);
+
+			} catch (JSONException ignored) {
+				// For now, we will ignore errant rows.
 			}
-
-			row.set(key, value);
 		}
 
 		return row;
@@ -112,7 +125,7 @@ public class JSONFileIO implements Loader, RowWriter {
 			sourceToSave.put(object);
 		}
 
-		sourceToSave.write(toWrite, 2, 0);
+		toWrite.write(sourceToSave.toString(2));
 	}
 
 	/**
@@ -159,10 +172,11 @@ public class JSONFileIO implements Loader, RowWriter {
 	 *
 	 * @return A list of non-JSON objects that are only arrays and primitives.
 	 */
-	private static List<Object> convertToNativeArray(JSONArray array) {
+	private static List<Object> convertToNativeArray(JSONArray array) throws JSONException {
 		List<Object> objects = new ArrayList<>();
 
-		for(Object object : array) {
+		for(int i = 0; i < array.length(); i++) {
+			Object object = array.get(i);
 
 			// Any array objects must be further simplified.
 			if (isJSONArray(object)) {
@@ -195,11 +209,12 @@ public class JSONFileIO implements Loader, RowWriter {
 	 *
 	 * @return A Map with no JSON objects within it.
 	 */
-	private static Map<String, Object> convertToNativeObject(JSONObject object) {
+	private static Map<String, Object> convertToNativeObject(JSONObject object) throws JSONException {
 		Map<String, Object> mapObject = new HashMap<>();
 
 		// Retrieve and de-JSON any nested objects within this.
-		for (String key : object.keySet()) {
+		for (Iterator<String> it = object.keys(); it.hasNext(); ) {
+			String key = it.next();
 
 			Object value = object.get(key);
 
