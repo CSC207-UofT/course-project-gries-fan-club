@@ -5,8 +5,19 @@ import Entities.Recipe;
 
 import java.util.List;
 
-// Mock Response interface for use case purpose
-public interface Response {
-    List<Recipe> returnRecipes();
-    List<Ingredient> returnIngredients();
+public interface Response<T> {
+    /**
+     * Returns the data in the response
+     */
+    List<T> data();
+
+    /**
+     * Add data to the response
+     */
+    void add(List<T> data);
 }
+
+
+
+
+

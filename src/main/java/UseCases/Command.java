@@ -1,4 +1,4 @@
-package Commands;
+package UseCases;
 
 import java.util.Map;
 

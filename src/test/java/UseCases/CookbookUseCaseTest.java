@@ -1,6 +1,5 @@
 package UseCases;
 
-import Commands.Implementations.CommandImpl;
 import Entities.Implementations.*;
 import Entities.RecipeItem;
 import Entities.Tag;
@@ -119,12 +118,12 @@ public class CookbookUseCaseTest {
 
         CookbookUseCase useCase = new CookbookUseCase(this.recipeStorage, this.tagStorage);
 
-        Assertions.assertTrue(useCase.run(command).recipes.contains(this.recipe1));
-        Assertions.assertTrue(useCase.run(command).recipes.contains(this.recipe2));
+        Assertions.assertTrue(useCase.run(command).data().contains(this.recipe1));
+        Assertions.assertTrue(useCase.run(command).data().contains(this.recipe2));
     }
 
     /**
-     * Test the cookbook use case but now seeing it it returns all he recipes based on given tags
+     * Test the cookbook use case but now seeing if it returns all the recipes based on given tags
      * Specifically, the recipes that do NOT contain those tags since each tag is positive
      * Ex. {FindRecipesByTags : "Dairy"}, will return all recipes that do not contain Dairy.
      */
@@ -135,6 +134,6 @@ public class CookbookUseCaseTest {
 
         CookbookUseCase useCase = new CookbookUseCase(this.recipeStorage, this.tagStorage);
 
-        Assertions.assertTrue(useCase.run(command).recipes.contains(this.recipe2));
+        Assertions.assertTrue(useCase.run(command).data().contains(this.recipe2));
     }
 }
