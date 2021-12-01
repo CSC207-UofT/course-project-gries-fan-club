@@ -1,4 +1,4 @@
-package com.example.jchefapp;
+package com.gries.jchefapp;
 
 import android.content.Context;
 import androidx.test.ext.junit.runners.AndroidJUnit4;

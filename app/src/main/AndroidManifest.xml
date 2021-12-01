@@ -10,29 +10,29 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.JChefApp">
 
-        <activity android:name=".RecipeActivity"
-                  android:parentActivityName=".MainActivity">
+        <activity android:name="com.gries.jchefapp.RecipeActivity"
+                  android:parentActivityName="com.gries.jchefapp.MainActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".MainActivity"/>
+                    android:value="com.gries.jchefapp.MainActivity"/>
         </activity>
 
-        <activity android:name=".FridgeActivity"
-                  android:parentActivityName=".MainActivity">
+        <activity android:name="com.gries.jchefapp.FridgeActivity"
+                  android:parentActivityName="com.gries.jchefapp.MainActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".MainActivity"/>
+                    android:value="com.gries.jchefapp.MainActivity"/>
         </activity>
 
-        <activity android:name=".InstructionsActivity"
-                  android:parentActivityName=".MainActivity">
+        <activity android:name="com.gries.jchefapp.InstructionsActivity"
+                  android:parentActivityName="com.gries.jchefapp.MainActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".MainActivity"/>
+                    android:value="com.gries.jchefapp.MainActivity"/>
         </activity>
 
         <activity
-                android:name=".MainActivity"
+                android:name="com.gries.jchefapp.MainActivity"
                 android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
