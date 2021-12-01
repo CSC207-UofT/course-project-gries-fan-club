@@ -26,7 +26,7 @@ Have no fear, JChef is here.
 
 ### Example Usage
 
-For now, just run the main function within [`JChef.java`](src/main/java/JChef.java) or run the tests!
+For now, just run the main function within [`JChef.java`](app/src/main/java/JChef.java) or run the tests!
 
 ## Installation
 
