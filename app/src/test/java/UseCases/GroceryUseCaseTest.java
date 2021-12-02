@@ -23,6 +23,10 @@ public class GroceryUseCaseTest {
 
     IngredientImpl ingredient1;
     IngredientImpl ingredient2;
+    IngredientImpl ingredient3;
+    IngredientImpl ingredient4;
+    IngredientImpl ingredient5;
+    IngredientImpl ingredient6;
 
     RecipeImpl recipe1;
     RecipeImpl recipe2;
@@ -55,18 +59,18 @@ public class GroceryUseCaseTest {
         // creates ingredients
         this.ingredient1 = new IngredientImpl("flour",list1);
         this.ingredient2 = new IngredientImpl("egg", list2);
-        IngredientImpl ingredient3 = new IngredientImpl("oil", Collections.emptyList());
-        IngredientImpl ingredient4 = new IngredientImpl("chocolate chips", list3);
-        IngredientImpl ingredient5 = new IngredientImpl("water", Collections.emptyList());
-        IngredientImpl ingredient6 = new IngredientImpl("baking soda", Collections.emptyList());
+        this.ingredient3 = new IngredientImpl("oil", Collections.emptyList());
+        this.ingredient4 = new IngredientImpl("chocolate chips", list3);
+        this.ingredient5 = new IngredientImpl("water", Collections.emptyList());
+        this.ingredient6 = new IngredientImpl("baking soda", Collections.emptyList());
 
         //create Recipe Items for the recipe
         VolumetricRecipeItem item1 = new VolumetricRecipeItem(this.ingredient1, 250f, false);
         QuantityRecipeItem item2 = new QuantityRecipeItem(this.ingredient2, 2f, false);
-        VolumetricRecipeItem item3 = new VolumetricRecipeItem(ingredient3, 100f, false);
-        QuantityRecipeItem item4 = new QuantityRecipeItem(ingredient4, 55f, false);
-        VolumetricRecipeItem item5 = new VolumetricRecipeItem(ingredient5, 125f, false);
-        VolumetricRecipeItem item6 = new VolumetricRecipeItem(ingredient6, 5f, false);
+        VolumetricRecipeItem item3 = new VolumetricRecipeItem(this.ingredient3, 100f, false);
+        QuantityRecipeItem item4 = new QuantityRecipeItem(this.ingredient4, 55f, false);
+        VolumetricRecipeItem item5 = new VolumetricRecipeItem(this.ingredient5, 125f, false);
+        VolumetricRecipeItem item6 = new VolumetricRecipeItem(this.ingredient6, 5f, false);
         //create recipes
         List<RecipeItem> recipeItems1 = new ArrayList<>();
         recipeItems1.add(item1);
@@ -100,10 +104,10 @@ public class GroceryUseCaseTest {
         // add to the main ingredients (holds all the ingredients in our database0
         this.ingredientStorage.add(this.ingredient1);
         this.ingredientStorage.add(this.ingredient2);
-        this.ingredientStorage.add(ingredient3);
-        this.ingredientStorage.add(ingredient4);
-        this.ingredientStorage.add(ingredient5);
-        this.ingredientStorage.add(ingredient6);
+        this.ingredientStorage.add(this.ingredient3);
+        this.ingredientStorage.add(this.ingredient4);
+        this.ingredientStorage.add(this.ingredient5);
+        this.ingredientStorage.add(this.ingredient6);
 
         // add to the recipe storage (all in the recipes in our app)
         this.recipeStorage.add(recipe1);
@@ -121,13 +125,31 @@ public class GroceryUseCaseTest {
 
         GroceryUseCase useCase = new GroceryUseCase(this.fridge, this.recipeStorage, this.grocery);
 
-        Assertions.assertTrue(useCase.run(command).ingredients().contains(ingredient1));
-        Assertions.assertTrue(useCase.run(command).ingredients().contains(ingredient2));
+        // Fridge only contains ingredient1 and ingredient2
+        // we check to see that the grocery contains ingredient3-6
+        Assertions.assertTrue(useCase.run(command).ingredients().contains(this.ingredient3));
+        Assertions.assertTrue(useCase.run(command).ingredients().contains(this.ingredient4));
+        Assertions.assertTrue(useCase.run(command).ingredients().contains(this.ingredient5));
+        Assertions.assertTrue(useCase.run(command).ingredients().contains(this.ingredient6));
 
     }
 
     @Test
     public void testImportToFridge() {
+        CommandImpl command = new CommandImpl();
+        command.put("importRecipeItems", "");
+
+        GroceryUseCase useCase = new GroceryUseCase(this.fridge, this.recipeStorage, this.grocery);
+
+        Assertions.assertFalse(useCase.run(command).ingredients().contains(this.ingredient3));
+        Assertions.assertFalse(useCase.run(command).ingredients().contains(this.ingredient4));
+        Assertions.assertFalse(useCase.run(command).ingredients().contains(this.ingredient5));
+        Assertions.assertFalse(useCase.run(command).ingredients().contains(this.ingredient6));
+
+        Assertions.assertTrue(this.fridge.contains(this.ingredient3));
+        Assertions.assertTrue(this.fridge.contains(this.ingredient4));
+        Assertions.assertTrue(this.fridge.contains(this.ingredient5));
+        Assertions.assertTrue(this.fridge.contains(this.ingredient6));
 
     }
 }
