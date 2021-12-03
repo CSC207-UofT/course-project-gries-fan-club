@@ -4,6 +4,7 @@ import Commands.Implementations.CommandImpl;
 import Entities.Ingredient;
 import Entities.Recipe;
 import Entities.RecipeItem;
+import Storages.Implementations.IngredientStorageImpl;
 import Storages.IngredientStorage;
 import Storages.RecipeStorage;
 
@@ -15,9 +16,9 @@ public class GroceryUseCase {
     /**
      * The grocery displays gives all ingredients you currently need to buy.
      */
-    final IngredientStorage fridge;
+    IngredientStorage fridge;
     final RecipeStorage recipeStorage;
-    final IngredientStorage grocery;
+    IngredientStorage grocery;
 
     public GroceryUseCase(IngredientStorage fridge, RecipeStorage recipeStorage, IngredientStorage grocery) {
         this.fridge = fridge;
@@ -51,7 +52,7 @@ public class GroceryUseCase {
             // Iterating through all ingredients needed for recipes
             for (Ingredient ingredient : recipeIngredients) {
                 // If the fridge does not contain a needed ingredient, we add the ingredient to the grocery
-                if (!(fridge.contains(ingredient))) {
+                if (!(this.fridge.contains(ingredient))) {
                     // ingredient gets added to grocery
                     this.grocery.add(ingredient);
                 }
@@ -61,9 +62,10 @@ public class GroceryUseCase {
 
         if (command.containsKey("importRecipeItems")) {
             // Adding all items currently in grocery to the fridge
-            this.fridge.addAll(grocery);
-            // Emptying the grocery
-            this.grocery.clear();
+            this.fridge.addAll(this.grocery);
+            // Grocery list should get emptied now
+            this.grocery = new IngredientStorageImpl();
+            // Return the fridge that contains the ingredients added from grocery
         }
         return new IngredientStorageResponseImpl(this.grocery);
     }
