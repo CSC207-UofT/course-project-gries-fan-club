@@ -1,6 +1,5 @@
 package UseCases;
 
-import Commands.Implementations.CommandImpl;
 import Entities.Implementations.IngredientImpl;
 import Storages.Implementations.IngredientStorageImpl;
 import org.junit.jupiter.api.Assertions;
@@ -19,7 +18,7 @@ public class FridgeUseCaseTest {
         ingredients.add(ingredient1);
         ingredients.add(ingredient2);
 
-        CommandImpl command = new CommandImpl();
+        Command command = new CommandImpl();
         command.put("addToFridge", "oil,chocolate chips");
 
         FridgeUseCase useCase = new FridgeUseCase(fridge, ingredients);
