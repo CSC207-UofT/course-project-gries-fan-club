@@ -2,6 +2,7 @@ package Scorers.Implementations;
 
 import Entities.Ingredient;
 import Entities.Recipe;
+import Entities.RecipeItem;
 import Entities.Tag;
 import Matchers.Implementations.IngredientMatcher;
 import Matchers.Implementations.TagMatcher;
@@ -9,44 +10,30 @@ import Scorers.Scorer;
 import Storages.RecipeStorage;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Collections;
-import java.util.Comparator;
-import java.lang.Double;
+import java.util.Set;
+
 
 public class ScorerImpl implements Scorer {
 
-    final List<Ingredient> ingredients;
-    final List<Tag> tags;
-    final String name;
-    Recipe recipe;
-
     final IngredientMatcher ingredientMatcher;
-    final TagMatcher tagMatcher;
 
-    public ScorerImpl(List<Ingredient> ingredients, List<Tag> tags, String name) {
-        this.ingredients = ingredients;
-        this.tags = tags;
-        this.name = name;
-        this.ingredientMatcher = new IngredientMatcher(ingredients);
-        this.tagMatcher = new TagMatcher(tags);
+    public ScorerImpl(List<Recipe> recipes) {
+        List<Ingredient> ingredientList = new ArrayList<>();
+        for (Recipe recipe : recipes)
+            for (RecipeItem recipeItem : recipe.items())
+                ingredientList.add(recipeItem.ingredient());
+        ingredientList = new ArrayList<> (new HashSet<>(ingredientList));
+        this.ingredientMatcher = new IngredientMatcher(ingredientList);
     }
 
-    public double score() {
-        //private final double NAME_VAL = 0.7; to be used in future updates
-        double INGREDIENT_VAL = 0.7;
-        double ingredientScore = INGREDIENT_VAL * this.ingredientMatcher.floatMatch(this.recipe);
-        double TAG_VAL = 0.3;
-        double tagScore = TAG_VAL * this.tagMatcher.floatMatch(this.recipe);
-        return ingredientScore + tagScore;
+    @Override
+    public double score() { //candidate for removal
+        return 0;
     }
 
-    /**
-     * Take in a recipe storage and return a list of the top 10 (less if there isn't 10) most similar recipes
-     * @param recipes list of recipes
-     * @param num number of recipes to return
-     * precondition: num <= recipes.size()
-     */
+    @Override
     public List<Recipe> returnNumRecipes(RecipeStorage recipes, int num) {
         num = Math.min(num, recipes.size());
         List<Recipe> allRecipes = new ArrayList<>(recipes.recipes());
