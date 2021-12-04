@@ -18,6 +18,5 @@ public interface Scorer {
      * @param recipes is the list of recipes to use
      * @return list of (num) recipes
      */
-    List<Recipe> returnNumRecipes(RecipeStorage recipes, int num);
-
+    List<Recipe> returnNumRecipes(List<Recipe> recipes, int num);
 }

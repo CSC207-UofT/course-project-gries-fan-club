@@ -17,15 +17,12 @@ import java.util.Set;
 
 public class ScorerImpl implements Scorer {
 
-    final IngredientMatcher ingredientMatcher;
+    IngredientMatcher ingredientMatcher;
+    List<Ingredient> ingredients;
 
-    public ScorerImpl(List<Recipe> recipes) {
-        List<Ingredient> ingredientList = new ArrayList<>();
-        for (Recipe recipe : recipes)
-            for (RecipeItem recipeItem : recipe.items())
-                ingredientList.add(recipeItem.ingredient());
-        ingredientList = new ArrayList<> (new HashSet<>(ingredientList));
-        this.ingredientMatcher = new IngredientMatcher(ingredientList);
+    public ScorerImpl(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+        this.ingredientMatcher = new IngredientMatcher(this.ingredients);
     }
 
     @Override
@@ -34,11 +31,10 @@ public class ScorerImpl implements Scorer {
     }
 
     @Override
-    public List<Recipe> returnNumRecipes(RecipeStorage recipes, int num) {
+    public List<Recipe> returnNumRecipes(List<Recipe> recipes, int num) {
         num = Math.min(num, recipes.size());
-        List<Recipe> allRecipes = new ArrayList<>(recipes.recipes());
-        allRecipes.sort(this::compareTo);
-        return allRecipes.subList(allRecipes.size() - num, allRecipes.size());
+        recipes.sort(this::compareTo);
+        return recipes.subList(recipes.size() - num, recipes.size());
     }
 
     /**

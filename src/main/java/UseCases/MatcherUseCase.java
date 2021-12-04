@@ -33,7 +33,7 @@ public class MatcherUseCase implements UseCase {
             List<Ingredient> allFridgeIngredients = new ArrayList<>(fridge.ingredients());
             IngredientMatcher matcher = new IngredientMatcher(allFridgeIngredients);
             Scorer scorer = new ScorerImpl((List<Recipe>)this.recipeStorage.recipes());
-            recipesMatched = scorer.returnNumRecipes(this.recipeStorage, 10);
+            recipesMatched = scorer.returnNumRecipes((List<Recipe>)this.recipeStorage.recipes(), 10);
         }
         return new ResponseImpl(recipesMatched);
         }
