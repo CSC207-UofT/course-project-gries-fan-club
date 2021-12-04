@@ -114,8 +114,8 @@ public class GroceryUseCaseTest {
     }
 
     /**
-     * Tests the run command of the Cookbook use case
-     * Specifically, sees if all the recipes are being returned when FindAllRecipes command is run
+     * Tests the run command of the Grocery use case
+     * Specifically, sees if all items needed to make recipes are added to the grocery
      */
     @Test
     public void testListRecipeItems() {
@@ -133,9 +133,8 @@ public class GroceryUseCaseTest {
     }
 
     /**
-     * Test the cookbook use case but now seeing if it returns all the recipes based on given tags
-     * Specifically, the recipes that do NOT contain those tags since each tag is positive
-     * Ex. {FindRecipesByTags : "Dairy"}, will return all recipes that do not contain Dairy.
+     * Test the GroceryUseCase and see if items in grocery get imported to fridge
+     * Also checks that grocery is emptied once items are imported.
      */
     @Test
     public void testImportToFridge() {
