@@ -1,7 +1,14 @@
 package UseCases;
 
+import Entities.Ingredient;
+import Entities.Recipe;
+import Entities.RecipeItem;
+import Storages.Implementations.IngredientStorageImpl;
 import Storages.IngredientStorage;
 import Storages.RecipeStorage;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GroceryUseCase {
     /**
@@ -24,8 +31,41 @@ public class GroceryUseCase {
      */
 
     public Response run(Command command) {
+        if (command.containsKey("listRecipeItems")) {
+            // Empty list initialized, so we can add all ingredients needed for recipes
+            List<Ingredient> recipeIngredients = new ArrayList<>();
 
+            // Iterating through recipes in recipestorage
+            for (Recipe recipe : this.recipeStorage.recipes()) {
+                // Iterating through each recipeItem in each recipe
+                for (RecipeItem item : recipe.items()) {
+                    // adding ingredient in recipe to our list of ingredients
+                    recipeIngredients.add(item.ingredient());
+                }
+            }
+
+            // Iterating through all ingredients needed for recipes
+            for (Ingredient ingredient : recipeIngredients) {
+                // If the fridge does not contain a needed ingredient, we add the ingredient to the grocery
+                if (!(this.fridge.contains(ingredient))) {
+                    // ingredient gets added to grocery
+                    this.grocery.add(ingredient);
+                }
+            }
+            List<Ingredient> groceryIngredientList = new ArrayList<>(this.grocery.ingredients());
+            return new ResponseImpl(groceryIngredientList);
+        }
+
+        if (command.containsKey("importRecipeItems")) {
+            // Adding all items currently in grocery to the fridge
+            this.fridge.addAll(this.grocery);
+            // Grocery list should get emptied now
+            this.grocery = new IngredientStorageImpl();
+            // Return the fridge that contains the ingredients added from grocery
+        }
+        List<Ingredient> fridgeIngredientList = new ArrayList<>(this.fridge.ingredients());
+        // return contents of fridge (contains what we emptied out from grocery)
+        return new ResponseImpl(fridgeIngredientList);
     }
-
 
 }
