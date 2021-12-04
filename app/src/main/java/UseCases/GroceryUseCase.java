@@ -63,9 +63,9 @@ public class GroceryUseCase {
             this.grocery = new IngredientStorageImpl();
             // Return the fridge that contains the ingredients added from grocery
         }
-        List<Ingredient> fridgeIngredientList = new ArrayList<>(this.fridge.ingredients());
-        // return contents of fridge (contains what we emptied out from grocery)
-        return new ResponseImpl(fridgeIngredientList);
+        List<Ingredient> groceryIngredientList = new ArrayList<>(this.grocery.ingredients());
+        // grocery should now be empty
+        return new ResponseImpl(groceryIngredientList);
     }
 
 }
