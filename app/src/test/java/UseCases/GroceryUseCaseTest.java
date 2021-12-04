@@ -118,7 +118,7 @@ public class GroceryUseCaseTest {
      * Specifically, sees if all the recipes are being returned when FindAllRecipes command is run
      */
     @Test
-    public void testFindAllRecipes() {
+    public void testListRecipeItems() {
         CommandImpl command = new CommandImpl();
         command.put("listRecipeItems", "");
 
@@ -138,7 +138,7 @@ public class GroceryUseCaseTest {
      * Ex. {FindRecipesByTags : "Dairy"}, will return all recipes that do not contain Dairy.
      */
     @Test
-    public void testFindRecipesWithTags() {
+    public void testImportToFridge() {
         CommandImpl command = new CommandImpl();
         command.put("importRecipeItems", "");
 
