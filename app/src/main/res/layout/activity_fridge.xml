@@ -19,6 +19,7 @@
             android:layout_marginStart="30dp" android:layout_marginEnd="168dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"/>
+
     <Button
             android:text="@string/remove_ingredient"
             android:layout_width="wrap_content"

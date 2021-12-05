@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.jchefapp.R;
 
@@ -12,6 +14,9 @@ public class FridgeActivity extends AppCompatActivity {
     private Button button1;
     private Button button2;
     private Button button3;
+
+    EditText mEdit;
+    TextView mText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +27,10 @@ public class FridgeActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // code here
+                mEdit   = (EditText)findViewById(R.id.editTextTextPersonName);
+                // this is the input given to us that we will pass onto the controller
+                mEdit.getText().toString();
+                System.out.println(mEdit.getText().toString());
             }
         });
 
@@ -30,7 +38,10 @@ public class FridgeActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // code here
+                mEdit   = (EditText)findViewById(R.id.editTextTextPersonName);
+                // this is the input given to us that we will pass onto the controller
+                mEdit.getText().toString();
+                System.out.println(mEdit.getText().toString());
             }
         });
 
