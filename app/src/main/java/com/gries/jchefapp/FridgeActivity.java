@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.jchefapp.R;
 
@@ -23,21 +24,26 @@ public class FridgeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fridge);
 
+        // Add ingredient
         button1 = (Button)findViewById(R.id.button);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(FridgeActivity.this, "Ingredient Added", Toast.LENGTH_LONG).show();
                 mEdit   = (EditText)findViewById(R.id.editTextTextPersonName);
                 // this is the input given to us that we will pass onto the controller
                 mEdit.getText().toString();
                 System.out.println(mEdit.getText().toString());
+
             }
         });
 
+        // Remove Ingredient
         button2 = (Button)findViewById(R.id.button3);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(FridgeActivity.this, "Ingredient Removed", Toast.LENGTH_LONG).show();
                 mEdit   = (EditText)findViewById(R.id.editTextTextPersonName);
                 // this is the input given to us that we will pass onto the controller
                 mEdit.getText().toString();
