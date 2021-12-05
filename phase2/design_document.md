@@ -13,6 +13,7 @@
 * [Packaging Strategies](#packaging-strategies)
 * [Design Patterns](#design-patterns)
 * [Refactoring](#refactoring)
+* [Testing](#testing)
 * [Progress report](#progress-report)
 
 ## Introduction
@@ -148,11 +149,14 @@ This allows for new units of measurement to be easily added to the application.
 
 ## Design Patterns
 - **Facade Design Pattern**
-    - In order to lazy load and reference entities we created Referenced entity classes.
+    - In order to lazy load and reference entities we created a Referenced entity classes.
     - These are facades for the entity beneath and simply wrap the safe retrieval of lazy loaded entities.
 - **Builder Design Pattern**
     - We used this for Entity Construction.
     - By using the Builder design pattern, we were able to construct different immutable objects step by step, and the builder is independent of other objects.
+- **Decorator Design Pattern**
+  - We used this to reduce the redundancy in code, we changed an abstract class with multiple subclasses to a single decorator class for the RecipeItem. 
+  - This allows for specific display behaviour to be demonstrated when needed. For example RecipeItem, can be displayed using grams, ml or a quantity amount.
 
 ## Refactoring
 Some major refactors include:
@@ -161,6 +165,9 @@ Some major refactors include:
 - Later we also extracted common builder interfaces to better help with loading.
 - Overhaul of Storage interfaces to utilise the Collections interface.
 
+## Testing
+We have extensive testing, covering nearly all our classes with more than one test. We used test
+driven architecture which allowed for a significant amount of testing.  
 
 ## Progress Report
 
@@ -176,7 +183,7 @@ Because we followed clean architecture and the SOLID principles our codebase is 
 
 For instance, consider our Recipe Items: This class was turned into two different subclasses in Phase 1, but it didn't affect the rest of the code base as the implementation was done using the same interface.
 
-These principles will allow us to address the shortcomings in Phase 1, resulting in easy testing and future expansion in Phase 2.
+These principles will allow us to address the shortcomings in Phase 1. This was then changed in phase 2 
 
 Regarding Phase 1 Contributions:
 - Ariel worked on creating entities, some storages and matchers, as well as the use cases. Also was responsible for testing all of those things.
@@ -186,14 +193,8 @@ Regarding Phase 1 Contributions:
 - Gerd worked on creating the Storages and their implementations, Matchers and Scorers.
 - Prithee worked on adding additional test cases, and fixing IntelliJ errors. Also was responsible for the design document.
 
-Moving forward:
-- Ariel will be responsible for helping combine the GUI with the backend by helping work on commands and responses. Also, will add additional use cases as needed.
-- Ayush will help develop the front end for new features (potentially including the Tinder mode) as well as help connect the backend to the front end
-- Derek wants to really bring this project together! Get the UI in place and ensure all our code is clean!
-- Ezra will be responsible for helping the gui and the backend be implemented. Additionally, he will be creating more use cases and commands.
-- Gerd will help to create more use cases, (potentially including the Tinder mode), help further develop the GUI, and implement a fuzzy search for NameMatcher to allow for quantified searches. He will also finish testing for Matchers.
-- Prithee will work on additional Use Cases and further developing the frontend Android GUI
+Regarding Phase 2 Contributions:
 
-Overall, we believe we displayed a strong understanding of software engineering and design principles. We hope to learn from our mistakes in Phase 1 to develop an even stronger display in Phase 2.
+ Moving Forward:
 
-(Link to PPT presentation: https://docs.google.com/presentation/d/1Lqw3KSFmbs8vLyHWrczqkFY5zM9V_boDUj9zD5GLEgw/edit?usp=sharing)
+
