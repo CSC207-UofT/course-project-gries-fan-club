@@ -1,1 +1,2 @@
-rootProject.name = 'JChef'
+rootProject.name = "JChefApp"
+include ':app'

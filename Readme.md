@@ -26,7 +26,7 @@ Have no fear, JChef is here.
 
 ### Example Usage
 
-For now, just run the main function within [`JChef.java`](src/main/java/JChef.java) or run the tests!
+For now, just run the main function within [`JChef.java`](app/src/main/java/JChef.java) or run the tests!
 
 ## Installation
 
@@ -40,8 +40,19 @@ This section refers to setting up a development environment to work on JChef.
 
 ### Local Setup
 
-Our project requires the `org.json` library.
-A jar file is included in the [`libs`](libs) folder for this library, ensure it is [added to your project](https://stackoverflow.com/questions/1051640/correct-way-to-add-external-jars-lib-jar-to-an-intellij-idea-project).
+Make sure you create a `local.properties` file in the root of the project. 
+
+For Windows add the following line:
+```
+sdk.dir=C\:\\users\\username\\Appdata\\Local\\Android\\Sdk
+```
+
+For Mac add the following line: 
+```
+sdk.dir=/Users/username/Library/Android/sdk
+```
+
+Replacing `username` as appropriate.
 
 ## Maintainers
 

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">JChefApp</string>
+    <string name="welcome_to_jchef">Welcome to JChef!</string>
+    <string name="instructions">Instructions</string>
+    <string name="view_fridge">View Fridge</string>
+    <string name="view_recipes">View Recipes</string>
+    <string name="logo">logo</string>
+    <string name="understanding_jchef">Understanding JChef:</string>
+    <string name="enter_ingredient_here">Enter Ingredient Here</string>
+    <string name="add_ingredient">Add Ingredient</string>
+    <string name="remove_ingredient">Remove Ingredient</string>
+    <string name="find_recipes">Find Recipes</string>
+</resources>
