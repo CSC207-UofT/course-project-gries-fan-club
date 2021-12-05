@@ -1,5 +1,6 @@
 package UseCases;
 
+import Entities.Implementations.IngredientImpl;
 import Entities.Ingredient;
 import Entities.Recipe;
 import Entities.RecipeItem;
@@ -8,6 +9,7 @@ import Storages.IngredientStorage;
 import Storages.RecipeStorage;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class GroceryUseCase implements UseCase {
@@ -55,6 +57,21 @@ public class GroceryUseCase implements UseCase {
 
             // Return the items we are importing to fridge
             return new ResponseImpl(importedItems);
+        }
+        if (command.containsKey("removeFromGroceryList")) {
+            String keyValues = command.get("removeFromGroceryList");
+
+            assert keyValues != null;
+            List<String> stringsOfIngredients = new ArrayList<>(Arrays.asList(keyValues.split(",")));
+
+            for (String ingredientString : stringsOfIngredients) {
+                // Store current ingredient
+                Ingredient currIngredient = this.groceryList.findByNameExact(ingredientString).iterator().next();
+                // Adds ingredients (from key values) to fridge
+                this.fridge.add(currIngredient);
+                // Removes ingredients from groceryList
+                this.groceryList.remove(currIngredient);
+            }
         }
         // Return the groceryList containing ingredients that need to be bought
         List<Ingredient> groceryIngredientList = new ArrayList<>(this.groceryList.ingredients());
