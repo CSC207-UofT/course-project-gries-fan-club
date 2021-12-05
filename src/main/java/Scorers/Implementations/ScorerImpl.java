@@ -2,37 +2,52 @@ package Scorers.Implementations;
 
 import Entities.Ingredient;
 import Entities.Recipe;
+import Entities.RecipeItem;
 import Entities.Tag;
 import Matchers.Implementations.IngredientMatcher;
 import Matchers.Implementations.TagMatcher;
 import Scorers.Scorer;
+import Storages.RecipeStorage;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 
 public class ScorerImpl implements Scorer {
 
-    final List<Ingredient> ingredients;
-    final List<Tag> tags;
-    final String name;
-    Recipe recipe;
+    IngredientMatcher ingredientMatcher;
+    List<Ingredient> ingredients;
 
-    final IngredientMatcher ingredientMatcher;
-    final TagMatcher tagMatcher;
-
-    public ScorerImpl(List<Ingredient> ingredients, List<Tag> tags, String name) {
+    public ScorerImpl(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
-        this.tags = tags;
-        this.name = name;
-        this.ingredientMatcher = new IngredientMatcher(ingredients);
-        this.tagMatcher = new TagMatcher(tags);
+        this.ingredientMatcher = new IngredientMatcher(this.ingredients);
     }
 
-    public double score() {
-        //private final double NAME_VAL = 0.7; to be used in future updates
-        double INGREDIENT_VAL = 0.7;
-        double ingredientScore = INGREDIENT_VAL * this.ingredientMatcher.floatMatch(this.recipe);
-        double TAG_VAL = 0.3;
-        double tagScore = TAG_VAL * this.tagMatcher.floatMatch(this.recipe);
-        return ingredientScore + tagScore;
+    @Override
+    public double score() { //candidate for removal
+        return 0;
+    }
+
+    @Override
+    public List<Recipe> returnNumRecipes(List<Recipe> recipes, int num) {
+        num = Math.min(num, recipes.size());
+        recipes.sort(this::compareTo);
+        return recipes.subList(recipes.size() - num, recipes.size());
+    }
+
+    /**
+     * For use as a private helper method to be a comparator for the lambda sorting in returnNumRecipes
+     * @param r1 is a recipe
+     * @param r2 is another recipe
+     * @return integer denoting whether one math is greater than the other or if they're equal
+     */
+    private int compareTo(Recipe r1, Recipe r2) {
+        if (this.ingredientMatcher.floatMatch(r1) > this.ingredientMatcher.floatMatch(r2))
+            return 1;
+        else if (this.ingredientMatcher.floatMatch(r1) == this.ingredientMatcher.floatMatch(r2))
+            return 0;
+        return -1;
     }
 }

@@ -3,9 +3,11 @@ package UseCases;
 import Entities.Ingredient;
 import Entities.Recipe;
 import Matchers.Implementations.IngredientMatcher;
+import Scorers.Implementations.ScorerImpl;
 import Storages.Implementations.IngredientStorageImpl;
 import Storages.IngredientStorage;
 import Storages.RecipeStorage;
+import Scorers.Scorer;
 
 import java.util.*;
 
@@ -30,7 +32,8 @@ public class MatcherUseCase implements UseCase {
             // Turn fridge.ingredients from collection to a list
             List<Ingredient> allFridgeIngredients = new ArrayList<>(fridge.ingredients());
             IngredientMatcher matcher = new IngredientMatcher(allFridgeIngredients);
-            recipesMatched = matcher.return10RecipesMatched(this.recipeStorage);
+            Scorer scorer = new ScorerImpl((List<Recipe>)this.recipeStorage.recipes());
+            recipesMatched = scorer.returnNumRecipes((List<Recipe>)this.recipeStorage.recipes(), 10);
         }
         return new ResponseImpl(recipesMatched);
         }

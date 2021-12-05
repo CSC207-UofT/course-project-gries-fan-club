@@ -10,7 +10,7 @@ import java.util.*;
 
 public class CookbookUseCase implements UseCase {
     /**
-     * The cookbook displays recipes and shows recipes based on tags inputed into command
+     * The cookbook displays recipes and shows recipes based on tags inputted into command
      */
     final RecipeStorage recipeStorage;
     final TagStorage tagStorage;
