@@ -9,28 +9,29 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.JChefApp">
-
-        <activity android:name="com.gries.jchefapp.RecipeActivity"
-                  android:parentActivityName="com.gries.jchefapp.MainActivity">
+        <activity android:name="com.gries.jchefapp.FridgeDisplayActivity">
+        </activity>
+        <activity
+                android:name="com.gries.jchefapp.RecipeActivity"
+                android:parentActivityName="com.gries.jchefapp.MainActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.gries.jchefapp.MainActivity"/>
         </activity>
-
-        <activity android:name="com.gries.jchefapp.FridgeActivity"
-                  android:parentActivityName="com.gries.jchefapp.MainActivity">
+        <activity
+                android:name="com.gries.jchefapp.FridgeActivity"
+                android:parentActivityName="com.gries.jchefapp.MainActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.gries.jchefapp.MainActivity"/>
         </activity>
-
-        <activity android:name="com.gries.jchefapp.InstructionsActivity"
-                  android:parentActivityName="com.gries.jchefapp.MainActivity">
+        <activity
+                android:name="com.gries.jchefapp.InstructionsActivity"
+                android:parentActivityName="com.gries.jchefapp.MainActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.gries.jchefapp.MainActivity"/>
         </activity>
-
         <activity
                 android:name="com.gries.jchefapp.MainActivity"
                 android:exported="true">
