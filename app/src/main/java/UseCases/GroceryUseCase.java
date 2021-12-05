@@ -1,10 +1,8 @@
 package UseCases;
 
-import Entities.Implementations.IngredientImpl;
 import Entities.Ingredient;
 import Entities.Recipe;
 import Entities.RecipeItem;
-import Storages.Implementations.IngredientStorageImpl;
 import Storages.IngredientStorage;
 import Storages.RecipeStorage;
 
@@ -29,12 +27,12 @@ public class GroceryUseCase implements UseCase {
     /**
      * Return all ingredients needed if listRecipeItems provided in command
      * Return all items in grocery and import to fridge.
-     * @param command
+     * @param command The command to execute
      * @return IngredientStorageResponseImpl containing a list of ingredients found
      */
 
     public Response run(Command command) {
-        if (command.containsKey("listRecipeItems")) {
+        if (command.containsKey("addToList")) {
             // Iterating through recipes in recipestorage
             for (Recipe recipe : this.recipeStorage.recipes()) {
                 // Iterating through each recipeItem in each recipe
@@ -49,14 +47,14 @@ public class GroceryUseCase implements UseCase {
 
         if (command.containsKey("importRecipeItems")) {
             // Adding all items currently in grocery to the fridge
+            int ingredientsAdded = this.groceryList.size();
             this.fridge.addAll(this.groceryList);
-            // List of items added to fridge
-            List<Ingredient> importedItems = new ArrayList<>(this.groceryList.ingredients());
+
             // grocery should now be empty
-            this.groceryList = new IngredientStorageImpl();
+            this.groceryList.clear();
 
             // Return the items we are importing to fridge
-            return new ResponseImpl(importedItems);
+            return new ResponseImpl("Added " + ingredientsAdded + " to the fridge", true);
         }
         if (command.containsKey("removeFromGroceryList")) {
             String keyValues = command.get("removeFromGroceryList");
@@ -73,9 +71,8 @@ public class GroceryUseCase implements UseCase {
                 this.groceryList.remove(currIngredient);
             }
         }
-        // Return the groceryList containing ingredients that need to be bought
-        List<Ingredient> groceryIngredientList = new ArrayList<>(this.groceryList.ingredients());
-        return new ResponseImpl(groceryIngredientList);
+
+        return new ResponseImpl("", true);
     }
 
 }

@@ -2,11 +2,15 @@ package UseCases;
 
 import Entities.Implementations.*;
 import Entities.Ingredient;
+import Entities.Recipe;
 import Entities.RecipeItem;
 import Entities.Tag;
 import Storages.Implementations.IngredientStorageImpl;
 import Storages.Implementations.RecipeStorageImpl;
 import Storages.Implementations.TagStorageImpl;
+import Storages.IngredientStorage;
+import Storages.RecipeStorage;
+import Storages.TagStorage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,22 +20,22 @@ import java.util.Collections;
 import java.util.List;
 
 public class GroceryUseCaseTest {
-    IngredientStorageImpl ingredientStorage;
-    RecipeStorageImpl recipeStorage;
-    IngredientStorageImpl fridge;
-    IngredientStorageImpl groceryList;
+    IngredientStorage ingredientStorage;
+    RecipeStorage recipeStorage;
+    IngredientStorage fridge;
+    IngredientStorage groceryList;
+    TagStorage tagStorage;
 
-    IngredientImpl ingredient1;
-    IngredientImpl ingredient2;
-    IngredientImpl ingredient3;
-    IngredientImpl ingredient4;
-    IngredientImpl ingredient5;
-    IngredientImpl ingredient6;
+    Ingredient ingredient1;
+    Ingredient ingredient2;
+    Ingredient ingredient3;
+    Ingredient ingredient4;
+    Ingredient ingredient5;
+    Ingredient ingredient6;
 
-    RecipeImpl recipe1;
-    RecipeImpl recipe2;
+    Recipe recipe1;
+    Recipe recipe2;
 
-    TagStorageImpl tagStorage;
 
     @BeforeEach
     public void setup() {
@@ -121,24 +125,16 @@ public class GroceryUseCaseTest {
     @Test
     public void testListRecipeItems() {
         CommandImpl command = new CommandImpl();
-        command.put("listRecipeItems", "");
+        command.put("addToList", "");
+
+        this.groceryList.add(this.ingredient3);
+        this.groceryList.add(this.ingredient4);
 
         GroceryUseCase useCase = new GroceryUseCase(this.fridge, this.recipeStorage, this.groceryList);
-
-        // Fridge only contains ingredient1 and ingredient2
-        // we check to see that the Output response contains ingredient3-6
-        Assertions.assertTrue(useCase.run(command).data().contains(this.ingredient3));
-        Assertions.assertTrue(useCase.run(command).data().contains(this.ingredient4));
-        Assertions.assertTrue(useCase.run(command).data().contains(this.ingredient5));
-        Assertions.assertTrue(useCase.run(command).data().contains(this.ingredient6));
 
         // We check to see that the grocery list does contain ingredients3-6 as well
         Assertions.assertTrue(this.groceryList.contains(this.ingredient3));
         Assertions.assertTrue(this.groceryList.contains(this.ingredient4));
-        Assertions.assertTrue(this.groceryList.contains(this.ingredient5));
-        Assertions.assertTrue(this.groceryList.contains(this.ingredient6));
-
-
     }
 
     /**
