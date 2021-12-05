@@ -55,11 +55,24 @@ In the home stretch of development for our application we were largely content w
 
 We made decisions regarding the following:
 
-**Applying Decorator Pattern**
+- **Serialization**
+    - In order to save the state of our program we have utilised the generic “rows” that represented our entities raw data and a new set of serializers to transform our entities back into rows.
+    - These rows can then be saved to persistent storage by a writer.
+    - Since the rows are not tied to a single type of entity, so we only need one writer to save every entity!
 
-We decided that the abstraction of our RecipeItem class created redundant code and was violating the open close principal. 
-We decided to shift to the decorator design pattern. This allows for specific display behavior for different types of RecipeItems.
-This allows for new units of measurement to be easily added to the application.
+
+- **Android UI**
+    
+    - We had decided to get our app running on an Android GUI to allow for more complex menus and user interactions.
+    - There was a lot of difficulty in getting the Android SDK, Intellij, and our code base to work together.
+    - See Demo of UI here: https://user-images.githubusercontent.com/63621073/141885958-6550067a-2fd5-4a36-be36-8d844f436892.mp4 (Note that the UI will be connected to the backend in Phase 2)
+
+
+- **Applying Decorator Pattern**
+
+  - We decided that the abstraction of our RecipeItem class created redundant code and was violating the open close principal. 
+  - We decided to shift to the decorator design pattern. This allows for specific display behavior for different types of RecipeItems.
+  - This allows for new units of measurement to be easily added to the application.
 
 
 ## SOLID Design Principles
@@ -101,6 +114,8 @@ This allows for new units of measurement to be easily added to the application.
     - Consistently branched off of the main branch to work on individual parts of code
     - Commit messages were always informative and explained what was being changed
     - <img width="1234" alt="Screen Shot 2021-11-15 at 9 54 10 PM" src="https://user-images.githubusercontent.com/63621073/141887365-c78841ef-9734-4435-8e93-7b367a50559b.png">
+- **New Issues**
+  - Taking feedback from phase 1 we created new issues that specifically outlines tasks that would improve the project. 
 
 ## Packaging Strategies
 - Initially, we started with a strategy which was just everything grouped into related interfaces / functionality. So adhering to Clean Architecture, we packaged things by Feature.
