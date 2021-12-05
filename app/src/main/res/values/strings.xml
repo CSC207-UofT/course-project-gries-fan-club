@@ -11,4 +11,5 @@
     <string name="remove_ingredient">Remove Ingredient</string>
     <string name="find_recipes">Find Recipes</string>
     <string name="view_grocery_list">View Grocery List</string>
+    <string name="view_fridge_contents">View Fridge Contents</string>
 </resources>
