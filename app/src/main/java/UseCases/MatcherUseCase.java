@@ -21,7 +21,8 @@ public class MatcherUseCase implements UseCase {
         this.ingredientStorage = ingredients;
     }
 
-    public Response <Recipe> run(Command command) {
+    @Override
+    public Response run(Command command) {
         List<Recipe> recipesMatched = new ArrayList<>();
 
         // Check if fridge matches the recipe storage
@@ -35,7 +36,8 @@ public class MatcherUseCase implements UseCase {
             IngredientMatcher matcher = new IngredientMatcher(allFridgeIngredients);
             recipesMatched = matcher.return10RecipesMatched(this.recipeStorage);
         }
-        return new ResponseImpl(recipesMatched);
+
+        return new ResponseImpl("", true);
         }
 
     /** Takes in command, returns an ingredient storage of the fridge

@@ -30,7 +30,7 @@ public class CookbookUseCase implements UseCase {
         if (command.containsKey("FindAllRecipes")) {
             // Convert the recipeStorage.recipes from a collection to a list
             List<Recipe> recipesMatched = new ArrayList<>(this.recipeStorage.recipes());
-            return new ResponseImpl(recipesMatched);
+            return new ResponseImpl("", true);
         }
 
         if (command.containsKey("FindRecipesByTags")) {
@@ -49,10 +49,10 @@ public class CookbookUseCase implements UseCase {
                 }
             }
             List<Recipe> recipesMatched = new ArrayList<>(this.recipeStorage.containsNoneOf(tagList));
-            return new ResponseImpl(recipesMatched);
+            return new ResponseImpl("", true);
         }
 
         // If none of the commands were provided, then return empty list of recipes.
-        return new ResponseImpl(Collections.emptyList());
+        return new ResponseImpl("", false);
     }
 }
