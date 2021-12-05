@@ -3,6 +3,7 @@ package Entities.Implementations;
 import Entities.Ingredient;
 import Entities.Tag;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -33,6 +34,18 @@ public class IngredientImpl extends AbstractEntity implements Ingredient {
         super();
         this.name = name;
         this.tags = tags;
+    }
+
+    /**
+     * Constructs an ingredient and assigns it an ID.
+     * Special case where Ingredient has no tags.
+     *
+     * @param name      The name of the ingredient
+     */
+    public IngredientImpl(String name) {
+        super();
+        this.name = name;
+        this.tags = new ArrayList<>();
     }
 
     @Override
