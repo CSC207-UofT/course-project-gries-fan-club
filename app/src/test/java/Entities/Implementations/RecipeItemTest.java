@@ -1,5 +1,8 @@
 package Entities.Implementations;
 
+import Entities.RecipeItem;
+import Entities.RecipeItemDisplay;
+import RecipeItemDisplayers.Quantifiable;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +14,8 @@ public class RecipeItemTest {
     public void testQuantity() {
         IngredientImpl ingredient = new IngredientImpl("apple", Collections.emptyList());
         float quantity = 15f;
-        QuantityRecipeItem item = new QuantityRecipeItem(ingredient, quantity, false);
+        RecipeItemDisplay quantifiable = new Quantifiable();
+        RecipeItem item = new RecipeItemImpl(ingredient, quantity, false, quantifiable);
 
         Assertions.assertEquals(15, item.quantity());
 
@@ -21,7 +25,8 @@ public class RecipeItemTest {
     public void testOptional() {
         IngredientImpl ingredient = new IngredientImpl("apple", Collections.emptyList());
         float quantity = 15f;
-        QuantityRecipeItem item = new QuantityRecipeItem(ingredient, quantity, true);
+        RecipeItemDisplay quantifiable = new Quantifiable();
+        RecipeItem item = new RecipeItemImpl(ingredient, quantity, true, quantifiable);
 
         Assertions.assertTrue(item.optional());
     }
@@ -30,7 +35,8 @@ public class RecipeItemTest {
     public void testIngredient() {
         IngredientImpl ingredient = new IngredientImpl("apple", Collections.emptyList());
         float quantity = 15f;
-        QuantityRecipeItem item = new QuantityRecipeItem(ingredient, quantity, true);
+        RecipeItemDisplay quantifiable = new Quantifiable();
+        RecipeItem item = new RecipeItemImpl(ingredient, quantity, true, quantifiable);
 
         Assertions.assertEquals(ingredient, item.ingredient());
     }

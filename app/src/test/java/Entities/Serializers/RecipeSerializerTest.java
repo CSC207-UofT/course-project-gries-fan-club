@@ -1,14 +1,16 @@
 package Entities.Serializers;
 
 import Entities.Implementations.IngredientImpl;
-import Entities.Implementations.QuantityRecipeItem;
 import Entities.Implementations.RecipeImpl;
-import Entities.Implementations.VolumetricRecipeItem;
+import Entities.Implementations.RecipeItemImpl;
 import Entities.Ingredient;
 import Entities.Recipe;
 import Entities.RecipeItem;
+import Entities.RecipeItemDisplay;
 import Loaders.Exceptions.NoSuchAttribute;
 import Loaders.Row;
+import RecipeItemDisplayers.Quantifiable;
+import RecipeItemDisplayers.Volumetric;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -20,8 +22,10 @@ public class RecipeSerializerTest {
 	@Test
 	public void testSerializeEntity() throws NoSuchAttribute {
 		Ingredient ingredient = new IngredientImpl("", Collections.emptyList());
-		RecipeItem item1 = new QuantityRecipeItem(ingredient, 0, false);
-		RecipeItem item2 = new VolumetricRecipeItem(ingredient, 0, false);
+		RecipeItemDisplay quantifiable = new Quantifiable();
+		RecipeItemDisplay volumetric = new Volumetric();
+		RecipeItem item1 = new RecipeItemImpl(ingredient, 0, false, quantifiable);
+		RecipeItem item2 = new RecipeItemImpl(ingredient, 0, false, volumetric);
 
 		Recipe recipe = new RecipeImpl(
 						"Soup",

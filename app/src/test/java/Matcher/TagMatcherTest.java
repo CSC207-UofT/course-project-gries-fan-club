@@ -1,14 +1,12 @@
 package Matcher;
 
+import Entities.*;
 import Entities.Implementations.IngredientImpl;
-import Entities.Implementations.QuantityRecipeItem;
 import Entities.Implementations.RecipeImpl;
+import Entities.Implementations.RecipeItemImpl;
 import Entities.Implementations.TagImpl;
-import Entities.Ingredient;
-import Entities.Recipe;
-import Entities.RecipeItem;
-import Entities.Tag;
 import Matchers.Implementations.TagMatcher;
+import RecipeItemDisplayers.Quantifiable;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -36,8 +34,9 @@ public class TagMatcherTest {
         list.add(tag2);
 
         // Recipe
+        RecipeItemDisplay quantifiable = new Quantifiable();
         IngredientImpl ingredient1 = new IngredientImpl("bread", list);
-        RecipeItem item = new QuantityRecipeItem(ingredient1, 15, false);
+        RecipeItem item = new RecipeItemImpl(ingredient1, 15, false, quantifiable);
         List<RecipeItem> recipeItems = new ArrayList<>();
         recipeItems.add(item);
         RecipeImpl recipe = new RecipeImpl("name", "description", List.of("instructions"), recipeItems);
@@ -61,8 +60,9 @@ public class TagMatcherTest {
         list.add(tag1);
 
         // Recipe
+        RecipeItemDisplay quantifiable = new Quantifiable();
         Ingredient ingredient1 = new IngredientImpl("bread", list);
-        RecipeItem item = new QuantityRecipeItem(ingredient1, 15, false);
+        RecipeItem item = new RecipeItemImpl(ingredient1, 15, false, quantifiable);
         List<RecipeItem> recipeItems = new ArrayList<>();
         recipeItems.add(item);
         Recipe recipe = new RecipeImpl("name", "description", Collections.singletonList("instructions"), recipeItems);
@@ -82,7 +82,7 @@ public class TagMatcherTest {
                 "",
                 List.of(),
                 List.of(
-                        new QuantityRecipeItem(ingredient2, 0, false)
+                        new RecipeItemImpl(ingredient2, 0, false, quantifiable)
                 )
         );
 
