@@ -30,6 +30,20 @@ We were largely happy with our specification from phase 0. The range of commands
 The main change we aim to make is unifying the grocery list and fridge commands as these two are almost never used apart. Combining them into a single menu and set of commands streamlines the user experience.
 
 ## How to Use
+This application is a comprehensive, interactive cookbook. The user will open the app and will be presented with a UI offering a number of potential options.
+
+**Fridge**
+
+The user will be able to add ingredients that they have in real life to their virtual fridge by clicking the “add to fridge” button and inputting a string of the ingredient.
+
+**Grocery list**
+
+If there are items missing from their fridge that are needed for a recipe, the  user can add the ingredients to a “Grocery List” by pressing the button “add to grocery list”. This serves as a shopping list that is portable and efficient. Once the user gets the item they can automatically add the item to the Fridge and remove it from the Grocery list. The user can remove them from the grocery list all at once by clicking “Add All To Fridge”,  or one by one by using the “Add to Fridge” button.
+
+**Recipes**
+
+Once the user has added their available ingredients the user will be able to search the recipe list using a number of filters, the app will provide recipes based on the ingredients presented in their fridge.
+Each recipe has a list of tags like “Gluten Free” that can be used to filter the recipes. The app will return the “best” recipes for the user to make. The user can click on a recipe to view it’s instructions and it’s ingredients.
 
 
 
