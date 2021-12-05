@@ -10,18 +10,19 @@ import Storages.RecipeStorage;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GroceryUseCase {
+public class GroceryUseCase implements UseCase {
     /**
-     * The grocery displays gives all ingredients you currently need to buy.
+     * The Grocery aggregates a list of ingredients that you need to buy based off the recipes you want to make. The
+     * ingredients in the grocery are ingredients you need to buy.
      */
     IngredientStorage fridge;
     final RecipeStorage recipeStorage;
-    IngredientStorage grocery;
+    IngredientStorage groceryList;
 
-    public GroceryUseCase(IngredientStorage fridge, RecipeStorage recipeStorage, IngredientStorage grocery) {
+    public GroceryUseCase(IngredientStorage fridge, RecipeStorage recipeStorage, IngredientStorage groceryList) {
         this.fridge = fridge;
         this.recipeStorage = recipeStorage;
-        this.grocery = grocery;
+        this.groceryList = groceryList;
     }
     /**
      * Return all ingredients needed if listRecipeItems provided in command
@@ -32,39 +33,31 @@ public class GroceryUseCase {
 
     public Response run(Command command) {
         if (command.containsKey("listRecipeItems")) {
-            // Empty list initialized, so we can add all ingredients needed for recipes
-            List<Ingredient> recipeIngredients = new ArrayList<>();
-
             // Iterating through recipes in recipestorage
             for (Recipe recipe : this.recipeStorage.recipes()) {
                 // Iterating through each recipeItem in each recipe
                 for (RecipeItem item : recipe.items()) {
                     // adding ingredient in recipe to our list of ingredients
-                    recipeIngredients.add(item.ingredient());
+                    if (!(this.fridge.contains(item.ingredient()))) {
+                        this.groceryList.add(item.ingredient());
+                    }
                 }
             }
-
-            // Iterating through all ingredients needed for recipes
-            for (Ingredient ingredient : recipeIngredients) {
-                // If the fridge does not contain a needed ingredient, we add the ingredient to the grocery
-                if (!(this.fridge.contains(ingredient))) {
-                    // ingredient gets added to grocery
-                    this.grocery.add(ingredient);
-                }
-            }
-            List<Ingredient> groceryIngredientList = new ArrayList<>(this.grocery.ingredients());
-            return new ResponseImpl(groceryIngredientList);
         }
 
         if (command.containsKey("importRecipeItems")) {
             // Adding all items currently in grocery to the fridge
-            this.fridge.addAll(this.grocery);
-            // Grocery list should get emptied now
-            this.grocery = new IngredientStorageImpl();
-            // Return the fridge that contains the ingredients added from grocery
+            this.fridge.addAll(this.groceryList);
+            // List of items added to fridge
+            List<Ingredient> importedItems = new ArrayList<>(this.groceryList.ingredients());
+            // grocery should now be empty
+            this.groceryList = new IngredientStorageImpl();
+
+            // Return the items we are importing to fridge
+            return new ResponseImpl(importedItems);
         }
-        List<Ingredient> groceryIngredientList = new ArrayList<>(this.grocery.ingredients());
-        // grocery should now be empty
+        // Return the groceryList containing ingredients that need to be bought
+        List<Ingredient> groceryIngredientList = new ArrayList<>(this.groceryList.ingredients());
         return new ResponseImpl(groceryIngredientList);
     }
 
