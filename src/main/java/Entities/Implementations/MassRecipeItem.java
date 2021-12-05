@@ -11,7 +11,7 @@ public class MassRecipeItem extends AbstractRecipeItem{
      * quantity of this ingredient, and if the ingredient is optional.
      *
      * @param ingredient The ingredient
-     * @param amount     The quantity of this ingredient as float.
+     * @param amount     The quantity of this ingredient as float
      * @param optional   Is the ingredient optional?
      */
     public MassRecipeItem(Ingredient ingredient, float amount, boolean optional) {
