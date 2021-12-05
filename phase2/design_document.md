@@ -46,9 +46,9 @@ Each recipe has a list of tags like “Gluten Free” that can be used to filter
 ## Class Diagram
 Phase 0 Class Diagram:
 ![0001](https://user-images.githubusercontent.com/63621073/141885746-07dbe78e-d42d-4aa4-a46d-8095cc854288.jpg)
-Current Class Diagram:
+Phase 1 Class Diagram:
 ![Screen Shot 2021-11-15 at 9 36 09 PM](https://user-images.githubusercontent.com/63621073/141885633-096ffc8f-f4b5-4d0d-a29a-e010b821a23f.png)
-
+phase 2 class Diagram
 
 ## Major Design Decisions
 In the home stretch of development for our application we were largely content with our design from phase 1. 
@@ -140,22 +140,29 @@ Throughout the development of JChef we encountered many obstacles, of which we�
 
 In spite of the aforementioned concerns, we believe JChef’s current design to be effective for a multitude of reasons.
 
-Because we followed clean architecture and the SOLID principles our codebase is easy to understand and led to good stratification in terms of levels. Our compartmentalized code base is conducive to scalability and the implementation of new features. As well, general maintenance was easy.
+Because we followed clean architecture and the SOLID principles, as mentioned before, our codebase is easy to understand and led to good stratification in terms of levels. Our compartmentalized code base is conducive to scalability and the implementation of new features. As well, general maintenance was easy.
 
 For instance, consider our Recipe Items: This class was turned into two different subclasses in Phase 1, but it didn't affect the rest of the code base as the implementation was done using the same interface.
 
-These principles will allow us to address the shortcomings in Phase 1. This was then changed in phase 2 
+These principles will allow us to address the shortcomings in Phase 1. This was then changed in phase 2 again to decorator design pattern. 
 
-Regarding Phase 1 Contributions:
-- Ariel worked on creating entities, some storages and matchers, as well as the use cases. Also was responsible for testing all of those things.
-- Ayush worked on the Android GUI as well as the design document and progress report
-- Derek worked on implementing the loading and serialization of entities as well as the entity referencing system.
-- Ezra worked on the RecipeItem implementation and subclasses. Added recipe tag methods.Created use case tests file. Also added Fridge Use Case and tests Created Abstract Response class.
-- Gerd worked on creating the Storages and their implementations, Matchers and Scorers.
-- Prithee worked on adding additional test cases, and fixing IntelliJ errors. Also was responsible for the design document.
-
-Regarding Phase 2 Contributions:
-
- Moving Forward:
+**Regarding Phase 2 Contributions:**
+- Ariel: Refactored the use cases, refactored the responseImpl class and create the controllers. 
+  - significant PR :
+- Ayush: Worked on the Android GUI redesigning some components and hooking it up to the back end.
+    - significant PR:
+- Derek: Did a lot of general work reviewing code and looking at the architecture of the program. The accessibility Documents.
+  - significant PR:
+- Ezra: The Design Doc and the Presentation. Helped Ariel with the use cases. 
+    - significant PR:
+- Gerd: created a decorator design pattern for the recipeItem, refactored a large amount of concluding the matchers and scored and all the associated tests we remade. He also fixed the builders.
+    - significant PR:
+- Prithee: Worked on the Android GUI redesigning some components and hooking it up to the back end, added the Grocery list use case.
+    - significant PR
+      
+**Reflection Moving Forward:**
+* Having an API connected to our application with lists of recipes and ingredients
+* We wish we could have added photos to our recipes
+* We wish we could have implemented our Tinder like function for the application when searching for recipes. 
 
 
