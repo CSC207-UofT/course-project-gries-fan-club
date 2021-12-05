@@ -1,20 +1,19 @@
 package UseCases;
 
-import Entities.Ingredient;
-import Entities.Recipe;
+import java.util.Map;
 
-import java.util.List;
-
-public interface Response<T> {
+public interface Response extends Map<String, String> {
     /**
-     * Returns the data in the response
+     * Return whether the response is a success
+     * @return a boolean representing if it was a success
      */
-    List<T> data();
+    boolean success();
 
     /**
-     * Add data to the response
+     * Return the status of the response
+     * @return String containing error code
      */
-    void add(List<T> data);
+    String status();
 }
 
 
