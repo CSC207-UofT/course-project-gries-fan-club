@@ -89,15 +89,16 @@ Current Class Diagram:
 
 
 ## Major Design Decisions
+In the home stretch of development for our application we were largely content with our design from phase 1. 
 
-- **Serialization**
-    - In order to save the state of our program we have utilised the generic “rows” that represented our entities raw data and a new set of serializers to transform our entities back into rows.
-    - These rows can then be saved to persistent storage by a writer.
-    - Since the rows are not tied to a single type of entity, so we only need one writer to save every entity!
-- **Android UI**
-    - We had decided to get our app running on an Android GUI to allow for more complex menus and user interactions.
-    - There was a lot of difficulty in getting the Android SDK, Intellij, and our code base to work together.
-    - See Demo of UI here: https://user-images.githubusercontent.com/63621073/141885958-6550067a-2fd5-4a36-be36-8d844f436892.mp4 (Note that the UI will be connected to the backend in Phase 2)
+We made decisions regarding the following:
+
+**Applying Decorator Pattern**
+
+We decided that the abstraction of our RecipeItem class created redundant code and was violating the open close principal. 
+We decided to shift to the decorator design pattern. This allows for specific display behavior for different types of RecipeItems.
+This allows for new units of measurement to be easily added to the application.
+
 
 ## SOLID Design Principles
 - **Single Responsibility Principle**
@@ -106,6 +107,7 @@ Current Class Diagram:
 - **Open/Closed Principle**
     - Base entities deal with IDs and concrete classes only add further data to the entities; they don’t change the underlying class.
     - Builders and Serializers subclasses define how to build/serialize an entity. They do not infringe on the base classes methods for iterating these operations.
+    - Our decorator class allows for new units of measurement to be added to the application. 
 - **Liskov Substitution Principle**
     - All objects of our superclasses can be replaceable with objects of its subclasses as none of our subclasses are incompatible with their superclasses.
 - **Interface Segregation Principle**
