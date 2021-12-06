@@ -195,17 +195,17 @@ These principles will allow us to address the shortcomings in Phase 1. This was 
 
 **Regarding Phase 2 Contributions:**
 - Ariel: Refactored the use cases, refactored the responseImpl class and create the controllers. 
-  - significant PR :
+  - significant PR : https://github.com/CSC207-UofT/course-project-gries-fan-club/pull/72
 - Ayush: Worked on the Android GUI redesigning some components and hooking it up to the back end.
-    - significant PR:
+    - significant PR: 
 - Derek: Did a lot of general work reviewing code and looking at the architecture of the program. The accessibility Documents.
-  - significant PR:
+  - significant PR: https://github.com/CSC207-UofT/course-project-gries-fan-club/pull/62
 - Ezra: The Design Doc and the Presentation. Helped Ariel with the use cases, created the presentation. 
-    - significant PR:
+    - significant PR: https://github.com/CSC207-UofT/course-project-gries-fan-club/pull/67
 - Gerd: created a decorator design pattern for the recipeItem, refactored a large amount of concluding the matchers and scored and all the associated tests we remade. He also fixed the builders.
-    - significant PR:
+    - significant PR: https://github.com/CSC207-UofT/course-project-gries-fan-club/pull/52
 - Prithee: Worked on the Android GUI redesigning some components and hooking it up to the back end, added the Grocery list use case.
-    - significant PR
+    - significant PR: https://github.com/CSC207-UofT/course-project-gries-fan-club/pull/94
       
 **Reflection Moving Forward:**
 * Having an API connected to our application with lists of recipes and ingredients
