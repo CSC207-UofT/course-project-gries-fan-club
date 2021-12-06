@@ -169,7 +169,7 @@ These principles will allow us to address the shortcomings in Phase 1. This was 
     - significant PR:
 - Derek: Did a lot of general work reviewing code and looking at the architecture of the program. The accessibility Documents.
   - significant PR:
-- Ezra: The Design Doc and the Presentation. Helped Ariel with the use cases. 
+- Ezra: The Design Doc and the Presentation. Helped Ariel with the use cases, created the presentation. 
     - significant PR:
 - Gerd: created a decorator design pattern for the recipeItem, refactored a large amount of concluding the matchers and scored and all the associated tests we remade. He also fixed the builders.
     - significant PR:
