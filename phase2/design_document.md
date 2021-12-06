@@ -209,8 +209,9 @@ These principles will allow us to address the shortcomings in Phase 1. This was 
     - significant PR: https://github.com/CSC207-UofT/course-project-gries-fan-club/pull/83
     - This was an important contribution as it connects the front end to the back end. It was vital to obtain our goals of a functioning app. 
 - Derek: Did a lot of general work reviewing code and looking at the architecture of the program. The accessibility Documents.
-  - significant PR: https://github.com/CSC207-UofT/course-project-gries-fan-club/pull/83
-  - It made cause it made android work. We need to understand who can use our app and how it can be used.
+  - significant PR: https://github.com/CSC207-UofT/course-project-gries-fan-club/pull/62/files
+  - It allows our program to save data from entities by converting them into rows.
+
 
 - Ezra: The Design Doc and the Presentation. Helped Ariel with the use cases, created the presentation. 
     - significant PR: https://github.com/CSC207-UofT/course-project-gries-fan-club/pull/67
@@ -221,7 +222,7 @@ These principles will allow us to address the shortcomings in Phase 1. This was 
     - These classes provided a container for us to contain all the high level entities for the code base, and nearly every other Object and UseCase used the Storages to access the appropriate entities.
 - Prithee: Worked on the Android GUI redesigning some components and hooking it up to the back end, added the Grocery list use case.
     - significant PR: https://github.com/CSC207-UofT/course-project-gries-fan-club/pull/94
-    -  Matcher Use Case is essential to our project. One part of our specification was matching items based on unique tags described the items. This pull request completes that part of the specification, thus being my favourite
+    -  This was my favourite pull request. The reason why This is my favourite is because I implemented a major part of our specification. The grocery contains all the ingredients that are needed for recipes you want to make but don't have the ingredients for. Furthermore, there was lots of good discussion in the pull request when changes were requested. This ultimately led to cleaner and more efficient code.
       
 **Reflection Moving Forward:**
 * Having an API connected to our application with lists of recipes and ingredients
