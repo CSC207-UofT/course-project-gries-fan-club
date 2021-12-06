@@ -12,4 +12,6 @@
     <string name="find_recipes">Find Recipes</string>
     <string name="view_grocery_list">View Grocery List</string>
     <string name="view_fridge_contents">View Fridge Contents</string>
+    <string name="deleted">deleted</string>
+    <string name="undo">undo</string>
 </resources>
