@@ -163,7 +163,16 @@ Once the Storages have been created and each of the Recipe objects, Ingredient O
 Tag Objects have been created, the Application is functional. 
 There are 4 UseCase classes which all execute different commands that the user can initiate from the GUI. 
 
-The list of commands are outlined in our specifications. Each 
+The list of commands are outlined in our specifications. Each UseCase returns a response. The response is a hashmap 
+that contains the data linked to a key. The GUI can then use a specific key to access the relevant data. For example: 
+if the user wished to add an ingredient apple to their fridge the Use case will take in the ingredient and add it to the 
+RecipeStorage called Fridge. The use case will the return a hashMap like {...Fridge="apple"...}. 
+
+The GUI interacts with the UseCases through a controller layer. This layer serves as the nexus between the front end and 
+the beck end. It calls the UseCases and supplies them with the necessary parameters to innate the command, and then provides\
+the response to the GUI. 
+
+The various use cases interact with multiple entity, matcher, scorer interfaces to complete the commands. 
 
 
 
