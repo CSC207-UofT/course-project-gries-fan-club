@@ -22,7 +22,8 @@ public class MatcherUseCase implements UseCase {
     }
 
     /**
-     *  // to retrieve the list of matched recipies use the key "fridgeIngredients"
+     * // to retrieve the list of matched recipies use the key "fridgeIngredients"
+     *
      * @return recipes matched response
      */
     @Override
@@ -42,13 +43,15 @@ public class MatcherUseCase implements UseCase {
 
         }
 
-        Response response =  new ResponseImpl("", true);
+        Response response = new ResponseImpl("", true);
         response.put("fridgeIngredients", toStringFrom(recipesMatched));
         return response;
-        }
+    }
 
-    /** Takes in command, returns an ingredient storage of the fridge
-      * @param command Command
+    /**
+     * Takes in command, returns an ingredient storage of the fridge
+     *
+     * @param command Command
      * @return IngredientStorageImpl that corresponds to the fridge
      */
     public IngredientStorage getFridgeStorage(Command command) {
@@ -74,6 +77,7 @@ public class MatcherUseCase implements UseCase {
             string.append(recipe.name());
             string.append(",");
         }
-        string.deleteCharAt(string.length()-1);
+        string.deleteCharAt(string.length() - 1);
         return String.valueOf(string);
+    }
 }

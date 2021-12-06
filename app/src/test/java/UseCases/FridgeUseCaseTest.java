@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
+import java.util.Objects;
 
 public class FridgeUseCaseTest {
     @Test
@@ -22,8 +23,8 @@ public class FridgeUseCaseTest {
         command.put("addToFridge", "oil,chocolate chips");
 
         FridgeUseCase useCase = new FridgeUseCase(fridge, ingredients);
-        Assertions.assertTrue(useCase.run(command).get("Fridge").contains(ingredient1.name()));
-        Assertions.assertTrue(useCase.run(command).get("Fridge").contains(ingredient2.name()));
+        Assertions.assertTrue(Objects.requireNonNull(useCase.run(command).get("Fridge")).contains(ingredient1.name()));
+        Assertions.assertTrue(Objects.requireNonNull(useCase.run(command).get("Fridge")).contains(ingredient2.name()));
         Assertions.assertTrue(useCase.run(command).success());
     }
 
@@ -45,8 +46,8 @@ public class FridgeUseCaseTest {
 
         FridgeUseCase useCase = new FridgeUseCase(fridge, ingredients);
 
-       Assertions.assertFalse(useCase.run(command).get("Fridge").contains(ingredient1.name()));
-        Assertions.assertTrue(useCase.run(command).get("Fridge").contains(ingredient2.name()));
+       Assertions.assertFalse(Objects.requireNonNull(useCase.run(command).get("Fridge")).contains(ingredient1.name()));
+        Assertions.assertTrue(Objects.requireNonNull(useCase.run(command).get("Fridge")).contains(ingredient2.name()));
         Assertions.assertTrue(useCase.run(command).success());
     }
 }
