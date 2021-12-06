@@ -37,7 +37,7 @@ public class MatcherUseCase implements UseCase {
             recipesMatched = matcher.return10RecipesMatched(this.recipeStorage);
         }
 
-        return new ResponseImpl("", true);
+        return new ResponseImpl(recipesMatched);
         }
 
     /** Takes in command, returns an ingredient storage of the fridge

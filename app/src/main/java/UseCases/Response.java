@@ -1,22 +1,10 @@
 package UseCases;
 
-import java.util.Map;
+import java.util.List;
 
-public interface Response extends Map<String, String> {
-    /**
-     * Return whether the response is a success
-     * @return a boolean representing if it was a success
-     */
-    boolean success();
+public interface Response<T> {
 
-    /**
-     * Return the status of the response
-     * @return String containing error code
-     */
-    String status();
+    List<T> data();
+    void add(List<T> data);
 }
-
-
-
-
 

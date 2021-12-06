@@ -113,14 +113,13 @@ public class CookbookUseCaseTest {
      */
     @Test
     public void testFindAllRecipes() {
-        Command command = new CommandImpl();
+        CommandImpl command = new CommandImpl();
         command.put("FindAllRecipes", "");
 
         CookbookUseCase useCase = new CookbookUseCase(this.recipeStorage, this.tagStorage);
 
-//        Assertions.assertTrue(useCase.run(command).data.contains(this.recipe1));
-//        Assertions.assertTrue(useCase.run(command).data().contains(this.recipe2));
-        Assertions.assertTrue(useCase.run(command).success());
+        Assertions.assertTrue(useCase.run(command).data().contains(this.recipe1));
+        Assertions.assertTrue(useCase.run(command).data().contains(this.recipe2));
     }
 
     /**
@@ -134,8 +133,7 @@ public class CookbookUseCaseTest {
         command.put("FindRecipesByTags", "Dairy, Non-Vegan");
 
         CookbookUseCase useCase = new CookbookUseCase(this.recipeStorage, this.tagStorage);
-//
-//        Assertions.assertTrue(useCase.run(command).data().contains(this.recipe2));
-        Assertions.assertTrue(useCase.run(command).success());
+
+        Assertions.assertTrue(useCase.run(command).data().contains(this.recipe2));
     }
 }
