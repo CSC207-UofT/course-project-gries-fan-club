@@ -2,6 +2,7 @@ package Matchers.Implementations;
 
 import Entities.Recipe;
 import Entities.Tag;
+import Matchers.Matcher;
 
 import java.util.List;
 import java.util.Set;
@@ -9,7 +10,7 @@ import java.util.Set;
 /**
  * Match recipes based on tags
  */
-public class TagMatcher extends AbstractMatcher {
+public class TagMatcher implements Matcher {
     final List<Tag> tags;
 
     public TagMatcher (List<Tag> tags) {
@@ -21,7 +22,7 @@ public class TagMatcher extends AbstractMatcher {
      * returns TRUE if the recipe contains one of the specified tags.
      */
     @Override
-    public boolean matches(Recipe recipe) {
+    public double matches(Recipe recipe) {
         Set<Tag> recipeTags = recipe.tags();
 
         for (Tag tag : this.tags) {
