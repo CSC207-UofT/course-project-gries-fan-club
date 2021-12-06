@@ -140,6 +140,7 @@ Some major refactors include:
 - Introduced builders for “intermediate” entities. Lead to significantly easier time loading.
 - Later we also extracted common builder interfaces to better help with loading.
 - Overhaul of Storage interfaces to utilise the Collections interface.
+- In phase 2 we Had to change our project structure and our CI to allow the UI to compile with our backend. 
 
 ## Testing
 We have extensive testing, covering nearly all our classes with more than one test. We used test
@@ -147,7 +148,7 @@ driven architecture which allowed for a significant amount of testing.
 
 ## Progress Report
 
-Throughout the development of JChef we encountered many obstacles, of which we’ve worked hard to overcome. However, as mentioned earlier, there are many questions our group needs to address in Phase 2. This includes addressing:
+Throughout the development of JChef we encountered many obstacles, of which we’ve worked hard to overcome. However, as mentioned earlier, there are many questions our group addressed in Phase 2. This includes addressing:
 - Managing the file structure to correct the build errors. This will help us:
     - Connect the backend to the Android GUI to make the application holistically functional
     - Create a more robust testing system to ensure the application works as intended
