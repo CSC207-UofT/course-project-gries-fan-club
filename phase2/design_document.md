@@ -157,7 +157,13 @@ call the serializer. The serializer will convert all the json objects to their I
 The builders will build the storages and will fill them with the objects from the Json file. For example: The builder will 
 build a RecipeStorage object and populate it with serialized Recipe objects.
 
-This process will be initiated upon the application start up. 
+This process will be initiated upon the application start up.
+
+Once the Storages have been created and each of the Recipe objects, Ingredient Objects, RecipeItem Objects, 
+Tag Objects have been created, the Application is functional. 
+There are 4 UseCase classes which all execute different commands that the user can initiate from the GUI. 
+
+The list of commands are outlined in our specifications. Each 
 
 
 
