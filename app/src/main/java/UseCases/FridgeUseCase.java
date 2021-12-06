@@ -21,6 +21,7 @@ public class FridgeUseCase implements UseCase {
 
     /**
      * Will either add to fridge or remove from fridge based on what is provided.
+     * to get the fridge use the key "Fridge"
      * @param command
      * @return IngredientStorageResponseImpl containing the ingredients of the fridge
      */
@@ -47,7 +48,6 @@ public class FridgeUseCase implements UseCase {
                 this.fridge.remove(this.ingredientStorage.findByNameExact(ingredientString).iterator().next());
             }
         }
-        List<Ingredient> fridgeIngredientList = new ArrayList<>(this.fridge.ingredients());
         Response response =  new ResponseImpl("", true);
         response.put("Fridge",this.fridge.toString());
         return response;
