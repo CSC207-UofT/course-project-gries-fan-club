@@ -22,7 +22,6 @@ public class CookbookUseCase implements UseCase {
     /**
      * Return all recipes if FindAllRecipes provided in command
      * Return recipes containing none of the tags given if FindRecipesByTags provided in command
-     * @param command
      * @return RecipeResponseImpl containing a list of recipes found
      */
     public Response run(Command command) {
@@ -38,7 +37,7 @@ public class CookbookUseCase implements UseCase {
 
             // Extract all the tags from the command
             String keyValues = command.get("FindRecipesByTags");
-            List<String> stringsOfTags = new ArrayList<>(Arrays.asList(keyValues.split(",")));
+            List<String> stringsOfTags = new ArrayList<>(Arrays.asList(Objects.requireNonNull(keyValues).split(",")));
 
             for (String tagString : stringsOfTags) {
                 Collection<Tag> foundTags = this.tagStorage.findByName(tagString);
