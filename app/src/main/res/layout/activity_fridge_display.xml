@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="Name"
+            android:text="@string/enter_ingredient_here"
             android:ems="10"
             android:layout_alignParentStart="true" android:layout_marginStart="57dp"
             android:layout_alignParentTop="true" android:layout_marginTop="59dp"
@@ -25,12 +25,14 @@
             android:text="@string/add_ingredient"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_alignParentStart="true"
-            android:layout_marginStart="37dp" android:layout_alignParentTop="true" android:layout_marginTop="159dp"
-            android:id="@+id/button6"/>
+            android:layout_marginStart="35dp"
+            android:id="@+id/button6" android:layout_marginTop="57dp"
+            android:layout_below="@+id/editTextTextPersonName2"/>
     <Button
             android:text="@string/remove_ingredient"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true" android:layout_marginEnd="32dp" android:layout_marginTop="153dp"
-            android:id="@+id/button9"/>
+            android:layout_marginEnd="33dp" android:layout_marginTop="55dp"
+            android:id="@+id/button9" android:layout_toEndOf="@+id/button6" android:layout_marginStart="25dp"
+            android:layout_below="@+id/editTextTextPersonName2"/>
 </RelativeLayout>
