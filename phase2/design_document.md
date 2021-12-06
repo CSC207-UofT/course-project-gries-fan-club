@@ -14,6 +14,9 @@
 * [Design Patterns](#design-patterns)
 * [Refactoring](#refactoring)
 * [Testing](#testing)
+* [Code walk Through](#code-walk-through)
+* [Progress report](#progress-report)
+
 
 ## Introduction
 JChef is a comprehensive full stack application that serves as a portable, interactive cookbook and shopping list. In the second phase of our development we were able to link our backend code to a user interface allowing for users to enjoy a convenient Android application that improves efficiency in the kitchen and in the store.
@@ -21,6 +24,8 @@ JChef is a comprehensive full stack application that serves as a portable, inter
 ## Updated Specifications
 We met our aims from the 1st phase of the applications' development. We were able to unify our grocery list and fridge command. We added commands that improve the users accessibility and are more efficient.
 We implemented a scrolling list for all our storages to improve the accessibility. 
+
+For a full list of specifications look here. https://github.com/CSC207-UofT/course-project-gries-fan-club/blob/main/phase2/specification.md  
 
 
 
@@ -33,12 +38,12 @@ The user will be able to add ingredients that they have in real life to their vi
 
 **Grocery list**
 
-If there are items missing from their fridge that are needed for a recipe, the  user can add the ingredients to a “Grocery List” by pressing the button “add to grocery list”. This serves as a shopping list that is portable and efficient. Once the user gets the item they can automatically add the item to the Fridge and remove it from the Grocery list. The user can remove them from the grocery list all at once by clicking “Add All To Fridge”,  or one by one by using the “Add to Fridge” button.
+If there are items missing from their fridge that are needed for a recipe, the  user can add the ingredients to a “Grocery List” by pressing the button “add to grocery list”. This serves as a shopping list that is portable and efficient. Once the user gets the item they can automatically add the item to the Fridge and remove it from the Grocery list. The user can remove them from the grocery list all at once by clicking “Add All To Fridge”,  or one by at a time using the “Add to Fridge” button.
 
 **Recipes**
 
 Once the user has added their available ingredients the user will be able to search the recipe list using a number of filters, the app will provide recipes based on the ingredients presented in their fridge.
-Each recipe has a list of tags like “Gluten Free” that can be used to filter the recipes. The app will return the “best” recipes for the user to make. The user can click on a recipe to view it’s instructions and it’s ingredients.
+Each recipe has a list of tags like “Gluten Free” that can be used to filter the recipes. The app will return the “best” recipes for the user to make. The user can click on a recipe to view the instructions, and it’s ingredients.
 
 
 
@@ -47,7 +52,8 @@ Phase 0 Class Diagram:
 ![0001](https://user-images.githubusercontent.com/63621073/141885746-07dbe78e-d42d-4aa4-a46d-8095cc854288.jpg)
 Phase 1 Class Diagram:
 ![Screen Shot 2021-11-15 at 9 36 09 PM](https://user-images.githubusercontent.com/63621073/141885633-096ffc8f-f4b5-4d0d-a29a-e010b821a23f.png)
-phase 2 class Diagram
+phase 2 class Diagram 
+![img.png](img.png)
 
 ## Major Design Decisions
 In the home stretch of development for our application we were largely content with our design from phase 1. 
@@ -72,6 +78,7 @@ We made decisions regarding the following:
   - We decided that the abstraction of our RecipeItem class created redundant code and was violating the open close principal. 
   - We decided to shift to the decorator design pattern. This allows for specific display behavior for different types of RecipeItems.
   - This allows for new units of measurement to be easily added to the application.
+  - (ue to compatibility issues and the lateness of this addition, this architecture was not included in our final main branch)
 
 
 ## SOLID Design Principles
@@ -135,8 +142,9 @@ We made decisions regarding the following:
     - We used this for Entity Construction.
     - By using the Builder design pattern, we were able to construct different immutable objects step by step, and the builder is independent of other objects.
 - **Decorator Design Pattern**
-  - We used this to reduce the redundancy in code, we changed an abstract class with multiple subclasses to a single decorator class for the RecipeItem. 
+  - We used this to reduce the redundancy in code. We changed an abstract class with multiple subclasses to a single RecipeItem with a decorator class for the types of RecipeItems
   - This allows for specific display behaviour to be demonstrated when needed. For example RecipeItem, can be displayed using grams, ml or a quantity amount.
+  - Due to compatibility issues and the lateness of this addition, this architecture was not included in our final main branch
 
 ## Refactoring
 Some major refactors include:
@@ -147,4 +155,86 @@ Some major refactors include:
 - In phase 2 we Had to change our project structure and our CI to allow the UI to compile with our backend. 
 
 ## Testing
-We have extensive testing, covering nearly all our classes with more than one test. We used test driven development which allowed for a significant amount of testing.  
+
+We have extensive testing, covering nearly all our classes with more than one test. We used test
+driven architecture which allowed for a significant amount of testing. 
+
+##Code Walk Through
+This aims to serve a detailed technical explanation of our code and how the application functions.
+
+**Back End**
+
+The application's code starts with a JSON file loader, that be passed JSON files containing the ingredients and their information.
+The loader will read the files and call the serializer. The serializer will convert all the JSON objects to their
+IDs which can then be passed to the builders. The builders will build the storages and will fill them with the objects
+from the JSON file. For example: The builder will build a RecipeStorage object and populate it with serialized Recipe objects.
+
+This process will be initiated upon the application start up.
+
+Once the Storages have been created and each of the Recipe objects, Ingredient Objects, RecipeItem Objects, 
+Tag Objects have been created, the Application is functional. 
+There are 4 UseCase classes which all execute different commands that the user can initiate from the GUI. 
+
+The list of commands are outlined in our specifications. Each UseCase returns a response. The response is a generic List 
+populated with the appropriate responses. This is then passed to the controller back to the GUI. For example: 
+if the user wished to add an ingredient apple to their fridge the UseCase will take in the ingredient and add it to the 
+RecipeStorage called Fridge.
+
+The GUI interacts with the UseCases through a controller layer. This layer serves as the nexus between the front end and 
+the back end. It calls the UseCases and supplies them with the necessary parameters to initiate the command, and then provides
+the response to the GUI. 
+
+The various use cases interact with multiple entity, matcher, scorer interfaces to complete the commands.
+
+An example is when a recipe is matched with ingredients from IngredientStorage. The Matcher is able to match parameters like
+Tags, Name, and Ingredients, and using a scorer, it is able to suggest the most relevant recipes according to the Matchers and
+Scorers. The run method in the MatcherUseCase uses the return10Recipes according to the User's Fridge and the given recipe.
+
+
+
+## Progress Report
+
+Throughout the development of JChef we encountered many obstacles, of which we’ve worked hard to overcome. However, as mentioned earlier, there are many questions our group addressed in Phase 2. This includes addressing:
+- Managing the file structure to correct the build errors. This will help us:
+    - Connect the backend to the Android GUI to make the application holistically functional
+    - Create a more robust testing system to ensure the application works as intended
+    - Allow us to address all IntelliJ warnings and style concerns
+
+In spite of the aforementioned concerns, we believe JChef’s current design to be effective for a multitude of reasons.
+
+Because we followed clean architecture and the SOLID principles, as mentioned before, our codebase is easy to understand and led to good stratification in terms of levels. Our compartmentalized code base is conducive to scalability and the implementation of new features. As well, general maintenance was easy.
+
+For instance, consider our Recipe Items: This class was turned into two different subclasses in Phase 1, but it didn't affect the rest of the code base as the implementation was done using the same interface.
+
+These principles will allow us to address the shortcomings in Phase 1. This was then changed in phase 2 again to decorator design pattern. 
+
+**Regarding Phase 2 Contributions:**
+- Ariel: Refactored the use cases, refactored the responseImpl class and create the controllers. 
+  - significant PR : https://github.com/CSC207-UofT/course-project-gries-fan-club/pull/72
+  - This PR was the first real push forward getting this project closer to being a functional app. This contribution allowed for us to analyse how the project worked as a whole.
+- Ayush: Worked on the Android GUI redesigning some components and hooking it up to the back end.
+    - significant PR: https://github.com/CSC207-UofT/course-project-gries-fan-club/pull/83
+    - This was an important contribution as it connects the front end to the back end. It was vital to obtain our goals of a functioning app. 
+- Derek: Did a lot of general work reviewing code and looking at the architecture of the program. The accessibility Documents.
+  - significant PR: https://github.com/CSC207-UofT/course-project-gries-fan-club/pull/62/files
+  - It allows our program to save data from entities by converting them into rows.
+
+
+- Ezra: The Design Doc and the Presentation. Helped Ariel with the use cases, created the presentation. 
+    - significant PR: https://github.com/CSC207-UofT/course-project-gries-fan-club/pull/67
+    - This PR was significant as it set the groundwork for all our UseCases. This was the first instance of our project coming together and interacting with the rest of the project.
+
+- Gerd: created a decorator design pattern for the recipeItem, refactored a large amount of concluding the matchers and scored and all the associated tests we remade. He also fixed the builders to work with Decorators.
+    - significant PR: https://github.com/CSC207-UofT/course-project-gries-fan-club/pull/52
+    - These classes provided a container for us to contain all the high level entities for the code base, and nearly every other Object and UseCase used the Storages to access the appropriate entities.
+- Prithee: Worked on the Android GUI redesigning some components and hooking it up to the back end, added the Grocery list use case.
+    - significant PR: https://github.com/CSC207-UofT/course-project-gries-fan-club/pull/94
+    -  This was my favourite pull request. The reason why This is my favourite is because I implemented a major part of our specification. The grocery contains all the ingredients that are needed for recipes you want to make but don't have the ingredients for. Furthermore, there was lots of good discussion in the pull request when changes were requested. This ultimately led to cleaner and more efficient code.
+      
+**Reflection Moving Forward:**
+* Having an API connected to our application with lists of recipes and ingredients
+* We wish we could have added photos to our recipes
+* We wish we could have implemented our Tinder like function for the application when searching for recipes. 
+
+
+
