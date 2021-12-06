@@ -14,6 +14,7 @@
 * [Design Patterns](#design-patterns)
 * [Refactoring](#refactoring)
 * [Testing](#testing)
+* [Code walk Through](#code-walk-through)
 * [Progress report](#progress-report)
 
 ## Introduction
@@ -144,7 +145,22 @@ Some major refactors include:
 
 ## Testing
 We have extensive testing, covering nearly all our classes with more than one test. We used test
-driven architecture which allowed for a significant amount of testing.  
+driven architecture which allowed for a significant amount of testing. 
+
+##Code Walk Through
+This aims to serve a detailed technical explanation of our code and that explains how the application functions.
+
+**Back End**
+
+The application's code starts with a JSON file loader, that be passed a JSON files. The loader will read the files and
+call the serializer. The serializer will convert all the json objects to their IDs which can then be passed to the builders.
+The builders will build the storages and will fill them with the objects from the Json file. For example: The builder will 
+build a RecipeStorage object and populate it with serialized Recipe objects.
+
+This process will be initiated upon the application start up. 
+
+
+
 
 ## Progress Report
 
