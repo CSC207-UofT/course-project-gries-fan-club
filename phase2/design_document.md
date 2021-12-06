@@ -14,7 +14,6 @@
 * [Design Patterns](#design-patterns)
 * [Refactoring](#refactoring)
 * [Testing](#testing)
-* [Progress report](#progress-report)
 
 ## Introduction
 JChef is a comprehensive full stack application that serves as a portable, interactive cookbook and shopping list. In the second phase of our development we were able to link our backend code to a user interface allowing for users to enjoy a convenient Android application that improves efficiency in the kitchen and in the store.
@@ -77,20 +76,25 @@ We made decisions regarding the following:
 
 ## SOLID Design Principles
 - **Single Responsibility Principle**
-    - Our classes hold to a single responsibility, usually illustrated in its interface.
-    - For instance, entities need to reference other entities but shouldn’t bother with details of loading other entities. Hence, our reference class!
+    - When designing our classes originally we were adamant to remember the SRP and as such have all classes kept to a contained responsibility.
+    - In a class like `JSONFileIO` we had to debate whether there were multiple responsibilities at play. The class was a loader and writer for JSON files.
+    - Some thought it should only load or only write and that these were separate responsibilities.
+    - Others thought that since the action of reading and writing JSON are so closely related they only change for the same reasons. This is what we have decided on for now.
 - **Open/Closed Principle**
-    - Base entities deal with IDs and concrete classes only add further data to the entities; they don’t change the underlying class.
-    - Builders and Serializers subclasses define how to build/serialize an entity. They do not infringe on the base classes methods for iterating these operations.
-    - Our decorator class allows for new units of measurement to be added to the application. 
+    - A specific show our adherence to this principle is in our new decorator pattern for displaying recipe items. We needed to have an easy way to create different displays (such as changing units) but did not want to constantly create subclasses of recipe items to change the displays.
+    - So, we replaced the display with a delegated display object which meant we could leave the initial set up for displaying intact and instead just describe the method of display rather than replacing the existing setup.
 - **Liskov Substitution Principle**
-    - All objects of our superclasses can be replaceable with objects of its subclasses as none of our subclasses are incompatible with their superclasses.
+    - During phase 2, we identified a violations of LSP within JChef which we have fixed. We did not identify any other violations.
+    - The error was within the Response class. Subclasses of this were overriding methods incorrectly which meant they would not act correctly as a response. We fixed this by going through each subclass and removing these faulty implementations. See #77 and #79.
 - **Interface Segregation Principle**
-    - All Interfaces are relatively small and single focused.
-    - For example, our Matchers interface deals with finding relevant recipes. Separately we have a Scorer interface which deals with scoring already relevant recipes.
+    - As part of our work on the SRP, we have in effect kept interfaces small as well. If we were to add too many moving parts to interfaces we noticed that our classes began to take on more work.
+    - This alerted us to issues of ISP before they could even be.
+    - As well, by splitting interfaces often, we could have clients using those interfaces use more abstract interfaces as often as possible.
 - **Dependency Inversion Principle**
-    - Our High-level modules are unaffected by changes in our low level modules
-    - Our high level, matchers, scorers, and middle level entities, storages, do not care about details such as data storage.
+  ![Entity Diagram](EntityDiagram.png)
+    - Here is a snippet from parts of our high level matchers.
+    - In this case, we can see that the Tag dependency has been inverted so that the matcher does not know about the underlying implementation of the Tag class.
+    - Inversions like this exist all throughout our dependency tree.
 
 
 ## Clean Architecture
@@ -143,42 +147,4 @@ Some major refactors include:
 - In phase 2 we Had to change our project structure and our CI to allow the UI to compile with our backend. 
 
 ## Testing
-We have extensive testing, covering nearly all our classes with more than one test. We used test
-driven architecture which allowed for a significant amount of testing.  
-
-## Progress Report
-
-Throughout the development of JChef we encountered many obstacles, of which we’ve worked hard to overcome. However, as mentioned earlier, there are many questions our group addressed in Phase 2. This includes addressing:
-- Managing the file structure to correct the build errors. This will help us:
-    - Connect the backend to the Android GUI to make the application holistically functional
-    - Create a more robust testing system to ensure the application works as intended
-    - Allow us to address all IntelliJ warnings and style concerns
-
-In spite of the aforementioned concerns, we believe JChef’s current design to be effective for a multitude of reasons.
-
-Because we followed clean architecture and the SOLID principles, as mentioned before, our codebase is easy to understand and led to good stratification in terms of levels. Our compartmentalized code base is conducive to scalability and the implementation of new features. As well, general maintenance was easy.
-
-For instance, consider our Recipe Items: This class was turned into two different subclasses in Phase 1, but it didn't affect the rest of the code base as the implementation was done using the same interface.
-
-These principles will allow us to address the shortcomings in Phase 1. This was then changed in phase 2 again to decorator design pattern. 
-
-**Regarding Phase 2 Contributions:**
-- Ariel: Refactored the use cases, refactored the responseImpl class and create the controllers. 
-  - significant PR :
-- Ayush: Worked on the Android GUI redesigning some components and hooking it up to the back end.
-    - significant PR:
-- Derek: Did a lot of general work reviewing code and looking at the architecture of the program. The accessibility Documents.
-  - significant PR:
-- Ezra: The Design Doc and the Presentation. Helped Ariel with the use cases, created the presentation. 
-    - significant PR:
-- Gerd: created a decorator design pattern for the recipeItem, refactored a large amount of concluding the matchers and scored and all the associated tests we remade. He also fixed the builders.
-    - significant PR:
-- Prithee: Worked on the Android GUI redesigning some components and hooking it up to the back end, added the Grocery list use case.
-    - significant PR
-      
-**Reflection Moving Forward:**
-* Having an API connected to our application with lists of recipes and ingredients
-* We wish we could have added photos to our recipes
-* We wish we could have implemented our Tinder like function for the application when searching for recipes. 
-
-
+We have extensive testing, covering nearly all our classes with more than one test. We used test driven development which allowed for a significant amount of testing.  
