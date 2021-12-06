@@ -31,7 +31,7 @@ public class RecipeItemSerializerTest {
 		// Ensure all properties of our items were assigned properly.
 		Assertions.assertEquals(1.4f, row.get("quantity", Float.class));
 		Assertions.assertFalse(row.get("optional", Boolean.class));
-		Assertions.assertEquals(item.serializeTypeCode(), row.get("type", String.class));
+		Assertions.assertEquals(item.serializeTypeCode(), row.get("displayType", String.class));
 	}
 
 }

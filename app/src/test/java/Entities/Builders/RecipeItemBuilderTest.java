@@ -45,7 +45,7 @@ public class RecipeItemBuilderTest {
 						"ingredient", ingredientID.toString(),
 						"quantity", 0.5,
 						"optional", true,
-						"type", "q"
+						"displayType", "q"
 		));
 
 		RecipeItem item = this.builder.loadEntity(row);

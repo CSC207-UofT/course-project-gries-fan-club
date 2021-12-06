@@ -15,7 +15,7 @@ public class RecipeItemSerializer extends AbstractSerializer<RecipeItem> {
 						"ingredient", entity.ingredient().id().toString(),
 						"quantity", entity.quantity(),
 						"optional", entity.optional(),
-						"type", entity.serializeTypeCode()
+						"displayType", entity.serializeTypeCode()
 		));
 	}
 
