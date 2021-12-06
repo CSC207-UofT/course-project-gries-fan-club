@@ -11,7 +11,7 @@ JChef is a program to help you organize and decide on dinner!
   * [Example Usage](#example-usage)
 * [Installation](#installation)
   * [Requirements](#requirements)
-* [How to Use](how-to-use) 
+* [How to Use](#how-to-use) 
 * [Development](#development)
   * [Local Setup](#local-setup)
 * [Maintainers](#maintainers)
