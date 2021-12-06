@@ -1,7 +1,9 @@
 package Controllers;
 
 import Entities.Builders.*;
+import Entities.Implementations.*;
 import Entities.Recipe;
+import Entities.RecipeItem;
 import Entities.Serializers.RecipeSerializer;
 import Loaders.Loader;
 import Storages.*;
@@ -9,8 +11,7 @@ import Storages.Implementations.IngredientStorageImpl;
 import Storages.Implementations.RecipeStorageImpl;
 import Storages.Implementations.TagStorageImpl;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Given a loader, we build storages and fill them
@@ -52,4 +53,22 @@ public class BuilderController {
         storages.put("recipes", this.recipeStorage);
         return storages;
     }
+
+    /**
+     * Returns a hashmap containing all of the storages
+     * .get('ingredients') => ingredient storage
+     * .get('recipeItems') => recipe item storage
+     * .get('tags') => tag storage
+     * .get('recipes') => recipes storage
+     * @return
+     */
+    public Map<String, Storage> storages() {
+        Map<String, Storage> storages = new HashMap<>();
+        storages.put("ingredients", this.ingredientStorage);
+        storages.put("recipeItems", this.recipeItemStorage);
+        storages.put("tags", this.tagStorage);
+        storages.put("recipes", this.recipeStorage);
+        return storages;
+    }
+
 }

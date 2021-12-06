@@ -71,8 +71,6 @@ public class GroceryUseCase implements UseCase {
                 this.groceryList.remove(currIngredient);
             }
         }
-
         return new ResponseImpl("", true);
     }
-
 }

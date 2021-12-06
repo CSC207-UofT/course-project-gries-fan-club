@@ -7,6 +7,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.Writer;
 import java.nio.file.Path;
@@ -45,16 +47,15 @@ public class JSONFileIO implements Loader, RowWriter {
 		this.source = new JSONArray(source);
 	}
 
-	/**
-	 * Constructs a loader from a JSON file.
-	 *
-	 * @param sourceFilePath The path of the file to read.
-	 *
-	 */
-	public JSONFileIO(Path sourceFilePath) throws IOException, JSONException {
-		// @TODO FIX
-		this("");
-	}
+//	/**
+//	 * Constructs a loader from a JSON file.
+//	 *
+//	 * @param sourceFilePath The path of the file to read.
+//	 *
+//	 */
+//	public JSONFileIO(Path sourceFilePath) throws IOException, JSONException {
+//		this.index = 0; //  do nothing
+//	}
 
 	@Override
 	public Row readRow() {
