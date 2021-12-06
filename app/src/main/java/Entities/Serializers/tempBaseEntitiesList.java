@@ -12,6 +12,8 @@ import Entities.ItemDisplays.Volumetric;
 import Entities.Recipe;
 import Entities.RecipeItem;
 import Entities.Tag;
+import Loaders.Implementations.RowImpl;
+import Loaders.Loader;
 import Loaders.Row;
 
 import java.util.ArrayList;
@@ -81,7 +83,7 @@ public class tempBaseEntitiesList {
     RecipeItem oreganoForOmelette = new RecipeItemImpl(oregano, 2, false, q);
 
     RecipeItem breadForTurkeyBLT = new RecipeItemImpl(bread, 2, false, q);
-    RecipeItem tomatoForTurkeyBLT = new RecipeItemImpl(tomato, 0.5, false, q);
+    RecipeItem tomatoForTurkeyBLT = new RecipeItemImpl(tomato, 0.5f, false, q);
     RecipeItem cheeseSlicesForTurkeyBLT = new RecipeItemImpl(cheeseSlice, 1, true, q);
     RecipeItem mayoForTurkeyBLT = new RecipeItemImpl(mayo, 15, false, v);
     RecipeItem turkeyBreastSliceForTurkeyBLT = new RecipeItemImpl(turkeyBreastSlice, 4, false, q);
@@ -144,6 +146,9 @@ public class tempBaseEntitiesList {
     RecipeSerializer recipeS = new RecipeSerializer();
 
     Collection<Row> recipeSerialized = recipeS.serializeAll(recipes);
+
+    Row rIngredients = new RowImpl("ingredient");
+
 
 }
 
