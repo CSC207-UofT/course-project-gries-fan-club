@@ -28,7 +28,7 @@ public class RecipeBuilder extends AbstractBuilder<Recipe> {
 
 	private final Storage<RecipeItem> itemStorage;
 
-	RecipeBuilder(Storage<RecipeItem> itemStorage) {
+	public RecipeBuilder(Storage<RecipeItem> itemStorage) {
 		this.itemStorage = itemStorage;
 	}
 
@@ -42,11 +42,9 @@ public class RecipeBuilder extends AbstractBuilder<Recipe> {
 		List<String> rawItems;
 
 		try {
-
 			rawID = row.get("id", String.class);
 			name = row.get("name", String.class);
 			description = row.get("description", String.class);
-
 			instructions = row.getAsList("instructions", String.class);
 			rawItems = row.getAsList("items", String.class);
 

@@ -48,17 +48,14 @@ public class IngredientBuilder extends AbstractBuilder<Ingredient> {
 		List<?> tagIDs;
 
 		try {
-
 			// Attempt retrieval of required data.
 			rawID = row.get("id", String.class);
 			name = row.get("name", String.class);
 			tagIDs = row.get("tags", List.class);
 
 		} catch (NoSuchAttribute noSuchAttribute) {
-
 			// Rethrow the error as an invalid row error.
 			throw new InvalidRowShape("Ingredient", noSuchAttribute);
-
 		}
 
 		// Construct references from the tag ID's.
