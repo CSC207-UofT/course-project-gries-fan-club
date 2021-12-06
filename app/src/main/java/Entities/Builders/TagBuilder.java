@@ -28,19 +28,15 @@ public class TagBuilder extends AbstractBuilder<Tag> {
 	 */
 	@Override
 	public Tag loadEntity(Row row) throws InvalidRowShape {
-
 		String rawID;
 		String name;
 
 		try {
-
 			rawID = row.get("id", String.class);
 			name = row.get("name", String.class);
 
 		} catch (NoSuchAttribute exception) {
-
 			throw new InvalidRowShape("Tag", exception);
-
 		}
 
 		// Construct and return the tag.

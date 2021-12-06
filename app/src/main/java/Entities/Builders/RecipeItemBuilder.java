@@ -47,7 +47,6 @@ public class RecipeItemBuilder extends AbstractBuilder<RecipeItem> {
 		String type;
 
 		try {
-
 			// Attempt to retrieve required data.
 			rawID = row.get("id", String.class);
 			rawIngredientID = row.get("ingredient", String.class);

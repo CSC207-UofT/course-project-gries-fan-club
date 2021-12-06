@@ -69,5 +69,4 @@ public abstract class AbstractBuilder<T extends Entity> implements EntityBuilder
 	private boolean validType(Row row) {
 		return row.type().equals(this.type());
 	}
-
 }
