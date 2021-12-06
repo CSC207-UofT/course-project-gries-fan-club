@@ -74,6 +74,13 @@ We made decisions regarding the following:
   - This allows for new units of measurement to be easily added to the application.
 
 
+- **Utilise a New Development Workflow**
+ 
+  - In order to crack down on any holes in our clean architecture, we implemented a new workflow to follow for creating issues through to the merging of code.
+  - This had us starting by investigating into a potential issue within our code. Once a problem was found, rather than just coding it out, we first made a GitHub issue containing our analysis of the issue and suggesting a possible solution.
+  - Only once a solution was agreed upon and plan thought out could we begin implementing the fixes.
+  - This workflow ensured our solutions were tight and simple. Without this, we may have been tempted to just throw code at our problems which would only make it messier.
+
 ## SOLID Design Principles
 - **Single Responsibility Principle**
     - Our classes hold to a single responsibility, usually illustrated in its interface.
