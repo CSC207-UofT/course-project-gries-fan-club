@@ -11,7 +11,7 @@ JChef is a program to help you organize and decide on dinner!
   * [Example Usage](#example-usage)
 * [Installation](#installation)
   * [Requirements](#requirements)
-  * [Configuration](#configuration)
+* [How to Use](how-to-use) 
 * [Development](#development)
   * [Local Setup](#local-setup)
 * [Maintainers](#maintainers)
@@ -29,14 +29,32 @@ Have no fear, JChef is here.
 For now, just run the main function within [`JChef.java`](app/src/main/java/JChef.java) or run the tests!
 
 ## Installation
-
+The JChef application is open source and can be retrieved from the https://github.com/CSC207-UofT/course-project-gries-fan-club
+repository.
 ### Requirements
+The application currently requires the user to have android studios.
 
-### Configuration
+## How to Use
+This application is a comprehensive, interactive cookbook. The user will open the app and will be presented with a UI offering a number of potential options.
+
+**Fridge**
+
+The user will be able to add ingredients that they have in real life to their virtual fridge by clicking the “add to fridge” button and inputting a string of the ingredient.
+
+**Grocery list**
+
+If there are items missing from their fridge that are needed for a recipe, the  user can add the ingredients to a “Grocery List” by pressing the button “add to grocery list”. This serves as a shopping list that is portable and efficient. Once the user gets the item they can automatically add the item to the Fridge and remove it from the Grocery list. The user can remove them from the grocery list all at once by clicking “Add All To Fridge”,  or one by one by using the “Add to Fridge” button.
+
+**Recipes**
+
+Once the user has added their available ingredients the user will be able to search the recipe list using a number of filters, the app will provide recipes based on the ingredients presented in their fridge.
+Each recipe has a list of tags like “Gluten Free” that can be used to filter the recipes. The app will return the “best” recipes for the user to make. The user can click on a recipe to view it’s instructions and it’s ingredients.
+
 
 ## Development
 
-This section refers to setting up a development environment to work on JChef.
+The development of This application was for the purpose of a project in CSC207 at University of Toronto.
+The project consisted of 3 phases, with each phase pushing further towards our final goals.
 
 ### Local Setup
 
