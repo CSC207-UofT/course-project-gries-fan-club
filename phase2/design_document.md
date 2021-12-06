@@ -149,14 +149,14 @@ We have extensive testing, covering nearly all our classes with more than one te
 driven architecture which allowed for a significant amount of testing. 
 
 ##Code Walk Through
-This aims to serve a detailed technical explanation of our code and that explains how the application functions.
+This aims to serve a detailed technical explanation of our code and how the application functions.
 
 **Back End**
 
-The application's code starts with a JSON file loader, that be passed a JSON files. The loader will read the files and
-call the serializer. The serializer will convert all the json objects to their IDs which can then be passed to the builders.
-The builders will build the storages and will fill them with the objects from the Json file. For example: The builder will 
-build a RecipeStorage object and populate it with serialized Recipe objects.
+The application's code starts with a JSON file loader, that be passed JSON files containing the ingredients and their information.
+The loader will read the files and call the serializer. The serializer will convert all the JSON objects to their
+IDs which can then be passed to the builders. The builders will build the storages and will fill them with the objects
+from the JSON file. For example: The builder will build a RecipeStorage object and populate it with serialized Recipe objects.
 
 This process will be initiated upon the application start up.
 
@@ -164,17 +164,20 @@ Once the Storages have been created and each of the Recipe objects, Ingredient O
 Tag Objects have been created, the Application is functional. 
 There are 4 UseCase classes which all execute different commands that the user can initiate from the GUI. 
 
-The list of commands are outlined in our specifications. Each UseCase returns a response. The response is a hashmap 
-that contains the data linked to a key. The GUI can then use a specific key to access the relevant data. For example: 
-if the user wished to add an ingredient apple to their fridge the Use case will take in the ingredient and add it to the 
+The list of commands are outlined in our specifications. Each UseCase returns a response. The response is a generic List 
+populated with the appropriate responses. This is then passed to the controller back to the GUI. For example: 
+if the user wished to add an ingredient apple to their fridge the UseCase will take in the ingredient and add it to the 
 RecipeStorage called Fridge.
 
 The GUI interacts with the UseCases through a controller layer. This layer serves as the nexus between the front end and 
-the beck end. It calls the UseCases and supplies them with the necessary parameters to innate the command, and then provides
+the back end. It calls the UseCases and supplies them with the necessary parameters to initiate the command, and then provides
 the response to the GUI. 
 
-The various use cases interact with multiple entity, matcher, scorer interfaces to complete the commands. 
+The various use cases interact with multiple entity, matcher, scorer interfaces to complete the commands.
 
+An example is when a recipe is matched with ingredients from IngredientStorage. The Matcher is able to match parameters like
+Tags, Name, and Ingredients, and using a scorer, it is able to suggest the most relevant recipes according to the Matchers and
+Scorers. The run method in the MatcherUseCase uses the return10Recipes according to the User's Fridge and the given recipe.
 
 
 
@@ -203,7 +206,7 @@ These principles will allow us to address the shortcomings in Phase 1. This was 
   - significant PR: https://github.com/CSC207-UofT/course-project-gries-fan-club/pull/62
 - Ezra: The Design Doc and the Presentation. Helped Ariel with the use cases, created the presentation. 
     - significant PR: https://github.com/CSC207-UofT/course-project-gries-fan-club/pull/67
-- Gerd: created a decorator design pattern for the recipeItem, refactored a large amount of concluding the matchers and scored and all the associated tests we remade. He also fixed the builders.
+- Gerd: created a decorator design pattern for the recipeItem, refactored a large amount of concluding the matchers and scored and all the associated tests we remade. He also fixed the builders to work with Decorators.
     - significant PR: https://github.com/CSC207-UofT/course-project-gries-fan-club/pull/52
 - Prithee: Worked on the Android GUI redesigning some components and hooking it up to the back end, added the Grocery list use case.
     - significant PR: https://github.com/CSC207-UofT/course-project-gries-fan-club/pull/94
