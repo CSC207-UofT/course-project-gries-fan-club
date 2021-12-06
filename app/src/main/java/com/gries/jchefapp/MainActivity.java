@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, FridgeActivity.class));
+                startActivity(new Intent(MainActivity.this, FridgeDisplayActivity.class));
 
             }
         });

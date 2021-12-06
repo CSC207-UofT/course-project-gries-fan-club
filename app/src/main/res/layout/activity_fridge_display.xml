@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,4 +7,30 @@
         android:layout_height="match_parent"
         tools:context="com.gries.jchefapp.FridgeDisplayActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ListView
+            android:layout_width="411dp"
+            android:layout_height="467dp" android:layout_alignParentEnd="true" android:layout_marginEnd="1dp"
+            android:layout_alignParentBottom="true" android:layout_marginBottom="-2dp"
+            android:layout_alignParentStart="true" android:layout_marginStart="-1dp"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="Name"
+            android:ems="10"
+            android:layout_alignParentStart="true" android:layout_marginStart="57dp"
+            android:layout_alignParentTop="true" android:layout_marginTop="59dp"
+            android:id="@+id/editTextTextPersonName2"/>
+    <Button
+            android:text="@string/add_ingredient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_alignParentStart="true"
+            android:layout_marginStart="37dp" android:layout_alignParentTop="true" android:layout_marginTop="159dp"
+            android:id="@+id/button6"/>
+    <Button
+            android:text="@string/remove_ingredient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true" android:layout_marginEnd="32dp" android:layout_marginTop="153dp"
+            android:id="@+id/button9"/>
+</RelativeLayout>
