@@ -94,6 +94,7 @@ We made decisions regarding the following:
   ![Entity Diagram](EntityDiagram.png)
     - Here is a snippet from parts of our high level matchers.
     - In this case, we can see that the Tag dependency has been inverted so that the matcher does not know about the underlying implementation of the Tag class.
+    - Inversions like this exist all throughout our dependency tree.
 
 
 ## Clean Architecture
