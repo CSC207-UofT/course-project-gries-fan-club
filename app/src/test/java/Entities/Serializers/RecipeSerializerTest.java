@@ -4,13 +4,13 @@ import Entities.Implementations.IngredientImpl;
 import Entities.Implementations.RecipeImpl;
 import Entities.Implementations.RecipeItemImpl;
 import Entities.Ingredient;
+import Entities.ItemDisplays.Quantifiable;
+import Entities.ItemDisplays.RecipeItemDisplay;
+import Entities.ItemDisplays.Volumetric;
 import Entities.Recipe;
 import Entities.RecipeItem;
-import Entities.RecipeItemDisplay;
 import Loaders.Exceptions.NoSuchAttribute;
 import Loaders.Row;
-import RecipeItemDisplayers.Quantifiable;
-import RecipeItemDisplayers.Volumetric;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

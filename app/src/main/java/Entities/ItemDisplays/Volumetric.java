@@ -1,7 +1,6 @@
-package RecipeItemDisplayers;
+package Entities.ItemDisplays;
 
 import Entities.Ingredient;
-import Entities.RecipeItemDisplay;
 
 public class Volumetric implements RecipeItemDisplay {
 

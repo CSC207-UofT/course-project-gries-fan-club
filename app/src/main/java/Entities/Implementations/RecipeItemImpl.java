@@ -1,34 +1,35 @@
 package Entities.Implementations;
 
 import Entities.Ingredient;
+import Entities.ItemDisplays.RecipeItemDisplay;
 import Entities.RecipeItem;
+
 import java.util.UUID;
-import Entities.RecipeItemDisplay;
 
 public class RecipeItemImpl extends AbstractEntity implements RecipeItem  {
     private final Ingredient ingredient;
     private final float amount;
     private boolean optional = false;
-    private RecipeItemDisplay type = null;
+    private RecipeItemDisplay displayObject = null;
 
     /**
      * @param amount of this ingredient.
      * @param ingredient  The ingredient
      */
-    public RecipeItemImpl(Ingredient ingredient, float amount, boolean optional, RecipeItemDisplay type) {
+    public RecipeItemImpl(Ingredient ingredient, float amount, boolean optional, RecipeItemDisplay displayObject) {
         super();
         this.ingredient = ingredient;
         this.amount = amount;
         this.optional = optional;
-        this.type = type;
+        this.displayObject = displayObject;
     }
 
-    public RecipeItemImpl(UUID id, Ingredient ingredient, float amount, boolean optional, RecipeItemDisplay type) {
-        super();
+    public RecipeItemImpl(UUID id, Ingredient ingredient, float amount, boolean optional, RecipeItemDisplay displayObject) {
+        super(id);
         this.ingredient = ingredient;
         this.amount = amount;
         this.optional = optional;
-        this.type = type;
+        this.displayObject = displayObject;
     }
 
     @Override
@@ -48,13 +49,13 @@ public class RecipeItemImpl extends AbstractEntity implements RecipeItem  {
 
     @Override
     public String display() {
-        return this.type.display(this.amount, this.ingredient);
+        return this.displayObject.display(this.amount, this.ingredient);
     }
 
     @Override
     public String serializeTypeCode() {
-        if (this.type != null)
-            return this.type.serializeTypeCode();
+        if (this.displayObject != null)
+            return this.displayObject.serializeTypeCode();
         return null;
     }
 }

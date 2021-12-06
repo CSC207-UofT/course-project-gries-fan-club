@@ -2,7 +2,8 @@ package Entities;
 
 import Entities.Implementations.IngredientImpl;
 import Entities.Implementations.RecipeItemImpl;
-import RecipeItemDisplayers.Quantifiable;
+import Entities.ItemDisplays.Quantifiable;
+import Entities.ItemDisplays.RecipeItemDisplay;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

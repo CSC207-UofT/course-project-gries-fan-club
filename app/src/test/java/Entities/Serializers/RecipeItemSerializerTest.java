@@ -3,11 +3,11 @@ package Entities.Serializers;
 import Entities.Implementations.IngredientImpl;
 import Entities.Implementations.RecipeItemImpl;
 import Entities.Ingredient;
+import Entities.ItemDisplays.Quantifiable;
+import Entities.ItemDisplays.RecipeItemDisplay;
 import Entities.RecipeItem;
-import Entities.RecipeItemDisplay;
 import Loaders.Exceptions.NoSuchAttribute;
 import Loaders.Row;
-import RecipeItemDisplayers.Quantifiable;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

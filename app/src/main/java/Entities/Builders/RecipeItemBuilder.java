@@ -4,13 +4,15 @@ import Entities.Exceptions.InvalidRowShape;
 import Entities.Implementations.RecipeItemImpl;
 import Entities.Implementations.ReferencedIngredient;
 import Entities.Ingredient;
+import Entities.ItemDisplays.Mass;
+import Entities.ItemDisplays.Quantifiable;
+import Entities.ItemDisplays.RecipeItemDisplay;
+import Entities.ItemDisplays.Volumetric;
 import Entities.RecipeItem;
 import Entities.Reference.Reference;
 import Loaders.Exceptions.NoSuchAttribute;
 import Loaders.Row;
-import RecipeItemDisplayers.*;
 import Storages.Storage;
-import Entities.RecipeItemDisplay;
 
 import java.util.UUID;
 
@@ -69,24 +71,21 @@ public class RecipeItemBuilder extends AbstractBuilder<RecipeItem> {
 		Ingredient ingredient = new ReferencedIngredient(ingredientReference);
 
 		// Determine the type of recipe item to make.
-		RecipeItemDisplay typeOfRecipe;
+		RecipeItemDisplay display;
 		switch (type) {
 			case "q":
-				typeOfRecipe = new Quantifiable();
+				display = new Quantifiable();
 				break;
 			case "v":
-				typeOfRecipe = new Volumetric();
+				display = new Volumetric();
 				break;
 			case "m":
-				typeOfRecipe = new Mass();
+				display = new Mass();
 				break;
 			default:
 				throw new InvalidRowShape("An invalid type: \"" + type + "\" was specified for a RecipeItem.");
 		}
-		return new RecipeItemImpl(id, ingredient, quantity, optional, typeOfRecipe);
-
-		// An invalid type was stored, this row is considered invalid.
-
+		return new RecipeItemImpl(id, ingredient, quantity, optional, display);
 	}
 
 	@Override

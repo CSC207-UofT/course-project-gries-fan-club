@@ -1,12 +1,16 @@
 package Matcher;
 
-import Entities.*;
 import Entities.Implementations.IngredientImpl;
 import Entities.Implementations.RecipeImpl;
 import Entities.Implementations.RecipeItemImpl;
 import Entities.Implementations.TagImpl;
+import Entities.Ingredient;
+import Entities.ItemDisplays.Quantifiable;
+import Entities.ItemDisplays.RecipeItemDisplay;
+import Entities.Recipe;
+import Entities.RecipeItem;
+import Entities.Tag;
 import Matchers.Implementations.TagMatcher;
-import RecipeItemDisplayers.Quantifiable;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

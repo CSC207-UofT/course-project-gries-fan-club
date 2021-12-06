@@ -1,6 +1,5 @@
-package RecipeItemDisplayers;
+package Entities.ItemDisplays;
 
-import Entities.RecipeItemDisplay;
 import Entities.Ingredient;
 
 public class Quantifiable implements RecipeItemDisplay {

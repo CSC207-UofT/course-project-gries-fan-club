@@ -1,11 +1,11 @@
 package Entities.Implementations;
 
 import Entities.Ingredient;
+import Entities.ItemDisplays.Quantifiable;
+import Entities.ItemDisplays.RecipeItemDisplay;
+import Entities.ItemDisplays.Volumetric;
 import Entities.RecipeItem;
-import Entities.RecipeItemDisplay;
 import Entities.Tag;
-import RecipeItemDisplayers.Quantifiable;
-import RecipeItemDisplayers.Volumetric;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
