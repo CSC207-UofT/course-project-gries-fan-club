@@ -24,6 +24,8 @@ JChef is a comprehensive full stack application that serves as a portable, inter
 We met our aims from the 1st phase of the applications' development. We were able to unify our grocery list and fridge command. We added commands that improve the users accessibility and are more efficient.
 We implemented a scrolling list for all our storages to improve the accessibility. 
 
+For a full list of specifications look here. https://github.com/CSC207-UofT/course-project-gries-fan-club/blob/main/phase2/specification.md  
+
 
 
 ## How to Use
@@ -207,7 +209,9 @@ These principles will allow us to address the shortcomings in Phase 1. This was 
     - significant PR: https://github.com/CSC207-UofT/course-project-gries-fan-club/pull/83
     - This was an important contribution as it connects the front end to the back end. It was vital to obtain our goals of a functioning app. 
 - Derek: Did a lot of general work reviewing code and looking at the architecture of the program. The accessibility Documents.
-  - significant PR: https://github.com/CSC207-UofT/course-project-gries-fan-club/pull/62
+  - significant PR: https://github.com/CSC207-UofT/course-project-gries-fan-club/pull/83
+  - It made cause it made android work. We need to understand who can use our app and how it can be used.
+
 - Ezra: The Design Doc and the Presentation. Helped Ariel with the use cases, created the presentation. 
     - significant PR: https://github.com/CSC207-UofT/course-project-gries-fan-club/pull/67
     - This PR was significant as it set the groundwork for all our UseCases. This was the first instance of our project coming together and interacting with the rest of the project.
