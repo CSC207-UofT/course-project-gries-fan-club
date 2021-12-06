@@ -124,17 +124,20 @@ public class GroceryUseCaseTest {
      */
     @Test
     public void testListRecipeItems() {
+        IngredientStorageImpl groceryList = new IngredientStorageImpl();
+        IngredientImpl ingredient1 = new IngredientImpl("oil", Collections.emptyList());
+
+        IngredientStorageImpl ingredients = new IngredientStorageImpl();
+        ingredients.add(ingredient1);
+        ingredients.add(ingredient2);
+
         CommandImpl command = new CommandImpl();
-        command.put("addToList", "");
+        command.put("addToList", "oil");
 
-        this.groceryList.add(this.ingredient3);
-        this.groceryList.add(this.ingredient4);
+        GroceryUseCase useCase = new GroceryUseCase(fridge, recipeStorage, ingredients);
 
-        GroceryUseCase useCase = new GroceryUseCase(this.fridge, this.recipeStorage, this.groceryList);
-
-        // We check to see that the grocery list does contain ingredients3-6 as well
-        Assertions.assertTrue(this.groceryList.contains(this.ingredient3));
-        Assertions.assertTrue(this.groceryList.contains(this.ingredient4));
+        Assertions.assertFalse(useCase.run(command).get("GroceryList").contains(ingredient1.name()));
+        Assertions.assertTrue(useCase.run(command).success());
     }
 
     /**
@@ -145,46 +148,31 @@ public class GroceryUseCaseTest {
     public void testImportToFridge() {
         CommandImpl command = new CommandImpl();
         command.put("importRecipeItems", "");
+        this.groceryList.add(ingredient1);
+        this.groceryList.add(ingredient2);
 
         GroceryUseCase useCase = new GroceryUseCase(this.fridge, this.recipeStorage, this.groceryList);
-        this.groceryList.add(this.ingredient5);
-        this.groceryList.add(this.ingredient6);
 
-
-        useCase.run(command);
 //         Checking that fridge contains ingredients that were emptied from the grocery list
-        Assertions.assertTrue(useCase.fridge.contains(this.ingredient5));
-        Assertions.assertTrue(useCase.fridge.contains(this.ingredient6));
-
+        Assertions.assertFalse(useCase.run(command).get("GroceryList").contains(ingredient1.name()));
+        Assertions.assertFalse(useCase.run(command).get("GroceryList").contains(this.ingredient2.name()));
         // checking that groceryList is now empty
-        Assertions.assertFalse(useCase.groceryList.contains(this.ingredient5));
-        Assertions.assertFalse(useCase.groceryList.contains(this.ingredient6));
+        Assertions.assertTrue(useCase.run(command).get("Fridge").contains(this.ingredient1.name()));
+        Assertions.assertTrue(useCase.run(command).get("Fridge").contains(this.ingredient2.name()));
     }
     @Test
     public void testRemoveFromGroceryList() {
         CommandImpl command = new CommandImpl();
         command.put("removeFromGroceryList", "oil,chocolate chips,baking soda");
 
+        this.groceryList.add(ingredient1);
+        this.groceryList.add(ingredient2);
+
         GroceryUseCase useCase = new GroceryUseCase(this.fridge, this.recipeStorage, this.groceryList);
-        this.groceryList.add(this.ingredient3);
-        this.groceryList.add(this.ingredient4);
-        this.groceryList.add(this.ingredient5);
-        this.groceryList.add(this.ingredient6);
 
-        useCase.run(command);
-
-        // Checks that grocery List only contains ingredient 5 now (only contains water)
-        Assertions.assertTrue(useCase.groceryList.contains(this.ingredient5));
-
-        // checks that grocery List does not contain ingredient 3,4,6
-        Assertions.assertFalse(useCase.groceryList.contains(this.ingredient3));
-        Assertions.assertFalse(useCase.groceryList.contains(this.ingredient4));
-        Assertions.assertFalse(useCase.groceryList.contains(this.ingredient6));
-
-        // Checks that fridge does contain ingredient 3,4,6
-        Assertions.assertTrue(useCase.fridge.contains(this.ingredient3));
-        Assertions.assertTrue(useCase.fridge.contains(this.ingredient4));
-        Assertions.assertTrue(useCase.fridge.contains(this.ingredient6));
+//         Checking that fridge contains ingredients that were emptied from the grocery list
+        Assertions.assertFalse(useCase.run(command).get("GroceryList").contains(this.ingredient1.name()));
+        Assertions.assertFalse(useCase.run(command).get("GroceryList").contains(this.ingredient2.name()));
 
     }
 }
