@@ -28,7 +28,7 @@ public class RecipeBuilder extends AbstractBuilder<Recipe> {
 
 	private final Storage<RecipeItem> itemStorage;
 
-	RecipeBuilder(Storage<RecipeItem> itemStorage) {
+	public RecipeBuilder(Storage<RecipeItem> itemStorage) {
 		this.itemStorage = itemStorage;
 	}
 
