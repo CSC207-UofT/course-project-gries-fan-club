@@ -39,10 +39,20 @@ public class MatcherUseCase implements UseCase {
             List<Ingredient> allFridgeIngredients = new ArrayList<>(fridge.ingredients());
             IngredientMatcher matcher = new IngredientMatcher(allFridgeIngredients);
             recipesMatched = matcher.return10RecipesMatched(this.recipeStorage);
+
         }
 
+        // Convert to string representation
+        List<String> returnedStringList = new ArrayList();
+
+        for (Recipe recipe : recipesMatched) {
+            returnedStringList.add(recipe.name());
+        }
+
+        String stringToReturn = returnedStringList.toString();
+
         Response response =  new ResponseImpl("", true);
-        response.put("fridgeIngredients", recipesMatched.toString());
+        response.put("fridgeIngredients", returnedStringList.toString());
         return response;
         }
 
