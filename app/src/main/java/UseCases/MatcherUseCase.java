@@ -21,6 +21,10 @@ public class MatcherUseCase implements UseCase {
         this.ingredientStorage = ingredients;
     }
 
+    /**
+     *  // to retrieve the list of matched recipies use the key "fridgeIngredients"
+     * @return recipes matched response
+     */
     @Override
     public Response run(Command command) {
         List<Recipe> recipesMatched = new ArrayList<>();
@@ -37,7 +41,9 @@ public class MatcherUseCase implements UseCase {
             recipesMatched = matcher.return10RecipesMatched(this.recipeStorage);
         }
 
-        return new ResponseImpl("", true);
+        Response response =  new ResponseImpl("", true);
+        response.put("fridgeIngredients", recipesMatched.toString());
+        return response;
         }
 
     /** Takes in command, returns an ingredient storage of the fridge

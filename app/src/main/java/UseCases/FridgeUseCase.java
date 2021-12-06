@@ -48,6 +48,8 @@ public class FridgeUseCase implements UseCase {
             }
         }
         List<Ingredient> fridgeIngredientList = new ArrayList<>(this.fridge.ingredients());
-        return new ResponseImpl("", true);
+        Response response =  new ResponseImpl("", true);
+        response.put("Fridge",this.fridge.toString());
+        return response;
     }
 }

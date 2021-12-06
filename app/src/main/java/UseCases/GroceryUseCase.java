@@ -24,9 +24,12 @@ public class GroceryUseCase implements UseCase {
         this.recipeStorage = recipeStorage;
         this.groceryList = groceryList;
     }
+
     /**
      * Return all ingredients needed if listRecipeItems provided in command
-     * Return all items in grocery and import to fridge.
+     * Return all items in grocery and import to fridge.\
+     * to get grocery list use key "GroceryList"
+     *
      * @param command The command to execute
      * @return IngredientStorageResponseImpl containing a list of ingredients found
      */
@@ -43,36 +46,40 @@ public class GroceryUseCase implements UseCase {
                     }
                 }
             }
-        }
 
-        if (command.containsKey("importRecipeItems")) {
-            // Adding all items currently in grocery to the fridge
-            int ingredientsAdded = this.groceryList.size();
-            this.fridge.addAll(this.groceryList);
 
-            // grocery should now be empty
-            this.groceryList.clear();
+            if (command.containsKey("importRecipeItems")) {
+                // Adding all items currently in grocery to the fridge
+                int ingredientsAdded = this.groceryList.size();
+                this.fridge.addAll(this.groceryList);
 
-            // Return the items we are importing to fridge
-            return new ResponseImpl("Added " + ingredientsAdded + " to the fridge", true);
-        }
-        if (command.containsKey("removeFromGroceryList")) {
-            String keyValues = command.get("removeFromGroceryList");
+                // grocery should now be empty
+                this.groceryList.clear();
 
-            assert keyValues != null;
-            List<String> stringsOfIngredients = new ArrayList<>(Arrays.asList(keyValues.split(",")));
-
-            for (String ingredientString : stringsOfIngredients) {
-                // Store current ingredient
-                Ingredient currIngredient = this.groceryList.findByNameExact(ingredientString).iterator().next();
-                // Adds ingredients (from key values) to fridge
-                this.fridge.add(currIngredient);
-                // Removes ingredients from groceryList
-                this.groceryList.remove(currIngredient);
+                // Return the items we are importing to fridge
+                return new ResponseImpl("Added " + ingredientsAdded + " to the fridge", true);
             }
+            if (command.containsKey("removeFromGroceryList")) {
+                String keyValues = command.get("removeFromGroceryList");
+
+                assert keyValues != null;
+                List<String> stringsOfIngredients = new ArrayList<>(Arrays.asList(keyValues.split(",")));
+
+                for (String ingredientString : stringsOfIngredients) {
+                    // Store current ingredient
+                    Ingredient currIngredient = this.groceryList.findByNameExact(ingredientString).iterator().next();
+                    // Adds ingredients (from key values) to fridge
+                    this.fridge.add(currIngredient);
+                    // Removes ingredients from groceryList
+                    this.groceryList.remove(currIngredient);
+                }
+            }
+
+
         }
 
-        return new ResponseImpl("", true);
+        Response response = new ResponseImpl("", true);
+        response.put("GroceryList", this.groceryList.toString());
+        return response;
     }
-
 }
