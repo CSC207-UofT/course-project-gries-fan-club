@@ -42,17 +42,8 @@ public class MatcherUseCase implements UseCase {
 
         }
 
-        // Convert to string representation
-        List<String> returnedStringList = new ArrayList();
-
-        for (Recipe recipe : recipesMatched) {
-            returnedStringList.add(recipe.name());
-        }
-
-        String stringToReturn = returnedStringList.toString();
-
         Response response =  new ResponseImpl("", true);
-        response.put("fridgeIngredients", returnedStringList.toString());
+        response.put("fridgeIngredients", toStringFrom(recipesMatched));
         return response;
         }
 
@@ -74,4 +65,15 @@ public class MatcherUseCase implements UseCase {
         }
         return fridge;
     }
+
+    public String toStringFrom(List<Recipe> recipesMatched) {
+        // Convert to string representation
+        StringBuilder string = new StringBuilder();
+
+        for (Recipe recipe : recipesMatched) {
+            string.append(recipe.name());
+            string.append(",");
+        }
+        string.deleteCharAt(string.length()-1);
+        return String.valueOf(string);
 }

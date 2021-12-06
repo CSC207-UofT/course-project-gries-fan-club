@@ -113,9 +113,10 @@ public class MatcherUseCaseTest {
     @Test
     public void testMatcherRun() {
         // Make a command, populate it with the correct things.
-        CommandImpl command = new CommandImpl();dcommand.put("Fridge", "flour,water,baking soda");
+        CommandImpl command = new CommandImpl();
+        command.put("Fridge", "flour,water,baking soda");
         MatcherUseCase usecase = new MatcherUseCase(this.ingredientStorage, this.recipeStorage);
-        Assertions.assertEquals( "Bread", usecase.run(command).get("fridgeIngredients"));
+        Assertions.assertEquals( "Cookies,Bread", usecase.run(command).get("fridgeIngredients"));
     }
 
     @Test
