@@ -1,7 +1,6 @@
 package Entities.Builders;
 
 import Entities.Exceptions.InvalidRowShape;
-import Entities.Implementations.QuantityRecipeItem;
 import Entities.Ingredient;
 import Entities.RecipeItem;
 import Loaders.Implementations.EmptyRow;
@@ -54,8 +53,6 @@ public class RecipeItemBuilderTest {
 		Assertions.assertEquals(ingredientID, item.ingredient().id());
 		Assertions.assertEquals(0.5f, item.quantity());
 		Assertions.assertTrue(item.optional());
-
-		Assertions.assertTrue(item instanceof QuantityRecipeItem);
 
 		Assertions.assertThrows(
 						InvalidRowShape.class,
