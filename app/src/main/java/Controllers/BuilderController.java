@@ -34,17 +34,17 @@ public class BuilderController {
      */
     public Map<String, Storage> load(Loader loader) {
         // load all the builders
-        TagBuilder tagBuilder = new TagBuilder();
-        tagBuilder.addTo(this.tagStorage, loader);
+//        TagBuilder tagBuilder = new TagBuilder();
+//        tagBuilder.addTo(this.tagStorage, loader);
 
         IngredientBuilder ingredientBuilder = new IngredientBuilder(this.tagStorage);
         ingredientBuilder.addTo(this.ingredientStorage, loader);
 
-        RecipeItemBuilder recipeItemBuilder = new RecipeItemBuilder(this.ingredientStorage);
-        recipeItemBuilder.addTo(this.recipeItemStorage, loader);
-
-        RecipeBuilder recipeBuilder = new RecipeBuilder(this.recipeItemStorage);
-        recipeBuilder.addTo(this.recipeStorage, loader);
+//        RecipeItemBuilder recipeItemBuilder = new RecipeItemBuilder(this.ingredientStorage);
+//        recipeItemBuilder.addTo(this.recipeItemStorage, loader);
+//
+//        RecipeBuilder recipeBuilder = new RecipeBuilder(this.recipeItemStorage);
+//        recipeBuilder.addTo(this.recipeStorage, loader);
 
         Map<String, Storage> storages = new HashMap<>();
         storages.put("ingredients", this.ingredientStorage);
