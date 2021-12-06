@@ -7,10 +7,7 @@ import Storages.Implementations.IngredientStorageImpl;
 import Storages.IngredientStorage;
 import Storages.RecipeStorage;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 public class MatcherUseCase implements UseCase {
     final IngredientStorage ingredientStorage;
@@ -57,7 +54,7 @@ public class MatcherUseCase implements UseCase {
     public IngredientStorage getFridgeStorage(Command command) {
         IngredientStorageImpl fridge = new IngredientStorageImpl();
         String keyValues = command.get("Fridge");
-        List<String> stringsOfIngredients = new ArrayList<>(Arrays.asList(keyValues.split(",")));
+        List<String> stringsOfIngredients = new ArrayList<>(Arrays.asList(Objects.requireNonNull(keyValues).split(",")));
 
         for (String ingredientString : stringsOfIngredients) {
             Collection<Ingredient> ingredientList = this.ingredientStorage.findByNameExact(ingredientString);

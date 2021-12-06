@@ -18,6 +18,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class GroceryUseCaseTest {
     IngredientStorage ingredientStorage;
@@ -124,7 +125,6 @@ public class GroceryUseCaseTest {
      */
     @Test
     public void testListRecipeItems() {
-        IngredientStorageImpl groceryList = new IngredientStorageImpl();
         IngredientImpl ingredient1 = new IngredientImpl("oil", Collections.emptyList());
 
         IngredientStorageImpl ingredients = new IngredientStorageImpl();
@@ -136,7 +136,7 @@ public class GroceryUseCaseTest {
 
         GroceryUseCase useCase = new GroceryUseCase(fridge, recipeStorage, ingredients);
 
-        Assertions.assertFalse(useCase.run(command).get("GroceryList").contains(ingredient1.name()));
+        Assertions.assertFalse(Objects.requireNonNull(useCase.run(command).get("GroceryList")).contains(ingredient1.name()));
         Assertions.assertTrue(useCase.run(command).success());
     }
 
@@ -154,11 +154,11 @@ public class GroceryUseCaseTest {
         GroceryUseCase useCase = new GroceryUseCase(this.fridge, this.recipeStorage, this.groceryList);
 
 //         Checking that fridge contains ingredients that were emptied from the grocery list
-        Assertions.assertFalse(useCase.run(command).get("GroceryList").contains(ingredient1.name()));
-        Assertions.assertFalse(useCase.run(command).get("GroceryList").contains(this.ingredient2.name()));
+        Assertions.assertFalse(Objects.requireNonNull(useCase.run(command).get("GroceryList")).contains(ingredient1.name()));
+        Assertions.assertFalse(Objects.requireNonNull(useCase.run(command).get("GroceryList")).contains(this.ingredient2.name()));
         // checking that groceryList is now empty
-        Assertions.assertTrue(useCase.run(command).get("Fridge").contains(this.ingredient1.name()));
-        Assertions.assertTrue(useCase.run(command).get("Fridge").contains(this.ingredient2.name()));
+        Assertions.assertTrue(Objects.requireNonNull(useCase.run(command).get("Fridge")).contains(this.ingredient1.name()));
+        Assertions.assertTrue(Objects.requireNonNull(useCase.run(command).get("Fridge")).contains(this.ingredient2.name()));
     }
     @Test
     public void testRemoveFromGroceryList() {
@@ -171,8 +171,8 @@ public class GroceryUseCaseTest {
         GroceryUseCase useCase = new GroceryUseCase(this.fridge, this.recipeStorage, this.groceryList);
 
 //         Checking that fridge contains ingredients that were emptied from the grocery list
-        Assertions.assertFalse(useCase.run(command).get("GroceryList").contains(this.ingredient1.name()));
-        Assertions.assertFalse(useCase.run(command).get("GroceryList").contains(this.ingredient2.name()));
+        Assertions.assertFalse(Objects.requireNonNull(useCase.run(command).get("GroceryList")).contains(this.ingredient1.name()));
+        Assertions.assertFalse(Objects.requireNonNull(useCase.run(command).get("GroceryList")).contains(this.ingredient2.name()));
 
     }
 }

@@ -1,11 +1,11 @@
 package UseCases;
 
-import Entities.Ingredient;
 import Storages.IngredientStorage;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class FridgeUseCase implements UseCase {
     final IngredientStorage ingredientStorage;
@@ -22,7 +22,6 @@ public class FridgeUseCase implements UseCase {
     /**
      * Will either add to fridge or remove from fridge based on what is provided.
      * to get the fridge use the key "Fridge"
-     * @param command
      * @return IngredientStorageResponseImpl containing the ingredients of the fridge
      */
     @Override
@@ -32,7 +31,7 @@ public class FridgeUseCase implements UseCase {
         if (command.containsKey("addToFridge")) {
             String keyValues = command.get("addToFridge");
 
-            List<String> stringsOfIngredients = new ArrayList<>(Arrays.asList(keyValues.split(",")));
+            List<String> stringsOfIngredients = new ArrayList<>(Arrays.asList(Objects.requireNonNull(keyValues).split(",")));
 
             for (String ingredientString : stringsOfIngredients) {
                 this.fridge.add(this.ingredientStorage.findByNameExact(ingredientString).iterator().next());
@@ -43,7 +42,7 @@ public class FridgeUseCase implements UseCase {
         if (command.containsKey("removeFromFridge")) {
             String keyValues = command.get("removeFromFridge");
 
-            List<String> stringsOfIngredients = new ArrayList<>(Arrays.asList(keyValues.split(",")));
+            List<String> stringsOfIngredients = new ArrayList<>(Arrays.asList(Objects.requireNonNull(keyValues).split(",")));
             for (String ingredientString : stringsOfIngredients) {
                 this.fridge.remove(this.ingredientStorage.findByNameExact(ingredientString).iterator().next());
             }

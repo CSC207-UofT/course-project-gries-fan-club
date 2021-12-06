@@ -1,7 +1,6 @@
 package UseCases;
 
 import Entities.Implementations.*;
-import Entities.Recipe;
 import Entities.RecipeItem;
 import Entities.Tag;
 import Storages.Implementations.IngredientStorageImpl;
