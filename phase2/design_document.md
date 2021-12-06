@@ -159,7 +159,7 @@ Some major refactors include:
 We have extensive testing, covering nearly all our classes with more than one test. We used test
 driven architecture which allowed for a significant amount of testing. 
 
-##Code Walk Through
+## Code Walk Through
 This aims to serve a detailed technical explanation of our code and how the application functions.
 
 **Back End**
