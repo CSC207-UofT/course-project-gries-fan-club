@@ -3,7 +3,10 @@ package Entities.ItemDisplays;
 import Entities.Ingredient;
 
 public class Volumetric implements RecipeItemDisplay {
-
+    /**
+     * Represent the volumetric item (like mL of milk)
+     * @return string with units and quantity
+     */
     @Override
     public String display(float quantity, Ingredient ingredient) {
         String stringQuantity;

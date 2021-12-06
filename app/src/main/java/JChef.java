@@ -9,7 +9,9 @@ import Storages.Storage;
 import Storages.TagStorage;
 
 public class JChef {
-
+    /**
+     * Program's main class. Run from here.
+     */
     IngredientStorage ingredients = new IngredientStorageImpl();
     RecipeStorage recipes = new RecipeStorageImpl();
     TagStorage tags = new TagStorageImpl();
