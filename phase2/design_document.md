@@ -40,7 +40,7 @@ If there are items missing from their fridge that are needed for a recipe, the  
 **Recipes**
 
 Once the user has added their available ingredients the user will be able to search the recipe list using a number of filters, the app will provide recipes based on the ingredients presented in their fridge.
-Each recipe has a list of tags like “Gluten Free” that can be used to filter the recipes. The app will return the “best” recipes for the user to make. The user can click on a recipe to view it’s instructions and it’s ingredients.
+Each recipe has a list of tags like “Gluten Free” that can be used to filter the recipes. The app will return the “best” recipes for the user to make. The user can click on a recipe to view it’s instructions, and it’s ingredients.
 
 
 
@@ -49,7 +49,8 @@ Phase 0 Class Diagram:
 ![0001](https://user-images.githubusercontent.com/63621073/141885746-07dbe78e-d42d-4aa4-a46d-8095cc854288.jpg)
 Phase 1 Class Diagram:
 ![Screen Shot 2021-11-15 at 9 36 09 PM](https://user-images.githubusercontent.com/63621073/141885633-096ffc8f-f4b5-4d0d-a29a-e010b821a23f.png)
-phase 2 class Diagram
+phase 2 class Diagram 
+![img.png](img.png)
 
 ## Major Design Decisions
 In the home stretch of development for our application we were largely content with our design from phase 1. 
@@ -166,10 +167,10 @@ There are 4 UseCase classes which all execute different commands that the user c
 The list of commands are outlined in our specifications. Each UseCase returns a response. The response is a hashmap 
 that contains the data linked to a key. The GUI can then use a specific key to access the relevant data. For example: 
 if the user wished to add an ingredient apple to their fridge the Use case will take in the ingredient and add it to the 
-RecipeStorage called Fridge. The use case will the return a hashMap like {...Fridge="apple"...}. 
+RecipeStorage called Fridge.
 
 The GUI interacts with the UseCases through a controller layer. This layer serves as the nexus between the front end and 
-the beck end. It calls the UseCases and supplies them with the necessary parameters to innate the command, and then provides\
+the beck end. It calls the UseCases and supplies them with the necessary parameters to innate the command, and then provides
 the response to the GUI. 
 
 The various use cases interact with multiple entity, matcher, scorer interfaces to complete the commands. 
