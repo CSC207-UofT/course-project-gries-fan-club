@@ -22,10 +22,9 @@ public class FridgeUseCaseTest {
         command.put("addToFridge", "oil,chocolate chips");
 
         FridgeUseCase useCase = new FridgeUseCase(fridge, ingredients);
-//
-//        Assertions.assertTrue(useCase.run(command).data().contains(ingredient1));
-//        Assertions.assertTrue(useCase.run(command).data().contains(ingredient2));
-          Assertions.assertTrue(useCase.run(command).success());
+        Assertions.assertTrue(useCase.run(command).get("Fridge").contains(ingredient1.name()));
+        Assertions.assertTrue(useCase.run(command).get("Fridge").contains(ingredient2.name()));
+        Assertions.assertTrue(useCase.run(command).success());
     }
 
     @Test
@@ -46,8 +45,8 @@ public class FridgeUseCaseTest {
 
         FridgeUseCase useCase = new FridgeUseCase(fridge, ingredients);
 
-//        Assertions.assertFalse(useCase.run(command).data().contains(ingredient1));
-//        Assertions.assertTrue(useCase.run(command).data().contains(ingredient2));
+       Assertions.assertFalse(useCase.run(command).get("Fridge").contains(ingredient1.name()));
+        Assertions.assertTrue(useCase.run(command).get("Fridge").contains(ingredient2.name()));
         Assertions.assertTrue(useCase.run(command).success());
     }
 }
