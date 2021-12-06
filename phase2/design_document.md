@@ -75,6 +75,7 @@ We made decisions regarding the following:
   - We decided that the abstraction of our RecipeItem class created redundant code and was violating the open close principal. 
   - We decided to shift to the decorator design pattern. This allows for specific display behavior for different types of RecipeItems.
   - This allows for new units of measurement to be easily added to the application.
+  - (ue to compatibility issues and the lateness of this addition, this architecture was not included in our final main branch)
 
 
 ## SOLID Design Principles
@@ -133,8 +134,9 @@ We made decisions regarding the following:
     - We used this for Entity Construction.
     - By using the Builder design pattern, we were able to construct different immutable objects step by step, and the builder is independent of other objects.
 - **Decorator Design Pattern**
-  - We used this to reduce the redundancy in code, we changed an abstract class with multiple subclasses to a single decorator class for the RecipeItem. 
+  - We used this to reduce the redundancy in code. We changed an abstract class with multiple subclasses to a single RecipeItem with a decorator class for the types of RecipeItems
   - This allows for specific display behaviour to be demonstrated when needed. For example RecipeItem, can be displayed using grams, ml or a quantity amount.
+  - Due to compatibility issues and the lateness of this addition, this architecture was not included in our final main branch
 
 ## Refactoring
 Some major refactors include:
