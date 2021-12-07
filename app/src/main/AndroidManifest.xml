@@ -9,8 +9,23 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.JChefApp">
-        <activity android:name="com.gries.jchefapp.FridgeDisplayActivity">
+
+        <activity
+                android:name="com.gries.jchefapp.GroceryListActivity"
+                android:parentActivityName="com.gries.jchefapp.GroceryListActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.gries.jchefapp.MainActivity"/>
         </activity>
+
+        <activity android:name="com.gries.jchefapp.FridgeDisplayActivity"
+                  android:parentActivityName="com.gries.jchefapp.MainActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.gries.jchefapp.MainActivity"/>
+        </activity>
+
+
         <activity
                 android:name="com.gries.jchefapp.RecipeActivity"
                 android:parentActivityName="com.gries.jchefapp.MainActivity">
@@ -18,13 +33,8 @@
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.gries.jchefapp.MainActivity"/>
         </activity>
-        <activity
-                android:name="com.gries.jchefapp.FridgeActivity"
-                android:parentActivityName="com.gries.jchefapp.MainActivity">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value="com.gries.jchefapp.MainActivity"/>
-        </activity>
+
+
         <activity
                 android:name="com.gries.jchefapp.InstructionsActivity"
                 android:parentActivityName="com.gries.jchefapp.MainActivity">
@@ -32,15 +42,18 @@
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.gries.jchefapp.MainActivity"/>
         </activity>
+
+
         <activity
                 android:name="com.gries.jchefapp.MainActivity"
                 android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+
     </application>
 
 </manifest>
