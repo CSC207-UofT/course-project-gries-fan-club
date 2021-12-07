@@ -18,7 +18,7 @@ public class FridgeUseCaseTest {
         ingredients.add(ingredient1);
         ingredients.add(ingredient2);
 
-        Command command = new CommandImpl();
+        CommandImpl command = new CommandImpl();
         command.put("addToFridge", "oil,chocolate chips");
 
         FridgeUseCase useCase = new FridgeUseCase(fridge, ingredients);

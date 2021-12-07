@@ -113,7 +113,7 @@ public class CookbookUseCaseTest {
      */
     @Test
     public void testFindAllRecipes() {
-        Command command = new CommandImpl();
+        CommandImpl command = new CommandImpl();
         command.put("FindAllRecipes", "");
 
         CookbookUseCase useCase = new CookbookUseCase(this.recipeStorage, this.tagStorage);

@@ -62,4 +62,8 @@ public class FridgeActivity extends AppCompatActivity {
 
 
     }
+
+    public void Add(View view) {
+        Toast.makeText(this, "Hello world", Toast.LENGTH_LONG).show();
+    }
 }
