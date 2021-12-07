@@ -76,6 +76,7 @@ public class FridgeDisplayActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 arrayList.remove(which_item);
                                 arrayAdapter.notifyDataSetChanged();
+                                Toast.makeText(com.gries.jchefapp.FridgeDisplayActivity.this, "IngredientRemoved", Toast.LENGTH_LONG).show();
                             }
                         })
                         .setNegativeButton("No", null)
