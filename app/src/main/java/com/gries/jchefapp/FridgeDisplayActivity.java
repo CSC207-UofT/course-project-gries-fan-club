@@ -13,7 +13,6 @@ import java.util.ArrayList;
 public class FridgeDisplayActivity extends AppCompatActivity {
 
     private Button addIngredientButton;
-    private Button removeIngredientButton;
 
     EditText mEdit;
     ListView listView;
@@ -45,21 +44,6 @@ public class FridgeDisplayActivity extends AppCompatActivity {
                 arrayAdapter.notifyDataSetChanged();
                 System.out.println(mEdit.getText().toString());
 
-            }
-        });
-
-        // Remove Ingredient
-        removeIngredientButton = (Button) findViewById(R.id.button9);
-        removeIngredientButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(com.gries.jchefapp.FridgeDisplayActivity.this, "IngredientRemoved", Toast.LENGTH_LONG).show();
-                mEdit = (EditText) findViewById(R.id.editTextTextPersonName2);
-                // this is the input given to us that we will pass onto the controller
-                mEdit.getText().toString();
-                arrayList.remove(mEdit.getText().toString());
-                arrayAdapter.notifyDataSetChanged();
-                System.out.println(mEdit.getText().toString());
             }
         });
 
