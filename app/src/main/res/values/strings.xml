@@ -4,6 +4,7 @@
     <string name="instructions">Instructions</string>
     <string name="view_fridge">View Fridge</string>
     <string name="view_recipes">View Recipes</string>
+    <string name="import_to_fridge">Import to Fridge</string>
     <string name="logo">logo</string>
     <string name="understanding_jchef">Understanding JChef:</string>
     <string name="enter_ingredient_here">Enter Ingredient Here</string>

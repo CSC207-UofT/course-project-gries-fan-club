@@ -27,7 +27,7 @@ public class GroceryListActivity extends AppCompatActivity {
         listView2 = (ListView) findViewById(R.id.listview2);
         ArrayList<String> arrayList = new ArrayList<>();
 
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
+        ArrayAdapter arrayAdapter = new ArrayAdapter(GroceryListActivity.this, android.R.layout.simple_list_item_1, arrayList);
         listView2.setAdapter(arrayAdapter);
 
 //        arrayList2.add("Banana");
@@ -36,7 +36,7 @@ public class GroceryListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(GroceryListActivity.this, "IngredientAdded", Toast.LENGTH_LONG).show();
-                mEdit = (EditText) findViewById(R.id.editTextTextPersonName2);
+                mEdit = (EditText) findViewById(R.id.editTextTextPersonName3);
                 // this is the input given to us that we will pass onto the controller
                 mEdit.getText().toString();
                 arrayList.add(mEdit.getText().toString());
@@ -47,15 +47,15 @@ public class GroceryListActivity extends AppCompatActivity {
         });
 
         // ADD BUTTON FOR THIS
-        importToFridgeButton = (Button) findViewById(R.id.button2);
+        importToFridgeButton = (Button) findViewById(R.id.button15);
         importToFridgeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(GroceryListActivity.this, "Ingredient Imported to Fridge", Toast.LENGTH_LONG).show();
-                mEdit = (EditText) findViewById(R.id.editTextTextPersonName2);
+                mEdit = (EditText) findViewById(R.id.editTextTextPersonName3);
                 // this is the input given to us that we will pass onto the controller
                 mEdit.getText().toString();
-                // ADD TO FRIDGE
+                // ADD TO FRIDGE!!!!!!!!!!!!!!!!!!!!
                 arrayList.remove(mEdit.getText().toString());
                 arrayAdapter.notifyDataSetChanged();
                 System.out.println(mEdit.getText().toString());

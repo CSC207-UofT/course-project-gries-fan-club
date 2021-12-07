@@ -23,16 +23,17 @@
             android:layout_height="wrap_content" android:layout_alignParentStart="true"
             android:layout_marginStart="35dp" android:layout_marginTop="24dp"
             android:id="@+id/button2" android:layout_below="@+id/editTextTextPersonName3"
-            android:layout_toStartOf="@+id/button10" android:layout_marginEnd="25dp"/>
-    <ListView
-            android:layout_width="wrap_content"
-            android:layout_height="550dp" android:layout_alignParentStart="true"
-            android:layout_marginStart="1dp" android:layout_marginTop="27dp" android:layout_below="@+id/button10"
-            android:id="@+id/listview2" android:layout_alignParentBottom="true" android:layout_marginBottom="-4dp"/>
+            android:layout_toStartOf="@+id/button15" android:layout_marginEnd="25dp"/>
     <Button
-            android:text="@string/remove_ingredient"
+            android:text="@string/import_to_fridge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true" android:layout_marginEnd="35dp" android:layout_marginTop="102dp"
-            android:id="@+id/button10"/>
+            android:id="@+id/button15"/>
+    <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="550dp" android:layout_alignParentStart="true"
+            android:layout_marginStart="1dp" android:layout_marginTop="27dp" android:layout_below="@+id/button15"
+            android:id="@+id/listview2" android:layout_alignParentBottom="true" android:layout_marginBottom="-4dp"/>
+
 </RelativeLayout>
