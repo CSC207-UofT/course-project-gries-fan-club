@@ -81,40 +81,55 @@ We made decisions regarding the following:
   - (ue to compatibility issues and the lateness of this addition, this architecture was not included in our final main branch)
 
 
+- **New Development Workflow**
+
+  - We utilised a new development workflow to better sniff out clean architecture violations.
+  - When a problem was found, we first create an issue describing the problem and proposing a solution before writing any code.
+  - After the solution is discussed and agreed upon, then someone would pick it up and implement our solution.
+  - This helped to ensure we had strong and simple solutions that didn't further muck up our architecture.
+
 ## SOLID Design Principles
 - **Single Responsibility Principle**
-    - When designing our classes originally we were adamant to remember the SRP and as such have all classes kept to a contained responsibility.
-    - In a class like `JSONFileIO` we had to debate whether there were multiple responsibilities at play. The class was a loader and writer for JSON files.
-    - Some thought it should only load or only write and that these were separate responsibilities.
-    - Others thought that since the action of reading and writing JSON are so closely related they only change for the same reasons. This is what we have decided on for now.
+  - When designing our classes originally we were adamant to remember the SRP and as such have all classes kept to a contained responsibility.
+  - In a class like `JSONFileIO` we had to debate whether there were multiple responsibilities at play. The class was a loader and writer for JSON files.
+  - Some thought it should only load or only write and that these were separate responsibilities.
+  - Others thought that since the action of reading and writing JSON are so closely related they only change for the same reasons. This is what we have decided on for now.
 - **Open/Closed Principle**
-    - A specific show our adherence to this principle is in our new decorator pattern for displaying recipe items. We needed to have an easy way to create different displays (such as changing units) but did not want to constantly create subclasses of recipe items to change the displays.
-    - So, we replaced the display with a delegated display object which meant we could leave the initial set up for displaying intact and instead just describe the method of display rather than replacing the existing setup.
+  - A specific show our adherence to this principle is in our new decorator pattern for displaying recipe items. We needed to have an easy way to create different displays (such as changing units) but did not want to constantly create subclasses of recipe items to change the displays.
+  - So, we replaced the display with a delegated display object which meant we could leave the initial set up for displaying intact and instead just describe the method of display rather than replacing the existing setup.
 - **Liskov Substitution Principle**
-    - During phase 2, we identified a violations of LSP within JChef which we have fixed. We did not identify any other violations.
-    - The error was within the Response class. Subclasses of this were overriding methods incorrectly which meant they would not act correctly as a response. We fixed this by going through each subclass and removing these faulty implementations. See #77 and #79.
+  - During phase 2, we identified a violations of LSP within JChef which we have fixed. We did not identify any other violations.
+  - The error was within the Response class. Subclasses of this were overriding methods incorrectly which meant they would not act correctly as a response. We fixed this by going through each subclass and removing these faulty implementations. See #77 and #79.
 - **Interface Segregation Principle**
-    - As part of our work on the SRP, we have in effect kept interfaces small as well. If we were to add too many moving parts to interfaces we noticed that our classes began to take on more work.
-    - This alerted us to issues of ISP before they could even be.
-    - As well, by splitting interfaces often, we could have clients using those interfaces use more abstract interfaces as often as possible.
+  - As part of our work on the SRP, we have in effect kept interfaces small as well. If we were to add too many moving parts to interfaces we noticed that our classes began to take on more work.
+  - This alerted us to issues of ISP before they could even be.
+  - As well, by splitting interfaces often, we could have clients using those interfaces use more abstract interfaces as often as possible.
 - **Dependency Inversion Principle**
+  - 
   ![Entity Diagram](EntityDiagram.png)
-    - Here is a snippet from parts of our high level matchers.
-    - In this case, we can see that the Tag dependency has been inverted so that the matcher does not know about the underlying implementation of the Tag class.
-    - Inversions like this exist all throughout our dependency tree.
+  - Here is a snippet from parts of our high level matchers.
+  - In this case, we can see that the Tag dependency has been inverted so that the matcher does not know about the underlying implementation of the Tag class.
+  - Inversions like this exist all throughout our dependency tree.
 
 
 ## Clean Architecture
-- **Entities**
-    - Our entities are built through generic Row objects and loaders / writers to keep storage details away from our data.
-    - Thus, the entities do not depend on anything when storing and modifying data
-- **Command/Response Classes**
-    - Command/response classes keep use cases ignorant of the UI behind it.
-    - Use cases are given command interfaces to perform actions on.
-- **Matchers and Scorers**
-    - These high-level objects do not care about implementation of anything other than the interfaces of existing storages and entities.
-    - Not the case for the Scorers since they are being designed to have hard-coded values
-        - Could potentially include a method in the matchers to return weights, and then overload the Scorer
+Let's talk about a walkthrough through a typical run of our program to illustrate some of the moving clean architecture parts.
+
+- Our system is loaded
+  - Services like a database or UI are created by the user and given a controller in charge of setting up JChef's internal services.
+- The user issues a command
+  - A command object is created and filled with appropriate data and given to a controller to execute this command.
+  - This controller looks at what command is given and creates a use case to execute it.
+  - The controller must also gather the appropriate internal services from JChef in order for the use case to run (for instance, our storages).
+  - Finally, the controller delegates to the use case to run.
+- Within the use case
+  - Because the services of the use case are injected by a controller, our use case does not know about the implementation of details like our storages, databases, or front-end.
+  - This means the use case can focus on orchestrating our high level matchers and scorers to accomplish the users command. Perhaps this means calling using a matcher to search the storages for appropriate recipes.
+- Back to the controllers
+  - Once our use case has completed its task, it returns its data to the controller.
+  - This data is processed by the controller before being given back to the appropriate caller, in this case the front-end to display the task.
+
+This should show how data moves through the different layers of clean architecture within our project.
 
 ## Our Use of GitHub Features
 - **Issues**
@@ -189,52 +204,3 @@ The various use cases interact with multiple entity, matcher, scorer interfaces 
 An example is when a recipe is matched with ingredients from IngredientStorage. The Matcher is able to match parameters like
 Tags, Name, and Ingredients, and using a scorer, it is able to suggest the most relevant recipes according to the Matchers and
 Scorers. The run method in the MatcherUseCase uses the return10Recipes according to the User's Fridge and the given recipe.
-
-
-
-## Progress Report
-
-Throughout the development of JChef we encountered many obstacles, of which we’ve worked hard to overcome. However, as mentioned earlier, there are many questions our group addressed in Phase 2. This includes addressing:
-- Managing the file structure to correct the build errors. This will help us:
-    - Connect the backend to the Android GUI to make the application holistically functional
-    - Create a more robust testing system to ensure the application works as intended
-    - Allow us to address all IntelliJ warnings and style concerns
-
-In spite of the aforementioned concerns, we believe JChef’s current design to be effective for a multitude of reasons.
-
-Because we followed clean architecture and the SOLID principles, as mentioned before, our codebase is easy to understand and led to good stratification in terms of levels. Our compartmentalized code base is conducive to scalability and the implementation of new features. As well, general maintenance was easy.
-
-For instance, consider our Recipe Items: This class was turned into two different subclasses in Phase 1, but it didn't affect the rest of the code base as the implementation was done using the same interface.
-
-These principles will allow us to address the shortcomings in Phase 1. This was then changed in phase 2 again to decorator design pattern. 
-
-**Regarding Phase 2 Contributions:**
-- Ariel: Refactored the use cases, refactored the responseImpl class and create the controllers. 
-  - significant PR : https://github.com/CSC207-UofT/course-project-gries-fan-club/pull/72
-  - This PR was the first real push forward getting this project closer to being a functional app. This contribution allowed for us to analyse how the project worked as a whole.
-- Ayush: Worked on the Android GUI redesigning some components and hooking it up to the back end.
-    - significant PR: https://github.com/CSC207-UofT/course-project-gries-fan-club/pull/83
-    - This was an important contribution as it connects the front end to the back end. It was vital to obtain our goals of a functioning app. 
-- Derek: Did a lot of general work reviewing code and looking at the architecture of the program. The accessibility Documents.
-  - significant PR: https://github.com/CSC207-UofT/course-project-gries-fan-club/pull/62/files
-  - It allows our program to save data from entities by converting them into rows.
-
-
-- Ezra: The Design Doc and the Presentation. Helped Ariel with the use cases, created the presentation. 
-    - significant PR: https://github.com/CSC207-UofT/course-project-gries-fan-club/pull/67
-    - This PR was significant as it set the groundwork for all our UseCases. This was the first instance of our project coming together and interacting with the rest of the project.
-
-- Gerd: created a decorator design pattern for the recipeItem, refactored a large amount of concluding the matchers and scored and all the associated tests we remade. He also fixed the builders to work with Decorators.
-    - significant PR: https://github.com/CSC207-UofT/course-project-gries-fan-club/pull/52
-    - These classes provided a container for us to contain all the high level entities for the code base, and nearly every other Object and UseCase used the Storages to access the appropriate entities.
-- Prithee: Worked on the Android GUI redesigning some components and hooking it up to the back end, added the Grocery list use case.
-    - significant PR: https://github.com/CSC207-UofT/course-project-gries-fan-club/pull/94
-    -  This was my favourite pull request. The reason why This is my favourite is because I implemented a major part of our specification. The grocery contains all the ingredients that are needed for recipes you want to make but don't have the ingredients for. Furthermore, there was lots of good discussion in the pull request when changes were requested. This ultimately led to cleaner and more efficient code.
-      
-**Reflection Moving Forward:**
-* Having an API connected to our application with lists of recipes and ingredients
-* We wish we could have added photos to our recipes
-* We wish we could have implemented our Tinder like function for the application when searching for recipes. 
-
-
-
