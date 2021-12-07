@@ -21,7 +21,7 @@ public class FridgeDisplayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fridge_display);
 
-        listView = (ListView) findViewById(R.id.listview);
+        listView = (ListView) findViewById(R.id.listview1);
 
         ArrayList<String> arrayList = new ArrayList<>();
 
@@ -35,7 +35,7 @@ public class FridgeDisplayActivity extends AppCompatActivity {
         addIngredientButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(com.gries.jchefapp.FridgeDisplayActivity.this, "Ingredient Added", Toast.LENGTH_LONG).show();
+                Toast.makeText(com.gries.jchefapp.FridgeDisplayActivity.this, "IngredientAdded", Toast.LENGTH_LONG).show();
                 mEdit = (EditText) findViewById(R.id.editTextTextPersonName2);
                 // this is the input given to us that we will pass onto the controller
                 mEdit.getText().toString();
@@ -51,7 +51,7 @@ public class FridgeDisplayActivity extends AppCompatActivity {
         removeIngredientButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(com.gries.jchefapp.FridgeDisplayActivity.this, "Ingredient Removed", Toast.LENGTH_LONG).show();
+                Toast.makeText(com.gries.jchefapp.FridgeDisplayActivity.this, "IngredientRemoved", Toast.LENGTH_LONG).show();
                 mEdit = (EditText) findViewById(R.id.editTextTextPersonName2);
                 // this is the input given to us that we will pass onto the controller
                 mEdit.getText().toString();
