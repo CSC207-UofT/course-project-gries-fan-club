@@ -24,7 +24,7 @@ public class FrontEnd {
         // Read file and pass to JSONFileIO
 
 //        Path currentWorkingDir = Paths.get("").toAbsolutePath();
-        Path path = Paths.get("/Users/arielchouminov/Desktop/course-project-gries-fan-club/resources/ingredients.json");
+        Path path = Paths.get("/Users/pritheeroy/Projects/course-project-gries-fan-club/resources/Ingredients.json");
         String json = readFileAsString(path);
         return new JSONFileIO(json);
     }

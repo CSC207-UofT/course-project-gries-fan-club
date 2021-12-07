@@ -40,6 +40,7 @@ public class FridgeDisplayActivity extends AppCompatActivity {
                 // this is the input given to us that we will pass onto the controller
                 mEdit.getText().toString();
                 arrayList.add(mEdit.getText().toString());
+                arrayAdapter.notifyDataSetChanged();
                 System.out.println(mEdit.getText().toString());
 
             }
@@ -55,6 +56,7 @@ public class FridgeDisplayActivity extends AppCompatActivity {
                 // this is the input given to us that we will pass onto the controller
                 mEdit.getText().toString();
                 arrayList.remove(mEdit.getText().toString());
+                arrayAdapter.notifyDataSetChanged();
                 System.out.println(mEdit.getText().toString());
             }
         });
