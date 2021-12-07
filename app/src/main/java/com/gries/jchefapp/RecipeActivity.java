@@ -23,6 +23,7 @@ public class RecipeActivity extends AppCompatActivity {
 
         arrayList2.add("Lasagna");
 
+
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList2);
         listView2.setAdapter(arrayAdapter);
     }
