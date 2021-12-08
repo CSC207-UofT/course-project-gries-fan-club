@@ -7,10 +7,7 @@ import Storages.Implementations.IngredientStorageImpl;
 import Storages.IngredientStorage;
 import Storages.RecipeStorage;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 public class MatcherUseCase implements UseCase {
     final IngredientStorage ingredientStorage;
@@ -21,6 +18,11 @@ public class MatcherUseCase implements UseCase {
         this.ingredientStorage = ingredients;
     }
 
+    /**
+     * // to retrieve the list of matched recipies use the key "fridgeIngredients"
+     *
+     * @return recipes matched response
+     */
     @Override
     public Response run(Command command) {
         List<Recipe> recipesMatched = new ArrayList<>();
@@ -35,19 +37,24 @@ public class MatcherUseCase implements UseCase {
             List<Ingredient> allFridgeIngredients = new ArrayList<>(fridge.ingredients());
             IngredientMatcher matcher = new IngredientMatcher(allFridgeIngredients);
             recipesMatched = matcher.return10RecipesMatched(this.recipeStorage);
+
         }
 
-        return new ResponseImpl("", true);
-        }
+        Response response = new ResponseImpl("", true);
+        response.put("fridgeIngredients", toStringFrom(recipesMatched));
+        return response;
+    }
 
-    /** Takes in command, returns an ingredient storage of the fridge
-      * @param command Command
+    /**
+     * Takes in command, returns an ingredient storage of the fridge
+     *
+     * @param command Command
      * @return IngredientStorageImpl that corresponds to the fridge
      */
     public IngredientStorage getFridgeStorage(Command command) {
         IngredientStorageImpl fridge = new IngredientStorageImpl();
         String keyValues = command.get("Fridge");
-        List<String> stringsOfIngredients = new ArrayList<>(Arrays.asList(keyValues.split(",")));
+        List<String> stringsOfIngredients = new ArrayList<>(Arrays.asList(Objects.requireNonNull(keyValues).split(",")));
 
         for (String ingredientString : stringsOfIngredients) {
             Collection<Ingredient> ingredientList = this.ingredientStorage.findByNameExact(ingredientString);
@@ -57,5 +64,17 @@ public class MatcherUseCase implements UseCase {
             }
         }
         return fridge;
+    }
+
+    public String toStringFrom(List<Recipe> recipesMatched) {
+        // Convert to string representation
+        StringBuilder string = new StringBuilder();
+
+        for (Recipe recipe : recipesMatched) {
+            string.append(recipe.name());
+            string.append(",");
+        }
+        string.deleteCharAt(string.length() - 1);
+        return String.valueOf(string);
     }
 }

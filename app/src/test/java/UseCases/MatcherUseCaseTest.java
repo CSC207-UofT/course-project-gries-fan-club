@@ -1,7 +1,6 @@
 package UseCases;
 
 import Entities.Implementations.*;
-import Entities.Recipe;
 import Entities.RecipeItem;
 import Entities.Tag;
 import Storages.Implementations.IngredientStorageImpl;
@@ -114,13 +113,9 @@ public class MatcherUseCaseTest {
     public void testMatcherRun() {
         // Make a command, populate it with the correct things.
         CommandImpl command = new CommandImpl();
-        command.put("Fridge", "flour,egg");
-
-        List<Recipe> recipes = new ArrayList<>(this.recipeStorage.recipes());
+        command.put("Fridge", "flour,water,baking soda");
         MatcherUseCase usecase = new MatcherUseCase(this.ingredientStorage, this.recipeStorage);
-
-//        Assertions.assertEquals(usecase.run(command).get(""), recipes);
-        Assertions.assertTrue(usecase.run(command).success());
+        Assertions.assertEquals( "Cookies,Bread", usecase.run(command).get("fridgeIngredients"));
     }
 
     @Test
