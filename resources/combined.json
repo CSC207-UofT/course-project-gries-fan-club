@@ -1,0 +1,449 @@
+[
+  {
+    "name": "Beef",
+    "id": "c51cade4-2c61-48e8-a2a5-1698563306a6",
+    "type": "ingredient",
+    "tags": ["3947dd28-5b25-4e71-af00-9908e33add67"]
+  },
+  {
+    "name": "Salt",
+    "id": "e62a8ae2-a32d-4b43-99fc-b9c3f91a9275",
+    "type": "ingredient",
+    "tags": []
+  },
+  {
+    "name": "Black Pepper",
+    "id": "b6a7e867-74b9-4690-ab30-37f13fb6a006",
+    "type": "ingredient",
+    "tags": []
+  },
+  {
+    "name": "Olive Oil",
+    "id": "247956b7-3b46-48d8-8d93-8939ab0fab71",
+    "type": "ingredient",
+    "tags": []
+  },
+  {
+    "name": "Italian Seasoning",
+    "id": "355b79da-24a9-45ac-8e88-5f9eeeb8cbf9",
+    "type": "ingredient",
+    "tags": []
+  },
+  {
+    "name": "Garlic",
+    "id": "b7045c7f-2ef8-41cc-a57c-9fa30d13f345",
+    "type": "ingredient",
+    "tags": []
+  },
+  {
+    "name": "Butter",
+    "id": "e296daa4-ac67-417f-af3b-8accaf0ca63b",
+    "type": "ingredient",
+    "tags": ["87fca6e8-27a0-4a05-a948-d9b4c425a65f"]
+  },
+  {
+    "name": "Egg",
+    "id": "e7bac074-37a9-47c7-830e-0c092cf1e37b",
+    "type": "ingredient",
+    "tags": []
+  },
+  {
+    "name": "Cheese",
+    "id": "694562d9-b276-47d2-ab7f-2c1b6d63098b",
+    "type": "ingredient",
+    "tags": ["87fca6e8-27a0-4a05-a948-d9b4c425a65f"]
+  },
+  {
+    "name": "Oregano",
+    "id": "b22b1267-071d-4f57-a552-76aea05c489b",
+    "type": "ingredient",
+    "tags": []
+  },
+  {
+    "name": "Bread",
+    "id": "dd30cc21-e424-4991-8ac9-363ddc831223",
+    "type": "ingredient",
+    "tags": ["4dfc4961-543d-4c77-8bd8-7507a8bc6934"]
+  },
+  {
+    "name": "Tomato",
+    "id": "656b9eca-7797-4732-9213-5e08d9927fcf",
+    "type": "ingredient",
+    "tags": []
+  },
+  {
+    "name": "Turkey Breast Slice",
+    "id": "4329baad-c1de-431b-909a-89f480a172d8",
+    "type": "ingredient",
+    "tags": ["3947dd28-5b25-4e71-af00-9908e33add67"]
+  },
+  {
+    "name": "Cheese Slice",
+    "id": "30869745-cd8f-4c94-abb6-2bc0c1a43130",
+    "type": "ingredient",
+    "tags": ["87fca6e8-27a0-4a05-a948-d9b4c425a65f"]
+  },
+  {
+    "name": "Mayo",
+    "id": "1da26bef-f832-4771-83ca-5b05e5ccd96e",
+    "type": "ingredient",
+    "tags": ["87fca6e8-27a0-4a05-a948-d9b4c425a65f"]
+  },
+  {
+    "name": "Lettuce",
+    "id": "3a236338-eea4-4819-9643-25c398074672",
+    "type": "ingredient",
+    "tags": []
+  },
+  {
+    "name": "Bacon",
+    "id": "7bf7405b-404f-405e-a432-338b4d2a1c9c",
+    "type": "ingredient",
+    "tags": [
+      "32761225-3386-4c07-a8c8-3838dbbe8e08",
+      "79f95da0-78a5-4279-9bc0-c84ac682165f"
+    ]
+  },
+  {
+    "name": "Croutons",
+    "id": "67b4384a-3c94-42d2-85f0-61109489c583",
+    "type": "ingredient",
+    "tags": ["4dfc4961-543d-4c77-8bd8-7507a8bc6934"]
+  },
+  {
+    "name": "Caesar Dressing",
+    "id": "bd2729ea-b2ec-4e8b-b23a-9216f4a2139a",
+    "type": "ingredient",
+    "tags": []
+  },
+  {
+    "name": "Bagel",
+    "id": "27285e48-2817-4f45-afe9-2b973a90dbd1",
+    "type": "ingredient",
+    "tags": ["4dfc4961-543d-4c77-8bd8-7507a8bc6934"]
+  },
+  {
+    "name": "Cream Cheese",
+    "id": "d736fec4-ae1c-45d6-bdc9-1461afbf8ca4",
+    "type": "ingredient",
+    "tags": ["87fca6e8-27a0-4a05-a948-d9b4c425a65f"]
+  },
+  {
+    "quantity": 200,
+    "ingredient": "c51cade4-2c61-48e8-a2a5-1698563306a6",
+    "optional": false,
+    "id": "17d8b069-7569-4c58-91f5-d7659e3e46c8",
+    "type": "m"
+  },
+  {
+    "quantity": 200,
+    "ingredient": "c51cade4-2c61-48e8-a2a5-1698563306a6",
+    "optional": false,
+    "id": "17d8b069-7569-4c58-91f5-d7659e3e46c8",
+    "type": "recipeItem",
+    "displayType" : "m"
+  },
+  {
+    "quantity": 2,
+    "ingredient": "e62a8ae2-a32d-4b43-99fc-b9c3f91a9275",
+    "optional": false,
+    "id": "78a5f9b4-6512-49c7-94e8-816b7113b202",
+    "type": "recipeItem",
+    "displayType" : "q"
+  },
+  {
+    "quantity": 5,
+    "ingredient": "b6a7e867-74b9-4690-ab30-37f13fb6a006",
+    "optional": false,
+    "id": "af4b9d67-3b51-4c13-87f1-6640cd4c0c7f",
+    "type": "recipeItem",
+    "displayType" : "q"
+  },
+  {
+    "quantity": 15,
+    "ingredient": "247956b7-3b46-48d8-8d93-8939ab0fab71",
+    "optional": false,
+    "id": "e58f1686-acbe-40f2-8fc1-373dac669d60",
+    "type": "recipeItem",
+    "displayType" : "v"
+  },
+  {
+    "quantity": 2,
+    "ingredient": "355b79da-24a9-45ac-8e88-5f9eeeb8cbf9",
+    "optional": false,
+    "id": "b8d6401a-f057-4ca7-aca2-ef461e88340e",
+    "type": "recipeItem",
+    "displayType" : "q"
+  },
+  {
+    "quantity": 1,
+    "ingredient": "b7045c7f-2ef8-41cc-a57c-9fa30d13f345",
+    "optional": false,
+    "id": "c21a0b05-f83f-4f60-897f-ea0454307dca",
+    "type": "recipeItem",
+    "displayType" : "q"
+  },
+  {
+    "quantity": 50,
+    "ingredient": "e296daa4-ac67-417f-af3b-8accaf0ca63b",
+    "optional": false,
+    "id": "d05c3ff1-73fa-41f3-8529-7279c2258a92",
+    "type": "recipeItem",
+    "displayType" : "q"
+  },
+  {
+    "quantity": 2,
+    "ingredient": "e7bac074-37a9-47c7-830e-0c092cf1e37b",
+    "optional": false,
+    "id": "fa0659c8-e862-4425-8cb2-a4cee4fcf063",
+    "type": "recipeItem",
+    "displayType" : "q"
+  },
+  {
+    "quantity": 20,
+    "ingredient": "e296daa4-ac67-417f-af3b-8accaf0ca63b",
+    "optional": false,
+    "id": "539c190e-3ce8-48a0-8be7-fb2cdf541ea3",
+    "type": "recipeItem",
+    "displayType" : "q"
+  },
+  {
+    "quantity": 50,
+    "ingredient": "694562d9-b276-47d2-ab7f-2c1b6d63098b",
+    "optional": true,
+    "id": "b5fb4ce9-7dab-450c-9386-1257bf82a04e",
+    "type": "recipeItem",
+    "displayType" : "m"
+  },
+  {
+    "quantity": 2,
+    "ingredient": "e62a8ae2-a32d-4b43-99fc-b9c3f91a9275",
+    "optional": true,
+    "id": "7878ec3e-f6e1-465e-abce-af55846bc497",
+    "type": "recipeItem",
+    "displayType" : "q"
+  },
+  {
+    "quantity": 2,
+    "ingredient": "b22b1267-071d-4f57-a552-76aea05c489b",
+    "optional": false,
+    "id": "ad6384f5-ccc1-4c3b-ad03-029f4619fd79",
+    "type": "recipeItem",
+    "displayType" : "q"
+  },
+  {
+    "quantity": 2,
+    "ingredient": "dd30cc21-e424-4991-8ac9-363ddc831223",
+    "optional": false,
+    "id": "3356dbf2-cbb4-4674-a752-f27ce048d50d",
+    "type": "recipeItem",
+    "displayType" : "q"
+  },
+  {
+    "quantity": 0.5,
+    "ingredient": "656b9eca-7797-4732-9213-5e08d9927fcf",
+    "optional": false,
+    "id": "e4938c36-1b2d-4e47-84ef-a8f376cb7fb3",
+    "type": "recipeItem",
+    "displayType" : "q"
+  },
+  {
+    "quantity": 1,
+    "ingredient": "30869745-cd8f-4c94-abb6-2bc0c1a43130",
+    "optional": true,
+    "id": "84260034-9733-4491-bbe9-4cb05f0d589c",
+    "type": "recipeItem",
+    "displayType" : "q"
+  },
+  {
+    "quantity": 15,
+    "ingredient": "1da26bef-f832-4771-83ca-5b05e5ccd96e",
+    "optional": false,
+    "id": "9725e461-d186-44ad-9714-c6be5246bc5a",
+    "type": "recipeItem",
+    "displayType" : "v"
+  },
+  {
+    "quantity": 4,
+    "ingredient": "4329baad-c1de-431b-909a-89f480a172d8",
+    "optional": false,
+    "id": "84f63024-481e-4bd8-89ba-8deef45d6c4f",
+    "type": "recipeItem",
+    "displayType" : "q"
+  },
+  {
+    "quantity": 8,
+    "ingredient": "7bf7405b-404f-405e-a432-338b4d2a1c9c",
+    "optional": false,
+    "id": "89a7d4bd-1ad7-40db-910e-78978431156e",
+    "type": "recipeItem",
+    "displayType" : "q"
+  },
+  {
+    "quantity": 30,
+    "ingredient": "3a236338-eea4-4819-9643-25c398074672",
+    "optional": false,
+    "id": "6db0a4b1-7f1a-4aad-afc0-dea45a340d15",
+    "type": "recipeItem",
+    "displayType" : "m"
+  },
+  {
+    "quantity": 200,
+    "ingredient": "3a236338-eea4-4819-9643-25c398074672",
+    "optional": false,
+    "id": "29258070-5e40-43aa-9d71-dc0e551345c8",
+    "type": "recipeItem",
+    "displayType" : "m"
+  },
+  {
+    "quantity": 20,
+    "ingredient": "67b4384a-3c94-42d2-85f0-61109489c583",
+    "optional": false,
+    "id": "35d1ff63-bdcd-4aed-9977-89dc136dbdc7",
+    "type": "recipeItem",
+    "displayType" : "m"
+  },
+  {
+    "quantity": 40,
+    "ingredient": "bd2729ea-b2ec-4e8b-b23a-9216f4a2139a",
+    "optional": false,
+    "id": "28880421-c001-46bc-b335-d6efcf30bbf8",
+    "type": "recipeItem",
+    "displayType" : "v"
+  },
+  {
+    "quantity": 2,
+    "ingredient": "d736fec4-ae1c-45d6-bdc9-1461afbf8ca4",
+    "optional": false,
+    "id": "408f012c-9bfc-490f-b4a2-9bde2ac9410d",
+    "type": "recipeItem",
+    "displayType" : "v"
+  },
+  {
+    "quantity": 1,
+    "ingredient": "27285e48-2817-4f45-afe9-2b973a90dbd1",
+    "optional": false,
+    "id": "fae34ea3-bc17-4472-a847-07028427496d",
+    "type": "recipeItem",
+    "displayType" : "q"
+  },
+  {
+    "instructions": [
+      "1. Season steaks with salt and pepper on both sides, and rub them all over with oil.",
+      "2. Heat a grill pan over high heat and cook the steaks until browned on one side, about 2 to 3 minutes.",
+      "3. Flip steaks and cook on the other side until just browned, about 2 to 3 minutes. Don�\u20ac�t overcook, or you'll run the risk of toughening the meat.",
+      "4. Remove steaks to plates to let the meat rest. Turn off the heat and add 2 tablespoons butter to the skillet to melt.",
+      "5. Drizzle the melted butter and juices from the skillet on the steaks.",
+      "Adapted from: https://www.thespruceeats.com/steak-medley-date-night-meal-912501"
+    ],
+    "name": "Steak",
+    "description": "A delicious serving of steak for one.",
+    "id": "5b5e07d9-31ef-4938-b786-b7a4a6afb532",
+    "type": "recipe",
+    "items": [
+      "17d8b069-7569-4c58-91f5-d7659e3e46c8",
+      "78a5f9b4-6512-49c7-94e8-816b7113b202",
+      "af4b9d67-3b51-4c13-87f1-6640cd4c0c7f",
+      "e58f1686-acbe-40f2-8fc1-373dac669d60",
+      "b8d6401a-f057-4ca7-aca2-ef461e88340e",
+      "c21a0b05-f83f-4f60-897f-ea0454307dca",
+      "d05c3ff1-73fa-41f3-8529-7279c2258a92"
+    ]
+  },
+  {
+    "instructions": [
+      "1. Crack two eggs into bowl.",
+      "2. Grate cheese into separate bowl.",
+      "3. Add cheese, salt, and pinch of oregano into bowl with eggs.",
+      "3. Throughly beat eggs until uniform.",
+      "4. Pour egg mix into frying pan on medium heat until bottom is light-golden.",
+      "5. Flip omelette and fry until light-golden."
+    ],
+    "name": "Omelette",
+    "description": "A classic omelette with light seasoning and cheese.",
+    "id": "7aa9209b-b5ef-4508-b7a8-aa5c6baaac58",
+    "type": "recipe",
+    "items": [
+      "fa0659c8-e862-4425-8cb2-a4cee4fcf063",
+      "539c190e-3ce8-48a0-8be7-fb2cdf541ea3",
+      "b5fb4ce9-7dab-450c-9386-1257bf82a04e",
+      "7878ec3e-f6e1-465e-abce-af55846bc497",
+      "ad6384f5-ccc1-4c3b-ad03-029f4619fd79"
+    ]
+  },
+  {
+    "instructions": [
+      "1. Spread mayo onto one slice of bread",
+      "2. Cut lettuce into thin slices, cut and wash.",
+      "3. Pile the ingredients in the following order: cheese, turkey breast, bacon, lettuce, other slice of bread."
+    ],
+    "name": "Turkey BLT",
+    "description": "A classic sandwich that everyone loves",
+    "id": "19e1ad5c-fbee-4796-95c4-f795060b8f9a",
+    "type": "recipe",
+    "items": [
+      "3356dbf2-cbb4-4674-a752-f27ce048d50d",
+      "e4938c36-1b2d-4e47-84ef-a8f376cb7fb3",
+      "84260034-9733-4491-bbe9-4cb05f0d589c",
+      "9725e461-d186-44ad-9714-c6be5246bc5a",
+      "84f63024-481e-4bd8-89ba-8deef45d6c4f",
+      "89a7d4bd-1ad7-40db-910e-78978431156e",
+      "6db0a4b1-7f1a-4aad-afc0-dea45a340d15"
+    ]
+  },
+  {
+    "instructions": [
+      "2. Cut lettuce into thin slices, wash, and dry.",
+      "2. Put lettuce into bowl, and add croutons and dressing.",
+      "3. Mix well."
+    ],
+    "name": "Caesar Salad",
+    "description": "A solid side-salad for any good meal",
+    "id": "f677425f-fa9d-43d2-be5a-2a662bda83cf",
+    "type": "recipe",
+    "items": [
+      "29258070-5e40-43aa-9d71-dc0e551345c8",
+      "35d1ff63-bdcd-4aed-9977-89dc136dbdc7",
+      "28880421-c001-46bc-b335-d6efcf30bbf8"
+    ]
+  },
+  {
+    "instructions": [
+      "1. Cut bagel into two, and toast to light golden-brown.",
+      "2. Spread cream cheese onto bagel slices."
+    ],
+    "name": "Cream Cheese Bagel",
+    "description": "A solid midnight snack",
+    "id": "5cfd97ba-28dd-4109-a87e-389cfda3f9aa",
+    "type": "recipe",
+    "items": [
+      "408f012c-9bfc-490f-b4a2-9bde2ac9410d",
+      "fae34ea3-bc17-4472-a847-07028427496d"
+    ]
+  },
+  {
+    "name": "Dairy",
+    "id": "87fca6e8-27a0-4a05-a948-d9b4c425a65f",
+    "type": "tag"
+  },
+  {
+    "name": "Meat",
+    "id": "3947dd28-5b25-4e71-af00-9908e33add67",
+    "type": "tag"
+  },
+  {
+    "name": "Non-Kosher",
+    "id": "32761225-3386-4c07-a8c8-3838dbbe8e08",
+    "type": "tag"
+  },
+  {
+    "name": "Non-Halal",
+    "id": "79f95da0-78a5-4279-9bc0-c84ac682165f",
+    "type": "tag"
+  },
+  {
+    "name": "Gluten",
+    "id": "4dfc4961-543d-4c77-8bd8-7507a8bc6934",
+    "type": "tag"
+  }
+]

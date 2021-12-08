@@ -53,9 +53,8 @@ public abstract class AbstractBuilder<T extends Entity> implements EntityBuilder
 
 	@Override
 	public void addTo(Storage<T> storage, Loader loader) {
-		if (!storage.type().equals(this.type())) {
+		if (!storage.type().equals(this.type()) | Objects.equals(storage.type(), "q")) {
 			// We can only add entities that this storage allows.
-
 			return;
 		}
 

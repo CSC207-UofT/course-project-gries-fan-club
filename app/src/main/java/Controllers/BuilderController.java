@@ -50,7 +50,7 @@ public class BuilderController {
 
         Map<String, Storage> storages = new HashMap<>();
         storages.put("ingredients", this.ingredientStorage);
-//        storages.put("recipeItems", this.recipeItemStorage);
+        storages.put("recipeItems", this.recipeItemStorage);
         storages.put("tags", this.tagStorage);
         storages.put("recipes", this.recipeStorage);
         return storages;
