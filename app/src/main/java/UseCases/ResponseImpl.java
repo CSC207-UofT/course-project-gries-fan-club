@@ -1,24 +1,33 @@
 package UseCases;
 
-import java.util.HashMap;
 import java.util.List;
 
-public class ResponseImpl extends HashMap<String, String> implements Response {
-	String status;
-	boolean success;
+public class ResponseImpl<T> implements Response{
+	List<T> data;
 
-	public ResponseImpl(String status, boolean success) {
-		this.status = status;
-		this.success = success;
+	/** Constructor that takes in recipes, and
+     * @param data containining data needed to be stored (in a list)
+     */
+	public ResponseImpl(List<T> data) {
+		this.add(data);
 	}
 
+	/**
+	 * Return the data
+	 * @return
+	 */
+	public List<T> data() {
+		return this.data;
+	}
+
+
+	/**
+	 * Adds data into the response
+	 * @param data
+	 */
 	@Override
-	public boolean success() {
-		return this.success;
+	public void add(List data) {
+		this.data = data;
 	}
 
-	@Override
-	public String status() {
-		return status;
-	}
 }

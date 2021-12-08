@@ -8,6 +8,7 @@ import Storages.RecipeStorage;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class GroceryUseCase implements UseCase {
@@ -54,7 +55,7 @@ public class GroceryUseCase implements UseCase {
             this.groceryList.clear();
 
             // Return the items we are importing to fridge
-            return new ResponseImpl("Added " + ingredientsAdded + " to the fridge", true);
+            return new ResponseImpl(Collections.emptyList());
         }
         if (command.containsKey("removeFromGroceryList")) {
             String keyValues = command.get("removeFromGroceryList");
@@ -71,6 +72,8 @@ public class GroceryUseCase implements UseCase {
                 this.groceryList.remove(currIngredient);
             }
         }
-        return new ResponseImpl("", true);
+
+        List<Ingredient> groceryToList = new ArrayList<>(this.groceryList.ingredients());
+        return new ResponseImpl(groceryToList);
     }
 }

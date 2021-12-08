@@ -45,15 +45,16 @@ public class RecipeItemBuilder extends AbstractBuilder<RecipeItem> {
 		Double rawQuantity;
 		boolean optional;
 		String type;
+		String displayType;
 
 		try {
-
 			// Attempt to retrieve required data.
 			rawID = row.get("id", String.class);
 			rawIngredientID = row.get("ingredient", String.class);
 			rawQuantity = row.get("quantity", Double.class);
 			optional = row.get("optional", Boolean.class);
 			type = row.get("type", String.class);
+			displayType = row.get("displayType", String.class);
 
 		} catch (NoSuchAttribute exception) {
 			throw new InvalidRowShape("RecipeItem", exception);
@@ -68,15 +69,17 @@ public class RecipeItemBuilder extends AbstractBuilder<RecipeItem> {
 		Ingredient ingredient = new ReferencedIngredient(ingredientReference);
 
 		// Determine the type of recipe item to make.
-		switch (type) {
+		switch (displayType) {
 			case "q":
 				return new QuantityRecipeItem(id, ingredient, quantity, optional);
 			case "v":
 				return new VolumetricRecipeItem(id, ingredient, quantity, optional);
+			case "m":
+				return new QuantityRecipeItem(id, ingredient, quantity, optional);
 		}
 
 		// An invalid type was stored, this row is considered invalid.
-		throw new InvalidRowShape("An invalid type: \"" + type + "\" was specified for a RecipeItem.");
+		throw new InvalidRowShape("An invalid type: \"" + displayType + "\" was specified for a RecipeItem.");
 	}
 
 	@Override

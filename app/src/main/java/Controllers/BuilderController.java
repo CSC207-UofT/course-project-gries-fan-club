@@ -8,6 +8,7 @@ import Entities.Serializers.RecipeSerializer;
 import Loaders.Loader;
 import Storages.*;
 import Storages.Implementations.IngredientStorageImpl;
+import Storages.Implementations.RecipeItemStorageImpl;
 import Storages.Implementations.RecipeStorageImpl;
 import Storages.Implementations.TagStorageImpl;
 
@@ -24,6 +25,7 @@ public class BuilderController {
 
     public BuilderController() {
         this.ingredientStorage = new IngredientStorageImpl();
+        this.recipeItemStorage = new RecipeItemStorageImpl();
         this.recipeStorage = new RecipeStorageImpl();
         this.tagStorage = new TagStorageImpl();
     }
@@ -33,22 +35,22 @@ public class BuilderController {
      * @param loader
      */
     public Map<String, Storage> load(Loader loader) {
-        // load all the builders
-//        TagBuilder tagBuilder = new TagBuilder();
-//        tagBuilder.addTo(this.tagStorage, loader);
-
+//         load all the builders
         IngredientBuilder ingredientBuilder = new IngredientBuilder(this.tagStorage);
         ingredientBuilder.addTo(this.ingredientStorage, loader);
 
-//        RecipeItemBuilder recipeItemBuilder = new RecipeItemBuilder(this.ingredientStorage);
-//        recipeItemBuilder.addTo(this.recipeItemStorage, loader);
-//
-//        RecipeBuilder recipeBuilder = new RecipeBuilder(this.recipeItemStorage);
-//        recipeBuilder.addTo(this.recipeStorage, loader);
+        TagBuilder tagBuilder = new TagBuilder();
+        tagBuilder.addTo(this.tagStorage, loader);
+
+        RecipeItemBuilder recipeItemBuilder = new RecipeItemBuilder(this.ingredientStorage);
+        recipeItemBuilder.addTo(this.recipeItemStorage, loader);
+
+        RecipeBuilder recipeBuilder = new RecipeBuilder(this.recipeItemStorage);
+        recipeBuilder.addTo(this.recipeStorage, loader);
 
         Map<String, Storage> storages = new HashMap<>();
         storages.put("ingredients", this.ingredientStorage);
-        storages.put("recipeItems", this.recipeItemStorage);
+//        storages.put("recipeItems", this.recipeItemStorage);
         storages.put("tags", this.tagStorage);
         storages.put("recipes", this.recipeStorage);
         return storages;

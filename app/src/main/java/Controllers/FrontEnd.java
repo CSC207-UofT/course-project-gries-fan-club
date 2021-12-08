@@ -1,5 +1,6 @@
 package Controllers;
 
+import Entities.Recipe;
 import Loaders.Implementations.JSONFileIO;
 import Loaders.Loader;
 import Storages.*;
@@ -20,11 +21,9 @@ public class FrontEnd {
     public FrontEnd() throws Exception {
         this.onLoad();
     }
-    public Loader createLoader() throws Exception {
-        // Read file and pass to JSONFileIO
 
-//        Path currentWorkingDir = Paths.get("").toAbsolutePath();
-        Path path = Paths.get("/Users/arielchouminov/Desktop/course-project-gries-fan-club/resources/ingredients.json");
+    public Loader createLoader(String pathGiven) throws Exception {
+        Path path = Paths.get(pathGiven);
         String json = readFileAsString(path);
         return new JSONFileIO(json);
     }
@@ -35,9 +34,17 @@ public class FrontEnd {
 
     public void onLoad() throws Exception {
         BuilderController builder = new BuilderController();
-        Loader loader = this.createLoader();
 
-        builder.load(loader);
+        Loader ingredientLoader = this.createLoader("/Users/arielchouminov/Desktop/course-project-gries-fan-club/resources/ingredients.json");
+        Loader tagLoader = this.createLoader("/Users/arielchouminov/Desktop/course-project-gries-fan-club/resources/tags.json");
+        Loader recipeItemLoader = this.createLoader("/Users/arielchouminov/Desktop/course-project-gries-fan-club/resources/recipeItems.json");
+        Loader recipeLoader = this.createLoader("/Users/arielchouminov/Desktop/course-project-gries-fan-club/resources/recipes.json");
+
+        builder.load(tagLoader);
+        builder.load(ingredientLoader);
+        builder.load(recipeItemLoader);
+        builder.load(recipeLoader);
+
         this.ingredientStorage = (IngredientStorage) builder.storages().get("ingredients");
         this.recipeStorage = (RecipeStorage) builder.storages().get("recipes");
         this.recipeItemStorage = (RecipeItemStorage) builder.storages().get("recipeItems");
@@ -45,8 +52,21 @@ public class FrontEnd {
     }
 
     public IngredientStorage ingredientStorage() {
-        return ingredientStorage;
+        return this.ingredientStorage;
     }
+
+    public RecipeStorage recipeStorage() {
+        return this.recipeStorage;
+    }
+
+    public RecipeItemStorage recipeItemStorage() {
+        return this.recipeItemStorage;
+    }
+
+    public TagStorage tagStorage() {
+        return this.tagStorage;
+    }
+
 }
 
 
