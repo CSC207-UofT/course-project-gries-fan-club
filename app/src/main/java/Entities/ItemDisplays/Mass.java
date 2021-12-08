@@ -4,8 +4,8 @@ import Entities.Ingredient;
 
 public class Mass implements RecipeItemDisplay {
     /**
-     * Represent the mass item
-     * @return
+     * Represent the mass item (like grams of ground beef)
+     * @return string with units and quantity
      */
     @Override
     public String display(float quantity, Ingredient ingredient) {

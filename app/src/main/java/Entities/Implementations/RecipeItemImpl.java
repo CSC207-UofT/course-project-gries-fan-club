@@ -6,6 +6,9 @@ import Entities.RecipeItem;
 
 import java.util.UUID;
 
+/**
+ * Implementation of the RecipeItem with the display decorator for the type of recipeItem
+ */
 public class RecipeItemImpl extends AbstractEntity implements RecipeItem  {
     private final Ingredient ingredient;
     private final float amount;

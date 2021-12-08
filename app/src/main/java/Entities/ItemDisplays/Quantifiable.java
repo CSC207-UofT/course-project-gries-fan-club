@@ -3,7 +3,10 @@ package Entities.ItemDisplays;
 import Entities.Ingredient;
 
 public class Quantifiable implements RecipeItemDisplay {
-
+    /**
+     * Represent the quantifiable item (count, like eggs)
+     * @return string with units and quantity
+     */
     @Override
     public String display(float quantity, Ingredient ingredient) {
         String stringQuantity;
