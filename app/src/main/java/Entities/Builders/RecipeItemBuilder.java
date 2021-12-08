@@ -47,7 +47,7 @@ public class RecipeItemBuilder extends AbstractBuilder<RecipeItem> {
 		String rawIngredientID;
 		Double rawQuantity;
 		boolean optional;
-		String type;
+		String displayType;
 
 		try {
 
@@ -56,7 +56,7 @@ public class RecipeItemBuilder extends AbstractBuilder<RecipeItem> {
 			rawIngredientID = row.get("ingredient", String.class);
 			rawQuantity = row.get("quantity", Double.class);
 			optional = row.get("optional", Boolean.class);
-			type = row.get("type", String.class);
+			displayType = row.get("displayType", String.class);
 
 		} catch (NoSuchAttribute exception) {
 			throw new InvalidRowShape("RecipeItem", exception);
@@ -72,7 +72,7 @@ public class RecipeItemBuilder extends AbstractBuilder<RecipeItem> {
 
 		// Determine the type of recipe item to make.
 		RecipeItemDisplay display;
-		switch (type) {
+		switch (displayType) {
 			case "q":
 				display = new Quantifiable();
 				break;
@@ -83,7 +83,7 @@ public class RecipeItemBuilder extends AbstractBuilder<RecipeItem> {
 				display = new Mass();
 				break;
 			default:
-				throw new InvalidRowShape("An invalid type: \"" + type + "\" was specified for a RecipeItem.");
+				throw new InvalidRowShape("An invalid type: \"" + displayType + "\" was specified for a RecipeItem.");
 		}
 		return new RecipeItemImpl(id, ingredient, quantity, optional, display);
 	}
