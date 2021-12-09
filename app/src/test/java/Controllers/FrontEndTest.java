@@ -8,24 +8,24 @@ public class FrontEndTest {
     @Test
     public void testFrontEndIngredient() throws Exception {
         FrontEnd frontEnd = new FrontEnd();
-        Assertions.assertEquals(frontEnd.ingredientStorage(), "");
+        Assertions.assertEquals(frontEnd.ingredientStorage().size(), 21);
     }
 
     @Test
     public void testFrontEndRecipe() throws Exception {
         FrontEnd frontEnd = new FrontEnd();
-        Assertions.assertEquals(frontEnd.recipeStorage().recipes().toString(), "");
+        Assertions.assertEquals(frontEnd.recipeStorage().size(), 5);
     }
 
     @Test
     public void testFrontEndRecipeItem() throws Exception {
         FrontEnd frontEnd = new FrontEnd();
-        Assertions.assertEquals(frontEnd.recipeItemStorage(), "");
+        Assertions.assertEquals(frontEnd.recipeItemStorage().size(), 24);
     }
 
     @Test
     public void testFrontEndTags() throws Exception {
         FrontEnd frontEnd = new FrontEnd();
-        Assertions.assertEquals(frontEnd.tagStorage().toString(), "[Non-Kosher, Gluten, Non-Halal, Dairy, Meat]");
+        Assertions.assertEquals(frontEnd.tagStorage().size(), 5);
     }
 }
