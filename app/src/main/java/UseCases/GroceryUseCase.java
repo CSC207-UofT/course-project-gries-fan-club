@@ -91,7 +91,7 @@ public class GroceryUseCase implements UseCase {
             return response;
         }
 
-        return new ResponseImpl("", true);
+        return new ResponseImpl("", false);
     }
 
 }
