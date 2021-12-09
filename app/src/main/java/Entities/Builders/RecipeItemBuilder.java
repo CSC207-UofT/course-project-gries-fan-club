@@ -45,7 +45,7 @@ public class RecipeItemBuilder extends AbstractBuilder<RecipeItem> {
 
 		String rawID;
 		String rawIngredientID;
-		Double rawQuantity;
+		double quantity;
 		boolean optional;
 		String displayType;
 
@@ -54,7 +54,7 @@ public class RecipeItemBuilder extends AbstractBuilder<RecipeItem> {
 			// Attempt to retrieve required data.
 			rawID = row.get("id", String.class);
 			rawIngredientID = row.get("ingredient", String.class);
-			rawQuantity = row.get("quantity", Double.class);
+			quantity = row.get("quantity", Number.class).doubleValue();
 			optional = row.get("optional", Boolean.class);
 			displayType = row.get("displayType", String.class);
 
@@ -65,7 +65,6 @@ public class RecipeItemBuilder extends AbstractBuilder<RecipeItem> {
 		// Create the proper objects for construction.
 		UUID id = UUID.fromString(rawID);
 		UUID ingredientID = UUID.fromString(rawIngredientID);
-		float quantity = rawQuantity.floatValue();
 
 		Reference<Ingredient> ingredientReference = new Reference<>(ingredientID, this.ingredientStorage);
 		Ingredient ingredient = new ReferencedIngredient(ingredientReference);

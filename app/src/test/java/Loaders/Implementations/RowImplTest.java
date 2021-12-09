@@ -24,6 +24,7 @@ public class RowImplTest {
 		Map<String, Object> attributes = new HashMap<>();
 		attributes.put("a", 1);
 		attributes.put("b", 2);
+		attributes.put("c", 3.0);
 		attributes.put("l", list);
 		attributes.put("m", map);
 

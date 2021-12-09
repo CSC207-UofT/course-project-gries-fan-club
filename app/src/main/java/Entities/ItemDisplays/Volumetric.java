@@ -5,7 +5,7 @@ import Entities.Ingredient;
 public class Volumetric implements RecipeItemDisplay {
 
     @Override
-    public String display(float quantity, Ingredient ingredient) {
+    public String display(double quantity, Ingredient ingredient) {
         String stringQuantity;
 
         // checks if the quantity ends in .0 or .00 (whole number)
@@ -14,7 +14,7 @@ public class Volumetric implements RecipeItemDisplay {
             stringQuantity = Integer.toString((int) quantity);
         } else {
             // Convert to a string for returning
-            stringQuantity = Float.toString(quantity);
+            stringQuantity = Double.toString(quantity);
         }
         return stringQuantity + "ml of " + ingredient.name();
     }
