@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public abstract class AbstractRecipeItem extends AbstractEntity implements RecipeItem {
     private final Ingredient ingredient;
-    private final float amount;
+    private final double amount;
     private boolean optional = false;
 
     /**
@@ -15,7 +15,7 @@ public abstract class AbstractRecipeItem extends AbstractEntity implements Recip
      * @param ingredient  The ingredient
      *
      */
-    public AbstractRecipeItem(Ingredient ingredient, float amount) {
+    public AbstractRecipeItem(Ingredient ingredient, double amount) {
        super();
        this.ingredient = ingredient;
        this.amount = amount;
@@ -27,14 +27,14 @@ public abstract class AbstractRecipeItem extends AbstractEntity implements Recip
      * @param amount     The quantity of this ingredient
      * @param optional  Is the ingredient optional in the recipe?
      */
-    public AbstractRecipeItem(Ingredient ingredient, float amount, boolean optional) {
+    public AbstractRecipeItem(Ingredient ingredient, double amount, boolean optional) {
         super();
         this.ingredient = ingredient;
         this.amount = amount;
         this.optional = optional;
     }
 
-    public AbstractRecipeItem(UUID id, Ingredient ingredient, float amount, boolean optional) {
+    public AbstractRecipeItem(UUID id, Ingredient ingredient, double amount, boolean optional) {
         super(id);
         this.ingredient = ingredient;
         this.amount = amount;
@@ -47,7 +47,7 @@ public abstract class AbstractRecipeItem extends AbstractEntity implements Recip
     }
 
     @Override
-    public float quantity() {
+    public double quantity() {
         return this.amount;
     }
 

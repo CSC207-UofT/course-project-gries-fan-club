@@ -14,7 +14,6 @@ public class FrontEndTest {
     @Test
     public void testFrontEndRecipe() throws Exception {
         FrontEnd frontEnd = new FrontEnd();
-
         Assertions.assertEquals(frontEnd.recipeStorage().recipes().toString(), "");
     }
 

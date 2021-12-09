@@ -13,16 +13,16 @@ public class QuantityRecipeItem extends AbstractRecipeItem {
      * @param amount     The quantity of this ingredient as float.
      * @param optional   Is the ingredient optional?
      */
-    public QuantityRecipeItem(Ingredient ingredient, float amount, boolean optional) {
+    public QuantityRecipeItem(Ingredient ingredient, double amount, boolean optional) {
         super(ingredient, amount, optional);
     }
 
-    public QuantityRecipeItem(UUID id, Ingredient ingredient, float amount, boolean optional) {
+    public QuantityRecipeItem(UUID id, Ingredient ingredient, double amount, boolean optional) {
         super(id, ingredient, amount, optional);
     }
 
     public String display() {
-        float tempQuantity = this.quantity();
+        double tempQuantity = this.quantity();
         String stringQuantity;
 
         // checks if the quantity ends in .0 or .00 (whole number)
@@ -31,7 +31,7 @@ public class QuantityRecipeItem extends AbstractRecipeItem {
             stringQuantity = Integer.toString((int) tempQuantity);
         } else {
             // Convert to a string for returning
-            stringQuantity = Float.toString(tempQuantity);
+            stringQuantity = Double.toString(tempQuantity);
         }
 
         // if there is multiple of the item
