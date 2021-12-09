@@ -16,13 +16,13 @@ public class GroceryUseCase implements UseCase {
      * ingredients in the grocery are ingredients you need to buy.
      */
     IngredientStorage fridge;
-    final RecipeStorage recipeStorage;
     IngredientStorage groceryList;
+    IngredientStorage ingredientStorage;
 
-    public GroceryUseCase(IngredientStorage fridge, RecipeStorage recipeStorage, IngredientStorage groceryList) {
+    public GroceryUseCase(IngredientStorage fridge, IngredientStorage groceryList, IngredientStorage ingredientStorage) {
         this.fridge = fridge;
-        this.recipeStorage = recipeStorage;
         this.groceryList = groceryList;
+        this.ingredientStorage = ingredientStorage;
     }
     /**
      * Return all ingredients needed if listRecipeItems provided in command
@@ -34,15 +34,13 @@ public class GroceryUseCase implements UseCase {
     public Response run(Command command) {
       List<String> ingredients = new ArrayList<>();
         if (command.containsKey("addToList")) {
-            // Iterating through recipes in recipestorage
-            for (Recipe recipe : this.recipeStorage.recipes()) {
-                // Iterating through each recipeItem in each recipe
-                for (RecipeItem item : recipe.items()) {
+            // Iterating through recipes in ingredientstorage
+            for (Ingredient item : this.ingredientStorage) {
                     // adding ingredient in recipe to our list of ingredients
-                    if (!(this.fridge.contains(item.ingredient()))) {
-                        this.groceryList.add(item.ingredient());
+                    if (!(this.fridge.contains(item))) {
+                        this.groceryList.add(item);
                     }
-                }
+
             }
           for( Ingredient ingredient: this.groceryList){
               ingredients.add(ingredient.name());
@@ -77,7 +75,7 @@ public class GroceryUseCase implements UseCase {
 
             for (String ingredientString : stringsOfIngredients) {
                 // Store current ingredient
-                Ingredient currIngredient = this.groceryList.findByNameExact(ingredientString).iterator().next();
+                Ingredient currIngredient = this.ingredientStorage.findByNameExact(ingredientString).iterator().next();
                 // Adds ingredients (from key values) to fridge
                 this.fridge.add(currIngredient);
                 // Removes ingredients from groceryList
