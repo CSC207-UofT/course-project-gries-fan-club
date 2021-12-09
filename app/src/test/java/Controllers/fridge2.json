@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Italian Seasoning",
+    "id": "355b79da-24a9-45ac-8e88-5f9eeeb8cbf9",
+    "type": "ingredient",
+    "tags": []
+  },
+  {
+    "name": "Salt",
+    "id": "e62a8ae2-a32d-4b43-99fc-b9c3f91a9275",
+    "type": "ingredient",
+    "tags": []
+  },
+  {
+    "name": "Beef",
+    "id": "c51cade4-2c61-48e8-a2a5-1698563306a6",
+    "type": "ingredient",
+    "tags": ["3947dd28-5b25-4e71-af00-9908e33add67"]
+  }
+]

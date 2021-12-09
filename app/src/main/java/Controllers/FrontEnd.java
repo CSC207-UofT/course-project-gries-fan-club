@@ -7,9 +7,7 @@ import Storages.IngredientStorage;
 import Storages.RecipeItemStorage;
 import Storages.RecipeStorage;
 import Storages.TagStorage;
-import UseCases.Command;
-import UseCases.CommandImpl;
-import UseCases.FridgeUseCase;
+import org.json.JSONException;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -33,11 +31,8 @@ public class FrontEnd {
     RecipeStorage recipeStorage;
     RecipeItemStorage recipeItemStorage;
     TagStorage tagStorage;
-
     IngredientStorage fridge;
-
     FridgeController fridgeController;
-    RunController cookbookController;
 
     public FrontEnd(String ingredientPath, String tagPath,  String recipeItemPath, String recipePath) throws Exception {
         // Build and fill the storages
@@ -47,7 +42,7 @@ public class FrontEnd {
     }
 
     /**
-     * Read the File Path
+     * Read the File Path, used in the onLoad function
      * @param pathGiven
      * @return
      * @throws Exception
@@ -103,6 +98,13 @@ public class FrontEnd {
     public void saveFridge(String path) throws Exception {
         WritingController writingController = new WritingController();
         writingController.saveIngredients(this.fridge, path);
+    }
+
+    public void updateFridge(String pathFridge, String pathTag) throws Exception {
+        Loader loader = this.createLoader(pathFridge);
+        Loader loader2 = this.createLoader(pathTag);
+        this.fridge = new IngredientStorageImpl();
+        this.fridge.addAll(this.fridgeController.updateFridge(loader, loader2).ingredients());
     }
 
     public IngredientStorage ingredientStorage() {
