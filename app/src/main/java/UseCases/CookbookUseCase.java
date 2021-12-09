@@ -22,6 +22,7 @@ public class CookbookUseCase implements UseCase {
     /**
      * Return all recipes if FindAllRecipes provided in command
      * Return recipes containing none of the tags given if FindRecipesByTags provided in command
+     * to Obtain the list of recipies from the response use the key "Recipe"
      * @return RecipeResponseImpl containing a list of recipes found
      */
     public Response run(Command command) {

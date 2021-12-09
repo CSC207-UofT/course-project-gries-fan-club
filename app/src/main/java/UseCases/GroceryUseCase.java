@@ -32,6 +32,7 @@ public class GroceryUseCase implements UseCase {
      */
 
     public Response run(Command command) {
+      List<String> ingredients = new ArrayList<>();
         if (command.containsKey("addToList")) {
             // Iterating through recipes in recipestorage
             for (Recipe recipe : this.recipeStorage.recipes()) {
@@ -43,6 +44,12 @@ public class GroceryUseCase implements UseCase {
                     }
                 }
             }
+          for( Ingredient ingredient: this.groceryList){
+              ingredients.add(ingredient.name());
+          }
+            Response response = new ResponseImpl("", true);
+          response.put("Grocery", ingredients);
+          return response;
         }
 
         if (command.containsKey("importRecipeItems")) {
@@ -51,10 +58,16 @@ public class GroceryUseCase implements UseCase {
             this.fridge.addAll(this.groceryList);
 
             // grocery should now be empty
-            this.groceryList.clear();
 
             // Return the items we are importing to fridge
-            return new ResponseImpl("Added " + ingredientsAdded + " to the fridge", true);
+
+                for( Ingredient ingredient: this.groceryList){
+                    ingredients.add(ingredient.name());
+                }
+                Response response = new ResponseImpl("", true);
+                response.put("Grocery", ingredients);
+                this.groceryList.clear();
+                return response;
         }
         if (command.containsKey("removeFromGroceryList")) {
             String keyValues = command.get("removeFromGroceryList");
@@ -70,6 +83,12 @@ public class GroceryUseCase implements UseCase {
                 // Removes ingredients from groceryList
                 this.groceryList.remove(currIngredient);
             }
+            for( Ingredient ingredient: this.groceryList){
+                ingredients.add(ingredient.name());
+            }
+            Response response = new ResponseImpl("", true);
+            response.put("Grocery", ingredients);
+            return response;
         }
 
         return new ResponseImpl("", true);
