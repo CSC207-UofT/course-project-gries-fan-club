@@ -1,31 +1,41 @@
 package Controllers;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.nio.file.Paths;
+
 public class FrontEndTest {
+    FrontEnd frontEnd;
 
-    @Test
-    public void testFrontEndIngredient() throws Exception {
-        FrontEnd frontEnd = new FrontEnd();
-        Assertions.assertEquals(frontEnd.ingredientStorage().size(), 21);
+    @BeforeEach
+    public void setup() throws Exception {
+        String workingDirectory = Paths.get("").toAbsolutePath().toString() + "/src/test/java/Controllers/";
+        String ingredientPath = workingDirectory + "ingredientsTest.json";
+        String tagPath = workingDirectory + "tagsTest.json";
+        String recipeItemPath = workingDirectory + "recipeItemsTest.json";
+        String recipePath = workingDirectory + "recipesTest.json";
+        this.frontEnd = new FrontEnd(ingredientPath, tagPath, recipeItemPath, recipePath);
     }
 
     @Test
-    public void testFrontEndRecipe() throws Exception {
-        FrontEnd frontEnd = new FrontEnd();
-        Assertions.assertEquals(frontEnd.recipeStorage().size(), 5);
+    public void testFrontEndIngredient() {
+        Assertions.assertEquals(this.frontEnd.ingredientStorage().size(), 21);
     }
 
     @Test
-    public void testFrontEndRecipeItem() throws Exception {
-        FrontEnd frontEnd = new FrontEnd();
-        Assertions.assertEquals(frontEnd.recipeItemStorage().size(), 24);
+    public void testFrontEndRecipe() {
+        Assertions.assertEquals(this.frontEnd.recipeStorage().size(), 5);
     }
 
     @Test
-    public void testFrontEndTags() throws Exception {
-        FrontEnd frontEnd = new FrontEnd();
-        Assertions.assertEquals(frontEnd.tagStorage().size(), 5);
+    public void testFrontEndRecipeItem() {
+        Assertions.assertEquals(this.frontEnd.recipeItemStorage().size(), 24);
+    }
+
+    @Test
+    public void testFrontEndTags()  {
+        Assertions.assertEquals(this.frontEnd.tagStorage().size(), 5);
     }
 }

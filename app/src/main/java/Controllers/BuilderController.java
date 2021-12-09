@@ -35,7 +35,7 @@ public class BuilderController {
      * @param loader
      */
     public Map<String, Storage> load(Loader loader) {
-//         load all the builders
+//      load all the builders and try them all
         IngredientBuilder ingredientBuilder = new IngredientBuilder(this.tagStorage);
         ingredientBuilder.addTo(this.ingredientStorage, loader);
 

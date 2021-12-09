@@ -14,6 +14,15 @@ import java.nio.file.Paths;
 /**
  * Do front end tasks and call the controllers needed
  * This class interacts directly with the UI
+ *
+ * HOW TO USE:
+ * To load:
+ *  - provide constructors with
+ * To access the storages:
+ *  - frontEndObject.ingredientStorage() for ingredients
+ *  - frontEndObject.recipeStorage() for recipes
+ *  - frontEndObject.recipeItemStorage() for recipeItems
+ *  - frontEndObject.tagStorage() for tags
  */
 public class FrontEnd {
     IngredientStorage ingredientStorage;
@@ -21,29 +30,43 @@ public class FrontEnd {
     RecipeItemStorage recipeItemStorage;
     TagStorage tagStorage;
 
-    public FrontEnd() throws Exception {
-        this.onLoad();
+    public FrontEnd(String ingredientPath, String tagPath,  String recipeItemPath, String recipePath) throws Exception {
+        // Build and fill the storages
+        this.onLoad(ingredientPath, tagPath, recipeItemPath, recipePath);
     }
 
+    /**
+     * Read the File Path
+     * @param pathGiven
+     * @return
+     * @throws Exception
+     */
     public Loader createLoader(String pathGiven) throws Exception {
         Path path = Paths.get(pathGiven);
         String json = new String(Files.readAllBytes(path));
         return new JSONFileIO(json);
     }
 
-    public void onLoad() throws Exception {
+    /**
+     *
+     * Takes in all of the paths needed to load
+     */
+    public void onLoad(String ingredientPath, String tagPath,  String recipeItemPath, String recipePath) throws Exception {
         BuilderController builder = new BuilderController();
 
-        Loader ingredientLoader = this.createLoader("/Users/arielchouminov/Desktop/course-project-gries-fan-club/resources/ingredients.json");
-        Loader tagLoader = this.createLoader("/Users/arielchouminov/Desktop/course-project-gries-fan-club/resources/tags.json");
-        Loader recipeItemLoader = this.createLoader("/Users/arielchouminov/Desktop/course-project-gries-fan-club/resources/recipeItems.json");
-        Loader recipeLoader = this.createLoader("/Users/arielchouminov/Desktop/course-project-gries-fan-club/resources/recipes.json");
+        // create loaders
+        Loader ingredientLoader = this.createLoader(ingredientPath);
+        Loader tagLoader = this.createLoader(tagPath);
+        Loader recipeItemLoader = this.createLoader(recipeItemPath);
+        Loader recipeLoader = this.createLoader(recipePath);
 
+        // load loaders
         builder.load(tagLoader);
         builder.load(ingredientLoader);
         builder.load(recipeItemLoader);
         builder.load(recipeLoader);
 
+        // populate storages for frontend
         this.ingredientStorage = (IngredientStorage) builder.storages().get("ingredients");
         this.recipeStorage = (RecipeStorage) builder.storages().get("recipes");
         this.recipeItemStorage = (RecipeItemStorage) builder.storages().get("recipeItems");
