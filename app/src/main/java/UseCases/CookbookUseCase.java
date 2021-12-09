@@ -25,11 +25,10 @@ public class CookbookUseCase implements UseCase {
      * @return RecipeResponseImpl containing a list of recipes found
      */
     public Response run(Command command) {
-
+        List<String> recipesMatchedString = new ArrayList<>();
         if (command.containsKey("FindAllRecipes")) {
             // Convert the recipeStorage.recipes from a collection to a list
             List<Recipe> recipesMatched = new ArrayList<>(this.recipeStorage.recipes());
-            List<String> recipesMatchedString = new ArrayList<>();
             for(Recipe recipe: recipesMatched){
                 recipesMatchedString.add(recipe.name());
             }
@@ -55,13 +54,12 @@ public class CookbookUseCase implements UseCase {
                 }
             }
 
-            List<Recipe> recipesTagged = new ArrayList<>(this.recipeStorage.containsNoneOf(tagList));
-            List<String> recipesTaggedString = new ArrayList<>();
-            for(Recipe recipe: recipesTagged){
-                recipesTaggedString.add(recipe.name());
+            List<Recipe> recipesMatched = new ArrayList<>(this.recipeStorage.containsNoneOf(tagList));
+            for(Recipe recipe: recipesMatched){
+                recipesMatchedString.add(recipe.name());
             }
             Response response = new ResponseImpl("", true);
-            response.put("Recipe", recipesTaggedString);
+            response.put("Recipe", recipesMatchedString);
 
             return response;
         }
