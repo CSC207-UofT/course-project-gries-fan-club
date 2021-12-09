@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -40,13 +41,13 @@ public class RecipeItemBuilderTest {
 	public void testLoadEntity() throws InvalidRowShape {
 		UUID itemID = UUID.randomUUID();
 		UUID ingredientID = UUID.randomUUID();
-		Row row = new RowImpl("recipeItem", Map.of(
-						"id", itemID.toString(),
-						"ingredient", ingredientID.toString(),
-						"quantity", 0.5,
-						"optional", true,
-						"displayType", "q"
-		));
+		Map<String, Object> attributes = new HashMap<>();
+		attributes.put("id", itemID.toString());
+		attributes.put("ingredient", ingredientID.toString());
+		attributes.put("quantity", 0.5);
+		attributes.put("optional", true);
+		attributes.put("displayType", "q");
+		Row row = new RowImpl("recipeItem", attributes);
 
 		RecipeItem item = this.builder.loadEntity(row);
 		Assertions.assertEquals(itemID, item.id());
@@ -58,6 +59,11 @@ public class RecipeItemBuilderTest {
 						InvalidRowShape.class,
 						() -> this.builder.loadEntity(new EmptyRow())
 		);
+
+		// Allow any Number to be cast to doubles.
+		attributes.put("quantity", 3);
+		item = this.builder.loadEntity(row);
+		Assertions.assertEquals(3.0, item.quantity());
 	}
 
 	@Test
