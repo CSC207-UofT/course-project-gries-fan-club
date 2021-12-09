@@ -64,5 +64,12 @@ public class FrontEndTest {
         this.frontEnd.saveFridge(Paths.get("").toAbsolutePath().toString() + "/src/test/java/Controllers/" + "fridge.json");
     }
 
+    @Test
+    public void updateFridgeTest() throws Exception {
+        Assertions.assertEquals(0, this.frontEnd.fridge.size());
+        this.frontEnd.updateFridge(Paths.get("").toAbsolutePath().toString() + "/src/test/java/Controllers/" + "fridge.json");
+        Assertions.assertEquals(3, this.frontEnd.fridge.size());
+    }
+
 
 }
