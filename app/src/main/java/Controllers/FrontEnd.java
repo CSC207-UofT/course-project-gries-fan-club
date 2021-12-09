@@ -9,6 +9,7 @@ import Storages.RecipeStorage;
 import Storages.TagStorage;
 import UseCases.Command;
 import UseCases.CommandImpl;
+import UseCases.FridgeUseCase;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -35,13 +36,14 @@ public class FrontEnd {
 
     IngredientStorage fridge;
 
-    RunController matcherController;
+    FridgeController fridgeController;
     RunController cookbookController;
 
     public FrontEnd(String ingredientPath, String tagPath,  String recipeItemPath, String recipePath) throws Exception {
         // Build and fill the storages
         this.onLoad(ingredientPath, tagPath, recipeItemPath, recipePath);
         this.fridge = new IngredientStorageImpl();
+        this.fridgeController = new FridgeController();
     }
 
     /**
@@ -88,22 +90,19 @@ public class FrontEnd {
      * @param ingredientNames
      */
     public void addToFridge(String ingredientNames) {
-        RunController fridgeController = new RunController(this.fridge, this.ingredientStorage);
-        Command command = new CommandImpl();
-        command.put("addToFridge", ingredientNames);
-        fridgeController.run(command);
+        this.fridgeController.addToFridge(this.fridge, this.ingredientStorage, ingredientNames);
+    }
+
+    public void removeFromFridge(String ingredientNames) {
+        this.fridgeController.removeFromFridge(this.fridge, this.ingredientStorage, ingredientNames);
     }
 
     /**
-     * Provide ingredientNames seperated by commas
-     * ex. "carrot,milk,pear,steak"
-     * @param ingredientNames
+     * Save the current fridge into the file path
      */
-    public void removeFromFridge(String ingredientNames) {
-        RunController fridgeController = new RunController(this.fridge, this.ingredientStorage);
-        Command command = new CommandImpl();
-        command.put("removeFromFridge", ingredientNames);
-        fridgeController.run(command);
+    public void saveFridge(String path) throws Exception {
+        WritingController writingController = new WritingController();
+        writingController.saveIngredients(this.fridge, path);
     }
 
     public IngredientStorage ingredientStorage() {
