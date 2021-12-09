@@ -5,7 +5,9 @@ import Storages.Implementations.IngredientStorageImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class FridgeUseCaseTest {
     @Test
@@ -22,10 +24,12 @@ public class FridgeUseCaseTest {
         command.put("addToFridge", "oil,chocolate chips");
 
         FridgeUseCase useCase = new FridgeUseCase(fridge, ingredients);
-//
-//        Assertions.assertTrue(useCase.run(command).data().contains(ingredient1));
-//        Assertions.assertTrue(useCase.run(command).data().contains(ingredient2));
-          Assertions.assertTrue(useCase.run(command).success());
+
+        List<String> fridgeList = new ArrayList<>();
+        fridgeList.add("oil");
+        fridgeList.add("chocolate chips");
+        Assertions.assertTrue(useCase.run(command).get("fridge").contains("chocolate chips"));
+        Assertions.assertTrue(useCase.run(command).get("fridge").contains("oil"));
     }
 
     @Test

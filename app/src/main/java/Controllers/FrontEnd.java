@@ -2,10 +2,13 @@ package Controllers;
 
 import Loaders.Implementations.JSONFileIO;
 import Loaders.Loader;
+import Storages.Implementations.IngredientStorageImpl;
 import Storages.IngredientStorage;
 import Storages.RecipeItemStorage;
 import Storages.RecipeStorage;
 import Storages.TagStorage;
+import UseCases.Command;
+import UseCases.CommandImpl;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -30,9 +33,15 @@ public class FrontEnd {
     RecipeItemStorage recipeItemStorage;
     TagStorage tagStorage;
 
+    IngredientStorage fridge;
+
+    RunController matcherController;
+    RunController cookbookController;
+
     public FrontEnd(String ingredientPath, String tagPath,  String recipeItemPath, String recipePath) throws Exception {
         // Build and fill the storages
         this.onLoad(ingredientPath, tagPath, recipeItemPath, recipePath);
+        this.fridge = new IngredientStorageImpl();
     }
 
     /**
@@ -73,6 +82,30 @@ public class FrontEnd {
         this.tagStorage = (TagStorage) builder.storages().get("tags");
     }
 
+    /**
+     * Provide ingredientNames seperated by commas
+     * ex. "carrot,milk,pear,steak"
+     * @param ingredientNames
+     */
+    public void addToFridge(String ingredientNames) {
+        RunController fridgeController = new RunController(this.fridge, this.ingredientStorage);
+        Command command = new CommandImpl();
+        command.put("addToFridge", ingredientNames);
+        fridgeController.run(command);
+    }
+
+    /**
+     * Provide ingredientNames seperated by commas
+     * ex. "carrot,milk,pear,steak"
+     * @param ingredientNames
+     */
+    public void removeFromFridge(String ingredientNames) {
+        RunController fridgeController = new RunController(this.fridge, this.ingredientStorage);
+        Command command = new CommandImpl();
+        command.put("removeFromFridge", ingredientNames);
+        fridgeController.run(command);
+    }
+
     public IngredientStorage ingredientStorage() {
         return this.ingredientStorage;
     }
@@ -87,6 +120,10 @@ public class FrontEnd {
 
     public TagStorage tagStorage() {
         return this.tagStorage;
+    }
+
+    public IngredientStorage fridge() {
+        return this.fridge;
     }
 
 }

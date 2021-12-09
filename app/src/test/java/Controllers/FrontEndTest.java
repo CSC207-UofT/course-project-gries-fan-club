@@ -1,10 +1,14 @@
 package Controllers;
 
+import Entities.Implementations.IngredientImpl;
+import Entities.Ingredient;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Paths;
+import java.util.Collection;
+import java.util.Collections;
 
 public class FrontEndTest {
     FrontEnd frontEnd;
@@ -37,5 +41,19 @@ public class FrontEndTest {
     @Test
     public void testFrontEndTags()  {
         Assertions.assertEquals(this.frontEnd.tagStorage().size(), 5);
+    }
+
+    @Test
+    public void addToFridgeTest() {
+        this.frontEnd.addToFridge("Beef,Salt");
+        Assertions.assertEquals(1, this.frontEnd.fridge().findByNameExact("Salt").size());
+        Assertions.assertEquals(1, this.frontEnd.fridge().findByNameExact("Beef").size());
+    }
+
+    @Test
+    public void removeFromFridgeTest() {
+        this.frontEnd.addToFridge("Beef,Salt");
+        this.frontEnd.removeFromFridge("Salt");
+        Assertions.assertEquals(1, this.frontEnd.fridge().size());
     }
 }
