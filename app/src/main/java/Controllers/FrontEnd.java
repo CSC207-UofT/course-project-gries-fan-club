@@ -27,12 +27,8 @@ public class FrontEnd {
 
     public Loader createLoader(String pathGiven) throws Exception {
         Path path = Paths.get(pathGiven);
-        String json = readFileAsString(path);
+        String json = new String(Files.readAllBytes(path));
         return new JSONFileIO(json);
-    }
-
-    public static String readFileAsString(Path file) throws Exception {
-        return new String(Files.readAllBytes(file));
     }
 
     public void onLoad() throws Exception {
