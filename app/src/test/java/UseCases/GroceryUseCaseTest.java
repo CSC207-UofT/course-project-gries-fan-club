@@ -125,16 +125,14 @@ public class GroceryUseCaseTest {
     @Test
     public void testListRecipeItems() {
         CommandImpl command = new CommandImpl();
-        command.put("addToList", "");
+        command.put("addToList", "water");
 
-        this.groceryList.add(this.ingredient3);
-        this.groceryList.add(this.ingredient4);
-
+        this.groceryList.add(ingredient5);
         GroceryUseCase useCase = new GroceryUseCase(this.fridge, this.recipeStorage, this.groceryList);
 
         // We check to see that the grocery list does contain ingredients3-6 as well
-        Assertions.assertTrue(this.groceryList.contains(this.ingredient3));
-        Assertions.assertTrue(this.groceryList.contains(this.ingredient4));
+        Assertions.assertTrue(useCase.run(command).get("Grocery").contains(this.ingredient5.name()));
+
     }
 
     /**
@@ -144,21 +142,17 @@ public class GroceryUseCaseTest {
     @Test
     public void testImportToFridge() {
         CommandImpl command = new CommandImpl();
-        command.put("importRecipeItems", "");
-
+        command.put("importRecipeItems", "water");
+        this.groceryList.add(ingredient5);
         GroceryUseCase useCase = new GroceryUseCase(this.fridge, this.recipeStorage, this.groceryList);
-        this.groceryList.add(this.ingredient5);
-        this.groceryList.add(this.ingredient6);
+        Assertions.assertTrue(useCase.run(command).get("Grocery").contains(this.ingredient5.name()));
+        Assertions.assertFalse(this.groceryList.contains(ingredient5));
 
 
-        useCase.run(command);
+
+
 //         Checking that fridge contains ingredients that were emptied from the grocery list
-        Assertions.assertTrue(useCase.fridge.contains(this.ingredient5));
-        Assertions.assertTrue(useCase.fridge.contains(this.ingredient6));
 
-        // checking that groceryList is now empty
-        Assertions.assertFalse(useCase.groceryList.contains(this.ingredient5));
-        Assertions.assertFalse(useCase.groceryList.contains(this.ingredient6));
     }
     @Test
     public void testRemoveFromGroceryList() {
