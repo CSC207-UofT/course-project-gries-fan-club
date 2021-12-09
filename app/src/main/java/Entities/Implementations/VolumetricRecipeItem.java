@@ -22,17 +22,16 @@ public class VolumetricRecipeItem extends AbstractRecipeItem {
         super(id, ingredient, amount, optional);
     }
 
-    public String display(){
-        float tempQuantity = this.quantity();
+    public String display() {
         String stringQuantity;
 
         // checks if the quantity ends in .0 or .00 (whole number)
         if (this.quantity() % 1 == 0) {
             // make it an int to remove the decimal
-            stringQuantity = Integer.toString((int) tempQuantity);
+            stringQuantity = Integer.toString((int) this.quantity());
         } else {
             // Convert to a string for returning
-            stringQuantity = Float.toString(tempQuantity);
+            stringQuantity = Double.toString(this.quantity());
         }
         return stringQuantity + "ml of " + this.ingredient().name();
     }

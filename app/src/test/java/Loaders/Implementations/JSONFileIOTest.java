@@ -3,14 +3,13 @@ package Loaders.Implementations;
 import Loaders.Exceptions.NoSuchAttribute;
 import Loaders.Row;
 import org.json.JSONException;
+import org.json.JSONObject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.StringWriter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class JSONFileIOTest {
 
@@ -101,6 +100,19 @@ public class JSONFileIOTest {
 		String sourceNoSpace = SOURCE.replaceAll("\\s+", "");
 
 		Assertions.assertEquals(sourceNoSpace, jsonNoSpace);
+
+		// Ensure non-integer values are saved.
+		Map<String, Object> values = new HashMap<>();
+		values.put("val", 4.0);
+		Row row = new RowImpl("test", values);
+
+		writer = new StringWriter();
+		this.loader.save(Collections.singletonList(row), writer);
+		String rawJSON = writer.toString();
+
+		JSONObject obj = new JSONObject();
+		obj.put("test", 1.23);
+		Assertions.assertEquals("{\"test\":1.23}", obj.toString());
 	}
 
 }

@@ -13,7 +13,7 @@ public interface RecipeItem extends Entity {
      *
      * @return int representing the quantity
      */
-    float quantity();
+    double quantity();
 
     /**
      * Whether this item is optional in its recipe

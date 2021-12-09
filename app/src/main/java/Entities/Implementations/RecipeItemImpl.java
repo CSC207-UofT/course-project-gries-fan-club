@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public class RecipeItemImpl extends AbstractEntity implements RecipeItem  {
     private final Ingredient ingredient;
-    private final float amount;
+    private final double amount;
     private boolean optional = false;
     private RecipeItemDisplay displayObject = null;
 
@@ -16,7 +16,7 @@ public class RecipeItemImpl extends AbstractEntity implements RecipeItem  {
      * @param amount of this ingredient.
      * @param ingredient  The ingredient
      */
-    public RecipeItemImpl(Ingredient ingredient, float amount, boolean optional, RecipeItemDisplay displayObject) {
+    public RecipeItemImpl(Ingredient ingredient, double amount, boolean optional, RecipeItemDisplay displayObject) {
         super();
         this.ingredient = ingredient;
         this.amount = amount;
@@ -24,7 +24,7 @@ public class RecipeItemImpl extends AbstractEntity implements RecipeItem  {
         this.displayObject = displayObject;
     }
 
-    public RecipeItemImpl(UUID id, Ingredient ingredient, float amount, boolean optional, RecipeItemDisplay displayObject) {
+    public RecipeItemImpl(UUID id, Ingredient ingredient, double amount, boolean optional, RecipeItemDisplay displayObject) {
         super(id);
         this.ingredient = ingredient;
         this.amount = amount;
@@ -38,7 +38,7 @@ public class RecipeItemImpl extends AbstractEntity implements RecipeItem  {
     }
 
     @Override
-    public float quantity() {
+    public double quantity() {
         return this.amount;
     }
 

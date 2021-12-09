@@ -24,7 +24,7 @@ public class ReferencedRecipeItem extends ReferencedEntity<RecipeItem> implement
 	}
 
 	@Override
-	public float quantity() {
+	public double quantity() {
 		try {
 			return this.entityReference.get().quantity();
 		} catch (NoSuchEntity noSuchEntity) {
