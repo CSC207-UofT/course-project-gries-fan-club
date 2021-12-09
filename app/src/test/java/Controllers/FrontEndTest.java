@@ -20,6 +20,7 @@ public class FrontEndTest {
         String tagPath = workingDirectory + "tagsTest.json";
         String recipeItemPath = workingDirectory + "recipeItemsTest.json";
         String recipePath = workingDirectory + "recipesTest.json";
+        String savePath = workingDirectory + "output.json";
         this.frontEnd = new FrontEnd(ingredientPath, tagPath, recipeItemPath, recipePath);
     }
 
@@ -56,4 +57,12 @@ public class FrontEndTest {
         this.frontEnd.removeFromFridge("Salt");
         Assertions.assertEquals(1, this.frontEnd.fridge().size());
     }
+
+    @Test
+    public void saveFridgeTest() throws Exception {
+        this.frontEnd.addToFridge("Beef,Salt,Italian Seasoning");
+        this.frontEnd.saveFridge(Paths.get("").toAbsolutePath().toString() + "/src/test/java/Controllers/" + "fridge.json");
+    }
+
+
 }
