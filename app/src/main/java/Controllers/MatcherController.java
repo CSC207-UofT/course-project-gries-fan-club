@@ -11,14 +11,14 @@ import java.util.List;
 public class MatcherController {
 
     /** Return the top recipes based on the fridge
-     * @param fridge
-     * @param recipes
+     * @param fridge The fridge
+     * @param recipes The recipe storage to search
      */
     public List<String> matchFridgeWithRecipes(IngredientStorage fridge, RecipeStorage recipes, Integer numberOfRecipes) {
         MatcherUseCase useCase = new MatcherUseCase(fridge, recipes);
         Command command = new CommandImpl();
         command.put("Fridge", fridge.ingredientString());
         command.put("recipeNumber", numberOfRecipes.toString());
-        return useCase.run(command).get("recipes");
+        return useCase.run(command).get("Matched");
     }
 }

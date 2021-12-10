@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class CookbookUseCaseTest {
     IngredientStorageImpl ingredientStorage;
@@ -113,13 +114,14 @@ public class CookbookUseCaseTest {
      */
     @Test
     public void testFindAllRecipes() {
-        CommandImpl command = new CommandImpl();
+        Command command = new CommandImpl();
         command.put("FindAllRecipes", "");
 
         CookbookUseCase useCase = new CookbookUseCase(this.recipeStorage, this.tagStorage);
 
-        Assertions.assertTrue(useCase.run(command).data().contains(this.recipe1));
-        Assertions.assertTrue(useCase.run(command).data().contains(this.recipe2));
+        Assertions.assertTrue(Objects.requireNonNull(useCase.run(command).get("Recipe")).contains(this.recipe1.name()));
+        Assertions.assertTrue(Objects.requireNonNull(useCase.run(command).get("Recipe")).contains(this.recipe2.name()));
+        Assertions.assertTrue(useCase.run(command).success());
     }
 
     /**
@@ -134,6 +136,10 @@ public class CookbookUseCaseTest {
 
         CookbookUseCase useCase = new CookbookUseCase(this.recipeStorage, this.tagStorage);
 
-        Assertions.assertTrue(useCase.run(command).data().contains(this.recipe2));
+        Assertions.assertFalse(Objects.requireNonNull(useCase.run(command).get("Recipe")).contains(this.recipe1.name()));
+        Assertions.assertTrue(Objects.requireNonNull(useCase.run(command).get("Recipe")).contains(this.recipe2.name()));
+
+
+        Assertions.assertTrue(useCase.run(command).success());
     }
 }
