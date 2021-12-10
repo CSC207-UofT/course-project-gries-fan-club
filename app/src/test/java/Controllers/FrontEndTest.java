@@ -4,24 +4,26 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class FrontEndTest {
     FrontEnd frontEnd;
 
+    Path basePath = Paths.get("src", "test", "resources");
+    String ingredientPath = basePath.resolve("ingredientsTest.json").toString();
+    String tagPath = basePath.resolve("tagsTest.json").toString();
+    String recipeItemPath = basePath.resolve("recipeItemsTest.json").toString();
+    String recipePath = basePath.resolve("recipesTest.json").toString();
+
     @BeforeEach
     public void setup() throws Exception {
-        String workingDirectory = Paths.get("").toAbsolutePath().toString() + "/src/test/java/Controllers/";
-        String ingredientPath = workingDirectory + "ingredientsTest.json";
-        String tagPath = workingDirectory + "tagsTest.json";
-        String recipeItemPath = workingDirectory + "recipeItemsTest.json";
-        String recipePath = workingDirectory + "recipesTest.json";
         this.frontEnd = new FrontEnd(ingredientPath, tagPath, recipeItemPath, recipePath);
     }
 
     @Test
     public void testFrontEndIngredient() {
-        Assertions.assertEquals(this.frontEnd.ingredientStorage().size(), 21);
+        Assertions.assertEquals(this.frontEnd.ingredientStorage().size(), 5);
     }
 
     @Test
@@ -56,35 +58,23 @@ public class FrontEndTest {
     @Test
     public void saveFridgeTest() throws Exception {
         this.frontEnd.addToFridge("Beef,Salt,Italian Seasoning");
-        this.frontEnd.saveFridge(Paths.get("").toAbsolutePath().toString() + "/src/test/java/Controllers/" + "fridge2.json");
+        this.frontEnd.saveFridge(Paths.get("src", "test", "java", "Controllers", "fridge2.json").toString());
     }
 
     @Test
     public void updateFridgeTest() throws Exception {
-        String workingDirectory = Paths.get("").toAbsolutePath().toString() + "/src/test/java/Controllers/";
-        String ingredientPath = workingDirectory + "ingredientsTest.json";
-        String tagPath = workingDirectory + "tagsTest.json";
-        String recipeItemPath = workingDirectory + "recipeItemsTest.json";
-        String recipePath = workingDirectory + "recipesTest.json";
-
         FrontEnd frontEnd2 = new FrontEnd(ingredientPath, tagPath, recipeItemPath, recipePath);
 
         Assertions.assertEquals(0, frontEnd2.fridge.size());
-        frontEnd2.updateFridge(workingDirectory + "fridge.json", tagPath);
+        frontEnd2.updateFridge(basePath.resolve("fridge.json").toString(), tagPath);
         Assertions.assertEquals(3, frontEnd2.fridge().size());
     }
 
 
     @Test
     public void testMatcherRecipes() throws Exception {
-        String workingDirectory = Paths.get("").toAbsolutePath().toString() + "/src/test/java/Controllers/";
-        String ingredientPath = workingDirectory + "ingredientsTest.json";
-        String tagPath = workingDirectory + "tagsTest.json";
-        String recipeItemPath = workingDirectory + "recipeItemsTest.json";
-        String recipePath = workingDirectory + "recipesTest.json";
-
         FrontEnd frontEnd3 = new FrontEnd(ingredientPath, tagPath, recipeItemPath, recipePath);
-        frontEnd3.updateFridge(workingDirectory + "fridge3.json", tagPath);
+        frontEnd3.updateFridge(basePath.resolve("fridge3.json").toString(), tagPath);
         Assertions.assertEquals(2, frontEnd3.matchFridgeToRecipes(2).size());
     }
 
