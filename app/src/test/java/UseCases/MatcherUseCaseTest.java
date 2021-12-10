@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class MatcherUseCaseTest {
     IngredientStorageImpl ingredientStorage;
@@ -116,10 +117,10 @@ public class MatcherUseCaseTest {
         CommandImpl command = new CommandImpl();
         command.put("Fridge", "flour,egg");
 
-        List<Recipe> recipes = new ArrayList<>(this.recipeStorage.recipes());
+
         MatcherUseCase usecase = new MatcherUseCase(this.ingredientStorage, this.recipeStorage);
 
-//        Assertions.assertEquals(usecase.run(command).get(""), recipes);
+        Assertions.assertTrue(Objects.requireNonNull(usecase.run(command).get("Matched")).contains(this.recipe1.name()));
         Assertions.assertTrue(usecase.run(command).success());
     }
 
