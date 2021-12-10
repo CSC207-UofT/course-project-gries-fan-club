@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.gries.jchefapp.GroceryListActivity">
+
+    <EditText
+            android:layout_width="345dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="@string/enter_ingredient_here"
+            android:ems="10"
+            android:layout_alignParentStart="true" android:layout_marginStart="57dp"
+            android:layout_alignParentTop="true" android:layout_marginTop="32dp"
+            android:id="@+id/editTextTextPersonName3" android:layout_alignParentEnd="true"
+            android:layout_marginEnd="57dp"/>
+    <Button
+            android:text="@string/add_ingredient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_alignParentStart="true"
+            android:layout_marginStart="35dp" android:layout_marginTop="24dp"
+            android:id="@+id/button2" android:layout_below="@+id/editTextTextPersonName3"
+            android:layout_toStartOf="@+id/button15" android:layout_marginEnd="25dp"/>
+    <Button
+            android:text="@string/import_to_fridge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true" android:layout_marginEnd="35dp" android:layout_marginTop="102dp"
+            android:id="@+id/button15"/>
+    <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="550dp" android:layout_alignParentStart="true"
+            android:layout_marginStart="1dp" android:layout_marginTop="27dp" android:layout_below="@+id/button15"
+            android:id="@+id/listview2" android:layout_alignParentBottom="true" android:layout_marginBottom="-4dp"/>
+
+</RelativeLayout>

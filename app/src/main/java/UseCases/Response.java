@@ -16,8 +16,3 @@ public interface Response extends Map<String, List<String>> {
      */
     String status();
 }
-
-
-
-
-

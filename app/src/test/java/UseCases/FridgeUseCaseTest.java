@@ -50,8 +50,7 @@ public class FridgeUseCaseTest {
 
         FridgeUseCase useCase = new FridgeUseCase(fridge, ingredients);
 
-//        Assertions.assertFalse(useCase.run(command).data().contains(ingredient1));
-//        Assertions.assertTrue(useCase.run(command).data().contains(ingredient2));
-        Assertions.assertTrue(useCase.run(command).success());
+        Assertions.assertFalse(useCase.run(command).get("fridge").contains(ingredient1));
+        Assertions.assertTrue(fridge.contains(ingredient2));
     }
 }
