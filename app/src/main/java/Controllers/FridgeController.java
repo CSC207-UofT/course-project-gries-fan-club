@@ -1,16 +1,11 @@
 package Controllers;
 
-import Loaders.Implementations.JSONFileIO;
 import Loaders.Loader;
 import Storages.IngredientStorage;
 import UseCases.Command;
 import UseCases.CommandImpl;
 import UseCases.FridgeUseCase;
-import org.json.JSONException;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 public class FridgeController {
     /**

@@ -12,6 +12,7 @@ import org.json.JSONException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 /**
  * Do front end tasks and call the controllers needed
@@ -33,12 +34,15 @@ public class FrontEnd {
     TagStorage tagStorage;
     IngredientStorage fridge;
     FridgeController fridgeController;
+    MatcherController matcherController;
 
     public FrontEnd(String ingredientPath, String tagPath,  String recipeItemPath, String recipePath) throws Exception {
         // Build and fill the storages
         this.onLoad(ingredientPath, tagPath, recipeItemPath, recipePath);
         this.fridge = new IngredientStorageImpl();
         this.fridgeController = new FridgeController();
+        this.matcherController = new MatcherController();
+
     }
 
     /**
@@ -105,6 +109,10 @@ public class FrontEnd {
         Loader loader2 = this.createLoader(pathTag);
         this.fridge = new IngredientStorageImpl();
         this.fridge.addAll(this.fridgeController.updateFridge(loader, loader2).ingredients());
+    }
+
+    public List<String> matchFridgeToRecipes(Integer numberOfRecipes) {
+        return this.matcherController.matchFridgeWithRecipes(this.fridge, this.recipeStorage, numberOfRecipes);
     }
 
     public IngredientStorage ingredientStorage() {

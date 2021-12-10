@@ -78,4 +78,18 @@ public class FrontEndTest {
         Assertions.assertEquals(3, frontEnd2.fridge().size());
     }
 
+
+    @Test
+    public void testMatcherRecipes() throws Exception {
+        String workingDirectory = Paths.get("").toAbsolutePath().toString() + "/src/test/java/Controllers/";
+        String ingredientPath = workingDirectory + "ingredientsTest.json";
+        String tagPath = workingDirectory + "tagsTest.json";
+        String recipeItemPath = workingDirectory + "recipeItemsTest.json";
+        String recipePath = workingDirectory + "recipesTest.json";
+
+        FrontEnd frontEnd3 = new FrontEnd(ingredientPath, tagPath, recipeItemPath, recipePath);
+        frontEnd3.updateFridge(workingDirectory + "fridge3.json", tagPath);
+        Assertions.assertEquals(2, frontEnd3.matchFridgeToRecipes(2).size());
+    }
+
 }
