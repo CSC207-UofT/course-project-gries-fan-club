@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Dairy",
+    "id": "87fca6e8-27a0-4a05-a948-d9b4c425a65f",
+    "type": "tag"
+  },
+  {
+    "name": "Meat",
+    "id": "3947dd28-5b25-4e71-af00-9908e33add67",
+    "type": "tag"
+  },
+  {
+    "name": "Non-Kosher",
+    "id": "32761225-3386-4c07-a8c8-3838dbbe8e08",
+    "type": "tag"
+  },
+  {
+    "name": "Non-Halal",
+    "id": "79f95da0-78a5-4279-9bc0-c84ac682165f",
+    "type": "tag"
+  },
+  {
+    "name": "Gluten",
+    "id": "4dfc4961-543d-4c77-8bd8-7507a8bc6934",
+    "type": "tag"
+  }
+]

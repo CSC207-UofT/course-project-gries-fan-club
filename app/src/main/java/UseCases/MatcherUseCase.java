@@ -7,10 +7,7 @@ import Storages.Implementations.IngredientStorageImpl;
 import Storages.IngredientStorage;
 import Storages.RecipeStorage;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 public class MatcherUseCase implements UseCase {
     final IngredientStorage ingredientStorage;
@@ -23,21 +20,33 @@ public class MatcherUseCase implements UseCase {
 
     @Override
     public Response run(Command command) {
-        List<Recipe> recipesMatched = new ArrayList<>();
+        List<String> matchedRecipesString = new ArrayList<>();
+
 
         // Check if fridge matches the recipe storage
         // First check if fridge is provided
         if (command.containsKey("Fridge")) {
+            // set the number of recipes needed to be returned from the matcher
+            Integer numberOfItemsMatched = 5;
+            if (command.containsKey("recipeNumber")) {
+                numberOfItemsMatched = Integer.valueOf(command.get("recipeNumber"));
+            }
+
             // get fridge as ingredient storage
             IngredientStorage fridge = getFridgeStorage(command);
 
             // Turn fridge.ingredients from collection to a list
             List<Ingredient> allFridgeIngredients = new ArrayList<>(fridge.ingredients());
             IngredientMatcher matcher = new IngredientMatcher(allFridgeIngredients);
-            recipesMatched = matcher.return10RecipesMatched(this.recipeStorage);
+            List<Recipe> recipesMatched = matcher.returnRecipesMatched(this.recipeStorage, numberOfItemsMatched);
+            for( Recipe recipe: recipesMatched){
+                matchedRecipesString.add(recipe.name());
+            }
+            Response response = new ResponseImpl("", true);
+            response.put("Matched", matchedRecipesString);
+            return response;
         }
-
-        return new ResponseImpl(recipesMatched);
+        return new ResponseImpl("", false);
         }
 
     /** Takes in command, returns an ingredient storage of the fridge
@@ -47,7 +56,7 @@ public class MatcherUseCase implements UseCase {
     public IngredientStorage getFridgeStorage(Command command) {
         IngredientStorageImpl fridge = new IngredientStorageImpl();
         String keyValues = command.get("Fridge");
-        List<String> stringsOfIngredients = new ArrayList<>(Arrays.asList(keyValues.split(",")));
+        List<String> stringsOfIngredients = new ArrayList<>(Arrays.asList(Objects.requireNonNull(keyValues).split(",")));
 
         for (String ingredientString : stringsOfIngredients) {
             Collection<Ingredient> ingredientList = this.ingredientStorage.findByNameExact(ingredientString);

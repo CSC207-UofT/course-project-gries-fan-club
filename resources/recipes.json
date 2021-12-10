@@ -1,0 +1,96 @@
+[
+  {
+    "instructions": [
+      "1. Season steaks with salt and pepper on both sides, and rub them all over with oil.",
+      "2. Heat a grill pan over high heat and cook the steaks until browned on one side, about 2 to 3 minutes.",
+      "3. Flip steaks and cook on the other side until just browned, about 2 to 3 minutes. Donâ\u20ac™t overcook, or you'll run the risk of toughening the meat.",
+      "4. Remove steaks to plates to let the meat rest. Turn off the heat and add 2 tablespoons butter to the skillet to melt.",
+      "5. Drizzle the melted butter and juices from the skillet on the steaks.",
+      "Adapted from: https://www.thespruceeats.com/steak-medley-date-night-meal-912501"
+    ],
+    "name": "Steak",
+    "description": "A delicious serving of steak for one.",
+    "id": "5b5e07d9-31ef-4938-b786-b7a4a6afb532",
+    "type": "recipe",
+    "items": [
+      "17d8b069-7569-4c58-91f5-d7659e3e46c8",
+      "78a5f9b4-6512-49c7-94e8-816b7113b202",
+      "af4b9d67-3b51-4c13-87f1-6640cd4c0c7f",
+      "e58f1686-acbe-40f2-8fc1-373dac669d60",
+      "b8d6401a-f057-4ca7-aca2-ef461e88340e",
+      "c21a0b05-f83f-4f60-897f-ea0454307dca",
+      "d05c3ff1-73fa-41f3-8529-7279c2258a92"
+    ]
+  },
+  {
+    "instructions": [
+      "1. Crack two eggs into bowl.",
+      "2. Grate cheese into separate bowl.",
+      "3. Add cheese, salt, and pinch of oregano into bowl with eggs.",
+      "3. Throughly beat eggs until uniform.",
+      "4. Pour egg mix into frying pan on medium heat until bottom is light-golden.",
+      "5. Flip omelette and fry until light-golden."
+    ],
+    "name": "Omelette",
+    "description": "A classic omelette with light seasoning and cheese.",
+    "id": "7aa9209b-b5ef-4508-b7a8-aa5c6baaac58",
+    "type": "recipe",
+    "items": [
+      "fa0659c8-e862-4425-8cb2-a4cee4fcf063",
+      "539c190e-3ce8-48a0-8be7-fb2cdf541ea3",
+      "b5fb4ce9-7dab-450c-9386-1257bf82a04e",
+      "7878ec3e-f6e1-465e-abce-af55846bc497",
+      "ad6384f5-ccc1-4c3b-ad03-029f4619fd79"
+    ]
+  },
+  {
+    "instructions": [
+      "1. Spread mayo onto one slice of bread",
+      "2. Cut lettuce into thin slices, cut and wash.",
+      "3. Pile the ingredients in the following order: cheese, turkey breast, bacon, lettuce, other slice of bread."
+    ],
+    "name": "Turkey BLT",
+    "description": "A classic sandwich that everyone loves",
+    "id": "19e1ad5c-fbee-4796-95c4-f795060b8f9a",
+    "type": "recipe",
+    "items": [
+      "3356dbf2-cbb4-4674-a752-f27ce048d50d",
+      "e4938c36-1b2d-4e47-84ef-a8f376cb7fb3",
+      "84260034-9733-4491-bbe9-4cb05f0d589c",
+      "9725e461-d186-44ad-9714-c6be5246bc5a",
+      "84f63024-481e-4bd8-89ba-8deef45d6c4f",
+      "89a7d4bd-1ad7-40db-910e-78978431156e",
+      "6db0a4b1-7f1a-4aad-afc0-dea45a340d15"
+    ]
+  },
+  {
+    "instructions": [
+      "2. Cut lettuce into thin slices, wash, and dry.",
+      "2. Put lettuce into bowl, and add croutons and dressing.",
+      "3. Mix well."
+    ],
+    "name": "Caesar Salad",
+    "description": "A solid side-salad for any good meal",
+    "id": "f677425f-fa9d-43d2-be5a-2a662bda83cf",
+    "type": "recipe",
+    "items": [
+      "29258070-5e40-43aa-9d71-dc0e551345c8",
+      "35d1ff63-bdcd-4aed-9977-89dc136dbdc7",
+      "28880421-c001-46bc-b335-d6efcf30bbf8"
+    ]
+  },
+  {
+    "instructions": [
+      "1. Cut bagel into two, and toast to light golden-brown.",
+      "2. Spread cream cheese onto bagel slices."
+    ],
+    "name": "Cream Cheese Bagel",
+    "description": "A solid midnight snack",
+    "id": "5cfd97ba-28dd-4109-a87e-389cfda3f9aa",
+    "type": "recipe",
+    "items": [
+      "408f012c-9bfc-490f-b4a2-9bde2ac9410d",
+      "fae34ea3-bc17-4472-a847-07028427496d"
+    ]
+  }
+]

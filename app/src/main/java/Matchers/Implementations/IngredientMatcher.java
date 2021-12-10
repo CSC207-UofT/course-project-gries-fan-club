@@ -47,16 +47,15 @@ public class IngredientMatcher extends AbstractMatcher {
      * Take in a recipe storage and return a list of the top 10 (less if there isn't 10) most similar recipes
      * @param recipes list of recipes
      */
-    public List<Recipe> return10RecipesMatched(RecipeStorage recipes) {
+    public List<Recipe> returnRecipesMatched(RecipeStorage recipes, int numberOfRecipes) {
         List<Recipe> allRecipes = new ArrayList<>();
 
         for (Recipe recipe : recipes.recipes()) {
-            // if it's less than 10, just add it
-            if (allRecipes.size() < 10) {
+            // if it's less than numberOfRecipes, just add it
+            if (allRecipes.size() < numberOfRecipes) {
                 allRecipes.add(recipe);
             } else {
-
-                // if more than 10, only put it if it has a higher floatMatch value
+                // if more than numberOfRecipes, only put it if it has a higher floatMatch value
                 for (Recipe value : allRecipes) {
                     if (this.floatMatch(recipe) < this.floatMatch(value)) {
                         // replace value

@@ -5,7 +5,9 @@ import Storages.Implementations.IngredientStorageImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class FridgeUseCaseTest {
     @Test
@@ -18,13 +20,16 @@ public class FridgeUseCaseTest {
         ingredients.add(ingredient1);
         ingredients.add(ingredient2);
 
-        CommandImpl command = new CommandImpl();
+        Command command = new CommandImpl();
         command.put("addToFridge", "oil,chocolate chips");
 
         FridgeUseCase useCase = new FridgeUseCase(fridge, ingredients);
 
-        Assertions.assertTrue(useCase.run(command).data().contains(ingredient1));
-        Assertions.assertTrue(useCase.run(command).data().contains(ingredient2));
+        List<String> fridgeList = new ArrayList<>();
+        fridgeList.add("oil");
+        fridgeList.add("chocolate chips");
+        Assertions.assertTrue(useCase.run(command).get("fridge").contains("chocolate chips"));
+        Assertions.assertTrue(useCase.run(command).get("fridge").contains("oil"));
     }
 
     @Test
@@ -45,7 +50,7 @@ public class FridgeUseCaseTest {
 
         FridgeUseCase useCase = new FridgeUseCase(fridge, ingredients);
 
-        Assertions.assertFalse(useCase.run(command).data().contains(ingredient1));
-        Assertions.assertTrue(useCase.run(command).data().contains(ingredient2));
+        Assertions.assertFalse(useCase.run(command).get("fridge").contains(ingredient1));
+        Assertions.assertTrue(fridge.contains(ingredient2));
     }
 }

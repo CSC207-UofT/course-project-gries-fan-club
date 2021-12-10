@@ -22,15 +22,21 @@ public class CookbookUseCase implements UseCase {
     /**
      * Return all recipes if FindAllRecipes provided in command
      * Return recipes containing none of the tags given if FindRecipesByTags provided in command
-     * @param command
+     * to Obtain the list of recipies from the response use the key "Recipe"
      * @return RecipeResponseImpl containing a list of recipes found
      */
     public Response run(Command command) {
-
+        List<String> recipesMatchedString = new ArrayList<>();
         if (command.containsKey("FindAllRecipes")) {
             // Convert the recipeStorage.recipes from a collection to a list
             List<Recipe> recipesMatched = new ArrayList<>(this.recipeStorage.recipes());
-            return new ResponseImpl(recipesMatched);
+            for(Recipe recipe: recipesMatched){
+                recipesMatchedString.add(recipe.name());
+            }
+            Response response = new ResponseImpl("", true);
+            response.put("Recipe", recipesMatchedString);
+
+            return response;
         }
 
         if (command.containsKey("FindRecipesByTags")) {
@@ -38,7 +44,7 @@ public class CookbookUseCase implements UseCase {
 
             // Extract all the tags from the command
             String keyValues = command.get("FindRecipesByTags");
-            List<String> stringsOfTags = new ArrayList<>(Arrays.asList(keyValues.split(",")));
+            List<String> stringsOfTags = new ArrayList<>(Arrays.asList(Objects.requireNonNull(keyValues).split(",")));
 
             for (String tagString : stringsOfTags) {
                 Collection<Tag> foundTags = this.tagStorage.findByName(tagString);
@@ -48,11 +54,18 @@ public class CookbookUseCase implements UseCase {
                     tagList.add(foundTags.iterator().next());
                 }
             }
+
             List<Recipe> recipesMatched = new ArrayList<>(this.recipeStorage.containsNoneOf(tagList));
-            return new ResponseImpl(recipesMatched);
+            for(Recipe recipe: recipesMatched){
+                recipesMatchedString.add(recipe.name());
+            }
+            Response response = new ResponseImpl("", true);
+            response.put("Recipe", recipesMatchedString);
+
+            return response;
         }
 
         // If none of the commands were provided, then return empty list of recipes.
-        return new ResponseImpl(Collections.emptyList());
+        return new ResponseImpl("", false);
     }
 }
