@@ -119,8 +119,7 @@ public class MatcherUseCaseTest {
         List<Recipe> recipes = new ArrayList<>(this.recipeStorage.recipes());
         MatcherUseCase usecase = new MatcherUseCase(this.ingredientStorage, this.recipeStorage);
 
-//        Assertions.assertEquals(usecase.run(command).get(""), recipes);
-        Assertions.assertTrue(usecase.run(command).success());
+        Assertions.assertEquals(usecase.run(command).data(), recipes);
     }
 
     @Test
