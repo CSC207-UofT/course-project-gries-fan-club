@@ -14,6 +14,11 @@ public interface IngredientStorage extends Storage<Ingredient> {
 	Collection<Ingredient> ingredients();
 
 	/**
+	 * Returns comma seperated list of all the ingredients in a string
+	 * @return
+	 */
+	String ingredientString();
+	/**
 	 * Finds all ingredients that match the given name.
 	 * Regular expressions can also be provided.
 	 *

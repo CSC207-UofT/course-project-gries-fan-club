@@ -69,8 +69,17 @@ public class IngredientStorageImpl extends AbstractStorage<Ingredient> implement
 			}
 
 		}
-
 		return found;
 	}
 
+	@Override
+	public String ingredientString() {
+		StringBuilder stringVal = new StringBuilder();
+		for (Ingredient ingredient : this.ingredients()) {
+			stringVal.append(ingredient.name());
+			stringVal.append(",");
+		}
+		stringVal.delete(stringVal.length(), stringVal.length());
+		return new String(stringVal);
+	}
 }

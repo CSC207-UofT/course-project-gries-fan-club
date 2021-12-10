@@ -3,7 +3,7 @@ package UseCases;
 import java.util.HashMap;
 import java.util.List;
 
-public class ResponseImpl extends HashMap<String, String> implements Response {
+public class ResponseImpl extends HashMap<String, List<String>> implements Response {
 	String status;
 	boolean success;
 
