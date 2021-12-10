@@ -28,16 +28,29 @@ public class MatcherUseCase implements UseCase {
         // Check if fridge matches the recipe storage
         // First check if fridge is provided
         if (command.containsKey("Fridge")) {
+            // set the number of recipes needed to be returned from the matcher
+            Integer numberOfItemsMatched = 5;
+            if (command.containsKey("recipeNumber")) {
+                numberOfItemsMatched = Integer.valueOf(command.get("recipeNumber"));
+            }
+
             // get fridge as ingredient storage
             IngredientStorage fridge = getFridgeStorage(command);
 
             // Turn fridge.ingredients from collection to a list
             List<Ingredient> allFridgeIngredients = new ArrayList<>(fridge.ingredients());
             IngredientMatcher matcher = new IngredientMatcher(allFridgeIngredients);
-            recipesMatched = matcher.return10RecipesMatched(this.recipeStorage);
+            recipesMatched = matcher.returnRecipesMatched(this.recipeStorage, numberOfItemsMatched); // must abstract this
         }
 
-        return new ResponseImpl(recipesMatched);
+        List<String> recipeStrings = new ArrayList<>();
+        for (Recipe recipe : recipesMatched) {
+            recipeStrings.add(recipe.name());
+        }
+
+        Response response = new ResponseImpl("", true);
+        response.put("recipes", recipeStrings);
+        return response;
         }
 
     /** Takes in command, returns an ingredient storage of the fridge

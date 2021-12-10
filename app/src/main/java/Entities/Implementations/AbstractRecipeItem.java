@@ -47,7 +47,7 @@ public abstract class AbstractRecipeItem extends AbstractEntity implements Recip
     }
 
     @Override
-    public float quantity() {
+    public double quantity() {
         return this.amount;
     }
 

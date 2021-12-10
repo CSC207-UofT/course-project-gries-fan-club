@@ -1,6 +1,9 @@
 package Entities.Implementations;
 
 import Entities.Ingredient;
+import Entities.ItemDisplays.Quantifiable;
+import Entities.ItemDisplays.RecipeItemDisplay;
+import Entities.ItemDisplays.Volumetric;
 import Entities.RecipeItem;
 import Entities.Tag;
 import org.junit.jupiter.api.Assertions;
@@ -39,10 +42,11 @@ public class RecipeTest {
     @Test
     public void testItems() {
         Ingredient ingredient1 = new IngredientImpl("apple", Collections.emptyList());
-        QuantityRecipeItem item1 = new QuantityRecipeItem(ingredient1, 15f, false);
+        RecipeItemDisplay quantifiable = new Quantifiable();
+        RecipeItem item1 = new RecipeItemImpl(ingredient1, 15f, false, quantifiable);
 
         Ingredient ingredient2 = new IngredientImpl("cucumber", Collections.emptyList());
-        QuantityRecipeItem item2 = new QuantityRecipeItem(ingredient2, 1f, false);
+        RecipeItem item2 = new RecipeItemImpl(ingredient2, 1f, false, quantifiable);
 
 
         List<RecipeItem> recipeItems = List.of(
@@ -58,6 +62,9 @@ public class RecipeTest {
 
     @Test
     public void testTags() {
+        RecipeItemDisplay quantifiable = new Quantifiable();
+        RecipeItemDisplay volumetric = new Volumetric();
+
 
         TagImpl tag1 = new TagImpl("Gluten");
         TagImpl tag2 = new TagImpl("Dairy");
@@ -80,20 +87,20 @@ public class RecipeTest {
         IngredientImpl ingredient5 = new IngredientImpl("water", Collections.emptyList());
         IngredientImpl ingredient6 = new IngredientImpl("baking soda", Collections.emptyList());
 
-        VolumetricRecipeItem item1 = new VolumetricRecipeItem(ingredient1, 250f, false);
-        QuantityRecipeItem item2 = new QuantityRecipeItem(ingredient2, 2f, false);
-        VolumetricRecipeItem item3 = new VolumetricRecipeItem(ingredient3, 100f, false);
-        QuantityRecipeItem item4 = new QuantityRecipeItem(ingredient4, 55f, false);
-        VolumetricRecipeItem item5 = new VolumetricRecipeItem(ingredient5, 125f, false);
-        VolumetricRecipeItem item6 = new VolumetricRecipeItem(ingredient6, 5f, false);
+        RecipeItem item1 = new RecipeItemImpl(ingredient1, 250f, false, volumetric);
+        RecipeItem item2 = new RecipeItemImpl(ingredient2, 2f, false, quantifiable);
+        RecipeItem item3 = new RecipeItemImpl(ingredient3, 100f, false, volumetric);
+        RecipeItem item4 = new RecipeItemImpl(ingredient4, 55f, false, quantifiable);
+        RecipeItem item5 = new RecipeItemImpl(ingredient5, 125f, false, volumetric);
+        RecipeItem item6 = new RecipeItemImpl(ingredient6, 5f, false, volumetric);
 
         List<RecipeItem> recipeItems1 = new ArrayList<>();
-        recipeItems1.add((VolumetricRecipeItem) item1);
-        recipeItems1.add((QuantityRecipeItem) item2);
-        recipeItems1.add((VolumetricRecipeItem) item3);
-        recipeItems1.add((QuantityRecipeItem) item4);
-        recipeItems1.add((VolumetricRecipeItem) item5);
-        recipeItems1.add((VolumetricRecipeItem) item6);
+        recipeItems1.add(item1);
+        recipeItems1.add(item2);
+        recipeItems1.add(item3);
+        recipeItems1.add(item4);
+        recipeItems1.add(item5);
+        recipeItems1.add(item6);
 
         RecipeImpl recipe = new RecipeImpl("Cookies", "Yummy chocolate chip cookies, best in the world.", Collections.singletonList("instructions"), recipeItems1);
 

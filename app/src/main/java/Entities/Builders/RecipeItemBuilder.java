@@ -1,10 +1,13 @@
 package Entities.Builders;
 
 import Entities.Exceptions.InvalidRowShape;
-import Entities.Implementations.QuantityRecipeItem;
+import Entities.Implementations.RecipeItemImpl;
 import Entities.Implementations.ReferencedIngredient;
-import Entities.Implementations.VolumetricRecipeItem;
 import Entities.Ingredient;
+import Entities.ItemDisplays.Mass;
+import Entities.ItemDisplays.Quantifiable;
+import Entities.ItemDisplays.RecipeItemDisplay;
+import Entities.ItemDisplays.Volumetric;
 import Entities.RecipeItem;
 import Entities.Reference.Reference;
 import Loaders.Exceptions.NoSuchAttribute;
@@ -42,18 +45,18 @@ public class RecipeItemBuilder extends AbstractBuilder<RecipeItem> {
 
 		String rawID;
 		String rawIngredientID;
-		Double rawQuantity;
+		double quantity;
 		boolean optional;
-		String type;
+		String displayType;
 
 		try {
 
 			// Attempt to retrieve required data.
 			rawID = row.get("id", String.class);
 			rawIngredientID = row.get("ingredient", String.class);
-			rawQuantity = row.get("quantity", Double.class);
+			quantity = row.get("quantity", Number.class).doubleValue();
 			optional = row.get("optional", Boolean.class);
-			type = row.get("type", String.class);
+			displayType = row.get("displayType", String.class);
 
 		} catch (NoSuchAttribute exception) {
 			throw new InvalidRowShape("RecipeItem", exception);
@@ -62,21 +65,26 @@ public class RecipeItemBuilder extends AbstractBuilder<RecipeItem> {
 		// Create the proper objects for construction.
 		UUID id = UUID.fromString(rawID);
 		UUID ingredientID = UUID.fromString(rawIngredientID);
-		float quantity = rawQuantity.floatValue();
 
 		Reference<Ingredient> ingredientReference = new Reference<>(ingredientID, this.ingredientStorage);
 		Ingredient ingredient = new ReferencedIngredient(ingredientReference);
 
 		// Determine the type of recipe item to make.
-		switch (type) {
+		RecipeItemDisplay display;
+		switch (displayType) {
 			case "q":
-				return new QuantityRecipeItem(id, ingredient, quantity, optional);
+				display = new Quantifiable();
+				break;
 			case "v":
-				return new VolumetricRecipeItem(id, ingredient, quantity, optional);
+				display = new Volumetric();
+				break;
+			case "m":
+				display = new Mass();
+				break;
+			default:
+				throw new InvalidRowShape("An invalid type: \"" + displayType + "\" was specified for a RecipeItem.");
 		}
-
-		// An invalid type was stored, this row is considered invalid.
-		throw new InvalidRowShape("An invalid type: \"" + type + "\" was specified for a RecipeItem.");
+		return new RecipeItemImpl(id, ingredient, quantity, optional, display);
 	}
 
 	@Override

@@ -2,8 +2,10 @@ package Storages;
 
 import Entities.Implementations.IngredientImpl;
 import Entities.Implementations.RecipeImpl;
+import Entities.Implementations.RecipeItemImpl;
 import Entities.Implementations.TagImpl;
-import Entities.Implementations.VolumetricRecipeItem;
+import Entities.ItemDisplays.RecipeItemDisplay;
+import Entities.ItemDisplays.Volumetric;
 import Entities.RecipeItem;
 import Entities.Tag;
 import Storages.Implementations.RecipeStorageImpl;
@@ -34,9 +36,10 @@ public class RecipeStorageTest {
                 Collections.singletonList(new TagImpl("Vegan")));
 
         // Make recipe items
-        VolumetricRecipeItem item1 = new VolumetricRecipeItem(ingredient1, 100, false);
-        VolumetricRecipeItem item2 = new VolumetricRecipeItem(ingredient2, 100, false);
-        VolumetricRecipeItem item3 = new VolumetricRecipeItem(ingredient3, 100, false);
+        RecipeItemDisplay volumetric = new Volumetric();
+        RecipeItem item1 = new RecipeItemImpl(ingredient1, 100, false, volumetric);
+        RecipeItem item2 = new RecipeItemImpl(ingredient2, 100, false, volumetric);
+        RecipeItem item3 = new RecipeItemImpl(ingredient3, 100, false, volumetric);
 
 
         this.recipe1 = new RecipeImpl("recipe1", "description",

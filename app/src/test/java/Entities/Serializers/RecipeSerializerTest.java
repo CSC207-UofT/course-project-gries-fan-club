@@ -1,10 +1,12 @@
 package Entities.Serializers;
 
 import Entities.Implementations.IngredientImpl;
-import Entities.Implementations.QuantityRecipeItem;
 import Entities.Implementations.RecipeImpl;
-import Entities.Implementations.VolumetricRecipeItem;
+import Entities.Implementations.RecipeItemImpl;
 import Entities.Ingredient;
+import Entities.ItemDisplays.Quantifiable;
+import Entities.ItemDisplays.RecipeItemDisplay;
+import Entities.ItemDisplays.Volumetric;
 import Entities.Recipe;
 import Entities.RecipeItem;
 import Loaders.Exceptions.NoSuchAttribute;
@@ -20,8 +22,10 @@ public class RecipeSerializerTest {
 	@Test
 	public void testSerializeEntity() throws NoSuchAttribute {
 		Ingredient ingredient = new IngredientImpl("", Collections.emptyList());
-		RecipeItem item1 = new QuantityRecipeItem(ingredient, 0, false);
-		RecipeItem item2 = new VolumetricRecipeItem(ingredient, 0, false);
+		RecipeItemDisplay quantifiable = new Quantifiable();
+		RecipeItemDisplay volumetric = new Volumetric();
+		RecipeItem item1 = new RecipeItemImpl(ingredient, 0, false, quantifiable);
+		RecipeItem item2 = new RecipeItemImpl(ingredient, 0, false, volumetric);
 
 		Recipe recipe = new RecipeImpl(
 						"Soup",
