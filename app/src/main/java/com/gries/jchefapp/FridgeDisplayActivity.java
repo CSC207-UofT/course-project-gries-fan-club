@@ -1,13 +1,17 @@
 package com.gries.jchefapp;
 
+import Controllers.FrontEnd;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.res.AssetManager;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.jchefapp.R;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class FridgeDisplayActivity extends AppCompatActivity {
@@ -16,6 +20,7 @@ public class FridgeDisplayActivity extends AppCompatActivity {
 
     EditText mEdit;
     ListView listView;
+    FrontEnd frontend;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +35,24 @@ public class FridgeDisplayActivity extends AppCompatActivity {
 
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
         listView.setAdapter(arrayAdapter);
-
+        Context context = this;
         // Add ingredient
+        try {
+            AssetManager manager = context.getAssets();
+            InputStream ingredientStream = manager.open("Ingredients.json");
+            InputStream tagStream = manager.open("tags.json");
+            InputStream recipeStream = manager.open("recipes.json");
+            InputStream recipeItemStream = manager.open("recipeItems.json");
+
+            this.frontend = new FrontEnd(ingredientStream, tagStream, recipeItemStream, recipeStream);
+            System.out.println(this.frontend.fridge().size());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         addIngredientButton = (Button) findViewById(R.id.button6);
         addIngredientButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 Toast.makeText(com.gries.jchefapp.FridgeDisplayActivity.this, "IngredientAdded", Toast.LENGTH_LONG).show();
@@ -42,7 +61,11 @@ public class FridgeDisplayActivity extends AppCompatActivity {
                 mEdit.getText().toString();
                 arrayList.add(mEdit.getText().toString());
                 arrayAdapter.notifyDataSetChanged();
-                System.out.println(mEdit.getText().toString());
+                frontend.addToFridge(mEdit.getText().toString());
+
+
+//                System.out.println(mEdit.getText().toString());
+                System.out.println(frontend.fridge().ingredientString());
 
             }
         });

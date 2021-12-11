@@ -1,0 +1,194 @@
+[
+  {
+    "quantity": 200,
+    "ingredient": "c51cade4-2c61-48e8-a2a5-1698563306a6",
+    "optional": false,
+    "id": "17d8b069-7569-4c58-91f5-d7659e3e46c8",
+    "type": "recipeItem",
+    "displayType" : "m"
+  },
+  {
+    "quantity": 2,
+    "ingredient": "e62a8ae2-a32d-4b43-99fc-b9c3f91a9275",
+    "optional": false,
+    "id": "78a5f9b4-6512-49c7-94e8-816b7113b202",
+    "type": "recipeItem",
+    "displayType" : "q"
+  },
+  {
+    "quantity": 5,
+    "ingredient": "b6a7e867-74b9-4690-ab30-37f13fb6a006",
+    "optional": false,
+    "id": "af4b9d67-3b51-4c13-87f1-6640cd4c0c7f",
+    "type": "recipeItem",
+    "displayType" : "q"
+  },
+  {
+    "quantity": 15,
+    "ingredient": "247956b7-3b46-48d8-8d93-8939ab0fab71",
+    "optional": false,
+    "id": "e58f1686-acbe-40f2-8fc1-373dac669d60",
+    "type": "recipeItem",
+    "displayType" : "v"
+  },
+  {
+    "quantity": 2,
+    "ingredient": "355b79da-24a9-45ac-8e88-5f9eeeb8cbf9",
+    "optional": false,
+    "id": "b8d6401a-f057-4ca7-aca2-ef461e88340e",
+    "type": "recipeItem",
+    "displayType" : "q"
+  },
+  {
+    "quantity": 1,
+    "ingredient": "b7045c7f-2ef8-41cc-a57c-9fa30d13f345",
+    "optional": false,
+    "id": "c21a0b05-f83f-4f60-897f-ea0454307dca",
+    "type": "recipeItem",
+    "displayType" : "q"
+  },
+  {
+    "quantity": 50,
+    "ingredient": "e296daa4-ac67-417f-af3b-8accaf0ca63b",
+    "optional": false,
+    "id": "d05c3ff1-73fa-41f3-8529-7279c2258a92",
+    "type": "recipeItem",
+    "displayType" : "q"
+  },
+  {
+    "quantity": 2,
+    "ingredient": "e7bac074-37a9-47c7-830e-0c092cf1e37b",
+    "optional": false,
+    "id": "fa0659c8-e862-4425-8cb2-a4cee4fcf063",
+    "type": "recipeItem",
+    "displayType" : "q"
+  },
+  {
+    "quantity": 20,
+    "ingredient": "e296daa4-ac67-417f-af3b-8accaf0ca63b",
+    "optional": false,
+    "id": "539c190e-3ce8-48a0-8be7-fb2cdf541ea3",
+    "type": "recipeItem",
+    "displayType" : "q"
+  },
+  {
+    "quantity": 50,
+    "ingredient": "694562d9-b276-47d2-ab7f-2c1b6d63098b",
+    "optional": true,
+    "id": "b5fb4ce9-7dab-450c-9386-1257bf82a04e",
+    "type": "recipeItem",
+    "displayType" : "m"
+  },
+  {
+    "quantity": 2,
+    "ingredient": "e62a8ae2-a32d-4b43-99fc-b9c3f91a9275",
+    "optional": true,
+    "id": "7878ec3e-f6e1-465e-abce-af55846bc497",
+    "type": "recipeItem",
+    "displayType" : "q"
+  },
+  {
+    "quantity": 2,
+    "ingredient": "b22b1267-071d-4f57-a552-76aea05c489b",
+    "optional": false,
+    "id": "ad6384f5-ccc1-4c3b-ad03-029f4619fd79",
+    "type": "recipeItem",
+    "displayType" : "q"
+  },
+  {
+    "quantity": 2,
+    "ingredient": "dd30cc21-e424-4991-8ac9-363ddc831223",
+    "optional": false,
+    "id": "3356dbf2-cbb4-4674-a752-f27ce048d50d",
+    "type": "recipeItem",
+    "displayType" : "q"
+  },
+  {
+    "quantity": 0.5,
+    "ingredient": "656b9eca-7797-4732-9213-5e08d9927fcf",
+    "optional": false,
+    "id": "e4938c36-1b2d-4e47-84ef-a8f376cb7fb3",
+    "type": "recipeItem",
+    "displayType" : "q"
+  },
+  {
+    "quantity": 1,
+    "ingredient": "30869745-cd8f-4c94-abb6-2bc0c1a43130",
+    "optional": true,
+    "id": "84260034-9733-4491-bbe9-4cb05f0d589c",
+    "type": "recipeItem",
+    "displayType" : "q"
+  },
+  {
+    "quantity": 15,
+    "ingredient": "1da26bef-f832-4771-83ca-5b05e5ccd96e",
+    "optional": false,
+    "id": "9725e461-d186-44ad-9714-c6be5246bc5a",
+    "type": "recipeItem",
+    "displayType" : "v"
+  },
+  {
+    "quantity": 4,
+    "ingredient": "4329baad-c1de-431b-909a-89f480a172d8",
+    "optional": false,
+    "id": "84f63024-481e-4bd8-89ba-8deef45d6c4f",
+    "type": "recipeItem",
+    "displayType" : "q"
+  },
+  {
+    "quantity": 8,
+    "ingredient": "7bf7405b-404f-405e-a432-338b4d2a1c9c",
+    "optional": false,
+    "id": "89a7d4bd-1ad7-40db-910e-78978431156e",
+    "type": "recipeItem",
+    "displayType" : "q"
+  },
+  {
+    "quantity": 30,
+    "ingredient": "3a236338-eea4-4819-9643-25c398074672",
+    "optional": false,
+    "id": "6db0a4b1-7f1a-4aad-afc0-dea45a340d15",
+    "type": "recipeItem",
+    "displayType" : "m"
+  },
+  {
+    "quantity": 200,
+    "ingredient": "3a236338-eea4-4819-9643-25c398074672",
+    "optional": false,
+    "id": "29258070-5e40-43aa-9d71-dc0e551345c8",
+    "type": "recipeItem",
+    "displayType" : "m"
+  },
+  {
+    "quantity": 20,
+    "ingredient": "67b4384a-3c94-42d2-85f0-61109489c583",
+    "optional": false,
+    "id": "35d1ff63-bdcd-4aed-9977-89dc136dbdc7",
+    "type": "recipeItem",
+    "displayType" : "m"
+  },
+  {
+    "quantity": 40,
+    "ingredient": "bd2729ea-b2ec-4e8b-b23a-9216f4a2139a",
+    "optional": false,
+    "id": "28880421-c001-46bc-b335-d6efcf30bbf8",
+    "type": "recipeItem",
+    "displayType" : "v"
+  },
+  {
+    "quantity": 2,
+    "ingredient": "d736fec4-ae1c-45d6-bdc9-1461afbf8ca4",
+    "optional": false,
+    "id": "408f012c-9bfc-490f-b4a2-9bde2ac9410d",
+    "type": "recipeItem",
+    "displayType" : "v"
+  },
+  {
+    "quantity": 1,
+    "ingredient": "27285e48-2817-4f45-afe9-2b973a90dbd1",
+    "optional": false,
+    "id": "fae34ea3-bc17-4472-a847-07028427496d",
+    "type": "recipeItem",
+    "displayType" : "q"
+  }
+]
