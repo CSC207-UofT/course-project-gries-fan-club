@@ -1,5 +1,6 @@
 package com.gries.jchefapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -18,14 +19,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        MyApplication app = (MyApplication) getApplication();
+        Context context = this;
+        app.Load(context);
         // Instructions Button
         button1 = (Button)findViewById(R.id.button5);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, InstructionsActivity.class));
-
             }
         });
 

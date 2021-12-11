@@ -25,31 +25,21 @@ public class FridgeDisplayActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Add ingredient
+
         setContentView(R.layout.activity_fridge_display);
 
         listView = (ListView) findViewById(R.id.listview1);
-
+        MyApplication app = (MyApplication) getApplication();
         ArrayList<String> arrayList = new ArrayList<>();
-
-//        arrayList.add("Banana");
+        arrayList.add(app.frontend.fridge().ingredientString());
+        arrayList.add("hi");
 
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
         listView.setAdapter(arrayAdapter);
-        Context context = this;
-        // Add ingredient
-        try {
-            AssetManager manager = context.getAssets();
-            InputStream ingredientStream = manager.open("Ingredients.json");
-            InputStream tagStream = manager.open("tags.json");
-            InputStream recipeStream = manager.open("recipes.json");
-            InputStream recipeItemStream = manager.open("recipeItems.json");
+        arrayAdapter.notifyDataSetChanged();
 
-            this.frontend = new FrontEnd(ingredientStream, tagStream, recipeItemStream, recipeStream);
-            System.out.println(this.frontend.fridge().size());
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         addIngredientButton = (Button) findViewById(R.id.button6);
         addIngredientButton.setOnClickListener(new View.OnClickListener() {
 
@@ -61,12 +51,8 @@ public class FridgeDisplayActivity extends AppCompatActivity {
                 mEdit.getText().toString();
                 arrayList.add(mEdit.getText().toString());
                 arrayAdapter.notifyDataSetChanged();
-                frontend.addToFridge(mEdit.getText().toString());
-
-
-//                System.out.println(mEdit.getText().toString());
-                System.out.println(frontend.fridge().ingredientString());
-
+                app.frontend.addToFridge(mEdit.getText().toString());
+                arrayAdapter.notifyDataSetChanged();
             }
         });
 
