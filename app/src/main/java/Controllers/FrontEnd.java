@@ -8,6 +8,7 @@ import Storages.RecipeItemStorage;
 import Storages.RecipeStorage;
 import Storages.TagStorage;
 
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -35,39 +36,36 @@ public class FrontEnd {
     FridgeController fridgeController;
     MatcherController matcherController;
 
-    public FrontEnd(String ingredientPath, String tagPath,  String recipeItemPath, String recipePath) throws Exception {
+    public FrontEnd(InputStream ingredientStream, InputStream tagStream, InputStream recipeItemStream,
+                    InputStream recipeStream) throws Exception {
         // Build and fill the storages
-        this.onLoad(ingredientPath, tagPath, recipeItemPath, recipePath);
+        this.onLoad(ingredientStream, tagStream, recipeItemStream, recipeStream);
         this.fridge = new IngredientStorageImpl();
         this.fridgeController = new FridgeController();
         this.matcherController = new MatcherController();
-
     }
 
     /**
      * Read the File Path, used in the onLoad function
-     * @param pathGiven
-     * @return
      * @throws Exception
      */
-    public Loader createLoader(String pathGiven) throws Exception {
-        Path path = Paths.get(pathGiven);
-        String json = new String(Files.readAllBytes(path));
-        return new JSONFileIO(json);
+    public Loader createLoader(InputStream stream) throws Exception {
+        return new JSONFileIO(stream);
     }
 
     /**
      *
      * Takes in all of the paths needed to load
      */
-    public void onLoad(String ingredientPath, String tagPath,  String recipeItemPath, String recipePath) throws Exception {
+    public void onLoad(InputStream ingredientStream, InputStream tagStream, InputStream recipeItemStream,
+                       InputStream recipeStream) throws Exception {
         BuilderController builder = new BuilderController();
 
         // create loaders
-        Loader ingredientLoader = this.createLoader(ingredientPath);
-        Loader tagLoader = this.createLoader(tagPath);
-        Loader recipeItemLoader = this.createLoader(recipeItemPath);
-        Loader recipeLoader = this.createLoader(recipePath);
+        Loader ingredientLoader = this.createLoader(ingredientStream);
+        Loader tagLoader = this.createLoader(tagStream);
+        Loader recipeItemLoader = this.createLoader(recipeItemStream);
+        Loader recipeLoader = this.createLoader(recipeStream);
 
         // load loaders
         builder.load(tagLoader);
@@ -103,9 +101,9 @@ public class FrontEnd {
         writingController.saveIngredients(this.fridge, path);
     }
 
-    public void updateFridge(String pathFridge, String pathTag) throws Exception {
-        Loader loader = this.createLoader(pathFridge);
-        Loader loader2 = this.createLoader(pathTag);
+    public void updateFridge(InputStream fridgeStream, InputStream tagStream) throws Exception {
+        Loader loader = this.createLoader(fridgeStream);
+        Loader loader2 = this.createLoader(tagStream);
         this.fridge = new IngredientStorageImpl();
         this.fridge.addAll(this.fridgeController.updateFridge(loader, loader2).ingredients());
     }
