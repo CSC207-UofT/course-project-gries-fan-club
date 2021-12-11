@@ -16,6 +16,6 @@ public class NameMatcher extends AbstractMatcher {
     public floatMatch(Recipe recipe) {
         int levDist = StringUtils.getLevenshteinDistance(recipe.name(), name);
         double percentMatch = (double) levDist/recipe.name();
-        return 1.0 - percentMatch;
+        return (double)1.0 - percentMatch;
     }
 }

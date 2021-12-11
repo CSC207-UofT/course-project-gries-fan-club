@@ -32,7 +32,7 @@ public class ScorerImpl implements Scorer {
 
     public double score(Recipe recipe) {
         if (!tagMatcher.matches(recipe))
-            return 0;
-        return nameMatcher(recipe) * 0.7 + tagMatcher(recipe) * 0.3;
+            return 0.0;
+        return (double) nameMatcher(recipe) * 0.7 + tagMatcher(recipe) * 0.3;
     }
 }
