@@ -5,7 +5,6 @@ import Matchers.Matcher;
 import java.util.ArrayList;
 import java.util.List;
 
-
 // Matches ingredients with recipes
 public abstract class AbstractMatcher implements Matcher {
 
