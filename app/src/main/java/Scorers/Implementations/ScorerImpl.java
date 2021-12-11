@@ -5,6 +5,7 @@ import Entities.Recipe;
 import Entities.Tag;
 import Matchers.Implementations.IngredientMatcher;
 import Matchers.Implementations.TagMatcher;
+import Matchers.Implementations.NameMatcher;
 import Scorers.Scorer;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class ScorerImpl implements Scorer {
 
     final IngredientMatcher ingredientMatcher;
     final TagMatcher tagMatcher;
+    final NameMatcher nameMatcher;
 
     public ScorerImpl(List<Ingredient> ingredients, List<Tag> tags, String name) {
         this.ingredients = ingredients;
@@ -25,14 +27,12 @@ public class ScorerImpl implements Scorer {
         this.name = name;
         this.ingredientMatcher = new IngredientMatcher(ingredients);
         this.tagMatcher = new TagMatcher(tags);
+        this.nameMatcher = new NameMatcher(name);
     }
 
-    public double score() {
-        //private final double NAME_VAL = 0.7; to be used in future updates
-        double INGREDIENT_VAL = 0.7;
-        double ingredientScore = INGREDIENT_VAL * this.ingredientMatcher.floatMatch(this.recipe);
-        double TAG_VAL = 0.3;
-        double tagScore = TAG_VAL * this.tagMatcher.floatMatch(this.recipe);
-        return ingredientScore + tagScore;
+    public double score(Recipe recipe) {
+        if (!tagMatcher.matches(recipe))
+            return 0.0;
+        return (double) nameMatcher.floatMatch(recipe) * 0.7 + tagMatcher.floatMatch(recipe) * 0.3;
     }
 }

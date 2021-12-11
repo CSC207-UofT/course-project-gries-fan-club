@@ -37,7 +37,7 @@ public class TagMatcher extends AbstractMatcher {
      * Returns the percentage of specified tags that a recipe has.
      */
     @Override
-    public double floatMatch(Recipe recipe) {
+    public double floatMatch(Recipe recipe) { //seldom used, since we don't really want a %match for a tag
         Set<Tag> recipeTags = recipe.tags();
         int counter = 0;
 
